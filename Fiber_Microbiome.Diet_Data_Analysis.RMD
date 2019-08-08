@@ -1,0 +1,379 @@
+---
+title: "Fiber_Microbiome.Diet_Data"
+author: "Jordan Mattke"
+date: "7/29/2019"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+The first part of this data analysis provides analysis based ASA_24 data-RecallNo at 4 time points for KCAL, PROT, CARB, and TFAT
+
+##ASA_24
+```{r ASA_24 Data Import}
+diet_data <-  read.delim("C:/Users/Jordan/Box/Diet Data/Final Study Dietary Data_ASA24/BFiber_2019-06-26_52817/BFiber_2019-06-26_52817_Totals.txt")
+
+```
+
+
+##Libraries
+```{r packages}
+#Libraries
+library(tidyverse)
+library(ggplot2)
+library(stats)
+library(dplyr)
+library(kableExtra)
+```
+
+##EasyVariables
+```{r variable names}
+#Variables
+KCAL <- diet_data$KCAL
+PROT <- diet_data$PROT
+CARB <- diet_data$CARB
+TFAT <- diet_data$TFAT
+Intervention <- diet_data$Intervention
+Participant <- diet_data$UserName
+Timepoint <- diet_data$RecallNo
+KCAL.PROT<- diet_data$PROT*4
+KCAL.CARB<- diet_data$CARB*4
+KCAL.TFAT<- diet_data$TFAT*9
+#The data table will now include the KCAL values for all nutrients
+diet_data<- cbind(diet_data,KCAL.PROT,KCAL.CARB,KCAL.TFAT)
+```
+
+##ASA_24.GGPlots
+This section will focus on creating a visual representation of KCAL, PROT, CARB, and TFAT for each participant at each time point. 
+NOTE: Most participants did not complete all 4 recalls.
+```{r Macronutrient Summary}
+#KCAL_GGPLOT
+ggplot(data=diet_data, aes(x=Timepoint, y=KCAL, shape=Intervention, color=Participant))+
+  geom_point(size=4)+
+  labs(title="Total KCAL")+
+  facet_wrap(vars(diet_data$UserName))
+  
+#PROT_GGPLOT
+ggplot(data = diet_data, aes(x=Timepoint, y=PROT, shape=Intervention, color=Participant))+
+  geom_point(size=4)+
+  labs(title="Total PROT")+
+  facet_wrap(vars(diet_data$UserName))
+
+#TFAT_GGPLOT
+ggplot(data = diet_data, aes(x=Timepoint, y=TFAT, shape=Intervention, color=Participant))+
+  geom_point(size=4)+
+  labs(title="Total Fat")+
+  facet_wrap(vars(diet_data$UserName))
+
+#CARB_GGPLOT
+ggplot(data = diet_data, aes(x=Timepoint, y=CARB, shape=Intervention, color=Participant))+
+  geom_point(size=4)+
+  facet_wrap(vars(diet_data$UserName))+
+  labs(title="Total Carb")
+
+```
+
+##Shapiro.Wilks_Test
+```{r}
+#Shapiro-Wilks_Test_AllData
+swKCAL <- shapiro.test(KCAL)
+swPROT <- shapiro.test(PROT)
+swCARB <- shapiro.test(CARB)
+swTFAT <- shapiro.test(TFAT)
+```
+
+##Normalized Data Analysis
+The grams/1000 KCAL will be analyzed for outliers 
+```{r normalized data}
+KCALNormalizer<- diet_data$KCAL/1000
+diet_data$PROT.NORM<- diet_data$PROT/KCALNormalizer
+diet_data$CARB.NORM<- diet_data$CARB/KCALNormalizer
+diet_data$TFAT.NORM<- diet_data$TFAT/KCALNormalizer
+
+```
+```{r histograms}
+#Protein
+ggplot(data=diet_data, aes(x=diet_data$PROT.NORM))+
+  geom_histogram(binwidth = 5, fill="blue", color="red")+
+  labs(title="Grams of Protein/1000 KCAL", x= "g/1000 KCAL")
+
+#CARB
+ggplot(data=diet_data, aes(x=diet_data$CARB.NORM))+
+  geom_histogram(binwidth = 5, fill="yellow", color="green")+
+  labs(title= "Grams of Carb/1000 KCAL", x="g/1000 KCAL")
+
+#TFAT
+ggplot(data=diet_data, aes(x=diet_data$TFAT.NORM))+
+  geom_histogram(binwidth = 3, fill="white", color="black")+
+  labs(title= "Grams of TFAT/1000 KCAL", x="g/1000 KCAL")
+```
+
+##ASA_24.Timepoint_Summaries
+Each RecallNo will have all of the following calculations and tests performed for each time point:
+1. Mean
+2. Standard Deviation
+3. Shapiro Wilks test for normality
+5. Count for amount of data
+6. Locate Outliers
+7. Percentages of PROT, CARB, and TFAT in the diet at each RecallNo
+```{r T1}
+#Timepoint_1
+t1data<- diet_data[Timepoint=="1", c("UserName", "KCAL", "PROT", "KCAL.PROT", "CARB", "KCAL.CARB", "TFAT", "KCAL.TFAT")] #Isolate only RecallNo==1
+row.names(t1data)<-t1data$UserName
+t1data<-t1data[,-1]#Remove duplicate UserNames
+t1summary<-summary(t1data)
+t1sd<- apply(t1data, 2, sd)#Standard Deviation of KCAL, PROT, CARB, and TFAT @T1
+t1mean<- apply(t1data, 2, mean)#Mean of all T1 Columns
+t1sw<- apply(t1data, 2, shapiro.test)#Shapiro Wilks Test for Each Column
+t1outliers<- apply(t1data, 2, boxplot.stats) #Count/Outliers for T1
+t1quantiles<- apply(t1data, 2, quantile)#quantiles
+t1data<- rbind(t1data, t1mean, t1sd, t1outliers, t1quantiles)#Combine all data and analyses
+t1data<- t1data[-c(12), ]
+rownames(t1data)[10]<- "mean"
+rownames(t1data)[11]<- "stdev"
+rownames(t1data)[12]<- "count"
+rownames(t1data)[13]<- "hinges"
+rownames(t1data)[14]<- "outliers"
+#Need to calculate the percentage of each nutrient based on the KCAL value of each nutrient
+for (i in t1data){
+  t1totalKCAL<- as.numeric(t1data[10,1])
+  t1percentage<- t1mean/t1totalKCAL*100
+}
+t1data<-rbind(t1data,t1percentage)
+row.names(t1data)[20]<- "percent"
+t1data<- rbind(t1data, t1sw)
+t1data<- t1data[-c(23:25),]
+row.names(t1data)[22]<- 'p-value'
+#Save Table
+kable(t1data)%>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+
+```
+```{r T2}
+#Timepoint_2
+t2data<- diet_data[Timepoint=="2", c("UserName", "KCAL", "PROT", "KCAL.PROT", "CARB", "KCAL.CARB", "TFAT", "KCAL.TFAT")] #Isolate only RecallNo==2
+row.names(t2data)<-t2data$UserName
+t2data<- t2data[,-1]#Remove duplicate UserNames
+t2summary<-summary(t2data)
+t2sd<- apply(t2data, 2, sd)#Standard Deviation of KCAL, PROT, CARB, and TFAT @T2
+t2mean<- apply(t2data, 2, mean)#Mean of all T2 Columns
+t2sw<- apply(t2data, 2, shapiro.test)#Shapiro Wilks Test for Each Column
+t2outliers<- apply(t2data, 2, boxplot.stats)#Count/Outliers for T2
+t2quantiles<- apply(t2data, 2, quantile)#quantiles
+t2data<- rbind(t2data, t2mean, t2sd, t2outliers, t2quantiles)#Combine all data and analyses
+t2data<- t2data[-10, ]#Getting rid of repeat data
+rownames(t2data)[8]<- "mean"
+rownames(t2data)[9]<- "stdev"
+rownames(t2data)[10]<- "count"
+rownames(t2data)[11]<- "hinges"
+rownames(t2data)[12]<- "outliers"
+#Need to calculate percentage of each nutrient based on KCAL value of each nutrient
+for (i in t2data){
+  t2totalKCAL<- as.numeric(t2data[8,1])
+  t2percentage<- t2mean/t2totalKCAL*100
+}
+t2data<-rbind(t2data,t2percentage)
+row.names(t2data)[18]<- "percent"
+t2data<- rbind(t2data, t2sw)
+t2data<- t2data[-c(21:22),]
+row.names(t2data)[20]<- "p-value"
+#Save Data
+kable(t2data)%>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+```{r T3}
+#Timepoint_3
+t3data<- diet_data[Timepoint=="3", c("UserName", "KCAL", "PROT", "KCAL.PROT", "CARB", "KCAL.CARB","TFAT","KCAL.TFAT")] #Isolate only RecallNo==3
+row.names(t3data)<-t3data$UserName
+t3data<-t3data[,-1]#Remove duplicate UserName
+t3summary<-summary(t3data)
+t3sd<- apply(t3data, 2, sd)#Standard Deviation of KCAL, PROT, CARB, and TFAT @ Recall 3
+t3mean<- apply(t3data, 2, mean)#Mean of all macronutrients @ Recall 3
+t3sw<- apply(t3data, 2, shapiro.test)#Shapiro Wilks Test for Each Column
+t3outliers<- apply(t3data, 2, boxplot.stats)#Count and Outliers for Recall 3
+t3quantiles<- apply(t3data, 2, quantile)#quantiles
+t3data<- rbind(t3data, t3mean, t3sd, t3outliers, t3quantiles)#Combine all data and analyses
+t3data<- t3data[-7, ]
+row.names(t3data)[5]<- "mean"
+row.names(t3data)[6]<- "stdev"
+row.names(t3data)[7]<- "count"
+row.names(t3data)[8]<- "hinges"
+row.names(t3data)[9]<- "outliers"
+#Need to calculate the percentage of each nutrient based on the KCAL value of each nutrient
+for (i in t3data){
+  t3totalKCAL<- as.numeric(t3data[5,1])
+  t3percentage<- t3mean/t3totalKCAL*100
+}
+t3data<-rbind(t3data,t3percentage)
+row.names(t3data)[15]<- "percent"
+t3data<-rbind(t3data, t3sw)
+t3data<- t3data[-c(18:19),]
+row.names(t3data)[17]<- "p-value"
+#Save Data
+kable(t3data)%>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+
+```
+```{r T4}
+#Timepoint_4
+t4data<- diet_data[Timepoint=="4", c("UserName","KCAL", "PROT","KCAL.PROT","CARB","KCAL.CARB","TFAT","KCAL.TFAT")] #Isolate only RecallNo==4
+row.names(t4data)<-t4data$UserName
+t4data<-t4data[,-1]#Remove duplicate UserName column
+t4summary<-summary(t4data)
+t4sd<- apply(t4data, 2, sd)#Standard Deviation of KCAL, PROT, CARB, and TFAT @ REcall 4
+t4mean<- apply(t4data, 2, mean)#Mean of all Recall 4 Columns
+t4outliers<- apply(t4data, 2, boxplot.stats)#Count and Outliers for Recall 4
+t4quantiles<- apply(t4data, 2, quantile)#quantiles
+t4data<- rbind(t4data, t4mean, t4sd, t4outliers, t4quantiles)#Combine all data and analyses
+t4data<- t4data[-5, ]
+rownames(t4data)[3]<- "mean"
+rownames(t4data)[4]<- "stdev"
+rownames(t4data)[5]<- "count"
+rownames(t4data)[6]<- "hinges"
+rownames(t4data)[7]<- "outliers"
+#Need to calculate the percentage of each nutrient based on the KCAL value of each nutrient
+for (i in t4data){
+  t4totalKCAL<- as.numeric(t4data[3,1])
+  t4percentage<- t4mean/t4totalKCAL*100
+}
+t4data<-rbind(t4data,t4percentage)
+row.names(t4data)[13]<- "percent"
+#Save Data
+kable(t4data)%>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+##ASA_24.KCALProportions.geom_col
+Create a geom_col chart representing the proportions of PROT, CARB, and FAT Calorie proportions at each RecallNo.
+*Note: each bar represents proportions of a different sample size as sample size decreased at later RecallNo. The RecallNo==1 bar represents a sample size of 9 while the RecallNo==4 bar represents only a sample size of 2.
+```{r make new dataframe for KCAL values}
+#Each type of nutrient must have its own table before being merged to form one large data table for the geom_col chart
+diet_data$CAL<- KCAL.PROT
+diet_data$type<- "PROTEIN"
+prot<- diet_data[,c("UserName","type", "RecallNo", "CAL")]
+
+diet_data$CAL<- KCAL.CARB
+diet_data$type<- "CARBOHYDRATE"
+carb<- diet_data[,c("UserName", "type", "RecallNo", "CAL")]
+
+diet_data$CAL<- KCAL.TFAT
+diet_data$type<- "FAT"
+tfat<- diet_data[,c("UserName", "type", "RecallNo", "CAL")]
+
+#Combine the 3 nutrient KCAL tables from above
+KCAL.Summary<- rbind(prot,carb,tfat)
+```
+```{r new data frame to geom_col}
+CAL<-KCAL.Summary$CAL
+RecallNo<- KCAL.Summary$RecallNo
+Type<- KCAL.Summary$type
+
+ggplot(data=KCAL.Summary, aes(x= RecallNo, y= CAL))+
+  geom_col(aes(fill= Type), position="fill")+
+  labs(title= "Overall Percentage of KCAL by Type of Nutrient")
+```
+
+##Individual_Timepoint_Breakdown
+The previous section gave an overall summary of all participants of KCAL intake by macronutrient.
+This section will create a facet wrap of geom_col charts showing amounts of each type of macronutrient for each individual participant at each time point.
+```{r facet wrap}
+#Use dataframe from previous section in order to create an individual breakdown by UserName
+ggplot(data = KCAL.Summary, aes(x=RecallNo, y=CAL, fill= Type))+
+  geom_col(position="fill")+
+  facet_wrap(vars(KCAL.Summary$UserName))+
+  labs(title="Individual Percentages of Each Nutrient")
+```
+##Fiber_Intake
+```{r Test for Outliers}
+#Isolate only Participants, KCAL, and FIBE for analysis
+fiber_data<- diet_data[,c("UserName","RecallNo","KCAL","FIBE")]
+KCALNormalizer<- (fiber_data$KCAL/1000)
+g_per_1000KCAL<- fiber_data$FIBE/KCALNormalizer
+fiber_data<- cbind(fiber_data, g_per_1000KCAL)
+ggplot(data=fiber_data, aes(x=fiber_data$g_per_1000KCAL))+
+  geom_histogram(binwidth = 3, fill="red", color="blue")+
+  labs(title= "Grams of Fiber/1000 KCAL", x="g/1000 KCAL")
+```
+```{r Individual Intake of Fiber}
+#Total Fiber Intake
+ggplot(data=fiber_data, aes(x=fiber_data$RecallNo, y=fiber_data$FIBE))+
+  geom_col(fill="white", color="black")+
+  facet_wrap(vars(fiber_data$UserName))+
+  labs(title="Individual Fiber Intake", x="RecallNo", y= "g of Fiber")
+
+#Fiber Intake in Proportion to KCAL
+ggplot(data=fiber_data, aes(x=fiber_data$RecallNo, y=fiber_data$g_per_1000KCAL))+
+  geom_col(fill="green", color="yellow")+
+  facet_wrap(vars(fiber_data$UserName))+
+  labs(title="Individual Fiber/1000 KCAL", x="RecallNo", y= "g/1000 KCAL")
+```
+
+
+##DHQIII_Results
+```{r DHQIII Data Import}
+#DHQIII Import
+diet_data2 <- read.delim("C:/Users/Jordan/Box/Diet Data/Final Study Dietary Data_DHQ/baylor_fiber_study.results.txt")
+row.names(diet_data2)<-diet_data2$Respondent.ID
+```
+
+##DHQIII_Table
+The following table summarizes key data from DHQIII into "DHQIII.Summary" giving all of the following information about given data:
+1. Mean
+2. Standard Deviation
+3. Quartiles
+4. Count for amount of data
+5. Outliers
+```{r DHQIII.Summary}
+#All data of interest is located in columns 8:36
+diet_data2mean<- apply(diet_data2[,8:36],2,mean)
+diet_data2mean<- t(data.frame(diet_data2mean))#need to transcribe data for later dataframe
+diet_data2sd<- apply(diet_data2[,8:36],2,sd)
+diet_data2sd<- t(data.frame(diet_data2sd))#need to transcribe data for later dataframe
+diet_data2quantiles<- apply(diet_data2[,8:36],2,quantile)#Quantiles
+diet_data2outliers<- apply(diet_data2[,8:36],2, boxplot.stats)
+#Merge Analysis into DHQIII dataframe
+DHQIII.Summary<- rbind(diet_data2[,8:36],diet_data2mean, diet_data2sd, diet_data2quantiles, diet_data2outliers)
+DHQIII.Summary<- DHQIII.Summary[-17, ]
+row.names(DHQIII.Summary)[17]<- "count"
+row.names(DHQIII.Summary)[18]<- "hinges"
+row.names(DHQIII.Summary)[19]<- "outliers"
+kable(DHQIII.Summary)%>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+##DHQIII_Fiber_Analysis
+Soluble and insoluble fiber intake based on DHQIII 
+```{r fiber data from DHQIII}
+Sol.Fiber<-diet_data2[,c("Respondent.ID","X.Soluble.dietary.fiber..g.")]
+Sol.Fiber$Type<-"Soluble"
+colnames(Sol.Fiber)[2]<-"grams"
+
+Ins.Fiber<-diet_data2[,c("Respondent.ID","X.Insoluble.dietary.fiber..g.")]
+Ins.Fiber$Type<-"Insoluble"
+colnames(Ins.Fiber)[2]<-"grams"
+
+CombinedFiber<-rbind(Sol.Fiber,Ins.Fiber)
+```
+```{r geom_col of types of fiber}
+Type<- CombinedFiber$Type
+ggplot(data=CombinedFiber, aes(x=CombinedFiber$Respondent.ID, y=CombinedFiber$grams, fill=Type))+
+  geom_col(position="stack")+
+  labs(title= "Consumption of Fiber", x= "Subject", y= "grams of Fiber")
+```
+```{r DHQIII Table of Fiber}
+DHQIIIFiber<-diet_data2[, c("Respondent.ID", "X.Total.dietary.fiber..g.", "X.Soluble.dietary.fiber..g.", "X.Insoluble.dietary.fiber..g.")]
+#Calculate percentage Soluble Fiber
+TotalFiber<-diet_data2$X.Total.dietary.fiber..g.
+Percent.Sol<- diet_data2$X.Soluble.dietary.fiber..g./TotalFiber*100 #Calculate percentage of Soluble Fiber
+Percent.Insol<-DHQIIIFiber$X.Insoluble.dietary.fiber..g./TotalFiber*100 #Calculate percentage of Insoluble Fiber
+DHQIIIFiber<- cbind(DHQIIIFiber, Percent.Sol, Percent.Insol)
+DHQIIIFiber<-DHQIIIFiber[,-1]#Eliminating duplicate data
+kable(DHQIIIFiber)%>%
+  kable_styling(bootstrap_options = "striped", "hover")
+```
+
+
+ 
