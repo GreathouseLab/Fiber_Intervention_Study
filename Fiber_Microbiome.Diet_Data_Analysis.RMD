@@ -15,7 +15,7 @@ The first part of this data analysis provides analysis based ASA_24 data-RecallN
 
 ##ASA_24
 ```{r ASA_24 Data Import}
-diet_data <-  read.delim("C:/Users/Jordan/Box/Diet Data/Final Study Dietary Data_ASA24/BFiber_2019-06-26_52817/BFiber_2019-06-26_52817_Totals.txt")
+diet_data <-  read.delim("C:/Users/Jordan/Box/Diet Data/Final Study Dietary Data_ASA24/BFiber_2019-06-26_52817/BFiber_2019-06-26_52817_Totals_Mod.txt")
 
 ```
 
@@ -55,8 +55,9 @@ NOTE: Most participants did not complete all 4 recalls.
 ggplot(data=diet_data, aes(x=Timepoint, y=KCAL, shape=Intervention, color=Participant))+
   geom_point(size=4)+
   labs(title="Total KCAL")+
-  facet_wrap(vars(diet_data$UserName))
-  
+  facet_wrap(vars(diet_data$UserName))+
+  ggsave(filename="TotalKCAL.pdf")
+
 #PROT_GGPLOT
 ggplot(data = diet_data, aes(x=Timepoint, y=PROT, shape=Intervention, color=Participant))+
   geom_point(size=4)+
@@ -74,6 +75,7 @@ ggplot(data = diet_data, aes(x=Timepoint, y=CARB, shape=Intervention, color=Part
   geom_point(size=4)+
   facet_wrap(vars(diet_data$UserName))+
   labs(title="Total Carb")
+
 
 ```
 
@@ -99,17 +101,20 @@ diet_data$TFAT.NORM<- diet_data$TFAT/KCALNormalizer
 #Protein
 ggplot(data=diet_data, aes(x=diet_data$PROT.NORM))+
   geom_histogram(binwidth = 5, fill="blue", color="red")+
-  labs(title="Grams of Protein/1000 KCAL", x= "g/1000 KCAL")
+  labs(title="Grams of Protein/1000 KCAL", x= "g/1000 KCAL")+
+  ggsave(filename="PROTOutliers.pdf")
 
 #CARB
 ggplot(data=diet_data, aes(x=diet_data$CARB.NORM))+
   geom_histogram(binwidth = 5, fill="yellow", color="green")+
-  labs(title= "Grams of Carb/1000 KCAL", x="g/1000 KCAL")
+  labs(title= "Grams of Carb/1000 KCAL", x="g/1000 KCAL")+
+  ggsave(filename="CARBOutliers.pdf")
 
 #TFAT
 ggplot(data=diet_data, aes(x=diet_data$TFAT.NORM))+
   geom_histogram(binwidth = 3, fill="white", color="black")+
-  labs(title= "Grams of TFAT/1000 KCAL", x="g/1000 KCAL")
+  labs(title= "Grams of TFAT/1000 KCAL", x="g/1000 KCAL")+
+  ggsave(filename="TFATOutliers.pdf")
 ```
 
 ##ASA_24.Timepoint_Summaries
@@ -274,7 +279,8 @@ Type<- KCAL.Summary$type
 
 ggplot(data=KCAL.Summary, aes(x= RecallNo, y= CAL))+
   geom_col(aes(fill= Type), position="fill")+
-  labs(title= "Overall Percentage of KCAL by Type of Nutrient")
+  labs(title= "Overall Percentage of KCAL by Type of Nutrient")+
+  ggsave(filename="OverallNutrientPerc.pdf")
 ```
 
 ##Individual_Timepoint_Breakdown
@@ -285,9 +291,10 @@ This section will create a facet wrap of geom_col charts showing amounts of each
 ggplot(data = KCAL.Summary, aes(x=RecallNo, y=CAL, fill= Type))+
   geom_col(position="fill")+
   facet_wrap(vars(KCAL.Summary$UserName))+
-  labs(title="Individual Percentages of Each Nutrient")
+  labs(title="Individual Percentages of Each Nutrient")+
+  ggsave(filename="IndividualNutrientPerc.pdf")
 ```
-##Fiber_Intake
+##ASA24.Fiber_Intake
 ```{r Test for Outliers}
 #Isolate only Participants, KCAL, and FIBE for analysis
 fiber_data<- diet_data[,c("UserName","RecallNo","KCAL","FIBE")]
@@ -296,23 +303,91 @@ g_per_1000KCAL<- fiber_data$FIBE/KCALNormalizer
 fiber_data<- cbind(fiber_data, g_per_1000KCAL)
 ggplot(data=fiber_data, aes(x=fiber_data$g_per_1000KCAL))+
   geom_histogram(binwidth = 3, fill="red", color="blue")+
-  labs(title= "Grams of Fiber/1000 KCAL", x="g/1000 KCAL")
+  labs(title= "Grams of Fiber/1000 KCAL", x="g/1000 KCAL")+
+  ggsave(filename="FiberOutliers.pdf")
+```
+```{r Fiber Compliance}
+compliance_data<- read.delim("C:/Users/Jordan/Box/Diet Data/Data_Fiber_Jul25_2019_MattkeMod.txt")
+compliance<- compliance_data[compliance_data$intervention=="Y",]
+
+compliance1act<-compliance[,c("Code", "g_average_wk4")]
+colnames(compliance1act)[2]<-"grams"
+compliance1act$actual<-"actual"
+compliance1target<-compliance[,c("Code", "target_wk4")]
+colnames(compliance1target)[2]<-"grams"
+compliance1target$actual<-"target"
+compliance1<- rbind(compliance1act,compliance1target)
+compliance1$RecallNo<-"2"
+
+compliance2act<-compliance[,c("Code", "g_average_wk8")]
+colnames(compliance2act)[2]<-"grams"
+compliance2act$actual<-"actual"
+compliance2target<-compliance[,c("Code", "target_wk8")]
+colnames(compliance2target)[2]<-"grams"
+compliance2target$actual<-"target"
+compliance2<- rbind(compliance2act,compliance2target)
+compliance2$RecallNo<-"3"
+
+compliance3act<-compliance[,c("Code", "g_average_wk12")]
+colnames(compliance3act)[2]<-"grams"
+compliance3act$actual<-"actual"
+compliance3target<-compliance[,c("Code", "target_wk12")]
+colnames(compliance3target)[2]<-"grams"
+compliance3target$actual<-"target"
+compliance3<- rbind(compliance3act,compliance3target)
+compliance3$RecallNo<-"4"
+
+compliance_sum<-rbind(compliance1, compliance2, compliance3)
+Type<-compliance_sum$actual
+
+ggplot(data=compliance_sum, aes(x=compliance_sum$RecallNo, y=compliance_sum$grams))+
+  geom_point(aes(color=Type), size=2)+
+  facet_grid(vars(compliance_sum$Code))+
+  labs(title="Fiber Supplement Complance", x="RecallNo", y="grams")+
+  ggsave(filename="SupplementCompliance.pdf")
+
 ```
 ```{r Individual Intake of Fiber}
 #Total Fiber Intake
-ggplot(data=fiber_data, aes(x=fiber_data$RecallNo, y=fiber_data$FIBE))+
+FibSupData1<- diet_data[,c("UserName","RecallNo","FIBE","KCAL")]
+colnames(FibSupData1)[3]<-"grams"
+FibSupData1$Source<-"Diet"
+
+ggplot(data=FibSupData1, aes(x=FibSupData1$RecallNo, y=FibSupData1$grams))+
   geom_col(fill="white", color="black")+
+  facet_wrap(vars(FibSupData1$UserName))+
+  labs(title="Fiber Intake without Supplement", x="RecallNo", y="grams")+
+  ggsave(filename="IndFiberNoSup.pdf")
+
+FibSupData2<- diet_data[,c("UserName","RecallNo","FIBE_SUP","KCAL")]
+colnames(FibSupData2)[3]<-"grams"
+FibSupData2$Source<-"Supplement"
+
+FibSupData<-rbind(FibSupData1,FibSupData2)
+Source<-FibSupData$Source
+#Plot of Supplement Fiber Data
+ggplot(data=FibSupData, aes(x=FibSupData$RecallNo, y=FibSupData$grams, fill=Source))+
+  geom_col(color="black")+
   facet_wrap(vars(fiber_data$UserName))+
-  labs(title="Individual Fiber Intake", x="RecallNo", y= "g of Fiber")
+  labs(title="Individual Fiber Intake with Supplement", x="RecallNo", y= "g of Fiber")+
+  ggsave(filename="IndFiberSup.pdf")
 
 #Fiber Intake in Proportion to KCAL
 ggplot(data=fiber_data, aes(x=fiber_data$RecallNo, y=fiber_data$g_per_1000KCAL))+
   geom_col(fill="green", color="yellow")+
   facet_wrap(vars(fiber_data$UserName))+
-  labs(title="Individual Fiber/1000 KCAL", x="RecallNo", y= "g/1000 KCAL")
+  labs(title="Individual Fiber/1000 KCAL without Supplement", x="RecallNo", y= "g/1000 KCAL")+
+  ggsave(filename="IndFiberNoSupNorm.pdf")
+
+#Fiber Intake in Proportion to KCAL with Supplement
+KCALSupNormalizer<- FibSupData$KCAL/1000
+FibSupData$g_per_1000KCAL<- FibSupData$grams/KCALSupNormalizer
+ggplot(data=FibSupData, aes(x=FibSupData$RecallNo, y=FibSupData$g_per_1000KCAL, fill=Source))+
+  geom_col(color="black")+
+  facet_wrap(vars(FibSupData$UserName))+
+  labs(title = "Fiber/1000 KCAL with Supplement", x="RecallNo", y="g/1000 KCAL")+
+  ggsave(filename="IndFiberSupNorm.pdf")
 ```
-
-
 ##DHQIII_Results
 ```{r DHQIII Data Import}
 #DHQIII Import
@@ -361,7 +436,8 @@ CombinedFiber<-rbind(Sol.Fiber,Ins.Fiber)
 Type<- CombinedFiber$Type
 ggplot(data=CombinedFiber, aes(x=CombinedFiber$Respondent.ID, y=CombinedFiber$grams, fill=Type))+
   geom_col(position="stack")+
-  labs(title= "Consumption of Fiber", x= "Subject", y= "grams of Fiber")
+  labs(title= "DHQIII Consumption of Fiber", x= "Subject", y= "grams of Fiber")+
+  ggsave(filename= "DHQIIIFiberConsumpiton.pdf")
 ```
 ```{r DHQIII Table of Fiber}
 DHQIIIFiber<-diet_data2[, c("Respondent.ID", "X.Total.dietary.fiber..g.", "X.Soluble.dietary.fiber..g.", "X.Insoluble.dietary.fiber..g.")]
