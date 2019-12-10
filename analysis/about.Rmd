@@ -7,4 +7,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+This study utilized a single blind, placebo controlled, parallel design to assess the effect of dietary fiber on the gut microbiome, perceived stress, and anthropometric variables.
