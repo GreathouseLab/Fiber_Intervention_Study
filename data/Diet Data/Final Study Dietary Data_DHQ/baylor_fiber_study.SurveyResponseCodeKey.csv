@@ -1,0 +1,2671 @@
+Question ID,Response Code,Response Label
+Q705,1,Male
+Q705,2,Female
+Q706,1,Tomato juice or vegetable juice
+Q706,2,Orange juice or grapefruit juice
+Q706,3,Grape juice
+Q706,4,"Other 100% fruit juices or 100% fruit juice mixtures (such as apple, pineapple, or others)"
+Q706,5,Fruit or vegetable smoothies
+Q706,6,"Other fruit drinks, regular or diet (such as Hi-C, fruit punch, lemonade, or cranberry cocktail)"
+Q706,7,"Milk as a beverage (NOT in coffee, tea, or cereal; including soy, rice, almond, and coconut milk; NOT including chocolate milk, hot chocolate, and milkshake)"
+Q706,8,Chocolate milk or hot chocolate
+Q706,9,Milkshakes
+Q706,10,"Meal replacement or high-protein beverages (such as Ensure, Boost, Muscle Milk, Slimfast, Instant Breakfast, or others; NOT including any added protein powder)"
+Q706,11,Soda or pop
+Q706,12,"Sports drinks (such as Gatorade, Powerade, or Propel)"
+Q706,13,Energy drinks (such as Red Bull or Jolt)
+Q706,14,"Water (including tap, bottled, and carbonated water; NOT including vitamin water)"
+Q706,15,"Vitamin water (such as SoBe, Propel Zero, or Glaceau Water)"
+Q706,16,Beer
+Q706,17,Wine or wine cooler
+Q706,18,Liquor or mixed drinks
+Q706,19,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; NOT including espresso drinks such as latte, mocha, etc.)"
+Q706,20,"Espresso drink mixtures, caffeinated or decaffeinated (including latte, mocha, cappuccino, etc.)"
+Q706,21,"COLD or ICED tea, caffeinated or decaffeinated (NOT including herbal or green tea)"
+Q706,22,"HOT tea, caffeinated or decaffeinated (NOT including herbal or green tea)"
+Q706,23,Green tea
+Q706,24,"Herbal or fruit tea (including hibiscus, chamomile, licorice, sassafras, etc.)"
+Q708,1,1 time in the past month
+Q708,2,2-3 times in the past month
+Q708,3,1-2 times per week
+Q708,4,3-4 times per week
+Q708,5,5-6 times per week
+Q708,6,1 time per day
+Q708,7,2-3 times per day
+Q708,8,4-5 times per day
+Q708,9,6 or more times per day
+Q709,1,Less than  3/4 cup (6 ounces)
+Q709,2,3/4 to 1 1/2 cups (6 to 12 ounces)
+Q709,3,More than 1 1/2 cups (12 ounces)
+Q711,1,1 time in the past month
+Q711,2,2-3 times in the past month
+Q711,3,1-2 times per week
+Q711,4,3-4 times per week
+Q711,5,5-6 times per week
+Q711,6,1 time per day
+Q711,7,2-3 times per day
+Q711,8,4-5 times per day
+Q711,9,6 or more times per day
+Q712,1,Less than  3/4 cup (6 ounces)
+Q712,2,3/4 to 1 1/2 cups (6 to 12 ounces)
+Q712,3,More than 1 1/2 cups (12 ounces)
+Q713,1,Almost never or never
+Q713,2,About  1/4 of the time
+Q713,3,About  1/2 of the time
+Q713,4,About  3/4 of the time
+Q713,5,Almost always or always
+Q715,1,1 time in the past month
+Q715,2,2-3 times in the past month
+Q715,3,1-2 times per week
+Q715,4,3-4 times per week
+Q715,5,5-6 times per week
+Q715,6,1 time per day
+Q715,7,2-3 times per day
+Q715,8,4-5 times per day
+Q715,9,6 or more times per day
+Q716,1,Less than  1/2 cup (4 ounces)
+Q716,2,1/2 to 1 1/2 cups (4 to 12 ounces)
+Q716,3,More than 1 1/2 cups (12 ounces)
+Q718,1,1 time in the past month
+Q718,2,2-3 times in the past month
+Q718,3,1-2 times per week
+Q718,4,3-4 times per week
+Q718,5,5-6 times per week
+Q718,6,1 time per day
+Q718,7,2-3 times per day
+Q718,8,4-5 times per day
+Q718,9,6 or more times per day
+Q719,1,Less than  3/4 cup (6 ounces)
+Q719,2,3/4 to 1 1/2 cups (6 to 12 ounces)
+Q719,3,More than 1 1/2 cups (12 ounces)
+Q721,1,1 time in the past month
+Q721,2,2-3 times in the past month
+Q721,3,1-2 times per week
+Q721,4,3-4 times per week
+Q721,5,5-6 times per week
+Q721,6,1 time per day
+Q721,7,2-3 times per day
+Q721,8,4-5 times per day
+Q721,9,6 or more times per day
+Q722,1,Less than 1 cup (8 ounces)
+Q722,2,1 to 2 cups (8 to 16 ounces)
+Q722,3,More than 2 cups (16 ounces)
+Q724,1,1 time in the past month
+Q724,2,2-3 times in the past month
+Q724,3,1-2 times per week
+Q724,4,3-4 times per week
+Q724,5,5-6 times per week
+Q724,6,1 time per day
+Q724,7,2-3 times per day
+Q724,8,4-5 times per day
+Q724,9,6 or more times per day
+Q725,1,Less than  3/4 cup (6 ounces)
+Q725,2,3/4 to 1 1/2 cups (6 to 12 ounces)
+Q725,3,More than 1 1/2 cups (12 ounces)
+Q726,1,Almost never or never
+Q726,2,About  1/4 of the time
+Q726,3,About  1/2 of the time
+Q726,4,About  3/4 of the time
+Q726,5,Almost always or always
+Q728,1,1 time in the past month
+Q728,2,2-3 times in the past month
+Q728,3,1-2 times per week
+Q728,4,3-4 times per week
+Q728,5,5-6 times per week
+Q728,6,1 time per day
+Q728,7,2-3 times per day
+Q728,8,4-5 times per day
+Q728,9,6 or more times per day
+Q729,1,Less than  3/4 cup (6 ounces)
+Q729,2,3/4 to 1 1/2 cups (6 to 12 ounces)
+Q729,3,More than 1 1/2 cups (12 ounces)
+Q730,1,Whole milk
+Q730,2,2% fat milk
+Q730,3,1% fat milk
+Q730,4,"Skim, nonfat, or  1/2% fat milk"
+Q730,5,Soy milk
+Q730,6,Rice milk
+Q730,7,Almond milk
+Q730,8,Coconut milk
+Q730,9,Other
+Q732,1,1 time in the past month
+Q732,2,2-3 times in the past month
+Q732,3,1-2 times per week
+Q732,4,3-4 times per week
+Q732,5,5-6 times per week
+Q732,6,1 time per day
+Q732,7,2-3 times per day
+Q732,8,4-5 times per day
+Q732,9,6 or more times per day
+Q733,1,Less than 1 cup (8 ounces)
+Q733,2,1 to 1 1/2 cups (8 to 12 ounces)
+Q733,3,More than 1 1/2 cups (12 ounces)
+Q734,1,Almost never or never
+Q734,2,About  1/4 of the time
+Q734,3,About  1/2 of the time
+Q734,4,About  3/4 of the time
+Q734,5,Almost always or always
+Q736,1,1 time in the past month
+Q736,2,2-3 times in the past month
+Q736,3,1-2 times per week
+Q736,4,3-4 times per week
+Q736,5,5-6 times per week
+Q736,6,1 time per day
+Q736,7,2-3 times per day
+Q736,8,4-5 times per day
+Q736,9,6 or more times per day
+Q737,1,Less than 1 cup (8 ounces)
+Q737,2,1 to 2 cups (8 to 16 ounces)
+Q737,3,More than 2 cups (16 ounces)
+Q739,1,1 time in the past month
+Q739,2,2-3 times in the past month
+Q739,3,1-2 times per week
+Q739,4,3-4 times per week
+Q739,5,5-6 times per week
+Q739,6,1 time per day
+Q739,7,2-3 times per day
+Q739,8,4-5 times per day
+Q739,9,6 or more times per day
+Q740,1,Less than 1 cup (8 ounces)
+Q740,2,1 to 1 1/2 cups (8 to 12 ounces)
+Q740,3,More than 1 1/2 cups (12 ounces)
+Q742,1,1 time in the past month
+Q742,2,2-3 times in the past month
+Q742,3,1-2 times per week
+Q742,4,3-4 times per week
+Q742,5,5-6 times per week
+Q742,6,1 time per day
+Q742,7,2-3 times per day
+Q742,8,4-5 times per day
+Q742,9,6 or more times per day
+Q743,1,Less than 1 can or bottle (12 ounces)
+Q743,2,1 can or bottle (12 to 16 ounces)
+Q743,3,More than 1 can or bottle (16 ounces)
+Q744,1,Almost never or never
+Q744,2,About  1/4 of the time
+Q744,3,About  1/2 of the time
+Q744,4,About  3/4 of the time
+Q744,5,Almost always or always
+Q745,1,Almost never or never
+Q745,2,About  1/4 of the time
+Q745,3,About  1/2 of the time
+Q745,4,About  3/4 of the time
+Q745,5,Almost always or always
+Q747,1,1 time in the past month
+Q747,2,2-3 times in the past month
+Q747,3,1-2 times per week
+Q747,4,3-4 times per week
+Q747,5,5-6 times per week
+Q747,6,1 time per day
+Q747,7,2-3 times per day
+Q747,8,4-5 times per day
+Q747,9,6 or more times per day
+Q748,1,Less than 1 bottle (12 ounces)
+Q748,2,1 to 2 bottles (12 to 24 ounces)
+Q748,3,More than 2 bottles (24 ounces)
+Q750,1,1 time in the past month
+Q750,2,2-3 times in the past month
+Q750,3,1-2 times per week
+Q750,4,3-4 times per week
+Q750,5,5-6 times per week
+Q750,6,1 time per day
+Q750,7,2-3 times per day
+Q750,8,4-5 times per day
+Q750,9,6 or more times per day
+Q751,1,Less than 1 cup (8 ounces)
+Q751,2,1 to 2 cups (8 to 16 ounces)
+Q751,3,More than 2 cups (16 ounces)
+Q753,1,1 time in the past month
+Q753,2,2-3 times in the past month
+Q753,3,1-2 times per week
+Q753,4,3-4 times per week
+Q753,5,5-6 times per week
+Q753,6,1 time per day
+Q753,7,2-3 times per day
+Q753,8,4-5 times per day
+Q753,9,6 or more times per day
+Q754,1,Less than 1 cup (8 ounces)
+Q754,2,1 to 3 cups (8 to 24 ounces)
+Q754,3,More than 3 cups (24 ounces)
+Q755,1,Almost never or never
+Q755,2,About  1/4 of the time
+Q755,3,About  1/2 of the time
+Q755,4,About  3/4 of the time
+Q755,5,Almost always or always
+Q756,1,Almost never or never
+Q756,2,About  1/4 of the time
+Q756,3,About  1/2 of the time
+Q756,4,About  3/4 of the time
+Q756,5,Almost always or always
+Q757,1,Almost never or never
+Q757,2,About  1/4 of the time
+Q757,3,About  1/2 of the time
+Q757,4,About  3/4 of the time
+Q757,5,Almost always or always
+Q759,1,1 time in the past month
+Q759,2,2-3 times in the past month
+Q759,3,1-2 times per week
+Q759,4,3-4 times per week
+Q759,5,5-6 times per week
+Q759,6,1 time per day
+Q759,7,2-3 times per day
+Q759,8,4-5 times per day
+Q759,9,6 or more times per day
+Q760,1,Less than 1 bottle (12 ounces)
+Q760,2,1 to 2 bottles (12 to 20 ounces)
+Q760,3,More than 2 bottles (20 ounces)
+Q762,1,1 time in the past month
+Q762,2,2-3 times in the past month
+Q762,3,1-2 times per week
+Q762,4,3-4 times per week
+Q762,5,5-6 times per week
+Q762,6,1 time per day
+Q762,7,2-3 times per day
+Q762,8,4-5 times per day
+Q762,9,6 or more times per day
+Q763,1,Less than a 12-ounce can or bottle
+Q763,2,1 to 3 12-ounce cans or bottles
+Q763,3,More than 3 12-ounce cans or bottles
+Q764,1,Almost never or never
+Q764,2,About  1/4 of the time
+Q764,3,About  1/2 of the time
+Q764,4,About  3/4 of the time
+Q764,5,Almost always or always
+Q766,1,1 time in the past month
+Q766,2,2-3 times in the past month
+Q766,3,1-2 times per week
+Q766,4,3-4 times per week
+Q766,5,5-6 times per week
+Q766,6,1 time per day
+Q766,7,2-3 times per day
+Q766,8,4-5 times per day
+Q766,9,6 or more times per day
+Q767,1,Less than 1 glass (5 ounces)
+Q767,2,1 to 2 glasses (5 to 10 ounces)
+Q767,3,More than 2 glasses (10 ounces)
+Q769,1,1 time in the past month
+Q769,2,2-3 times in the past month
+Q769,3,1-2 times per week
+Q769,4,3-4 times per week
+Q769,5,5-6 times per week
+Q769,6,1 time per day
+Q769,7,2-3 times per day
+Q769,8,4-5 times per day
+Q769,9,6 or more times per day
+Q770,1,Less than 1 shot of liquor
+Q770,2,1 to 4 shots of liquor
+Q770,3,More than 4 shots of liquor
+Q772,1,Less than 1 cup in the past month
+Q772,2,1-3 cups in the past month
+Q772,3,1 cup per week
+Q772,4,2-4 cups per week
+Q772,5,5-6 cups per week
+Q772,6,1 cup per day
+Q772,7,2-3 cups per day
+Q772,8,4-5 cups per day
+Q772,9,6 or more cups per day
+Q773,1,Almost never or never
+Q773,2,About  1/4 of the time
+Q773,3,About  1/2 of the time
+Q773,4,About  3/4 of the time
+Q773,5,Almost always or always
+Q774,1,Almost never or never
+Q774,2,About  1/4 of the time
+Q774,3,About  1/2 of the time
+Q774,4,About  3/4 of the time
+Q774,5,Almost always or always
+Q775,1,Almost never or never
+Q775,2,About  1/4 of the time
+Q775,3,About  1/2 of the time
+Q775,4,About  3/4 of the time
+Q775,5,Almost always or always
+Q776,1,Almost never or never
+Q776,2,About  1/4 of the time
+Q776,3,About  1/2 of the time
+Q776,4,About  3/4 of the time
+Q776,5,Almost always or always
+Q777,1,Almost never or never
+Q777,2,About  1/4 of the time
+Q777,3,About  1/2 of the time
+Q777,4,About  3/4 of the time
+Q777,5,Almost always or always
+Q779,1,1 time in the past month
+Q779,2,2-3 times in the past month
+Q779,3,1 time per week
+Q779,4,2 times per week
+Q779,5,3-4 times per week
+Q779,6,5-6 times per week
+Q779,7,1 time per day
+Q779,8,2 or more times per day
+Q780,1,Less than a small drink (12 ounces)
+Q780,2,Small to medium drink (12 to 16 ounces)
+Q780,3,More than a large drink (20 ounces)
+Q781,1,Almost never or never
+Q781,2,About  1/4 of the time
+Q781,3,About  1/2 of the time
+Q781,4,About  3/4 of the time
+Q781,5,Almost always or always
+Q783,1,"Less than 1 glass, can, or bottle in the past month"
+Q783,2,"1-3 glasses, cans, or bottles in the past month"
+Q783,3,"1 glass, can, or bottle per week"
+Q783,4,"2-4 glasses, cans, or bottles per week"
+Q783,5,"5-6 glasses, cans, or bottles per week"
+Q783,6,"1 glass, can, or bottle per day"
+Q783,7,"2-3 glasses, cans, or bottles per day"
+Q783,8,"4-5 glasses, cans, or bottles per day"
+Q783,9,"6 or more glasses, cans, or bottles per day"
+Q784,1,Almost never or never
+Q784,2,About  1/4 of the time
+Q784,3,About  1/2 of the time
+Q784,4,About  3/4 of the time
+Q784,5,Almost always or always
+Q785,1,Almost never or never
+Q785,2,About  1/4 of the time
+Q785,3,About  1/2 of the time
+Q785,4,About  3/4 of the time
+Q785,5,Almost always or always
+Q786,1,Sugar or honey
+Q786,2,"Artificial sweeteners (such as Splenda, Equal, Sweet'N Low or others)"
+Q788,1,Less than 1 cup in the past month
+Q788,2,1-3 cups in the past month
+Q788,3,1 cup per week
+Q788,4,2-4 cups per week
+Q788,5,5-6 cups per week
+Q788,6,1 cup per day
+Q788,7,2-3 cups per day
+Q788,8,4-5 cups per day
+Q788,9,6 or more cups per day
+Q789,1,Almost never or never
+Q789,2,About  1/4 of the time
+Q789,3,About  1/2 of the time
+Q789,4,About  3/4 of the time
+Q789,5,Almost always or always
+Q791,1,Less than 1 cup in the past month
+Q791,2,1-3 cups in the past month
+Q791,3,1 cup per week
+Q791,4,2-4 cups per week
+Q791,5,5-6 cups per week
+Q791,6,1 cup per day
+Q791,7,2-3 cups per day
+Q791,8,4-5 cups per day
+Q791,9,6 or more cups per day
+Q792,1,Almost never or never
+Q792,2,About  1/4 of the time
+Q792,3,About  1/2 of the time
+Q792,4,About  3/4 of the time
+Q792,5,Almost always or always
+Q794,1,Less than 1 cup in the past month
+Q794,2,1-3 cups in the past month
+Q794,3,1 cup per week
+Q794,4,2-4 cups per week
+Q794,5,5-6 cups per week
+Q794,6,1 cup per day
+Q794,7,2-3 cups per day
+Q794,8,4-5 cups per day
+Q794,9,6 or more cups per day
+Q795,1,"Sugar, honey, or other sweeteners"
+Q795,2,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer"
+Q797,1,Almost never or never
+Q797,2,About  1/4 of the time
+Q797,3,About  1/2 of the time
+Q797,4,About  3/4 of the time
+Q797,5,Almost always or always
+Q798,1,Less than 1 teaspoon
+Q798,2,1 to 3 teaspoons
+Q798,3,More than 3 teaspoons
+Q799,1,Almost never or never
+Q799,2,About  1/4 of the time
+Q799,3,About  1/2 of the time
+Q799,4,About  3/4 of the time
+Q799,5,Almost always or always
+Q800,1,Equal or aspartame
+Q800,2,Sweet'N Low or saccharin
+Q800,3,Splenda or sucralose
+Q800,4,Stevia
+Q800,5,Herbal extracts or other kind
+Q801,1,Less than 1 packet or less than 1 teaspoon
+Q801,2,1 packet or 1 teaspoon
+Q801,3,More than 1 packet or more than 1 teaspoon
+Q803,1,Almost never or never
+Q803,2,About  1/4 of the time
+Q803,3,About  1/2 of the time
+Q803,4,About  3/4 of the time
+Q803,5,Almost always or always
+Q804,1,Less than 1 teaspoon
+Q804,2,1 to 4 teaspoons
+Q804,3,More than 4 teaspoons
+Q805,1,Regular powdered
+Q805,2,Low-fat or fat-free powdered
+Q805,3,Regular liquid
+Q805,4,Low-fat or fat-free liquid
+Q806,1,Almost never or never
+Q806,2,About  1/4 of the time
+Q806,3,About  1/2 of the time
+Q806,4,About  3/4 of the time
+Q806,5,Almost always or always
+Q807,1,Less than 1 teaspoon
+Q807,2,1 to 3 teaspoons
+Q807,3,More than 3 teaspoons
+Q808,1,Regular
+Q808,2,Low-fat
+Q809,1,Almost never or never
+Q809,2,About  1/4 of the time
+Q809,3,About  1/2 of the time
+Q809,4,About  3/4 of the time
+Q809,5,Almost always or always
+Q810,1,Less than 1 tablespoon
+Q810,2,1 to 4 tablespoons
+Q810,3,More than 4 tablespoons
+Q811,1,Whole milk
+Q811,2,2% milk
+Q811,3,1% milk
+Q811,4,"Skim, nonfat, or  1/2% milk"
+Q811,5,Evaporated or condensed (canned) milk
+Q811,6,Soy milk
+Q811,7,Rice milk
+Q811,8,Almond milk
+Q811,9,Coconut milk
+Q811,10,Other
+Q812,1,Applesauce
+Q812,2,Apples
+Q812,3,Bananas
+Q812,4,"Pineapple (fresh, canned, or frozen)"
+Q812,5,"Pears (fresh, canned, or frozen)"
+Q812,6,"Peaches, nectarines, or plums"
+Q812,7,Dried fruit (such as prunes or raisins)
+Q812,8,Grapes
+Q812,9,Cantaloupe
+Q812,10,"Melons, other than cantaloupe (such as watermelon or honeydew)"
+Q812,11,Strawberries
+Q812,12,Blueberries
+Q812,13,"Oranges, tangerines, or clementines"
+Q812,14,Grapefruit
+Q812,15,Avocado or guacamole
+Q812,16,Other kinds of fruit (not listed above)
+Q814,1,1 time in the past month
+Q814,2,2-3 times in the past month
+Q814,3,1 time per week
+Q814,4,2 times per week
+Q814,5,3-4 times per week
+Q814,6,5-6 times per week
+Q814,7,1 time per day
+Q814,8,2 or more times per day
+Q815,1,Less than  1/4 cup
+Q815,2,1/4 to  1/2 cups
+Q815,3,More than  1/2 cups
+Q817,1,1 time in the past month
+Q817,2,2-3 times in the past month
+Q817,3,1 time per week
+Q817,4,2 times per week
+Q817,5,3-4 times per week
+Q817,6,5-6 times per week
+Q817,7,1 time per day
+Q817,8,2 or more times per day
+Q818,1,Less than 1 apple
+Q818,2,1 apple
+Q818,3,More than 1 apple
+Q820,1,1 time in the past month
+Q820,2,2-3 times in the past month
+Q820,3,1 time per week
+Q820,4,2 times per week
+Q820,5,3-4 times per week
+Q820,6,5-6 times per week
+Q820,7,1 time per day
+Q820,8,2 or more times per day
+Q821,1,Less than 1 banana
+Q821,2,1 banana
+Q821,3,More than 1 banana
+Q823,1,1 time in the past month
+Q823,2,2-3 times in the past month
+Q823,3,1 time per week
+Q823,4,2 times per week
+Q823,5,3-4 times per week
+Q823,6,5-6 times per week
+Q823,7,1 time per day
+Q823,8,2 or more times per day
+Q824,1,Less than  1/4 cup or less than 1 medium slice
+Q824,2,1/4 to  3/4 cup or 1 medium slice
+Q824,3,More than  3/4 cup or more than 1 medium slice
+Q826,1,1 time in the past month
+Q826,2,2-3 times in the past month
+Q826,3,1 time per week
+Q826,4,2 times per week
+Q826,5,3-4 times per week
+Q826,6,5-6 times per week
+Q826,7,1 time per day
+Q826,8,2 or more times per day
+Q827,1,Less than 1 pear
+Q827,2,1 pear
+Q827,3,More than 1 pear
+Q829,1,1 time in the past month
+Q829,2,2-3 times in the past month
+Q829,3,1 time per week
+Q829,4,2 times per week
+Q829,5,3-4 times per week
+Q829,6,5-6 times per week
+Q829,7,1 time per day
+Q829,8,2 or more times per day
+Q830,1,Less than 1 fruit
+Q830,2,1 fruit
+Q830,3,More than 1 fruit
+Q832,1,1 time in the past month
+Q832,2,2-3 times in the past month
+Q832,3,1 time per week
+Q832,4,2 times per week
+Q832,5,3-4 times per week
+Q832,6,5-6 times per week
+Q832,7,1 time per day
+Q832,8,2 or more times per day
+Q833,1,Less than 1 tablespoon
+Q833,2,1 to 4 tablespoons
+Q833,3,More than 4 tablespoons
+Q835,1,1 time in the past month
+Q835,2,2-3 times in the past month
+Q835,3,1 time per week
+Q835,4,2 times per week
+Q835,5,3-4 times per week
+Q835,6,5-6 times per week
+Q835,7,1 time per day
+Q835,8,2 or more times per day
+Q836,1,Less than  1/2 cup or fewer than 10 grapes
+Q836,2,1/2 to 1 1/2 cups or 10 to 30 grapes
+Q836,3,More than 1 1/2 cups or more than 30 grapes
+Q838,1,1 time in the past month
+Q838,2,2-3 times in the past month
+Q838,3,1 time per week
+Q838,4,2 times per week
+Q838,5,3-4 times per week
+Q838,6,5-6 times per week
+Q838,7,1 time per day
+Q838,8,2 or more times per day
+Q839,1,Less than  1/4 melon or less than  1/2 cup
+Q839,2,1/4 melon or  1/2 to 1 cup
+Q839,3,More than  1/4 melon or more than 1 cup
+Q841,1,1 time in the past month
+Q841,2,2-3 times in the past month
+Q841,3,1 time per week
+Q841,4,2 times per week
+Q841,5,3-4 times per week
+Q841,6,5-6 times per week
+Q841,7,1 time per day
+Q841,8,2 or more times per day
+Q842,1,Less than  1/2 cup or 1 small wedge
+Q842,2,1/2 to 2 cups or 1 medium wedge
+Q842,3,More than 2 cups or 1 large wedge
+Q844,1,1 time in the past month
+Q844,2,2-3 times in the past month
+Q844,3,1 time per week
+Q844,4,2 times per week
+Q844,5,3-4 times per week
+Q844,6,5-6 times per week
+Q844,7,1 time per day
+Q844,8,2 or more times per day
+Q845,1,Less than  1/4 cup or fewer than 3 berries
+Q845,2,1/4 to  3/4 cup or 3 to 8 berries
+Q845,3,More than  3/4 cup or more than 8 berries
+Q847,1,1 time in the past month
+Q847,2,2-3 times in the past month
+Q847,3,1 time per week
+Q847,4,2 times per week
+Q847,5,3-4 times per week
+Q847,6,5-6 times per week
+Q847,7,1 time per day
+Q847,8,2 or more times per day
+Q848,1,Less than  1/4 cup
+Q848,2,1/4 to  1/2 cup
+Q848,3,More than  1/2 cup
+Q850,1,1 time in the past month
+Q850,2,2-3 times in the past month
+Q850,3,1 time per week
+Q850,4,2 times per week
+Q850,5,3-4 times per week
+Q850,6,5-6 times per week
+Q850,7,1 time per day
+Q850,8,2 or more times per day
+Q851,1,"Less than 1 orange or tangerine, or fewer than 2 clementines"
+Q851,2,"1 orange or tangerine, or 2 clementines"
+Q851,3,"More than 1 orange or tangerine, or more than 2 clementines"
+Q853,1,1 time in the past month
+Q853,2,2-3 times in the past month
+Q853,3,1 time per week
+Q853,4,2 times per week
+Q853,5,3-4 times per week
+Q853,6,5-6 times per week
+Q853,7,1 time per day
+Q853,8,2 or more times per day
+Q854,1,Less than  1/2 grapefruit
+Q854,2,1/2 grapefruit
+Q854,3,More than  1/2 grapefruit
+Q856,1,1 time in the past month
+Q856,2,2-3 times in the past month
+Q856,3,1 time per week
+Q856,4,2 times per week
+Q856,5,3-4 times per week
+Q856,6,5-6 times per week
+Q856,7,1 time per day
+Q856,8,2 or more times per day
+Q857,1,1/4 avocado or less than  1/4 cup of guacamole
+Q857,2,1/4 to  3/4 avocado or  1/4 to  3/4 cup of guacamole
+Q857,3,3/4 avocado or more than  3/4 cup of guacamole
+Q859,1,1 time in the past month
+Q859,2,2-3 times in the past month
+Q859,3,1 time per week
+Q859,4,2 times per week
+Q859,5,3-4 times per week
+Q859,6,5-6 times per week
+Q859,7,1 time per day
+Q859,8,2 or more times per day
+Q860,1,Less than  1/4 cup
+Q860,2,1/4 to 1 cup
+Q860,3,More than 1 cup
+Q861,1,"COOKED greens (such as spinach, turnip, collard, mustard, chard, or kale)"
+Q861,2,"RAW greens (such as spinach, turnip, collard, chard, kale, watercress, seaweed, mustard greens, beet greens, or dandelion greens)"
+Q861,3,Coleslaw
+Q861,4,Sauerkraut or cabbage (other than coleslaw)
+Q861,5,"COOKED carrots (including frozen, fresh, or canned)"
+Q861,6,RAW carrots
+Q861,7,"String beans or green beans (fresh, canned, or frozen)"
+Q861,8,"Peas (fresh, canned, or frozen)"
+Q861,9,"Corn (fresh, canned, or frozen)"
+Q861,10,Broccoli (fresh or frozen)
+Q861,11,Cauliflower or Brussels sprouts (fresh or frozen)
+Q861,12,"Sweet peppers (green, red, or yellow)"
+Q861,13,Onions
+Q861,14,Garlic
+Q861,15,Mixed vegetables
+Q861,16,Lettuce salads (with or without other vegetables)
+Q861,17,Salad dressing on salads (including low-fat or fat-free)
+Q861,18,"Mayonnaise on salads (including low-fat, diet, or light)"
+Q861,19,Fresh tomatoes (including those in salads)
+Q861,20,Salsa
+Q861,21,Catsup or ketchup
+Q861,22,Sweet potatoes or yams
+Q861,23,"French fries, home fries, hash browned potatoes, or Tater Tots"
+Q861,24,Potato salad
+Q861,25,"Baked, boiled, or mashed potatoes"
+Q861,26,"Cooked dried or canned beans (such as baked beans, pintos, kidney, black-eyed peas, lima, lentils, soybeans, or refried beans; NOT including bean soups or chili)"
+Q861,27,Other kinds of vegetables (not listed above)
+Q863,1,1 time in the past month
+Q863,2,2-3 times in the past month
+Q863,3,1 time per week
+Q863,4,2 times per week
+Q863,5,3-4 times per week
+Q863,6,5-6 times per week
+Q863,7,1 time per day
+Q863,8,2 or more times per day
+Q864,1,Less than  1/4 cup
+Q864,2,1/4 to  3/4 cup
+Q864,3,More than  3/4 cup
+Q866,1,1 time in the past month
+Q866,2,2-3 times in the past month
+Q866,3,1 time per week
+Q866,4,2 times per week
+Q866,5,3-4 times per week
+Q866,6,5-6 times per week
+Q866,7,1 time per day
+Q866,8,2 or more times per day
+Q867,1,Less than  1/2 cup
+Q867,2,1/2 to 1 3/4 cups
+Q867,3,More than 1 3/4 cups
+Q869,1,1 time in the past month
+Q869,2,2-3 times in the past month
+Q869,3,1 time per week
+Q869,4,2 times per week
+Q869,5,3-4 times per week
+Q869,6,5-6 times per week
+Q869,7,1 time per day
+Q869,8,2 or more times per day
+Q870,1,Less than  1/2 cup
+Q870,2,1/2 to 1 1/2 cups
+Q870,3,More than 1 1/2 cups
+Q872,1,1 time in the past month
+Q872,2,2-3 times in the past month
+Q872,3,1 time per week
+Q872,4,2 times per week
+Q872,5,3-4 times per week
+Q872,6,5-6 times per week
+Q872,7,1 time per day
+Q872,8,2 or more times per day
+Q873,1,Less than  1/2 cup
+Q873,2,1/2 to 1 1/2 cups
+Q873,3,More than 1 1/2 cups
+Q875,1,1 time in the past month
+Q875,2,2-3 times in the past month
+Q875,3,1 time per week
+Q875,4,2 times per week
+Q875,5,3-4 times per week
+Q875,6,5-6 times per week
+Q875,7,1 time per day
+Q875,8,2 or more times per day
+Q876,1,Less than  1/4 cup
+Q876,2,1/4 to  1/2 cup
+Q876,3,More than  1/2 cup
+Q878,1,1 time in the past month
+Q878,2,2-3 times in the past month
+Q878,3,1 time per week
+Q878,4,2 times per week
+Q878,5,3-4 times per week
+Q878,6,5-6 times per week
+Q878,7,1 time per day
+Q878,8,2 or more times per day
+Q879,1,Less than  1/4 cup
+Q879,2,1/4 to  1/2 cup
+Q879,3,More than  1/2 cup
+Q881,1,1 time in the past month
+Q881,2,2-3 times in the past month
+Q881,3,1 time per week
+Q881,4,2 times per week
+Q881,5,3-4 times per week
+Q881,6,5-6 times per week
+Q881,7,1 time per day
+Q881,8,2 or more times per day
+Q882,1,Less than  3/4 cup
+Q882,2,3/4 to 1 1/4 cups
+Q882,3,More than 1 1/4 cups
+Q884,1,1 time in the past month
+Q884,2,2-3 times in the past month
+Q884,3,1 time per week
+Q884,4,2 times per week
+Q884,5,3-4 times per week
+Q884,6,5-6 times per week
+Q884,7,1 time per day
+Q884,8,2 or more times per day
+Q885,1,Less than  1/4 cup
+Q885,2,1/4 to  3/4 cup
+Q885,3,More than  3/4 cups
+Q887,1,1 time in the past month
+Q887,2,2-3 times in the past month
+Q887,3,1 time per week
+Q887,4,2 times per week
+Q887,5,3-4 times per week
+Q887,6,5-6 times per week
+Q887,7,1 time per day
+Q887,8,2 or more times per day
+Q888,1,Less than 1 ear or less than  1/2 cup
+Q888,2,1 ear or  1/2 to  3/4 cup
+Q888,3,More than 1 ear or more than  3/4 cup
+Q890,1,1 time in the past month
+Q890,2,2-3 times in the past month
+Q890,3,1 time per week
+Q890,4,2 times per week
+Q890,5,3-4 times per week
+Q890,6,5-6 times per week
+Q890,7,1 time per day
+Q890,8,2 or more times per day
+Q891,1,Less than  1/4 cup
+Q891,2,1/4 to 1 1/2 cups
+Q891,3,More than 1 1/2 cups
+Q893,1,1 time in the past month
+Q893,2,2-3 times in the past month
+Q893,3,1 time per week
+Q893,4,2 times per week
+Q893,5,3-4 times per week
+Q893,6,5-6 times per week
+Q893,7,1 time per day
+Q893,8,2 or more times per day
+Q894,1,Less than  1/4 cup
+Q894,2,1/4 to 1 1/4 cups
+Q894,3,More than 1 1/4 cups
+Q896,1,1 time in the past month
+Q896,2,2-3 times in the past month
+Q896,3,1 time per week
+Q896,4,2 times per week
+Q896,5,3-4 times per week
+Q896,6,5-6 times per week
+Q896,7,1 time per day
+Q896,8,2 or more times per day
+Q897,1,Less than  1/4 pepper
+Q897,2,1/4 to  1/2 pepper
+Q897,3,More than  1/2 pepper
+Q899,1,1 time in the past month
+Q899,2,2-3 times in the past month
+Q899,3,1 time per week
+Q899,4,2 times per week
+Q899,5,3-4 times per week
+Q899,6,5-6 times per week
+Q899,7,1 time per day
+Q899,8,2 or more times per day
+Q900,1,Less than 1 slice or less than 1 tablespoon
+Q900,2,1 slice or 1 to 4 tablespoons
+Q900,3,More than 1 slice or more than 4 tablespoons
+Q902,1,1 time in the past month
+Q902,2,2-3 times in the past month
+Q902,3,1 time per week
+Q902,4,2 times per week
+Q902,5,3-4 times per week
+Q902,6,5-6 times per week
+Q902,7,1 time per day
+Q902,8,2 or more times per day
+Q903,1,Less than 1 clove or less than 1 teaspoon
+Q903,2,1 to 2 cloves or 1 to 2 teaspoons
+Q903,3,More than 2 cloves or more than 2 teaspoons
+Q905,1,1 time in the past month
+Q905,2,2-3 times in the past month
+Q905,3,1 time per week
+Q905,4,2 times per week
+Q905,5,3-4 times per week
+Q905,6,5-6 times per week
+Q905,7,1 time per day
+Q905,8,2 or more times per day
+Q906,1,Less than  3/4 cup
+Q906,2,3/4 to 1 3/4 cups
+Q906,3,More than 1 3/4 cups
+Q907,1,NEVER
+Q907,2,1 time in the past month
+Q907,3,2-3 times in the past month
+Q907,4,1 time per week
+Q907,5,2 times per week
+Q907,6,3-4 times per week
+Q907,7,5-6 times per week
+Q907,8,1 time per day
+Q907,9,2 or more times per day
+Q908,1,Margarine (including low-fat)
+Q908,2,Butter (including low-fat)
+Q908,3,Olive oil
+Q908,4,"Other kinds of oils (corn, canola, or rapeseed oil, etc.)"
+Q909,1,Less than 1 teaspoon
+Q909,2,1 to 2 teaspoons
+Q909,3,More than 2 teaspoons
+Q910,1,Less than 1 teaspoon
+Q910,2,1 to 3 teaspoons
+Q910,3,More than 3 teaspoons
+Q911,1,NEVER
+Q911,2,1 time in the past month
+Q911,3,2-3 times in the past month
+Q911,4,1-2 times per week
+Q911,5,3-4 times per week
+Q911,6,5-6 times per week
+Q911,7,1 time per day
+Q911,8,2 times per day
+Q911,9,3 or more times per day
+Q912,1,Margarine (including low-fat)
+Q912,2,Butter (including low-fat)
+Q912,3,Salad dressing (including low-fat or fat-free)
+Q912,4,Other
+Q913,1,Less than 1 teaspoon
+Q913,2,1 to 2 teaspoons
+Q913,3,More than 2 teaspoons
+Q914,1,Less than 1 teaspoon
+Q914,2,1 to 3 teaspoons
+Q914,3,More than 3 teaspoons
+Q916,1,1 time in the past month
+Q916,2,2-3 times in the past month
+Q916,3,1 time per week
+Q916,4,2 times per week
+Q916,5,3-4 times per week
+Q916,6,5-6 times per week
+Q916,7,1 time per day
+Q916,8,2 or more times per day
+Q917,1,Less than  1/2 cup
+Q917,2,1/2 to 2 cups
+Q917,3,More than 2 cups
+Q918,1,Almost never or never
+Q918,2,About  1/4 of the time
+Q918,3,About  1/2 of the time
+Q918,4,About  3/4 of the time
+Q918,5,Almost always or always
+Q920,1,1 time in the past month
+Q920,2,2-3 times in the past month
+Q920,3,1 time per week
+Q920,4,2 times per week
+Q920,5,3-4 times per week
+Q920,6,5-6 times per week
+Q920,7,1 time per day
+Q920,8,2 or more times per day
+Q921,1,Less than 1 tablespoon
+Q921,2,1 to 3 tablespoons
+Q921,3,More than 3 tablespoons
+Q923,1,1 time in the past month
+Q923,2,2-3 times in the past month
+Q923,3,1 time per week
+Q923,4,2 times per week
+Q923,5,3-4 times per week
+Q923,6,5-6 times per week
+Q923,7,1 time per day
+Q923,8,2 or more times per day
+Q924,1,Less than 2 teaspoons
+Q924,2,2 to 5 teaspoons
+Q924,3,More than 5 teaspoons
+Q926,1,1 time in the past month
+Q926,2,2-3 times in the past month
+Q926,3,1 time per week
+Q926,4,2 times per week
+Q926,5,3-4 times per week
+Q926,6,5-6 times per week
+Q926,7,1 time per day
+Q926,8,2 or more times per day
+Q927,1,Less than  1/4 tomato
+Q927,2,1/4 to  1/2 tomato
+Q927,3,More than  1/2 tomato
+Q929,1,1 time in the past month
+Q929,2,2-3 times in the past month
+Q929,3,1 time per week
+Q929,4,2 times per week
+Q929,5,3-4 times per week
+Q929,6,5-6 times per week
+Q929,7,1 time per day
+Q929,8,2 or more times per day
+Q930,1,Less than 1 tablespoon
+Q930,2,1 to 4 tablespoons
+Q930,3,More than 4 tablespoons
+Q932,1,1 time in the past month
+Q932,2,2-3 times in the past month
+Q932,3,1 time per week
+Q932,4,2 times per week
+Q932,5,3-4 times per week
+Q932,6,5-6 times per week
+Q932,7,1 time per day
+Q932,8,2 or more times per day
+Q933,1,Less than 1 teaspoon
+Q933,2,1 to 4 teaspoons
+Q933,3,More than 4 teaspoons
+Q935,1,1 time in the past month
+Q935,2,2-3 times in the past month
+Q935,3,1 time per week
+Q935,4,2 times per week
+Q935,5,3-4 times per week
+Q935,6,5-6 times per week
+Q935,7,1 time per day
+Q935,8,2 or more times per day
+Q936,1,1 small potato or less than  1/4 cup
+Q936,2,1 medium potato or  1/4 to  3/4 cup
+Q936,3,1 large potato or more than  3/4 cup
+Q938,1,1 time in the past month
+Q938,2,2-3 times in the past month
+Q938,3,1 time per week
+Q938,4,2 times per week
+Q938,5,3-4 times per week
+Q938,6,5-6 times per week
+Q938,7,1 time per day
+Q938,8,2 or more times per day
+Q939,1,Less than 10 fries or less than  1/2 cup
+Q939,2,10 to 25 fries or  1/2 to 1 1/4 cup
+Q939,3,More than 25 fries or more than 1 1/4 cup
+Q941,1,1 time in the past month
+Q941,2,2-3 times in the past month
+Q941,3,1 time per week
+Q941,4,2 times per week
+Q941,5,3-4 times per week
+Q941,6,5-6 times per week
+Q941,7,1 time per day
+Q941,8,2 or more times per day
+Q942,1,Less than  1/2 cup
+Q942,2,1/2 to  3/4 cup
+Q942,3,More than  3/4 cup
+Q944,1,1 time in the past month
+Q944,2,2-3 times in the past month
+Q944,3,1 time per week
+Q944,4,2 times per week
+Q944,5,3-4 times per week
+Q944,6,5-6 times per week
+Q944,7,1 time per day
+Q944,8,2 or more times per day
+Q945,1,1 small potato or less than  1/2 cup
+Q945,2,1 medium potato or  1/2 to  3/4 cup
+Q945,3,1 large potato or more than  3/4 cup
+Q946,1,Almost never or never
+Q946,2,About  1/4 of the time
+Q946,3,About  1/2 of the time
+Q946,4,About  3/4 of the time
+Q946,5,Almost always or always
+Q947,1,Almost never or never
+Q947,2,About  1/4 of the time
+Q947,3,About  1/2 of the time
+Q947,4,About  3/4 of the time
+Q947,5,Almost always or always
+Q948,1,Less than 1 tablespoon
+Q948,2,1 to 4 tablespoons
+Q948,3,More than 4 tablespoons
+Q949,1,Almost never or never
+Q949,2,About  1/4 of the time
+Q949,3,About  1/2 of the time
+Q949,4,About  3/4 of the time
+Q949,5,Almost always or always
+Q950,1,Almost never or never
+Q950,2,About  1/4 of the time
+Q950,3,About  1/2 of the time
+Q950,4,About  3/4 of the time
+Q950,5,Almost always or always
+Q951,1,Less than 1 teaspoon
+Q951,2,1 to 3 teaspoons
+Q951,3,More than 3 teaspoons
+Q953,1,1 time in the past month
+Q953,2,2-3 times in the past month
+Q953,3,1 time per week
+Q953,4,2 times per week
+Q953,5,3-4 times per week
+Q953,6,5-6 times per week
+Q953,7,1 time per day
+Q953,8,2 or more times per day
+Q954,1,Less than  1/4 cup
+Q954,2,1/4 to  3/4 cup
+Q954,3,More than  3/4 cup
+Q955,1,Almost never or never
+Q955,2,About  1/4 of the time
+Q955,3,About  1/2 of the time
+Q955,4,About  3/4 of the time
+Q955,5,Almost always or always
+Q957,1,1 time in the past month
+Q957,2,2-3 times in the past month
+Q957,3,1 time per week
+Q957,4,2 times per week
+Q957,5,3-4 times per week
+Q957,6,5-6 times per week
+Q957,7,1 time per day
+Q957,8,2 or more times per day
+Q958,1,Less than  1/4 cup
+Q958,2,1/4 to  1/2 cup
+Q958,3,More than  1/2 cup
+Q959,1,Soups
+Q959,2,Chili
+Q959,3,"Tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas"
+Q959,4,Corn or wheat tortillas
+Q961,1,1 time in the past month
+Q961,2,2-3 times in the past month
+Q961,3,1 time per week
+Q961,4,2 times per week
+Q961,5,3-4 times per week
+Q961,6,5-6 times per week
+Q961,7,1 time per day
+Q961,8,2 or more times per day
+Q962,1,Less than 1 cup
+Q962,2,1 to 2 cups
+Q962,3,More than 2 cups
+Q963,1,Almost never or never
+Q963,2,About  1/4 of the time
+Q963,3,About  1/2 of the time
+Q963,4,About  3/4 of the time
+Q963,5,Almost always or always
+Q964,1,Almost never or never
+Q964,2,About  1/4 of the time
+Q964,3,About  1/2 of the time
+Q964,4,About  3/4 of the time
+Q964,5,Almost always or always
+Q965,1,Almost never or never
+Q965,2,About  1/4 of the time
+Q965,3,About  1/2 of the time
+Q965,4,About  3/4 of the time
+Q965,5,Almost always or always
+Q967,1,1 time in the past month
+Q967,2,2-3 times in the past month
+Q967,3,1 time per week
+Q967,4,2 times per week
+Q967,5,3-4 times per week
+Q967,6,5-6 times per week
+Q967,7,1 time per day
+Q967,8,2 or more times per day
+Q968,1,Less than  1/2 cup
+Q968,2,1/2  to 2 cups
+Q968,3,More than 2 cups
+Q970,1,1 time in the past month
+Q970,2,2-3 times in the past month
+Q970,3,1 time per week
+Q970,4,2 times per week
+Q970,5,3-4 times per week
+Q970,6,5-6 times per week
+Q970,7,1 time per day
+Q970,8,2 or more times per day
+Q971,1,Almost never or never
+Q971,2,About  1/4 of the time
+Q971,3,About  1/2 of the time
+Q971,4,About  3/4 of the time
+Q971,5,Almost always or always
+Q972,1,Almost never or never
+Q972,2,About  1/4 of the time
+Q972,3,About  1/2 of the time
+Q972,4,About  3/4 of the time
+Q972,5,Almost always or always
+Q973,1,"Fewer than 2 tacos or less than 1 burrito, etc."
+Q973,2,"2 to 4 tacos or 1 to 2 burritos, etc."
+Q973,3,"More than 4 tacos or more than 2 burritos, etc."
+Q975,1,1 time in the past month
+Q975,2,2-3 times in the past month
+Q975,3,1 time per week
+Q975,4,2 times per week
+Q975,5,3-4 times per week
+Q975,6,5-6 times per week
+Q975,7,1 time per day
+Q975,8,2 or more times per day
+Q976,1,Fewer than 2 small size tortillas or less than 1 large size tortilla
+Q976,2,2 to 4 small size tortillas or 1 to 2 large size tortillas
+Q976,3,More than 4 small size tortillas or more than 2 large size tortillas
+Q977,1,Almost never or never
+Q977,2,About  1/4 of the time
+Q977,3,About  1/2 of the time
+Q977,4,About  3/4 of the time
+Q977,5,Almost always or always
+Q978,1,"Rice or other cooked grains (such as bulgur, cracked wheat, or millet; NOT including sushi)"
+Q978,2,Sushi
+Q978,3,"Lasagna, stuffed shells, stuffed manicotti, ravioli, or tortellini (including gluten-free; NOT including spaghetti or other pasta)"
+Q978,4,Macaroni and cheese (including gluten-free)
+Q978,5,Pasta salad or macaroni salad (including gluten-free)
+Q978,6,"Pasta, spaghetti, or other noodles (other than those listed above; including gluten-free)"
+Q978,7,Pizza (including gluten-free)
+Q980,1,1 time in the past month
+Q980,2,2-3 times in the past month
+Q980,3,1 time per week
+Q980,4,2 times per week
+Q980,5,3-4 times per week
+Q980,6,5-6 times per week
+Q980,7,1 time per day
+Q980,8,2 or more times per day
+Q981,1,Less than  1/2 cup
+Q981,2,1/2  to 1 cup
+Q981,3,More than 1 cup
+Q982,1,Almost never or never
+Q982,2,About  1/4 of the time
+Q982,3,About  1/2 of the time
+Q982,4,About  3/4 of the time
+Q982,5,Almost always or always
+Q984,1,1 time in the past month
+Q984,2,2-3 times in the past month
+Q984,3,1 time per week
+Q984,4,2 times per week
+Q984,5,3-4 times per week
+Q984,6,5-6 times per week
+Q984,7,1 time per day
+Q984,8,2 or more times per day
+Q985,1,Fewer than 5 pieces or less than 1 cup
+Q985,2,5 to 8 pieces or 1 to 2 cups
+Q985,3,More than 8 pieces or more than 2 cups
+Q987,1,1 time in the past month
+Q987,2,2-3 times in the past month
+Q987,3,1 time per week
+Q987,4,2 times per week
+Q987,5,3-4 times per week
+Q987,6,5-6 times per week
+Q987,7,1 time per day
+Q987,8,2 or more times per day
+Q988,1,Less than 1 cup
+Q988,2,1 to 2 cups
+Q988,3,More than 2 cups
+Q990,1,1 time in the past month
+Q990,2,2-3 times in the past month
+Q990,3,1 time per week
+Q990,4,2 times per week
+Q990,5,3-4 times per week
+Q990,6,5-6 times per week
+Q990,7,1 time per day
+Q990,8,2 or more times per day
+Q991,1,Less than 1 cup
+Q991,2,1 to 2 cups
+Q991,3,More than 2 cups
+Q993,1,1 time in the past month
+Q993,2,2-3 times in the past month
+Q993,3,1 time per week
+Q993,4,2 times per week
+Q993,5,3-4 times per week
+Q993,6,5-6 times per week
+Q993,7,1 time per day
+Q993,8,2 or more times per day
+Q994,1,Less than  1/2 cup
+Q994,2,1/2 to 1 1/2 cup
+Q994,3,More than 1 1/2 cups
+Q996,1,1 time in the past month
+Q996,2,2-3 times in the past month
+Q996,3,1 time per week
+Q996,4,2 times per week
+Q996,5,3-4 times per week
+Q996,6,5-6 times per week
+Q996,7,1 time per day
+Q996,8,2 or more times per day
+Q997,1,Less than 1 cup
+Q997,2,1 to 3 cups
+Q997,3,More than 3 cups
+Q998,1,Almost never or never
+Q998,2,About  1/4 of the time
+Q998,3,About  1/2 of the time
+Q998,4,About  3/4 of the time
+Q998,5,Almost always or always
+Q999,1,Almost never or never
+Q999,2,About  1/4 of the time
+Q999,3,About  1/2 of the time
+Q999,4,About  3/4 of the time
+Q999,5,Almost always or always
+Q1000,1,Almost never or never
+Q1000,2,About  1/4 of the time
+Q1000,3,About  1/2 of the time
+Q1000,4,About  3/4 of the time
+Q1000,5,Almost always or always
+Q1002,1,1 time in the past month
+Q1002,2,2-3 times in the past month
+Q1002,3,1 time per week
+Q1002,4,2 times per week
+Q1002,5,3-4 times per week
+Q1002,6,5-6 times per week
+Q1002,7,1 time per day
+Q1002,8,2 or more times per day
+Q1003,1,Less than 1 slice or less than 1 mini pizza
+Q1003,2,1 to 3 slices or 1 mini pizza
+Q1003,3,More than 3 slices or more than 1 mini pizza
+Q1004,1,Almost never or never
+Q1004,2,About  1/4 of the time
+Q1004,3,About  1/2 of the time
+Q1004,4,About  3/4 of the time
+Q1004,5,Almost always or always
+Q1005,1,"Oatmeal, grits, or other cooked cereals"
+Q1005,2,Cold cereal (including gluten-free)
+Q1005,3,"Pancakes, waffles, or French toast (including gluten-free)"
+Q1005,4,Bagels or English muffins (including gluten-free)
+Q1005,5,Breads or rolls AS PART OF SANDWICHES (including gluten-free)
+Q1005,6,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free)
+Q1005,7,Cornbread or corn muffins
+Q1005,8,Biscuits
+Q1005,9,"Jam, jelly, or honey (on bagels, muffins, breads, rolls, crackers, etc.)"
+Q1005,10,Peanut butter or other nut butter
+Q1005,11,Hummus
+Q1007,1,1 time in the past month
+Q1007,2,2-3 times in the past month
+Q1007,3,1 time per week
+Q1007,4,2 times per week
+Q1007,5,3-4 times per week
+Q1007,6,5-6 times per week
+Q1007,7,1 time per day
+Q1007,8,2 or more times per day
+Q1008,1,Less than  3/4 cup
+Q1008,2,3/4 to 1 1/4 cups
+Q1008,3,More than 1 1/4 cups
+Q1010,1,1 time in the past month
+Q1010,2,2-3 times in the past month
+Q1010,3,1 time per week
+Q1010,4,2 times per week
+Q1010,5,3-4 times per week
+Q1010,6,5-6 times per week
+Q1010,7,1 time per day
+Q1010,8,2 or more times per day
+Q1011,1,Less than 1 cup
+Q1011,2,1 to 2 cups
+Q1011,3,More than 2 cups
+Q1012,1,Almost never or never
+Q1012,2,About  1/4 of the time
+Q1012,3,About  1/2 of the time
+Q1012,4,About  3/4 of the time
+Q1012,5,Almost always or always
+Q1013,1,Almost never or never
+Q1013,2,About  1/4 of the time
+Q1013,3,About  1/2 of the time
+Q1013,4,About  3/4 of the time
+Q1013,5,Almost always or always
+Q1014,1,Almost never or never
+Q1014,2,About  1/4 of the time
+Q1014,3,About  1/2 of the time
+Q1014,4,About  3/4 of the time
+Q1014,5,Almost always or always
+Q1015,1,Almost never or never
+Q1015,2,About  1/4 of the time
+Q1015,3,About  1/2 of the time
+Q1015,4,About  3/4 of the time
+Q1015,5,Almost always or always
+Q1016,1,Yes
+Q1016,2,No
+Q1017,1,Whole milk
+Q1017,2,2% fat milk
+Q1017,3,1% fat milk
+Q1017,4,"Skim, nonfat, or  1/2% fat milk"
+Q1017,5,Soy milk
+Q1017,6,Rice milk
+Q1017,7,Almond milk
+Q1017,8,Coconut milk
+Q1017,9,Condensed or evaporated milk
+Q1017,10,Other
+Q1018,1,Less than  1/2 cup (4 ounces)
+Q1018,2,1/2 to 1 cups (4 to 8 ounces)
+Q1018,3,More than 1 cups (8 ounces)
+Q1020,1,1 time in the past month
+Q1020,2,2-3 times in the past month
+Q1020,3,1 time per week
+Q1020,4,2 times per week
+Q1020,5,3-4 times per week
+Q1020,6,5-6 times per week
+Q1020,7,1 time per day
+Q1020,8,2 or more times per day
+Q1021,1,Less than 1 medium piece
+Q1021,2,1 to 3 medium pieces
+Q1021,3,More than 3 medium pieces
+Q1022,1,Almost never or never
+Q1022,2,About  1/4 of the time
+Q1022,3,About  1/2 of the time
+Q1022,4,About  3/4 of the time
+Q1022,5,Almost always or always
+Q1023,1,Almost never or never
+Q1023,2,About  1/4 of the time
+Q1023,3,About  1/2 of the time
+Q1023,4,About  3/4 of the time
+Q1023,5,Almost always or always
+Q1024,1,Less than 1 teaspoon
+Q1024,2,1 to 3 teaspoons
+Q1024,3,More than 3 teaspoons
+Q1025,1,Almost never or never
+Q1025,2,About  1/4 of the time
+Q1025,3,About  1/2 of the time
+Q1025,4,About  3/4 of the time
+Q1025,5,Almost always or always
+Q1026,1,Less than 1 tablespoon
+Q1026,2,1 to 5 tablespoons
+Q1026,3,More than 5 tablespoons
+Q1027,1,Almost never or never
+Q1027,2,About  1/4 of the time
+Q1027,3,About  1/2 of the time
+Q1027,4,About  3/4 of the time
+Q1027,5,Almost always or always
+Q1029,1,1 time in the past month
+Q1029,2,2-3 times in the past month
+Q1029,3,1 time per week
+Q1029,4,2 times per week
+Q1029,5,3-4 times per week
+Q1029,6,5-6 times per week
+Q1029,7,1 time per day
+Q1029,8,2 or more times per day
+Q1030,1,Less than 1 bagel or English muffin
+Q1030,2,1 to 2 bagels or English muffins
+Q1030,3,More than 2 bagels or English muffins
+Q1031,1,Almost never or never
+Q1031,2,About  1/4 of the time
+Q1031,3,About  1/2 of the time
+Q1031,4,About  3/4 of the time
+Q1031,5,Almost always or always
+Q1032,1,Almost never or never
+Q1032,2,About  1/4 of the time
+Q1032,3,About  1/2 of the time
+Q1032,4,About  3/4 of the time
+Q1032,5,Almost always or always
+Q1033,1,Almost never or never
+Q1033,2,About  1/4 of the time
+Q1033,3,About  1/2 of the time
+Q1033,4,About  3/4 of the time
+Q1033,5,Almost always or always
+Q1034,1,Less than 1 tablespoon
+Q1034,2,1 to 2 tablespoons
+Q1034,3,More than 2 tablespoons
+Q1035,1,Almost never or never
+Q1035,2,About  1/4 of the time
+Q1035,3,About  1/2 of the time
+Q1035,4,About  3/4 of the time
+Q1035,5,Almost always or always
+Q1036,1,Less than 1 tablespoon
+Q1036,2,1 to 2 tablespoons
+Q1036,3,More than 2 tablespoons
+Q1038,1,1 time in the past month
+Q1038,2,2-3 times in the past month
+Q1038,3,1 time per week
+Q1038,4,2 times per week
+Q1038,5,3-4 times per week
+Q1038,6,5-6 times per week
+Q1038,7,1 time per day
+Q1038,8,2 or more times per day
+Q1039,1,Less than 1 slice or  1/2 roll
+Q1039,2,1 to 2 slices or  1/2 to 1 roll
+Q1039,3,More than 2 slices or more than 1 roll
+Q1040,1,Almost never or never
+Q1040,2,About  1/4 of the time
+Q1040,3,About  1/2 of the time
+Q1040,4,About  3/4 of the time
+Q1040,5,Almost always or always
+Q1041,1,Almost never or never
+Q1041,2,About  1/4 of the time
+Q1041,3,About  1/2 of the time
+Q1041,4,About  3/4 of the time
+Q1041,5,Almost always or always
+Q1042,1,Less than 1 teaspoon
+Q1042,2,1 to 3 teaspoons
+Q1042,3,More than 3 teaspoons
+Q1043,1,Almost never or never
+Q1043,2,About  1/4 of the time
+Q1043,3,About  1/2 of the time
+Q1043,4,About  3/4 of the time
+Q1043,5,Almost always or always
+Q1044,1,Almost never or never
+Q1044,2,About  1/4 of the time
+Q1044,3,About  1/2 of the time
+Q1044,4,About  3/4 of the time
+Q1044,5,Almost always or always
+Q1045,1,Less than 1 teaspoon
+Q1045,2,1 to 2 teaspoons
+Q1045,3,More than 2 teaspoons
+Q1047,1,1 time in the past month
+Q1047,2,2-3 times in the past month
+Q1047,3,1 time per week
+Q1047,4,2 times per week
+Q1047,5,3-4 times per week
+Q1047,6,5-6 times per week
+Q1047,7,1 time per day
+Q1047,8,2 or more times per day
+Q1048,1,Less than 1 slice or  1/2 roll
+Q1048,2,1 to 2 slices or  1/2 to 1 roll
+Q1048,3,More than 2 slices or more than 1 roll
+Q1049,1,Almost never or never
+Q1049,2,About  1/4 of the time
+Q1049,3,About  1/2 of the time
+Q1049,4,About  3/4 of the time
+Q1049,5,Almost always or always
+Q1050,1,Almost never or never
+Q1050,2,About  1/4 of the time
+Q1050,3,About  1/2 of the time
+Q1050,4,About  3/4 of the time
+Q1050,5,Almost always or always
+Q1051,1,Almost never or never
+Q1051,2,About  1/4 of the time
+Q1051,3,About  1/2 of the time
+Q1051,4,About  3/4 of the time
+Q1051,5,Almost always or always
+Q1052,1,Less than 1 teaspoon
+Q1052,2,1 to 2 teaspoons
+Q1052,3,More than 2 teaspoons
+Q1053,1,Almost never or never
+Q1053,2,About  1/4 of the time
+Q1053,3,About  1/2 of the time
+Q1053,4,About  3/4 of the time
+Q1053,5,Almost always or always
+Q1054,1,Less than 1 tablespoon
+Q1054,2,1 to 2 tablespoons
+Q1054,3,More than 2 tablespoons
+Q1056,1,1 time in the past month
+Q1056,2,2-3 times in the past month
+Q1056,3,1 time per week
+Q1056,4,2 times per week
+Q1056,5,3-4 times per week
+Q1056,6,5-6 times per week
+Q1056,7,1 time per day
+Q1056,8,2 or more times per day
+Q1057,1,Less than 1 piece or muffin
+Q1057,2,1 to 2 pieces or muffins
+Q1057,3,More than 2 pieces or muffins
+Q1059,1,1 time in the past month
+Q1059,2,2-3 times in the past month
+Q1059,3,1 time per week
+Q1059,4,2 times per week
+Q1059,5,3-4 times per week
+Q1059,6,5-6 times per week
+Q1059,7,1 time per day
+Q1059,8,2 or more times per day
+Q1060,1,Less than 1 biscuit
+Q1060,2,1 to 2 biscuits
+Q1060,3,More than 2 biscuits
+Q1062,1,1 time in the past month
+Q1062,2,2-3 times in the past month
+Q1062,3,1 time per week
+Q1062,4,2 times per week
+Q1062,5,3-4 times per week
+Q1062,6,5-6 times per week
+Q1062,7,1 time per day
+Q1062,8,2 or more times per day
+Q1063,1,Less than 1 teaspoon
+Q1063,2,1 to 4 teaspoons
+Q1063,3,More than 4 teaspoons
+Q1065,1,1 time in the past month
+Q1065,2,2-3 times in the past month
+Q1065,3,1 time per week
+Q1065,4,2 times per week
+Q1065,5,3-4 times per week
+Q1065,6,5-6 times per week
+Q1065,7,1 time per day
+Q1065,8,2 or more times per day
+Q1066,1,Less than 1 tablespoon
+Q1066,2,1 to 2 tablespoons
+Q1066,3,More than 2 tablespoons
+Q1068,1,1 time in the past month
+Q1068,2,2-3 times in the past month
+Q1068,3,1 time per week
+Q1068,4,2 times per week
+Q1068,5,3-4 times per week
+Q1068,6,5-6 times per week
+Q1068,7,1 time per day
+Q1068,8,2 or more times per day
+Q1069,1,Less than 1/8 cup
+Q1069,2,1/8 to  1/2 cup
+Q1069,3,More than  1/2 cup
+Q1070,1,Roast beef or steak IN SANDWICHES
+Q1070,2,Luncheon or deli-style ham (NOT including other ham)
+Q1070,3,"Turkey or chicken COLD CUTS (such as loaf, luncheon meat, turkey ham, turkey salami, or turkey pastrami; NOT including other turkey or chicken)"
+Q1070,4,Bologna
+Q1070,5,"Other cold cuts or luncheon meats (such as salami, corned beef, pastrami, etc.; NOT including ham, turkey, or chicken, bologna cold cuts)"
+Q1070,6,Hot dogs or frankfurters (NOT including sausage or vegetarian hot dogs)
+Q1072,1,1 time in the past month
+Q1072,2,2-3 times in the past month
+Q1072,3,1 time per week
+Q1072,4,2 times per week
+Q1072,5,3-4 times per week
+Q1072,6,5-6 times per week
+Q1072,7,1 time per day
+Q1072,8,2 or more times per day
+Q1073,1,Less than 1 slice or less than 2 ounces
+Q1073,2,1 to 2 slices or 2 to 4 ounces
+Q1073,3,More than 2 slices or more than 4 ounces
+Q1075,1,1 time in the past month
+Q1075,2,2-3 times in the past month
+Q1075,3,1 time per week
+Q1075,4,2 times per week
+Q1075,5,3-4 times per week
+Q1075,6,5-6 times per week
+Q1075,7,1 time per day
+Q1075,8,2 or more times per day
+Q1076,1,Less than 1 slice
+Q1076,2,1 to 3 slices
+Q1076,3,More than 3 slices
+Q1078,1,1 time in the past month
+Q1078,2,2-3 times in the past month
+Q1078,3,1 time per week
+Q1078,4,2 times per week
+Q1078,5,3-4 times per week
+Q1078,6,5-6 times per week
+Q1078,7,1 time per day
+Q1078,8,2 or more times per day
+Q1079,1,Less than 2 slices
+Q1079,2,2 to 4 slices
+Q1079,3,More than 4 slices
+Q1081,1,1 time in the past month
+Q1081,2,2-3 times in the past month
+Q1081,3,1 time per week
+Q1081,4,2 times per week
+Q1081,5,3-4 times per week
+Q1081,6,5-6 times per week
+Q1081,7,1 time per day
+Q1081,8,2 or more times per day
+Q1082,1,Less than 1 slice
+Q1082,2,1 to 2 slices
+Q1082,3,More than 2 slices
+Q1084,1,1 time in the past month
+Q1084,2,2-3 times in the past month
+Q1084,3,1 time per week
+Q1084,4,2 times per week
+Q1084,5,3-4 times per week
+Q1084,6,5-6 times per week
+Q1084,7,1 time per day
+Q1084,8,2 or more times per day
+Q1085,1,Less than 1 slice
+Q1085,2,1 to 3 slices
+Q1085,3,More than 3 slices
+Q1087,1,1 time in the past month
+Q1087,2,2-3 times in the past month
+Q1087,3,1 time per week
+Q1087,4,2 times per week
+Q1087,5,3-4 times per week
+Q1087,6,5-6 times per week
+Q1087,7,1 time per day
+Q1087,8,2 or more times per day
+Q1088,1,Less than 1 hot dog
+Q1088,2,1 to 2 hot dogs
+Q1088,3,More than 2 hot dogs
+Q1089,1,Almost never or never
+Q1089,2,About  1/4 of the time
+Q1089,3,About  1/2 of the time
+Q1089,4,About  3/4 of the time
+Q1089,5,Almost always or always
+Q1090,1,Almost never or never
+Q1090,2,About  1/4 of the time
+Q1090,3,About  1/2 of the time
+Q1090,4,About  3/4 of the time
+Q1090,5,Almost always or always
+Q1091,1,GROUND chicken or turkey
+Q1091,2,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; NOT including chicken in mixtures)"
+Q1091,3,"Chicken in mixed dishes (such as salads, sandwiches, casseroles, stews, or other mixtures)"
+Q1091,4,Turkey including in mixed dishes (NOT including ground turkey)
+Q1091,5,Beef hamburgers or cheeseburgers from a FAST FOOD RESTAURANT
+Q1091,6,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT
+Q1091,7,"Ground beef in mixtures (such as meatballs, casseroles, chili, or meatloaf)"
+Q1091,8,"Beef mixtures (such as beef stew, beef pot pie, beef and noodles, or beef and vegetables)"
+Q1091,9,Roast beef or pot roast (NOT including roast beef or pot roast in sandwiches)
+Q1091,10,Beef steak (NOT including steak in sandwiches)
+Q1091,11,Pork or beef spareribs
+Q1091,12,Baked ham or ham steak
+Q1091,13,"Pork (including chops, roasts, and in mixed dishes; NOT including ham, ham steak, or sausage)"
+Q1091,14,"Gravy on meat, chicken, potatoes, rice, etc."
+Q1091,15,Liver (all kinds) or liverwurst
+Q1091,16,Bacon (all kinds)
+Q1091,17,Sausage (all kinds)
+Q1091,18,Canned tuna or tuna salad (including in sandwiches or casseroles; NOT including fresh tuna)
+Q1091,19,"Fresh tuna, trout, anchovy, mackerel, herring, or sardine"
+Q1091,20,Salmon
+Q1091,21,"Fried shellfish (such as crab, lobster, shrimp, or clams)"
+Q1091,22,"Shellfish (such as crab, lobster, or shrimp) that was NOT FRIED"
+Q1091,23,Fish sticks or other fried fish (NOT including shellfish)
+Q1091,24,Other fish that was NOT FRIED (NOT including shellfish)
+Q1093,1,1 time in the past month
+Q1093,2,2-3 times in the past month
+Q1093,3,1 time per week
+Q1093,4,2 times per week
+Q1093,5,3-4 times per week
+Q1093,6,5-6 times per week
+Q1093,7,1 time per day
+Q1093,8,2 or more times per day
+Q1094,1,Less than 2 ounces or less than  1/2 cup
+Q1094,2,2 to 5 ounces or  1/2 to 1 cup
+Q1094,3,More than 5 ounces or more than 1 cup
+Q1096,1,1 time in the past month
+Q1096,2,2-3 times in the past month
+Q1096,3,1 time per week
+Q1096,4,2 times per week
+Q1096,5,3-4 times per week
+Q1096,6,5-6 times per week
+Q1096,7,1 time per day
+Q1096,8,2 or more times per day
+Q1097,1,"Less than 2 drumsticks or wings, less than 1 breast or thigh, or less than 4 nuggets"
+Q1097,2,"2 drumsticks or wings, 1 breast or thigh, or 4 to 8 nuggets"
+Q1097,3,"More than 2 drumsticks or wings, more than 1 breast or thigh, or more than 8 nuggets"
+Q1098,1,Almost never or never
+Q1098,2,About  1/4 of the time
+Q1098,3,About  1/2 of the time
+Q1098,4,About  3/4 of the time
+Q1098,5,Almost always or always
+Q1099,1,Almost never or never
+Q1099,2,About  1/4 of the time
+Q1099,3,About  1/2 of the time
+Q1099,4,About  3/4 of the time
+Q1099,5,Almost always or always
+Q1100,1,Almost never or never
+Q1100,2,About  1/4 of the time
+Q1100,3,About  1/2 of the time
+Q1100,4,About  3/4 of the time
+Q1100,5,Almost always or always
+Q1101,1,Almost never or never
+Q1101,2,About  1/4 of the time
+Q1101,3,About  1/2 of the time
+Q1101,4,About  3/4 of the time
+Q1101,5,Almost always or always
+Q1102,1,Just until done
+Q1102,2,Well-done
+Q1102,3,Very well-done
+Q1102,4,Don't know
+Q1103,1,Almost never or never
+Q1103,2,About  1/4 of the time
+Q1103,3,About  1/2 of the time
+Q1103,4,About  3/4 of the time
+Q1103,5,Almost always or always
+Q1104,1,Almost never or never
+Q1104,2,About  1/4 of the time
+Q1104,3,About  1/2 of the time
+Q1104,4,About  3/4 of the time
+Q1104,5,Almost always or always
+Q1106,1,1 time in the past month
+Q1106,2,2-3 times in the past month
+Q1106,3,1 time per week
+Q1106,4,2 times per week
+Q1106,5,3-4 times per week
+Q1106,6,5-6 times per week
+Q1106,7,1 time per day
+Q1106,8,2 or more times per day
+Q1107,1,Less than 2 ounces or less than  1/2 cup
+Q1107,2,2 to 5 ounces or  1/2 to 1 cup
+Q1107,3,More than 5 ounces or more than 1 cup
+Q1109,1,1 time in the past month
+Q1109,2,2-3 times in the past month
+Q1109,3,1 time per week
+Q1109,4,2 times per week
+Q1109,5,3-4 times per week
+Q1109,6,5-6 times per week
+Q1109,7,1 time per day
+Q1109,8,2 or more times per day
+Q1110,1,Less than 2 ounces
+Q1110,2,2 to 4 ounces
+Q1110,3,More than 4 ounces
+Q1112,1,1 time in the past month
+Q1112,2,2-3 times in the past month
+Q1112,3,1 time per week
+Q1112,4,2 times per week
+Q1112,5,3-4 times per week
+Q1112,6,5-6 times per week
+Q1112,7,1 time per day
+Q1112,8,2 or more times per day
+Q1113,1,Small hamburger (such as a regular Burger King or McDonald's Hamburger)
+Q1113,2,Medium (such as McDonald's or Burger King Double Burger or Cheeseburger)
+Q1113,3,Large (such as Burger King Whopper or Double Whopper or a McDonald's Double Quarter Pounder)
+Q1115,1,1 time in the past month
+Q1115,2,2-3 times in the past month
+Q1115,3,1 time per week
+Q1115,4,2 times per week
+Q1115,5,3-4 times per week
+Q1115,6,5-6 times per week
+Q1115,7,1 time per day
+Q1115,8,2 or more times per day
+Q1116,1,Less than 1 patty or less than 2 ounces
+Q1116,2,1 patty or 2 to 4 ounces
+Q1116,3,More than 1 patty or more than 4 ounces
+Q1117,1,Almost never or never
+Q1117,2,About  1/4 of the time
+Q1117,3,About  1/2 of the time
+Q1117,4,About  3/4 of the time
+Q1117,5,Almost always or always
+Q1118,1,Almost never or never
+Q1118,2,About  1/4 of the time
+Q1118,3,About  1/2 of the time
+Q1118,4,About  3/4 of the time
+Q1118,5,Almost always or always
+Q1119,1,Almost never or never
+Q1119,2,About  1/4 of the time
+Q1119,3,About  1/2 of the time
+Q1119,4,About  3/4 of the time
+Q1119,5,Almost always or always
+Q1120,1,Rare
+Q1120,2,Medium
+Q1120,3,Well-done
+Q1120,4,Very well-done
+Q1120,5,Don't Know
+Q1122,1,1 time in the past month
+Q1122,2,2-3 times in the past month
+Q1122,3,1 time per week
+Q1122,4,2 times per week
+Q1122,5,3-4 times per week
+Q1122,6,5-6 times per week
+Q1122,7,1 time per day
+Q1122,8,2 or more times per day
+Q1123,1,Less than 3 ounces or less than  1/2 cup
+Q1123,2,3 to 8 ounces or  1/2 to 1 cup
+Q1123,3,More than 8 ounces or more than 1 cup
+Q1125,1,1 time in the past month
+Q1125,2,2-3 times in the past month
+Q1125,3,1 time per week
+Q1125,4,2 times per week
+Q1125,5,3-4 times per week
+Q1125,6,5-6 times per week
+Q1125,7,1 time per day
+Q1125,8,2 or more times per day
+Q1126,1,Less than  1/2 cup
+Q1126,2,1/2 to 1 1/2 cups
+Q1126,3,More than 1 1/2 cups
+Q1128,1,1 time in the past month
+Q1128,2,2-3 times in the past month
+Q1128,3,1 time per week
+Q1128,4,2 times per week
+Q1128,5,3-4 times per week
+Q1128,6,5-6 times per week
+Q1128,7,1 time per day
+Q1128,8,2 or more times per day
+Q1129,1,Less than 2 ounces
+Q1129,2,2 to 5 ounces
+Q1129,3,More than 5 ounces
+Q1131,1,1 time in the past month
+Q1131,2,2-3 times in the past month
+Q1131,3,1 time per week
+Q1131,4,2 times per week
+Q1131,5,3-4 times per week
+Q1131,6,5-6 times per week
+Q1131,7,1 time per day
+Q1131,8,2 or more times per day
+Q1132,1,Less than 3 ounces
+Q1132,2,3 to 7 ounces
+Q1132,3,More than 7 ounces
+Q1133,1,Almost never or never
+Q1133,2,About  1/4 of the time
+Q1133,3,About  1/2 of the time
+Q1133,4,About  3/4 of the time
+Q1133,5,Almost always or always
+Q1134,1,Almost never or never
+Q1134,2,About  1/4 of the time
+Q1134,3,About  1/2 of the time
+Q1134,4,About  3/4 of the time
+Q1134,5,Almost always or always
+Q1135,1,Almost never or never
+Q1135,2,About  1/4 of the time
+Q1135,3,About  1/2 of the time
+Q1135,4,About  3/4 of the time
+Q1135,5,Almost always or always
+Q1136,1,Rare
+Q1136,2,Medium
+Q1136,3,Well-done
+Q1136,4,Very well-done
+Q1136,5,Don't Know
+Q1138,1,1 time in the past month
+Q1138,2,2-3 times in the past month
+Q1138,3,1 time per week
+Q1138,4,2 times per week
+Q1138,5,3-4 times per week
+Q1138,6,5-6 times per week
+Q1138,7,1 time per day
+Q1138,8,2 or more times per day
+Q1139,1,Less than 4 ribs
+Q1139,2,4 to 12 ribs
+Q1139,3,More than 12 ribs
+Q1141,1,1 time in the past month
+Q1141,2,2-3 times in the past month
+Q1141,3,1 time per week
+Q1141,4,2 times per week
+Q1141,5,3-4 times per week
+Q1141,6,5-6 times per week
+Q1141,7,1 time per day
+Q1141,8,2 or more times per day
+Q1142,1,Less than 1 ounce
+Q1142,2,1 to 5 ounces
+Q1142,3,More than 5 ounces
+Q1144,1,1 time in the past month
+Q1144,2,2-3 times in the past month
+Q1144,3,1 time per week
+Q1144,4,2 times per week
+Q1144,5,3-4 times per week
+Q1144,6,5-6 times per week
+Q1144,7,1 time per day
+Q1144,8,2 or more times per day
+Q1145,1,Less than 2 ounces or less than 1 chop
+Q1145,2,2 to 5 ounces or 1 chop
+Q1145,3,More than 5 ounces or more than 1 chop
+Q1146,1,Almost never or never
+Q1146,2,About  1/4 of the time
+Q1146,3,About  1/2 of the time
+Q1146,4,About  3/4 of the time
+Q1146,5,Almost always or always
+Q1147,1,Almost never or never
+Q1147,2,About  1/4 of the time
+Q1147,3,About  1/2 of the time
+Q1147,4,About  3/4 of the time
+Q1147,5,Almost always or always
+Q1148,1,Almost never or never
+Q1148,2,About  1/4 of the time
+Q1148,3,About  1/2 of the time
+Q1148,4,About  3/4 of the time
+Q1148,5,Almost always or always
+Q1149,1,Just until done
+Q1149,2,Well-done
+Q1149,3,Very well-done
+Q1149,4,Don't know
+Q1151,1,1 time in the past month
+Q1151,2,2-3 times in the past month
+Q1151,3,1 time per week
+Q1151,4,2 times per week
+Q1151,5,3-4 times per week
+Q1151,6,5-6 times per week
+Q1151,7,1 time per day
+Q1151,8,2 or more times per day
+Q1152,1,Less than  1/8 cup
+Q1152,2,1/8 to  1/4 cup
+Q1152,3,More than  1/4 cup
+Q1154,1,1 time in the past month
+Q1154,2,2-3 times in the past month
+Q1154,3,1 time per week
+Q1154,4,2 times per week
+Q1154,5,3-4 times per week
+Q1154,6,5-6 times per week
+Q1154,7,1 time per day
+Q1154,8,2 or more times per day
+Q1155,1,Less than 1 ounce
+Q1155,2,1 to 4 ounces
+Q1155,3,More than 4 ounces
+Q1157,1,1 time in the past month
+Q1157,2,2-3 times in the past month
+Q1157,3,1 time per week
+Q1157,4,2 times per week
+Q1157,5,3-4 times per week
+Q1157,6,5-6 times per week
+Q1157,7,1 time per day
+Q1157,8,2 or more times per day
+Q1158,1,Less than 1 slice
+Q1158,2,1 to 3 slices
+Q1158,3,More than 3 slices
+Q1159,1,Almost never or never
+Q1159,2,About  1/4 of the time
+Q1159,3,About  1/2 of the time
+Q1159,4,About  3/4 of the time
+Q1159,5,Almost always or always
+Q1160,1,Almost never or never
+Q1160,2,About  1/4 of the time
+Q1160,3,About  1/2 of the time
+Q1160,4,About  3/4 of the time
+Q1160,5,Almost always or always
+Q1161,1,Almost never or never
+Q1161,2,About  1/4 of the time
+Q1161,3,About  1/2 of the time
+Q1161,4,About  3/4 of the time
+Q1161,5,Almost always or always
+Q1162,1,Just until done
+Q1162,2,Well-done/crisp
+Q1162,3,Charred
+Q1162,4,Don't know
+Q1164,1,1 time in the past month
+Q1164,2,2-3 times in the past month
+Q1164,3,1 time per week
+Q1164,4,2 times per week
+Q1164,5,3-4 times per week
+Q1164,6,5-6 times per week
+Q1164,7,1 time per day
+Q1164,8,2 or more times per day
+Q1165,1,Less than 1 patty or 2 links
+Q1165,2,1 to 3 patties or 2 to 5 links
+Q1165,3,More than 3 patties or 5 links
+Q1166,1,Almost never or never
+Q1166,2,About  1/4 of the time
+Q1166,3,About  1/2 of the time
+Q1166,4,About  3/4 of the time
+Q1166,5,Almost always or always
+Q1167,1,Almost never or never
+Q1167,2,About  1/4 of the time
+Q1167,3,About  1/2 of the time
+Q1167,4,About  3/4 of the time
+Q1167,5,Almost always or always
+Q1168,1,Almost never or never
+Q1168,2,About  1/4 of the time
+Q1168,3,About  1/2 of the time
+Q1168,4,About  3/4 of the time
+Q1168,5,Almost always or always
+Q1169,1,Just until done
+Q1169,2,Well-done/crisp
+Q1169,3,Charred
+Q1169,4,Don't know
+Q1171,1,1 time in the past month
+Q1171,2,2-3 times in the past month
+Q1171,3,1 time per week
+Q1171,4,2 times per week
+Q1171,5,3-4 times per week
+Q1171,6,5-6 times per week
+Q1171,7,1 time per day
+Q1171,8,2 or more times per day
+Q1172,1,Less than  1/4 cup or less than 2 ounces
+Q1172,2,1/4 to  1/2 cup or 2 to 3 ounces
+Q1172,3,More than  1/2 cup or more than 3 ounces
+Q1174,1,1 time in the past month
+Q1174,2,2-3 times in the past month
+Q1174,3,1 time per week
+Q1174,4,2 times per week
+Q1174,5,3-4 times per week
+Q1174,6,5-6 times per week
+Q1174,7,1 time per day
+Q1174,8,2 or more times per day
+Q1175,1,Less than 2 ounces
+Q1175,2,2 to 5 ounces
+Q1175,3,More than 5 ounces
+Q1177,1,1 time in the past month
+Q1177,2,2-3 times in the past month
+Q1177,3,1 time per week
+Q1177,4,2 times per week
+Q1177,5,3-4 times per week
+Q1177,6,5-6 times per week
+Q1177,7,1 time per day
+Q1177,8,2 or more times per day
+Q1178,1,Less than 2 ounces
+Q1178,2,2 to 7 ounces
+Q1178,3,More than 7 ounces
+Q1180,1,1 time in the past month
+Q1180,2,2-3 times in the past month
+Q1180,3,1 time per week
+Q1180,4,2 times per week
+Q1180,5,3-4 times per week
+Q1180,6,5-6 times per week
+Q1180,7,1 time per day
+Q1180,8,2 or more times per day
+Q1181,1,Less than 1 ounce
+Q1181,2,1 to 3 ounces
+Q1181,3,More than 3 ounces
+Q1183,1,1 time in the past month
+Q1183,2,2-3 times in the past month
+Q1183,3,1 time per week
+Q1183,4,2 times per week
+Q1183,5,3-4 times per week
+Q1183,6,5-6 times per week
+Q1183,7,1 time per day
+Q1183,8,2 or more times per day
+Q1184,1,Less than 1 ounce
+Q1184,2,1 to 4 ounces
+Q1184,3,More than 4 ounces
+Q1186,1,1 time in the past month
+Q1186,2,2-3 times in the past month
+Q1186,3,1 time per week
+Q1186,4,2 times per week
+Q1186,5,3-4 times per week
+Q1186,6,5-6 times per week
+Q1186,7,1 time per day
+Q1186,8,2 or more times per day
+Q1187,1,Less than 3 ounces or less than 1 fillet
+Q1187,2,3 to 8 ounces or 1 fillet
+Q1187,3,More than 8 ounces or more than 1 fillet
+Q1189,1,1 time in the past month
+Q1189,2,2-3 times in the past month
+Q1189,3,1 time per week
+Q1189,4,2 times per week
+Q1189,5,3-4 times per week
+Q1189,6,5-6 times per week
+Q1189,7,1 time per day
+Q1189,8,2 or more times per day
+Q1190,1,Less than 2 ounces or less than 1 fillet
+Q1190,2,2 to 6 ounces or 1 fillet
+Q1190,3,More than 6 ounces or more than 1 fillet
+Q1191,1,"Tofu, soy burgers, or soy meat-substitutes"
+Q1191,2,"Eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; NOT including eggs in baked goods and desserts)"
+Q1193,1,1 time in the past month
+Q1193,2,2-3 times in the past month
+Q1193,3,1 time per week
+Q1193,4,2 times per week
+Q1193,5,3-4 times per week
+Q1193,6,5-6 times per week
+Q1193,7,1 time per day
+Q1193,8,2 or more times per day
+Q1194,1,Less than  1/4 cup or less than 2 ounces
+Q1194,2,1/4 to  1/2 cup or 2 to 4 ounces
+Q1194,3,More than  1/2 cup to more than 4 ounces
+Q1196,1,1 time in the past month
+Q1196,2,2-3 times in the past month
+Q1196,3,1 time per week
+Q1196,4,2 times per week
+Q1196,5,3-4 times per week
+Q1196,6,5-6 times per week
+Q1196,7,1 time per day
+Q1196,8,2 or more times per day
+Q1197,1,1 egg
+Q1197,2,2 eggs
+Q1197,3,3 or more eggs
+Q1198,1,Almost never or never
+Q1198,2,About  1/4 of the time
+Q1198,3,About  1/2 of the time
+Q1198,4,About  3/4 of the time
+Q1198,5,Almost always or always
+Q1199,1,Almost never or never
+Q1199,2,About  1/4 of the time
+Q1199,3,About  1/2 of the time
+Q1199,4,About  3/4 of the time
+Q1199,5,Almost always or always
+Q1200,1,Almost never or never
+Q1200,2,About  1/4 of the time
+Q1200,3,About  1/2 of the time
+Q1200,4,About  3/4 of the time
+Q1200,5,Almost always or always
+Q1201,1,Crackers (including gluten-free)
+Q1201,2,Potato chips
+Q1201,3,Corn chips or tortilla chips
+Q1201,4,Popcorn
+Q1201,5,Pretzels (including gluten-free)
+Q1201,6,"Whole nuts (including peanuts, almonds, seeds, or other nuts)"
+Q1201,7,"High-protein or breakfast bars (such as Power Bars, Balance, Clif, etc.)"
+Q1201,8,Protein powder
+Q1201,9,Granola bars
+Q1203,1,1 time in the past month
+Q1203,2,2-3 times in the past month
+Q1203,3,1 time per week
+Q1203,4,2 times per week
+Q1203,5,3-4 times per week
+Q1203,6,5-6 times per week
+Q1203,7,1 time per day
+Q1203,8,2 or more times per day
+Q1204,1,Fewer than 2 crackers
+Q1204,2,2 to 5 crackers
+Q1204,3,More than 5 crackers
+Q1206,1,1 time in the past month
+Q1206,2,2-3 times in the past month
+Q1206,3,1 time per week
+Q1206,4,2 times per week
+Q1206,5,3-4 times per week
+Q1206,6,5-6 times per week
+Q1206,7,1 time per day
+Q1206,8,2 or more times per day
+Q1207,1,Fewer than 10 chips or less than  1/2 cup
+Q1207,2,10 to 25 chips or  1/2 to 1 cups
+Q1207,3,More than 25 chips or more than 1 cups
+Q1209,1,1 time in the past month
+Q1209,2,2-3 times in the past month
+Q1209,3,1 time per week
+Q1209,4,2 times per week
+Q1209,5,3-4 times per week
+Q1209,6,5-6 times per week
+Q1209,7,1 time per day
+Q1209,8,2 or more times per day
+Q1210,1,Fewer than 10 chips or less than 1 cup
+Q1210,2,10 to 25 chips or 1 to 2 cups
+Q1210,3,More than 25 chips or more than 2 cups
+Q1212,1,1 time in the past month
+Q1212,2,2-3 times in the past month
+Q1212,3,1 time per week
+Q1212,4,2 times per week
+Q1212,5,3-4 times per week
+Q1212,6,5-6 times per week
+Q1212,7,1 time per day
+Q1212,8,2 or more times per day
+Q1213,1,"Less than 2 cups, popped"
+Q1213,2,"2 to 6 cups, popped"
+Q1213,3,"More than 6 cups, popped"
+Q1215,1,1 time in the past month
+Q1215,2,2-3 times in the past month
+Q1215,3,1 time per week
+Q1215,4,2 times per week
+Q1215,5,3-4 times per week
+Q1215,6,5-6 times per week
+Q1215,7,1 time per day
+Q1215,8,2 or more times per day
+Q1216,1,Fewer than 5 average twists
+Q1216,2,5 to 20 average twists
+Q1216,3,More than 20 average twists
+Q1218,1,1 time in the past month
+Q1218,2,2-3 times in the past month
+Q1218,3,1 time per week
+Q1218,4,2 times per week
+Q1218,5,3-4 times per week
+Q1218,6,5-6 times per week
+Q1218,7,1 time per day
+Q1218,8,2 or more times per day
+Q1219,1,Les than  1/8 cup
+Q1219,2,1/8 to  1/2 cup
+Q1219,3,More than  1/2 cup
+Q1220,1,Almost never or never
+Q1220,2,About  1/4 of the time
+Q1220,3,About  1/2 of the time
+Q1220,4,About  3/4 of the time
+Q1220,5,Almost always or always
+Q1221,1,Almost never or never
+Q1221,2,About  1/4 of the time
+Q1221,3,About  1/2 of the time
+Q1221,4,About  3/4 of the time
+Q1221,5,Almost always or always
+Q1223,1,1 time in the past month
+Q1223,2,2-3 times in the past month
+Q1223,3,1 time per week
+Q1223,4,2 times per week
+Q1223,5,3-4 times per week
+Q1223,6,5-6 times per week
+Q1223,7,1 time per day
+Q1223,8,2 or more times per day
+Q1224,1,Less than  1/2 bar
+Q1224,2,1/2 to 1 bar
+Q1224,3,More than 1 bar
+Q1226,1,1 time in the past month
+Q1226,2,2-3 times in the past month
+Q1226,3,1 time per week
+Q1226,4,2 times per week
+Q1226,5,3-4 times per week
+Q1226,6,5-6 times per week
+Q1226,7,1 time per day
+Q1226,8,2 or more times per day
+Q1227,1,Less than 1 3/4 tablespoons or less than 1 scoop
+Q1227,2,1 3/4 to 4 tablespoons or 1 to 2 scoops
+Q1227,3,More than 4 tablespoons or more than 2 scoops
+Q1229,1,1 time in the past month
+Q1229,2,2-3 times in the past month
+Q1229,3,1 time per week
+Q1229,4,2 times per week
+Q1229,5,3-4 times per week
+Q1229,6,5-6 times per week
+Q1229,7,1 time per day
+Q1229,8,2 or more times per day
+Q1230,1,Less than 1 bar
+Q1230,2,1 to 2 bars
+Q1230,3,More than 2 bars
+Q1231,1,Yogurt (NOT including frozen yogurt)
+Q1231,2,Cottage cheese or ricotta cheese
+Q1231,3,"Cheese (including low-fat, on cheeseburgers, or in sandwiches or subs)"
+Q1231,4,Whipped cream
+Q1233,1,1 time in the past month
+Q1233,2,2-3 times in the past month
+Q1233,3,1 time per week
+Q1233,4,2 times per week
+Q1233,5,3-4 times per week
+Q1233,6,5-6 times per week
+Q1233,7,1 time per day
+Q1233,8,2 or more times per day
+Q1234,1,Less than  1/2 cup or less than 1 container
+Q1234,2,1/2 to  3/4 cup or 1 container
+Q1234,3,More than  3/4 cup or more than 1 container
+Q1235,1,Almost never or never
+Q1235,2,About  1/4 of the time
+Q1235,3,About  1/2 of the time
+Q1235,4,About  3/4 of the time
+Q1235,5,Almost always or always
+Q1237,1,1 time in the past month
+Q1237,2,2-3 times in the past month
+Q1237,3,1 time per week
+Q1237,4,2 times per week
+Q1237,5,3-4 times per week
+Q1237,6,5-6 times per week
+Q1237,7,1 time per day
+Q1237,8,2 or more times per day
+Q1238,1,Less than  1/4 cup
+Q1238,2,1/4 to  3/4 cup
+Q1238,3,More than  3/4 cup
+Q1240,1,1 time in the past month
+Q1240,2,2-3 times in the past month
+Q1240,3,1 time per week
+Q1240,4,2 times per week
+Q1240,5,3-4 times per week
+Q1240,6,5-6 times per week
+Q1240,7,1 time per day
+Q1240,8,2 or more times per day
+Q1241,1,Less than  1/2 ounce or less than 1 slice
+Q1241,2,1/2 to 1 1/2 ounces or 1 slice
+Q1241,3,More than 1 1/2 ounces or more than 1 slice
+Q1242,1,Almost never or never
+Q1242,2,About  1/4 of the time
+Q1242,3,About  1/2 of the time
+Q1242,4,About  3/4 of the time
+Q1242,5,Almost always or always
+Q1244,1,1 time in the past month
+Q1244,2,2-3 times in the past month
+Q1244,3,1 time per week
+Q1244,4,2 times per week
+Q1244,5,3-4 times per week
+Q1244,6,5-6 times per week
+Q1244,7,1 time per day
+Q1244,8,2 or more times per day
+Q1245,1,Less than  1/2 tablespoon
+Q1245,2,1/2 to 1 tablespoon
+Q1245,3,More than 1 tablespoon
+Q1246,1,Almost never or never
+Q1246,2,About  1/4 of the time
+Q1246,3,About  1/2 of the time
+Q1246,4,About  3/4 of the time
+Q1246,5,Almost always or always
+Q1247,1,"Frozen yogurt, sorbet, or ices"
+Q1247,2,"Ice cream, ice cream bars, or sherbet (including light, low-fat, or fat-free)"
+Q1247,3,Cake (all kinds)
+Q1247,4,Pie (all kinds)
+Q1247,5,Cookies (all kinds)
+Q1247,6,Brownies (all kinds)
+Q1247,7,"Doughnuts, sweet rolls, Danish, or Pop-Tarts"
+Q1247,8,Sweet muffins or dessert breads (all kinds)
+Q1247,9,Pudding or custard
+Q1247,10,"Chocolate bar or chocolate candy (such as M&Ms, Kit Kat, Mr. Goodbar, etc.)"
+Q1247,11,Other types of candy
+Q1249,1,1 time in the past month
+Q1249,2,2-3 times in the past month
+Q1249,3,1 time per week
+Q1249,4,2 times per week
+Q1249,5,3-4 times per week
+Q1249,6,5-6 times per week
+Q1249,7,1 time per day
+Q1249,8,2 or more times per day
+Q1250,1,Less than  1/2 cup or less than 1 scoop
+Q1250,2,1/2 to 1 1/2 cups or 1 to 2 scoops
+Q1250,3,More than 1 1/2 cups or more than 2 scoops
+Q1252,1,1 time in the past month
+Q1252,2,2-3 times in the past month
+Q1252,3,1 time per week
+Q1252,4,2 times per week
+Q1252,5,3-4 times per week
+Q1252,6,5-6 times per week
+Q1252,7,1 time per day
+Q1252,8,2 or more times per day
+Q1253,1,Less than  1/2 cup or less than 1 scoop
+Q1253,2,1/2 to 1 1/2 cups or 1 to 2 scoops
+Q1253,3,More than 1 1/2 cups or more than 2 scoops
+Q1254,1,Almost never or never
+Q1254,2,About  1/4 of the time
+Q1254,3,About  1/2 of the time
+Q1254,4,About  3/4 of the time
+Q1254,5,Almost always or always
+Q1256,1,1 time in the past month
+Q1256,2,2-3 times in the past month
+Q1256,3,1 time per week
+Q1256,4,2 times per week
+Q1256,5,3-4 times per week
+Q1256,6,5-6 times per week
+Q1256,7,1 time per day
+Q1256,8,2 or more times per day
+Q1257,1,Less than 1 medium or less than  1/8 of a cake
+Q1257,2,1 medium piece or  1/8 of a cake
+Q1257,3,More than 1 medium piece or more than  1/8 of a cake
+Q1259,1,1 time in the past month
+Q1259,2,2-3 times in the past month
+Q1259,3,1 time per week
+Q1259,4,2 times per week
+Q1259,5,3-4 times per week
+Q1259,6,5-6 times per week
+Q1259,7,1 time per day
+Q1259,8,2 or more times per day
+Q1260,1,Less than 1 medium or less than  1/8 of a cake
+Q1260,2,1 medium piece or  1/8 of a cake
+Q1260,3,More than 1 medium piece or more than  1/8 of a cake
+Q1261,1,Almost never or never
+Q1261,2,About  1/4 of the time
+Q1261,3,About  1/2 of the time
+Q1261,4,About  3/4 of the time
+Q1261,5,Almost always or always
+Q1262,1,Almost never or never
+Q1262,2,About  1/4 of the time
+Q1262,3,About  1/2 of the time
+Q1262,4,About  3/4 of the time
+Q1262,5,Almost always or always
+Q1264,1,1 time in the past month
+Q1264,2,2-3 times in the past month
+Q1264,3,1 time per week
+Q1264,4,2 times per week
+Q1264,5,3-4 times per week
+Q1264,6,5-6 times per week
+Q1264,7,1 time per day
+Q1264,8,2 or more times per day
+Q1265,1,Fewer than 2 cookies
+Q1265,2,2 to 4 cookies
+Q1265,3,More than 4 cookies
+Q1267,1,1 time in the past month
+Q1267,2,2-3 times in the past month
+Q1267,3,1 time per week
+Q1267,4,2 times per week
+Q1267,5,3-4 times per week
+Q1267,6,5-6 times per week
+Q1267,7,1 time per day
+Q1267,8,2 or more times per day
+Q1268,1,1 small brownie
+Q1268,2,1 medium brownie
+Q1268,3,1 large brownie
+Q1270,1,1 time in the past month
+Q1270,2,2-3 times in the past month
+Q1270,3,1 time per week
+Q1270,4,2 times per week
+Q1270,5,3-4 times per week
+Q1270,6,5-6 times per week
+Q1270,7,1 time per day
+Q1270,8,2 or more times per day
+Q1271,1,Less than 1 piece
+Q1271,2,1 to 2 pieces
+Q1271,3,More than 2 pieces
+Q1273,1,1 time in the past month
+Q1273,2,2-3 times in the past month
+Q1273,3,1 time per week
+Q1273,4,2 times per week
+Q1273,5,3-4 times per week
+Q1273,6,5-6 times per week
+Q1273,7,1 time per day
+Q1273,8,2 or more times per day
+Q1274,1,Less than 1 medium piece
+Q1274,2,1 medium piece
+Q1274,3,More than 1 medium piece
+Q1276,1,1 time in the past month
+Q1276,2,2-3 times in the past month
+Q1276,3,1 time per week
+Q1276,4,2 times per week
+Q1276,5,3-4 times per week
+Q1276,6,5-6 times per week
+Q1276,7,1 time per day
+Q1276,8,2 or more times per day
+Q1277,1,Less than  1/2 cup
+Q1277,2,1/2 to  3/4 cup
+Q1277,3,More than  3/4 cup
+Q1279,1,1 time in the past month
+Q1279,2,2-3 times in the past month
+Q1279,3,1 time per week
+Q1279,4,2 times per week
+Q1279,5,3-4 times per week
+Q1279,6,5-6 times per week
+Q1279,7,1 time per day
+Q1279,8,2 or more times per day
+Q1280,1,Less than 1 square in a bar or less than 1 ounce
+Q1280,2,1 to 2 squares in a bar or 1 to 2 ounces
+Q1280,3,More than 2 squares in a bar or more than 2 ounces
+Q1282,1,1 time in the past month
+Q1282,2,2-3 times in the past month
+Q1282,3,1 time per week
+Q1282,4,2 times per week
+Q1282,5,3-4 times per week
+Q1282,6,5-6 times per week
+Q1282,7,1 time per day
+Q1282,8,2 or more times per day
+Q1283,1,Fewer than 2 pieces
+Q1283,2,2 to 9 pieces
+Q1283,3,More than 9 pieces
+Q1284,1,Margarine
+Q1284,2,Mayonnaise or mayonnaise-type dressing
+Q1284,3,Salad dressing
+Q1286,1,Almost never or never
+Q1286,2,About  1/4 of the time
+Q1286,3,About  1/2 of the time
+Q1286,4,About  3/4 of the time
+Q1286,5,Almost always or always
+Q1288,1,Almost never or never
+Q1288,2,About  1/4 of the time
+Q1288,3,About  1/2 of the time
+Q1288,4,About  3/4 of the time
+Q1288,5,Almost always or always
+Q1290,1,Almost never or never
+Q1290,2,About  1/4 of the time
+Q1290,3,About  1/2 of the time
+Q1290,4,About  3/4 of the time
+Q1290,5,Almost always or always
+Q1291,1,Yes
+Q1291,2,No
+Q1292,1,"Meat (beef, pork, lamb, etc.)"
+Q1292,2,"Poultry (chicken, turkey, duck)"
+Q1292,3,Fish and seafood
+Q1292,4,Eggs
+Q1292,5,"Dairy products (milk, cheese, etc.)"
+Q1293,1,"Multivitamin/mineral (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; NOT including eye health supplements)"
+Q1293,2,"Eye health supplement (such as Ocuvite, PreserVision or I-Caps)"
+Q1293,3,B-complex (NOT as part of a multivitamin)
+Q1293,4,Antacids (such as Tums or Rolaids)
+Q1293,5,B-12 (NOT as part of a multivitamin)
+Q1293,6,B-6 (NOT as part of a multivitamin)
+Q1293,7,Biotin (NOT as part of a multivitamin)
+Q1293,8,Calcium (with or without vitamin D; NOT as part of a multivitamin or antacid)
+Q1293,9,Coenzyme Q
+Q1293,10,Fiber supplement (such as Metamucil or Benefiber)
+Q1293,11,Folate or folic acid  (NOT as part of a multivitamin)
+Q1293,12,Garlic supplement
+Q1293,13,"Joint supplement (such as glucosamine, with or without chondroitin or other ingredients)"
+Q1293,14,Iron (NOT as part of a multivitamin)
+Q1293,15,Magnesium (NOT as part of a multivitamin)
+Q1293,16,Melatonin
+Q1293,17,Niacin (NOT as part of a multivitamin)
+Q1293,18,Omega-3 (ALA/DHA/EPA) or fish oil
+Q1293,19,Potassium (NOT as part of a multivitamin)
+Q1293,20,"Probiotics (in pill, powder, or liquid form)"
+Q1293,21,Saw palmetto
+Q1293,22,Vitamin C (NOT as part of a multivitamin)
+Q1293,23,Vitamin D (NOT as part of a multivitamin or calcium supplement)
+Q1293,24,Vitamin E (NOT as part of a multivitamin)?
+Q1293,25,Zinc (NOT as part of a multivitamin)?
+Q1293,26,Other supplements (NOT as part of a multivitamin)
+Q1295,1,Less than 1 day per month
+Q1295,2,1-3 days per month
+Q1295,3,1-3 days per week
+Q1295,4,4-6 days times per week
+Q1295,5,Everyday
+Q1296,1,Multivitamin
+Q1296,2,Multivitamin for people 50 years of age or older
+Q1296,3,Prenatal multivitamin
+Q1296,4,Don't know
+Q1297,1,No
+Q1297,2,Yes
+Q1297,3,Don't know
+Q1298,1,No
+Q1298,2,Yes
+Q1298,3,Don't know
+Q1299,1,Less than 1
+Q1299,2,1
+Q1299,3,2
+Q1299,4,3
+Q1299,5,4 or more
+Q1299,6,Don't know
+Q1301,1,Less than 1 day per month
+Q1301,2,1-3 days per month
+Q1301,3,1-3 days per week
+Q1301,4,4-6 days per week
+Q1301,5,Everyday
+Q1303,1,Less than 1 day per month
+Q1303,2,1-3 days per month
+Q1303,3,1-3 days per week
+Q1303,4,4-6 days per week
+Q1303,5,Everyday
+Q1305,1,Less than 1 day per month
+Q1305,2,1-3 days per month
+Q1305,3,1-3 days per week
+Q1305,4,4-6 days per week
+Q1305,5,Everyday
+Q1306,1,Less than 1
+Q1306,2,1
+Q1306,3,2
+Q1306,4,3
+Q1306,5,4 or more
+Q1306,6,Don't know
+Q1307,1,Regular Strength
+Q1307,2,Extra Strength
+Q1307,3,Ultra Strength
+Q1307,4,Don't know
+Q1309,1,Less than 1 day per month
+Q1309,2,1-3 days per month
+Q1309,3,1-3 days per week
+Q1309,4,4-6 days per week
+Q1309,5,Everyday
+Q1310,1,Less than 300 mcg
+Q1310,2,300 - 999 mcg
+Q1310,3,"1,000 - 1,999 mcg"
+Q1310,4,"2,000 mcg or more"
+Q1310,5,Don't know
+Q1312,1,Less than 1 day per month
+Q1312,2,1-3 days per month
+Q1312,3,1-3 days per week
+Q1312,4,4-6 days per week
+Q1312,5,Everyday
+Q1313,1,Less than 50 mg
+Q1313,2,50 - 99 mg
+Q1313,3,100 - 199 mg
+Q1313,4,200 mg or more
+Q1313,5,Don't know
+Q1315,1,Less than 1 day per month
+Q1315,2,1-3 days per month
+Q1315,3,1-3 days per week
+Q1315,4,4-6 days per week
+Q1315,5,Everyday
+Q1317,1,Less than 1 day per month
+Q1317,2,1-3 days per month
+Q1317,3,1-3 days per week
+Q1317,4,4-6 days times per week
+Q1317,5,Everyday
+Q1318,1,Less than 500 mg
+Q1318,2,500 - 599 mg
+Q1318,3,600 -999 mg
+Q1318,4,1000 - 1199 mg
+Q1318,5,1200 mg or more
+Q1318,6,Don't know
+Q1319,1,No
+Q1319,2,Yes
+Q1319,3,Don't know
+Q1320,1,No
+Q1320,2,Yes
+Q1320,3,Don't know
+Q1321,1,No
+Q1321,2,Yes
+Q1321,3,Don't know
+Q1323,1,Less than 1 day per month
+Q1323,2,1-3 days per month
+Q1323,3,1-3 days per week
+Q1323,4,4-6 days per week
+Q1323,5,Everyday
+Q1325,1,Less than 1 day per month
+Q1325,2,1-3 days per month
+Q1325,3,1-3 days per week
+Q1325,4,4-6 days per week
+Q1325,5,Everyday
+Q1327,1,Less than 1 day per month
+Q1327,2,1-3 days per month
+Q1327,3,1-3 days per week
+Q1327,4,4-6 days per week
+Q1327,5,Everyday
+Q1328,1,Less than 400 mcg
+Q1328,2,400 - 599 mcg
+Q1328,3,600 - 799 mcg
+Q1328,4,800 - 999 mcg
+Q1328,5,"1,000 mcg or more"
+Q1328,6,Don't know
+Q1330,1,Less than 1 day per month
+Q1330,2,1-3 days per month
+Q1330,3,1-3 days per week
+Q1330,4,4-6 days per week
+Q1330,5,Everyday
+Q1332,1,Less than 1 day per month
+Q1332,2,1-3 days per month
+Q1332,3,1-3 days per week
+Q1332,4,4-6 days per week
+Q1332,5,Everyday
+Q1334,1,Less than 1 day per month
+Q1334,2,1-3 days per month
+Q1334,3,1-3 days per week
+Q1334,4,4-6 days per week
+Q1334,5,Everyday
+Q1335,1,Less than 20 mg
+Q1335,2,20 - 29 mg
+Q1335,3,30 - 64 mg
+Q1335,4,65 - 89 mg
+Q1335,5,90 -149 mg
+Q1335,6,150 mg or more
+Q1335,7,Don't know
+Q1337,1,Less than 1 day per month
+Q1337,2,1-3 days per month
+Q1337,3,1-3 days per week
+Q1337,4,4-6 days per week
+Q1337,5,Everyday
+Q1338,1,Less than 250 mg
+Q1338,2,250 - 399 mg
+Q1338,3,400 - 999 mg
+Q1338,4,500 mg or more
+Q1338,5,Don't know
+Q1340,1,Less than 1 day per month
+Q1340,2,1-3 days per month
+Q1340,3,1-3 days per week
+Q1340,4,4-6 days per week
+Q1340,5,Everyday
+Q1342,1,Less than 1 day per month
+Q1342,2,1-3 days per month
+Q1342,3,1-3 days per week
+Q1342,4,4-6 days per week
+Q1342,5,Everyday
+Q1343,1,Less than 300 mg
+Q1343,2,300 - 499 mg
+Q1343,3,500 - 999 mg
+Q1343,4,"1,000 mg or more"
+Q1343,5,Don't know
+Q1345,1,Less than 1 day per month
+Q1345,2,1-3 days per month
+Q1345,3,1-3 days per week
+Q1345,4,4-6 days times per week
+Q1345,5,Everyday
+Q1347,1,Less than 1 day per month
+Q1347,2,1-3 days per month
+Q1347,3,1-3 days per week
+Q1347,4,4-6 days per week
+Q1347,5,Everyday
+Q1348,1,Less than 95 mg
+Q1348,2,95 - 349 mg
+Q1348,3,350 - 749 mg
+Q1348,4,750 mg or more
+Q1348,5,Don't know
+Q1350,1,Less than 1 day per month
+Q1350,2,1-3 days per month
+Q1350,3,1-3 days per week
+Q1350,4,4-6 days per week
+Q1350,5,Everyday
+Q1352,1,Less than 1 day per month
+Q1352,2,1-3 days per month
+Q1352,3,1-3 days per week
+Q1352,4,4-6 days per week
+Q1352,5,Everyday
+Q1354,1,Less than 1 day per month
+Q1354,2,1-3 days per month
+Q1354,3,1-3 days per week
+Q1354,4,4-6 days per week
+Q1354,5,Everyday
+Q1355,1,Less than 500 mg
+Q1355,2,500 - 999 mg
+Q1355,3,"1,000 - 1,499 mg"
+Q1355,4,"1,500 mg or more"
+Q1355,5,Don't know
+Q1357,1,Less than 1 day per month
+Q1357,2,1-3 days per month
+Q1357,3,1-3 days per week
+Q1357,4,4-6 days per week
+Q1357,5,Everyday
+Q1358,1,Less than 400 IU
+Q1358,2,400 - 799 IU
+Q1358,3,"800 - 1,999 IU"
+Q1358,4,"2,000 - 4,999 IU"
+Q1358,5,"5,000 IU or more"
+Q1358,6,Don't know
+Q1360,1,Less than 1 day per month
+Q1360,2,1-3 days per month
+Q1360,3,1-3 days per week
+Q1360,4,4-6 days per week
+Q1360,5,Everyday
+Q1361,1,Less than 400 IU
+Q1361,2,400 - 999 IU
+Q1361,3,"1,000 IU or more"
+Q1361,4,Don't know
+Q1363,1,Less than 1 day per month
+Q1363,2,1-3 days per month
+Q1363,3,1-3 days per week
+Q1363,4,4-6 days per week
+Q1363,5,Everyday
+Q1364,1,Less than 20 mg
+Q1364,2,20 - 49 mg
+Q1364,3,50 mg or more
+Q1364,4,Don't know
+Q1366,1,Cinnamon
+Q1366,2,Cranberry
+Q1366,3,Creatine
+Q1366,4,Echinacea
+Q1366,5,Fluoride
+Q1366,6,Ginkgo
+Q1366,7,Ginseng
+Q1366,8,Lecithin
+Q1366,9,Plant sterols
+Q1366,10,Red yeast
+Q1366,11,Thiamin
+Q1366,12,Turmeric
+Q1366,13,Vitamin A

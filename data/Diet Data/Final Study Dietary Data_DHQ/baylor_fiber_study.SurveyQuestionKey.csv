@@ -1,0 +1,488 @@
+Question ID,Question Format Description,Question Format Code,Question Set,Question Prompt
+Q704,Month&Year (YYYYMM),10,About you,In what month and year were you born?
+Q705,Radio Button (code),0,About you,Are you male or female?
+Q706,Checkbox Index (delimited codes),7,What <b>beverages</b> did you drink?,Please check the box next to each beverage that you drank at least once in the past month.
+Q708,Radio Button (code),0,Tomato juice or vegetable juice,"Over the past month</u>, how often did you drink tomato juice or vegetable juice?"
+Q709,Radio Button (code),0,Tomato juice or vegetable juice,"Each time you drank tomato juice or vegetable juice, how much did you usually drink?"
+Q711,Radio Button (code),0,Orange juice or grapefruit juice,"Over the past month</u>, how often did you drink orange juice or grapefruit juice?"
+Q712,Radio Button (code),0,Orange juice or grapefruit juice,"Each time you drank orange juice or grapefruit juice, how much did you usually drink?"
+Q713,Radio Button (code),0,Orange juice or grapefruit juice,How often was the orange juice or grapefruit juice you drank calcium-fortified?
+Q715,Radio Button (code),0,Grape juice,"Over the past month</u>, how often did you drink grape juice?"
+Q716,Radio Button (code),0,Grape juice,"Each time you drank grape juice, how much did you usually drink?"
+Q718,Radio Button (code),0,"Other 100% fruit juices or 100% fruit juice mixtures (such as apple, pineapple, or others)","Over the past month</u>, how often did you drink other 100% fruit juice or 100% fruit juice mixtures (such as apple, pineapple, or others)?"
+Q719,Radio Button (code),0,"Other 100% fruit juices or 100% fruit juice mixtures (such as apple, pineapple, or others)","Each time you drank other 100% fruit juice or 100% fruit juice mixtures, how much did you usually drink?"
+Q721,Radio Button (code),0,Fruit or vegetable smoothies,"Over the past month</u>, how often did you drink fruit or vegetable smoothies?"
+Q722,Radio Button (code),0,Fruit or vegetable smoothies,"Each time you drank fruit or vegetable smoothies, how much did you usually drink?"
+Q724,Radio Button (code),0,"Other fruit drinks, regular or diet (such as Hi-C, fruit punch, lemonade, or cranberry cocktail)","Over the past month</u>, how often did you drink other fruit drinks, regular or diet (such as Hi-C, fruit punch, lemonade, or cranberry cocktail)?"
+Q725,Radio Button (code),0,"Other fruit drinks, regular or diet (such as Hi-C, fruit punch, lemonade, or cranberry cocktail)","Each time you drank other fruit drinks, how much did you usually drink?"
+Q726,Radio Button (code),0,"Other fruit drinks, regular or diet (such as Hi-C, fruit punch, lemonade, or cranberry cocktail)",How often were your other fruit drinks diet or sugar-free?
+Q728,Radio Button (code),0,"Milk as a beverage (NOT in coffee, tea, or cereal; including soy, rice, almond, and coconut milk; <i>NOT including chocolate milk, hot chocolate, and milkshake</i>)","Over the past month</u>, how often did you drink milk as a beverage  (NOT in coffee, tea, or cereal;  including soy, rice, almond, and coconut milk; NOT including chocolate milk, hot chocolate, and milkshake)?"
+Q729,Radio Button (code),0,"Milk as a beverage (NOT in coffee, tea, or cereal; including soy, rice, almond, and coconut milk; <i>NOT including chocolate milk, hot chocolate, and milkshake</i>)","Each time you drank milk as a beverage, how much did you usually drink?"
+Q730,Radio Button (code),0,"Milk as a beverage (NOT in coffee, tea, or cereal; including soy, rice, almond, and coconut milk; <i>NOT including chocolate milk, hot chocolate, and milkshake</i>)",What kind of milk did you usually drink?
+Q732,Radio Button (code),0,Chocolate milk or hot chocolate,"Over the past month</u>, how often did you drink chocolate milk or hot chocolate?"
+Q733,Radio Button (code),0,Chocolate milk or hot chocolate,"Each time you drank chocolate milk or hot chocolate, how much did you usually drink?"
+Q734,Radio Button (code),0,Chocolate milk or hot chocolate,How often was the chocolate milk or hot chocolate reduced-fat or fat-free?
+Q736,Radio Button (code),0,Milkshakes,"Over the past month</u>, how often did you drink milkshakes?"
+Q737,Radio Button (code),0,Milkshakes,"Each time you drank milkshakes, how much did you usually drink?"
+Q739,Radio Button (code),0,"Meal replacement or high-protein beverages (such as Ensure, Boost, Muscle Milk, Slimfast, Instant Breakfast, or others; <i>NOT including any added protein powder</i>)","Over the past month</u>, how often did you drink meal replacement or high-protein beverages (such as Ensure, Boost, Muscle Milk, Slimfast, Instant Breakfast, or others; NOT including any added protein powder)?"
+Q740,Radio Button (code),0,"Meal replacement or high-protein beverages (such as Ensure, Boost, Muscle Milk, Slimfast, Instant Breakfast, or others; <i>NOT including any added protein powder</i>)","Each time you drank meal replacement or high-protein beverages, how much did you usually drink?"
+Q742,Radio Button (code),0,Soda or pop,"Over the past month</u>, how often did you drink soda or pop?"
+Q743,Radio Button (code),0,Soda or pop,"Each time you drank soda or pop, how much did you usually drink?"
+Q744,Radio Button (code),0,Soda or pop,How often were these sodas or pops diet or sugar-free?
+Q745,Radio Button (code),0,Soda or pop,How often were these sodas or pops caffeine-free?
+Q747,Radio Button (code),0,"Sports drinks (such as Gatorade, Powerade, or Propel)","Over the past month</u>, how often did you drink sports drinks (such as Gatorade, Powerade, or Propel)?"
+Q748,Radio Button (code),0,"Sports drinks (such as Gatorade, Powerade, or Propel)","Each time you drank sports drinks, how much did you usually drink?"
+Q750,Radio Button (code),0,Energy drinks (such as Red Bull or Jolt),"Over the past month</u>, how often did you drink energy drinks (such as Red Bull or Jolt)?"
+Q751,Radio Button (code),0,Energy drinks (such as Red Bull or Jolt),"Each time you drank energy drinks, how much did you usually drink?"
+Q753,Radio Button (code),0,"Water (including tap, bottled, and carbonated water; <i>NOT including vitamin water</i>)","Over the past month</u>, how often did you drink water (including tap, bottled, and carbonated water; NOT including vitamin water)?"
+Q754,Radio Button (code),0,"Water (including tap, bottled, and carbonated water; <i>NOT including vitamin water</i>)","Each time you drank water, how much did you usually drink?"
+Q755,Radio Button (code),0,"Water (including tap, bottled, and carbonated water; <i>NOT including vitamin water</i>)",How often was the water you drank tap water?
+Q756,Radio Button (code),0,"Water (including tap, bottled, and carbonated water; <i>NOT including vitamin water</i>)","How often was the water you drank bottled, sweetened water, regular or diet (including carbonated water)?"
+Q757,Radio Button (code),0,"Water (including tap, bottled, and carbonated water; <i>NOT including vitamin water</i>)","How often was the water you drank bottled, unsweetened water (including carbonated water)?"
+Q759,Radio Button (code),0,"Vitamin water (such as SoBe, Propel Zero, or Glaceau Water)","Over the past month</u>, how often did you drink vitamin water (such as SoBe, Propel Zero, or Glaceau Water)?"
+Q760,Radio Button (code),0,"Vitamin water (such as SoBe, Propel Zero, or Glaceau Water)","Each time you drank vitamin water, how much did you usually drink?"
+Q762,Radio Button (code),0,Beer,"Over the past month</u>, how often did you drink beer?"
+Q763,Radio Button (code),0,Beer,"Each time you drank beer, how much did you usually drink?"
+Q764,Radio Button (code),0,Beer,How often was the beer you drank light beer?
+Q766,Radio Button (code),0,Wine or wine cooler,"Over the past month</u>, how often did you drink wine or wine cooler?"
+Q767,Radio Button (code),0,Wine or wine cooler,"Each time you drank wine or wine cooler, how much did you usually drink?"
+Q769,Radio Button (code),0,Liquor or mixed drinks,"Over the past month</u>, how often did you drink liquor or mixed drinks?"
+Q770,Radio Button (code),0,Liquor or mixed drinks,"Each time you drank liquor or mixed drinks, how much did you usually drink?"
+Q772,Radio Button (code),0,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; <i>NOT including espresso drinks such as latte, mocha, etc.)</i>","Over the past month</u>, how many cups of coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; NOT including espresso drinks such as latte, mocha, etc.), did you drink?"
+Q773,Radio Button (code),0,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; <i>NOT including espresso drinks such as latte, mocha, etc.)</i>",How often was the coffee you drank brewed coffee?
+Q774,Radio Button (code),0,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; <i>NOT including espresso drinks such as latte, mocha, etc.)</i>",How often was the coffee you drank instant coffee?
+Q775,Radio Button (code),0,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; <i>NOT including espresso drinks such as latte, mocha, etc.)</i>",How often was the coffee your drank plain espresso shots?
+Q776,Radio Button (code),0,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; <i>NOT including espresso drinks such as latte, mocha, etc.)</i>",How often was the coffee your drank decaffeinated?
+Q777,Radio Button (code),0,"Coffee, caffeinated or decaffeinated (including brewed coffee, instant coffee, or espresso shots; <i>NOT including espresso drinks such as latte, mocha, etc.)</i>",How often was the coffee you drank dark roasted?
+Q779,Radio Button (code),0,"Espresso drink mixtures, caffeinated or decaffeinated (including latte, mocha, cappuccino, etc.)","How often did you drink espresso drink mixtures, caffeinated or decaffeinated (including latte, mocha, cappuccino, etc.)?"
+Q780,Radio Button (code),0,"Espresso drink mixtures, caffeinated or decaffeinated (including latte, mocha, cappuccino, etc.)","Each time you drank espresso drink mixtures, how much did you usually drink?"
+Q781,Radio Button (code),0,"Espresso drink mixtures, caffeinated or decaffeinated (including latte, mocha, cappuccino, etc.)",How often were the espresso drink mixtures you drank decaffeinated?
+Q783,Radio Button (code),0,"COLD or ICED tea, caffeinated or decaffeinated (<i>NOT including herbal or green tea</i>)","Over the past month</u>, how many glasses, cans, or bottles of COLD or ICED tea, caffeinated or decaffeinated (NOT including herbal or green tea), did you drink?"
+Q784,Radio Button (code),0,"COLD or ICED tea, caffeinated or decaffeinated (<i>NOT including herbal or green tea</i>)",How often was the cold or iced tea you drank decaffeinated?
+Q785,Radio Button (code),0,"COLD or ICED tea, caffeinated or decaffeinated (<i>NOT including herbal or green tea</i>)","How often was the cold or iced tea you drank presweetened with either sugar or artificial sweeteners (such as Splenda, Equal, Sweet'N Low or others)?"
+Q786,Radio Button (code),0,"COLD or ICED tea, caffeinated or decaffeinated (<i>NOT including herbal or green tea</i>)",What kind of sweetener was usually added to your presweetened cold or iced tea?
+Q788,Radio Button (code),0,"HOT tea, caffeinated or decaffeinated <i>(NOT including herbal or green tea</i>)","Over the past month</u>, how many cups of HOT tea, caffeinated or decaffeinated (NOT including herbal or green tea), did you drink?"
+Q789,Radio Button (code),0,"HOT tea, caffeinated or decaffeinated <i>(NOT including herbal or green tea</i>)",How often was the hot tea you drank decaffeinated?
+Q791,Radio Button (code),0,Green tea,"Over the past month</u>, how many cups of green tea did you drink?"
+Q792,Radio Button (code),0,Green tea,How often was the green tea you drank decaffeinated?
+Q794,Radio Button (code),0,"Herbal or fruit tea (including hibiscus, chamomile, licorice, sassafras, etc.)","Over the past month</u>, how many cups of herbal or fruit tea (including hibiscus, chamomile, licorice, sassafras, etc.) did you drink?"
+Q795,Checkbox Index (delimited codes),7,What did you add to your coffee and tea?,Please check the box next to each item you added to your coffee or tea at least once in the past month.
+Q797,Radio Button (code),0,"Sugar, honey, or other sweeteners","How often did you add sugar, honey, or other sweeteners to your coffee or tea, iced or hot (including green and herbal tea)?"
+Q798,Radio Button (code),0,"Sugar, honey, or other sweeteners","Each time sugar or honey was added to your coffee or tea, how much did you usually eat?"
+Q799,Radio Button (code),0,"Sugar, honey, or other sweeteners","How often did you add artificial sweetener (such as Splenda, Equal, Sweet'N Low, or others) to your coffee or tea (including green and herbal tea)?"
+Q800,Radio Button (code),0,"Sugar, honey, or other sweeteners",What kind of artificial sweetener did you usually use?
+Q801,Radio Button (code),0,"Sugar, honey, or other sweeteners","Each time artificial sweetener was added to your coffee or tea, how much did you usually eat?"
+Q803,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer",How often was non-dairy creamer added to your coffee or tea (including green and herbal tea)?
+Q804,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer","Each time non-dairy creamer was added to your coffee or tea, how much did you usually eat?"
+Q805,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer",What kind of non-dairy creamer did you usually use?
+Q806,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer",How often was cream or half-and-half added to your coffee or tea (including green and herbal tea)?
+Q807,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer","Each time cream or half-and-half was added to your coffee or tea, how much did you usually eat?"
+Q808,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer",What kind of cream or half-and-half did you normally use?
+Q809,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer","How often was milk (including soy, rice, almond, and coconut) added to your coffee or tea (including green and herbal tea)?"
+Q810,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer","Each time milk (including soy, rice, almond, and coconut) was added to your coffee or tea, how much did you usually eat?"
+Q811,Radio Button (code),0,"Cream, milk (including soy, rice, almond, and coconut), or non-dairy creamer",What kind of milk did you usually use?
+Q812,Checkbox Index (delimited codes),7,What <b>fruits</b> have you eaten?,Please check the box next to each food that you ate at least once in the past month.
+Q814,Radio Button (code),0,Applesauce,"Over the past month</u>, how often did you eat applesauce?"
+Q815,Radio Button (code),0,Applesauce,"Each time you ate applesauce, how much did you usually eat?"
+Q817,Radio Button (code),0,Apples,"Over the past month</u>, how often did you eat apples?"
+Q818,Radio Button (code),0,Apples,"Each time you ate apples, how much did you usually eat?"
+Q820,Radio Button (code),0,Bananas,"Over the past month</u>, how often did you eat bananas?"
+Q821,Radio Button (code),0,Bananas,"Each time you ate bananas, how much did you usually eat?"
+Q823,Radio Button (code),0,"Pineapple (fresh, canned, or frozen)","Over the past month</u>, how often did you eat pineapple (fresh, canned, or frozen)?"
+Q824,Radio Button (code),0,"Pineapple (fresh, canned, or frozen)","Each time you ate pineapple, how much did you usually eat?"
+Q826,Radio Button (code),0,"Pears (fresh, canned, or frozen)","Over the past month</u>, how often did you eat pears (fresh, canned, or frozen)?"
+Q827,Radio Button (code),0,"Pears (fresh, canned, or frozen)","Each time you ate pears, how much did you usually eat?"
+Q829,Radio Button (code),0,"Peaches, nectarines, or plums","Over the past month</u>, How often did you eat peaches, nectarines, or plums?"
+Q830,Radio Button (code),0,"Peaches, nectarines, or plums","Each time you ate peaches, nectarines, or plums, how much did you usually eat?"
+Q832,Radio Button (code),0,Dried fruit (such as prunes or raisins),"Over the past month</u>, how often did you eat dried fruit (such as prunes or raisins)?"
+Q833,Radio Button (code),0,Dried fruit (such as prunes or raisins),"Each time you ate dried fruit, how much did you usually eat?"
+Q835,Radio Button (code),0,Grapes,"Over the past month</u>, how often did you eat grapes?"
+Q836,Radio Button (code),0,Grapes,"Each time you ate grapes, how much did you usually eat?"
+Q838,Radio Button (code),0,Cantaloupe,"Over the past month</u>, how often did you eat cantaloupe?"
+Q839,Radio Button (code),0,Cantaloupe,"Each time you ate cantaloupe, how much did you usually eat?"
+Q841,Radio Button (code),0,"Melons, other than cantaloupe (such as watermelon or honeydew)","Over the past month</u>, how often did you eat melons, other than cantaloupe (such as watermelon or honeydew)?"
+Q842,Radio Button (code),0,"Melons, other than cantaloupe (such as watermelon or honeydew)","Each time you ate melons, other than cantaloupe, how much did you usually eat?"
+Q844,Radio Button (code),0,Strawberries,"Over the past month</u>, how often did you eat strawberries?"
+Q845,Radio Button (code),0,Strawberries,"Each time you ate strawberries, how much did you usually eat?"
+Q847,Radio Button (code),0,Blueberries,"Over the past month</u>, how often did you eat blueberries?"
+Q848,Radio Button (code),0,Blueberries,"Each time you ate blueberries, how much did you usually eat?"
+Q850,Radio Button (code),0,"Oranges, tangerines, or clementines","Over the past month</u>, how often did you eat oranges, tangerines, or clementines?"
+Q851,Radio Button (code),0,"Oranges, tangerines, or clementines","Each time you ate oranges, tangerines, or clementines, how much did you usually eat?"
+Q853,Radio Button (code),0,Grapefruit,"Over the past month</u>, how often did you eat grapefruit?"
+Q854,Radio Button (code),0,Grapefruit,"Each time you ate grapefruit, how much did you usually eat?"
+Q856,Radio Button (code),0,Avocado or guacamole,"Over the past month</u>, how often did you eat avocado or guacamole?"
+Q857,Radio Button (code),0,Avocado or guacamole,"Each time you ate avocado or guacamole, how much did you usually eat?"
+Q859,Radio Button (code),0,Other kinds of fruit (not listed above),"Over the past month</u>, how often did you eat other kinds of fruit?"
+Q860,Radio Button (code),0,Other kinds of fruit (not listed above),"Each time you ate other kinds of fruit, how much did you usually eat?"
+Q861,Checkbox Index (delimited codes),7,"What <b>vegetables, potatoes,</b> and <b>beans</b> did you eat?",Please check the box next to each food that you ate at least once in the past month.
+Q863,Radio Button (code),0,"COOKED greens (such as spinach, turnip, collard, mustard, chard, or kale)","Over the past month</u>, how often did you eat COOKED greens (such as spinach, turnip, collard, mustard, chard, or kale)?"
+Q864,Radio Button (code),0,"COOKED greens (such as spinach, turnip, collard, mustard, chard, or kale)","Each time you ate COOKED greens, how much did you usually eat?"
+Q866,Radio Button (code),0,"RAW greens (such as spinach, turnip, collard, chard, kale, watercress, seaweed, mustard greens, beet greens, or dandelion greens)","Over the past month</u>, how often did you eat RAW greens (such as spinach, turnip, collard, chard, kale, watercress, seaweed, mustard greens, beet greens, or dandelion greens)?"
+Q867,Radio Button (code),0,"RAW greens (such as spinach, turnip, collard, chard, kale, watercress, seaweed, mustard greens, beet greens, or dandelion greens)","Each time you ate RAW greens, how much did you usually eat?"
+Q869,Radio Button (code),0,Coleslaw,"Over the past month</u>, how often did you eat coleslaw?"
+Q870,Radio Button (code),0,Coleslaw,"Each time you ate coleslaw, how much did you usually eat?"
+Q872,Radio Button (code),0,Sauerkraut or cabbage (other than coleslaw),"Over the past month</u>, how often did you eat sauerkraut or cabbage (other than coleslaw)?"
+Q873,Radio Button (code),0,Sauerkraut or cabbage (other than coleslaw),"Each time you ate sauerkraut or cabbage, how much did you usually eat?"
+Q875,Radio Button (code),0,"COOKED carrots (including frozen, fresh, or canned)","Over the past month</u>, how often did you eat COOKED carrots (including frozen, fresh, or canned)?"
+Q876,Radio Button (code),0,"COOKED carrots (including frozen, fresh, or canned)","Each time you ate COOKED carrots, how much did you usually eat?"
+Q878,Radio Button (code),0,RAW carrots,"Over the past month</u>, how often did you eat RAW carrots?"
+Q879,Radio Button (code),0,RAW carrots,"Each time you ate RAW carrots, how much did you usually eat?"
+Q881,Radio Button (code),0,"String beans or green beans (fresh, canned, or frozen)","Over the past month</u>, how often did you eat string beans or green beans (fresh, canned, or frozen)?"
+Q882,Radio Button (code),0,"String beans or green beans (fresh, canned, or frozen)","Each time you ate string beans or green beans, how much did you usually eat?"
+Q884,Radio Button (code),0,"Peas (fresh, canned, or frozen)","Over the past month</u>, how often did you eat peas (fresh, canned, or frozen)?"
+Q885,Radio Button (code),0,"Peas (fresh, canned, or frozen)","Each time you ate peas, how much did you usually eat?"
+Q887,Radio Button (code),0,"Corn (fresh, canned, or frozen)","Over the past month</u>, how often did you eat corn (fresh, canned, or frozen)?"
+Q888,Radio Button (code),0,"Corn (fresh, canned, or frozen)","Each time you ate corn, how much did you usually eat?"
+Q890,Radio Button (code),0,Broccoli (fresh or frozen),"Over the past month</u>, how often did you eat broccoli (fresh or frozen)?"
+Q891,Radio Button (code),0,Broccoli (fresh or frozen),"Each time you ate broccoli, how much did you usually eat?"
+Q893,Radio Button (code),0,Cauliflower or Brussels sprouts (fresh or frozen),"Over the past month</u>, how often did you eat cauliflower or Brussels sprouts (fresh or frozen)?"
+Q894,Radio Button (code),0,Cauliflower or Brussels sprouts (fresh or frozen),"Each time you ate cauliflower or Brussels sprouts, how much did you usually eat?"
+Q896,Radio Button (code),0,"Sweet peppers (green, red, or yellow)","Over the past month</u>, how often did you eat sweet peppers (green, red, or yellow)?"
+Q897,Radio Button (code),0,"Sweet peppers (green, red, or yellow)","Each time you ate sweet peppers, how much did you usually eat?"
+Q899,Radio Button (code),0,Onions,"Over the past month</u>, how often did you eat onions?"
+Q900,Radio Button (code),0,Onions,"Each time you ate onions, how much did you usually eat?"
+Q902,Radio Button (code),0,Garlic,"Over the past month</u>, how often did you eat garlic?"
+Q903,Radio Button (code),0,Garlic,"Each time you ate garlic, how much did you usually eat?"
+Q905,Radio Button (code),0,Mixed vegetables,"Over the past month</u>, how often did you eat mixed vegetables?"
+Q906,Radio Button (code),0,Mixed vegetables,"Each time you ate mixed vegetables, how much did you usually eat?"
+Q907,Radio Button (code),0,Fats added during cooking,"Now think about all the COOKED vegetables (NOT including potatoes) you ate in the past month</u> and how they were prepared.  How often were your vegetables COOKED WITH some sort of fat, including oil spray?"
+Q908,Checkbox (delimited codes),1,Fats added during cooking,Which fats were usually added to your cooked vegetables DURING COOKING? Mark all that apply.
+Q909,Radio Button (code),0,Fats added during cooking,"When margarine or butter was added to your cooked vegetables DURING COOKING, how much did you usually eat?"
+Q910,Radio Button (code),0,Fats added during cooking,"When olive oil or other oils were added to your cooked vegetables DURING COOKING, how much did you usually eat?"
+Q911,Radio Button (code),0,Fats added after cooking,"Now, thinking again about all the COOKED vegetables (NOT including potatoes) you ate in the past month</u>, how often was some sort of fat or dressing added AFTER COOKING OR AT THE TABLE?"
+Q912,Checkbox (delimited codes),1,Fats added after cooking,Which fat or dressing were usually added AFTER COOKING OR AT THE TABLE? Mark all that apply.
+Q913,Radio Button (code),0,Fats added after cooking,"When margarine or butter was added to your cooked vegetables AFTER COOKING OR AT THE TABLE, how much did you usually eat?"
+Q914,Radio Button (code),0,Fats added after cooking,"When salad dressing was added to your cooked vegetables AFTER COOKING OR AT THE TABLE, how much did you usually eat?"
+Q916,Radio Button (code),0,Lettuce salads (with or without other vegetables),"Over the past month</u>, how often did you eat lettuce salads (with or without other vegetables)?"
+Q917,Radio Button (code),0,Lettuce salads (with or without other vegetables),"Each time you ate lettuce salads, how much did you usually eat?"
+Q918,Radio Button (code),0,Lettuce salads (with or without other vegetables),"How often did these lettuce salads you ate include dark green lettuce (such as endive, chicory, escarole, romaine, or arugula)?"
+Q920,Radio Button (code),0,Salad dressing on salads (including low-fat or fat-free),"Over the past month</u>, how often did you eat salad dressing on salads (including low-fat or fat-free)?"
+Q921,Radio Button (code),0,Salad dressing on salads (including low-fat or fat-free),"Each time you ate salad dressing on salads, how much did you usually eat?"
+Q923,Radio Button (code),0,"Mayonnaise on salads (including low-fat, diet, or light)","Over the past month</u>, how often did you eat mayonnaise on salads (including low-fat, diet, or light)?"
+Q924,Radio Button (code),0,"Mayonnaise on salads (including low-fat, diet, or light)","Each time you ate mayonnaise on salads, how much did you usually eat?"
+Q926,Radio Button (code),0,Fresh tomatoes (including those in salads),"Over the past month</u>, how often did you eat fresh tomatoes (including those in salads)?"
+Q927,Radio Button (code),0,Fresh tomatoes (including those in salads),"Each time you ate fresh tomatoes, how much did you usually eat?"
+Q929,Radio Button (code),0,Salsa,"Over the past month</u>, how often did you eat salsa?"
+Q930,Radio Button (code),0,Salsa,"Each time you ate salsa, how much did you usually eat?"
+Q932,Radio Button (code),0,Catsup or ketchup,"Over the past month</u>, how often did you eat catsup or ketchup?"
+Q933,Radio Button (code),0,Catsup or ketchup,"Each time you ate catsup or ketchup, how much did you usually eat?"
+Q935,Radio Button (code),0,Sweet potatoes or yams,"Over the past month</u>, how often did you eat sweet potatoes or yams?"
+Q936,Radio Button (code),0,Sweet potatoes or yams,"Each time you ate sweet potatoes or yams, how much did you usually eat?"
+Q938,Radio Button (code),0,"French fries, home fries, hash browned potatoes, or Tater Tots","Over the past month</u>, how often did you eat French fries, home fries, hash browned potatoes, or Tater Tots?"
+Q939,Radio Button (code),0,"French fries, home fries, hash browned potatoes, or Tater Tots","Each time you ate French fries, home fries, hash browned potatoes, or Tater Tots, how much did you usually eat?"
+Q941,Radio Button (code),0,Potato salad,"Over the past month</u>, how often did you eat potato salad?"
+Q942,Radio Button (code),0,Potato salad,"Each time you ate potato salad, how much did you usually eat?"
+Q944,Radio Button (code),0,"Baked, boiled, or mashed potatoes","Over the past month</u>, how often did you eat baked, boiled, or mashed potatoes?"
+Q945,Radio Button (code),0,"Baked, boiled, or mashed potatoes","Each time you ate baked, boiled, or mashed potatoes, how much did you usually eat?"
+Q946,Radio Button (code),0,"Baked, boiled, or mashed potatoes",How often were the potatoes you ate mashed?
+Q947,Radio Button (code),0,"Baked, boiled, or mashed potatoes","How often was sour cream (including low-fat, diet, or light) added to your potatoes, EITHER IN COOKING OR AT THE TABLE?"
+Q948,Radio Button (code),0,"Baked, boiled, or mashed potatoes","Each time sour cream was added to your potatoes, how much did you usually eat?"
+Q949,Radio Button (code),0,"Baked, boiled, or mashed potatoes","How often was margarine (including low-fat, diet, or light) added to your potatoes, EITHER IN COOKING OR AT THE TABLE?"
+Q950,Radio Button (code),0,"Baked, boiled, or mashed potatoes","How often was butter (including low-fat, diet, or light) added to your potatoes, EITHER IN COOKING OR AT THE TABLE?"
+Q951,Radio Button (code),0,"Baked, boiled, or mashed potatoes","Each time margarine or butter was added to your potatoes, how much did you usually eat?"
+Q953,Radio Button (code),0,"Cooked dried or canned beans (such as baked beans, pintos, kidney, black-eyed peas, lima, lentils, soybeans, or refried beans; <i>NOT including bean soups or chili</i>)","Over the past month</u>, how often did you eat cooked dried or canned beans (such as baked beans, pintos, lentils, kidney, black-eyed peas, lima, soybeans, or refried beans; NOT including bean soups or chili)?"
+Q954,Radio Button (code),0,"Cooked dried or canned beans (such as baked beans, pintos, kidney, black-eyed peas, lima, lentils, soybeans, or refried beans; <i>NOT including bean soups or chili</i>)","Each time you ate cooked dried or canned beans, how much did you usually eat?"
+Q955,Radio Button (code),0,"Cooked dried or canned beans (such as baked beans, pintos, kidney, black-eyed peas, lima, lentils, soybeans, or refried beans; <i>NOT including bean soups or chili</i>)",How often were the cooked dried or canned beans you ate refried beans?
+Q957,Radio Button (code),0,Other kinds of vegetables (not listed above),"Over the past month</u>, how often did you eat other kinds of vegetables?"
+Q958,Radio Button (code),0,Other kinds of vegetables (not listed above),"Each time you ate other kinds of vegetables, how much did you usually eat?"
+Q959,Checkbox Index (delimited codes),7,"What <b>soups, chili, tacos, burritos, tortillas, etc.</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q961,Radio Button (code),0,Soups,"Over the past month</u>, how often did you eat soups?"
+Q962,Radio Button (code),0,Soups,"Each time you ate soups, how much did you usually eat?"
+Q963,Radio Button (code),0,Soups,How often were the soups you ate bean soups?
+Q964,Radio Button (code),0,Soups,How often were the soups you ate tomato or vegetable soups?
+Q965,Radio Button (code),0,Soups,How often were the soups you ate broth soups (including chicken ) with or without noodles or rice?
+Q967,Radio Button (code),0,Chili,"Over the past month</u>, how often did you eat chili?"
+Q968,Radio Button (code),0,Chili,"Each time you ate chili, how much did you usually eat?"
+Q970,Radio Button (code),0,"Tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas","Over the past month</u>, how often did you eat tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas?"
+Q971,Radio Button (code),0,"Tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas",How often did you eat burritos?
+Q972,Radio Button (code),0,"Tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas",How often did you eat tacos?
+Q973,Radio Button (code),0,"Tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas","Each time you ate burritos or tacos, how much did you usually eat?"
+Q975,Radio Button (code),0,Corn or wheat tortillas,"How often did you usually eat corn or wheat tortillas, not including in tacos, tostados, burritos, tamales, fajitas, enchiladas, quesadillas, or chimichangas?"
+Q976,Radio Button (code),0,Corn or wheat tortillas,"Each time you ate corn or wheat tortillas, how many did you usually eat?"
+Q977,Radio Button (code),0,Corn or wheat tortillas,How often were the tortillas you ate corn tortillas?
+Q978,Checkbox Index (delimited codes),7,"What <b>rice, pasta,</b> and <b>pizza</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q980,Radio Button (code),0,"Rice or other cooked grains (such as bulgur, cracked wheat, or millet; <i>NOT including sushi)</i>","Over the past month</u>, how often did you eat rice or other cooked grains (such as bulgur, cracked wheat, or millet; NOT including sushi)?"
+Q981,Radio Button (code),0,"Rice or other cooked grains (such as bulgur, cracked wheat, or millet; <i>NOT including sushi)</i>","Each time you ate rice or other cooked grains, how much did you usually eat?"
+Q982,Radio Button (code),0,"Rice or other cooked grains (such as bulgur, cracked wheat, or millet; <i>NOT including sushi)</i>",How often was the rice or other cooked grains you ate whole grain?
+Q984,Radio Button (code),0,Sushi,"Over the past month</u>, how often did you eat sushi?"
+Q985,Radio Button (code),0,Sushi,"Each time you ate sushi, how much did you usually eat?"
+Q987,Radio Button (code),0,"Lasagna, stuffed shells, stuffed manicotti, ravioli, or tortellini (including gluten-free; <i>NOT including spaghetti or other pasta</i>)","Over the past month</u>, how often did you eat lasagna, stuffed shells, stuffed manicotti, ravioli, or tortellini (including gluten-free; NOT including spaghetti or other pasta)?"
+Q988,Radio Button (code),0,"Lasagna, stuffed shells, stuffed manicotti, ravioli, or tortellini (including gluten-free; <i>NOT including spaghetti or other pasta</i>)","Each time you ate lasagna, stuffed shells, stuffed manicotti, ravioli, or tortellini, how much did you usually eat?"
+Q990,Radio Button (code),0,Macaroni and cheese (including gluten-free),"Over the past month</u>, how often did you eat macaroni and cheese (including gluten-free)?"
+Q991,Radio Button (code),0,Macaroni and cheese (including gluten-free),"Each time you ate macaroni and cheese, how much did you usually eat?"
+Q993,Radio Button (code),0,Pasta salad or macaroni salad (including gluten-free),"Over the past month</u>, how often did you eat pasta salad or macaroni salad (including gluten-free)?"
+Q994,Radio Button (code),0,Pasta salad or macaroni salad (including gluten-free),"Each time you ate pasta salad or macaroni salad, how much did you usually eat?"
+Q996,Radio Button (code),0,"Pasta, spaghetti, or other noodles (other than those listed above; including gluten-free)","Other than the pastas listed previously, over the past month</u>, how often did you eat pasta, spaghetti, or other noodles (including gluten-free)?"
+Q997,Radio Button (code),0,"Pasta, spaghetti, or other noodles (other than those listed above; including gluten-free)","Each time you ate pasta, spaghetti, or other noodles, how much did you usually eat?"
+Q998,Radio Button (code),0,"Pasta, spaghetti, or other noodles (other than those listed above; including gluten-free)","How often did you eat your pasta, spaghetti, or other noodles with tomato sauce or spaghetti sauce made WITH meat?"
+Q999,Radio Button (code),0,"Pasta, spaghetti, or other noodles (other than those listed above; including gluten-free)","How often did you eat your pasta, spaghetti, or other noodles with tomato sauce or spaghetti sauce made WITHOUT meat?"
+Q1000,Radio Button (code),0,"Pasta, spaghetti, or other noodles (other than those listed above; including gluten-free)","How often did you eat your pasta, spaghetti, or other noodles with margarine, butter, oil, or cream sauce?"
+Q1002,Radio Button (code),0,Pizza (including gluten-free),"Over the past month</u>, how often did you eat pizza (including gluten-free)?"
+Q1003,Radio Button (code),0,Pizza (including gluten-free),"Each time you ate pizza, how much did you usually eat?"
+Q1004,Radio Button (code),0,Pizza (including gluten-free),"How often did you eat pizza with pepperoni, sausage, or other meat?"
+Q1005,Checkbox Index (delimited codes),7,"What <b>cereal, pancakes,</b> and <b>breads</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q1007,Radio Button (code),0,"Oatmeal, grits, or other cooked cereals","Over the past month</u>, how often did you eat oatmeal, grits, or other cooked cereal?"
+Q1008,Radio Button (code),0,"Oatmeal, grits, or other cooked cereals","Each time you ate oatmeal, grits, or other cooked cereal, how much did you usually eat?"
+Q1010,Radio Button (code),0,Cold cereal (including gluten-free),"Over the past month</u>, how often did you eat cold cereal (including gluten-free)?"
+Q1011,Radio Button (code),0,Cold cereal (including gluten-free),"Each time you ate cold cereal, how much did you usually eat?"
+Q1012,Radio Button (code),0,Cold cereal (including gluten-free),"How often was the cold cereal you ate a whole grain type (such as Fiber One, Shredded Wheat, Cheerios, Kashi, Wheaties, or others)?"
+Q1013,Radio Button (code),0,Cold cereal (including gluten-free),"How often was the cold cereal you ate a highly fortified type (such as All Bran, Chex, King Vitamin Cereal, Malt-O-Meal, Product 19, Raisin Bran Total, or others)?"
+Q1014,Radio Button (code),0,Cold cereal (including gluten-free),How often was the cold cereal you ate granola cereal?
+Q1015,Radio Button (code),0,Cold cereal (including gluten-free),"How often was the cold cereal you ate other types of cold cereal (such as Corn Flakes, Rice Krispies, Frosted Flakes, Special K, Froot Loops, Cap'n Crunch, or others)?"
+Q1016,Radio Button (code),0,Cold cereal (including gluten-free),Was milk added to your cold cereal?
+Q1017,Radio Button (code),0,Cold cereal (including gluten-free),What type of milk was usually added to your cold cereal?
+Q1018,Radio Button (code),0,Cold cereal (including gluten-free),"Each time milk was added to your cold cereal, how much did you usually drink?"
+Q1020,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","Over the past month</u>, how often did you eat pancakes, waffles, or French toast (including gluten-free)?"
+Q1021,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","Each time you ate pancakes, waffles, or French toast, how much did you usually eat?"
+Q1022,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","How often was margarine (including low-fat) added to your pancakes, waffles, or French toast AFTER COOKING OR AT THE TABLE?"
+Q1023,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","How often was butter (including low-fat) added to your pancakes, waffles, or French toast AFTER COOKING OR AT THE TABLE?"
+Q1024,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","Each time margarine or butter was added to your pancakes, waffles, or French toast, how much did you usually eat?"
+Q1025,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","How often was syrup added to your pancakes, waffles, or French toast?"
+Q1026,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","Each time syrup was added to your pancakes, waffles, or French toast, how much did you usually eat?"
+Q1027,Radio Button (code),0,"Pancakes, waffles, or French toast (including gluten-free)","How often was the syrup added to your pancakes, waffles, or French toast diet or light?"
+Q1029,Radio Button (code),0,Bagels or English muffins (including gluten-free),"Over the past month</u>, how often did you eat bagels or English muffins (including gluten-free)?"
+Q1030,Radio Button (code),0,Bagels or English muffins (including gluten-free),"Each time you ate bagels or English muffins, how much did you usually eat?"
+Q1031,Radio Button (code),0,Bagels or English muffins (including gluten-free),How often were the bagels or English muffins you ate whole grain?
+Q1032,Radio Button (code),0,Bagels or English muffins (including gluten-free),How often was margarine (including low-fat) added to your bagels or English muffins?
+Q1033,Radio Button (code),0,Bagels or English muffins (including gluten-free),How often was butter (including low-fat) added to your bagels or English muffins?
+Q1034,Radio Button (code),0,Bagels or English muffins (including gluten-free),"Each time margarine or butter was added to your bagels or English muffins, how much did you usually eat?"
+Q1035,Radio Button (code),0,Bagels or English muffins (including gluten-free),How often was cream cheese (including low-fat) spread on your bagels or English muffins?
+Q1036,Radio Button (code),0,Bagels or English muffins (including gluten-free),"Each time cream cheese was added to your bagels or English muffins, how much did you usually eat?"
+Q1038,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"Over the past month</u>, how often did you eat breads or rolls AS PART OF SANDWICHES (including gluten-free)?"
+Q1039,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"Each time you ate breads or rolls AS PART OF SANDWICHES, how much did you usually eat?"
+Q1040,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),How often were the breads or rolls that you used for your sandwiches whole grain?
+Q1041,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"How often was mayonnaise or mayonnaise-type dressing (including low-fat, diet, or light) added to the breads or rolls used for your sandwiches?"
+Q1042,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"Each time mayonnaise or mayonnaise-type dressing was added to the breads or rolls used for your sandwiches, how much did you usually eat?"
+Q1043,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"How often was margarine (including low-fat, diet, or light) added to the breads or rolls used for your sandwich?"
+Q1044,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"How often was butter (including low-fat, diet, or light) added to the breads or rolls used for your sandwich?"
+Q1045,Radio Button (code),0,Breads or rolls AS PART OF SANDWICHES (including gluten-free),"Each time margarine or butter was added to the breads or rolls used for your sandwich, how much did you usually eat?"
+Q1047,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),"Over the past month</u>, how often did you eat breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free)?"
+Q1048,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),"Each time you ate breads or dinner rolls NOT AS PART OF SANDWICHES, how much did you usually eat?"
+Q1049,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),How often were the breads or dinner rolls you ate whole grain?
+Q1050,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),"How often was margarine (including low-fat, diet, or light) added to the breads or dinner rolls?"
+Q1051,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),"How often was butter (including low-fat, diet, or light) added to the breads or dinner rolls?"
+Q1052,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),"Each time margarine or butter was added to the breads or dinner rolls, how much did you usually eat?"
+Q1053,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),How often was cream cheese (including low-fat) spread added to the breads or dinner rolls?
+Q1054,Radio Button (code),0,Breads or dinner rolls NOT AS PART OF SANDWICHES (including gluten-free),"Each time cream cheese was added to the breads or dinner rolls, how much did you usually eat?"
+Q1056,Radio Button (code),0,Cornbread or corn muffins,"Over the past month</u>, how often did you eat cornbread or corn muffins?"
+Q1057,Radio Button (code),0,Cornbread or corn muffins,"Each time you ate cornbread or corn muffins, how much did you usually eat?"
+Q1059,Radio Button (code),0,Biscuits,"Over the past month</u>, how often did you eat biscuits?"
+Q1060,Radio Button (code),0,Biscuits,"Each time you ate biscuits, how much did you usually eat?"
+Q1062,Radio Button (code),0,"Jam, jelly, or honey (on bagels, muffins, breads, rolls, crackers, etc.)","Over the past month</u>, how often did you eat jam, jelly, or honey (on bagels, muffins, breads, rolls, crackers, etc.)?"
+Q1063,Radio Button (code),0,"Jam, jelly, or honey (on bagels, muffins, breads, rolls, crackers, etc.)","Each time you ate jam, jelly, or honey, how much did you usually eat?"
+Q1065,Radio Button (code),0,Peanut butter or other nut butter,"Over the past month</u>, how often did you eat peanut butter or other nut butter?"
+Q1066,Radio Button (code),0,Peanut butter or other nut butter,"Each time you ate peanut butter or other nut butter, how much did you usually eat?"
+Q1068,Radio Button (code),0,Hummus,"Over the past month</u>, how often did you eat hummus?"
+Q1069,Radio Button (code),0,Hummus,"Each time you ate hummus, how much did you usually eat?"
+Q1070,Checkbox Index (delimited codes),7,"What <b>cold cuts, luncheon meats,</b> and <b>hot dogs</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q1072,Radio Button (code),0,Roast beef or steak IN SANDWICHES,"Over the past month</u>, how often did you eat roast beef or steak IN SANDWICHES?"
+Q1073,Radio Button (code),0,Roast beef or steak IN SANDWICHES,"Each time you ate roast beef or steak IN SANDWICHES, how much meat did you usually eat?"
+Q1075,Radio Button (code),0,Luncheon or deli-style ham <i>(NOT including other ham)</i>,"Over the past month</u>, how often did you eat luncheon or deli-style ham (NOT including other ham)?"
+Q1076,Radio Button (code),0,Luncheon or deli-style ham <i>(NOT including other ham)</i>,"Each time you ate luncheon or deli-style ham, how much did you usually eat?"
+Q1078,Radio Button (code),0,"Turkey or chicken COLD CUTS (such as loaf, luncheon meat, turkey ham, turkey salami, or turkey pastrami; <i>NOT including other turkey or chicken</i>)","Over the past month</u>, how often did you eat turkey or chicken COLD CUTS (such as loaf, luncheon meat, turkey ham, turkey salami, or turkey pastrami; NOT including other turkey or chicken)?"
+Q1079,Radio Button (code),0,"Turkey or chicken COLD CUTS (such as loaf, luncheon meat, turkey ham, turkey salami, or turkey pastrami; <i>NOT including other turkey or chicken</i>)","Each time you ate turkey or chicken COLD CUTS, how much did you usually eat?"
+Q1081,Radio Button (code),0,Bologna,"Over the past month</u>, how often did you eat bologna?"
+Q1082,Radio Button (code),0,Bologna,"Each time you ate bologna, how much did you usually eat?"
+Q1084,Radio Button (code),0,"Other cold cuts or luncheon meats (such as salami, corned beef, pastrami, etc.; <i>NOT including ham, turkey, or chicken, bologna cold cuts</i>)","Over the past month</u>, how often did you eat other cold cuts or luncheon meats (such as salami, corned beef, pastrami, etc.; NOT including ham, turkey, or chicken, bologna cold cuts)?"
+Q1085,Radio Button (code),0,"Other cold cuts or luncheon meats (such as salami, corned beef, pastrami, etc.; <i>NOT including ham, turkey, or chicken, bologna cold cuts</i>)","Each time you ate other cold cuts or luncheon meats, how much did you usually eat?"
+Q1087,Radio Button (code),0,Hot dogs or frankfurters <i>(NOT including sausage or vegetarian hot dogs)</i>,"Over the past month</u>, how often did you eat hot dogs or frankfurters (NOT including sausage or vegetarian hot dogs)?"
+Q1088,Radio Button (code),0,Hot dogs or frankfurters <i>(NOT including sausage or vegetarian hot dogs)</i>,"Each time you ate hot dogs or frankfurters, how many did you usually eat?"
+Q1089,Radio Button (code),0,Hot dogs or frankfurters <i>(NOT including sausage or vegetarian hot dogs)</i>,How often were the hot dogs or frankfurters you ate made of chicken or turkey?
+Q1090,Radio Button (code),0,Hot dogs or frankfurters <i>(NOT including sausage or vegetarian hot dogs)</i>,How often were the hot dogs or frankfurters you ate eaten with bun or rolls?
+Q1091,Checkbox Index (delimited codes),7,"What <b>meat, poultry,</b> and <b>fish</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q1093,Radio Button (code),0,GROUND chicken or turkey,"Over the past month</u>, how often did you eat GROUND chicken or turkey?"
+Q1094,Radio Button (code),0,GROUND chicken or turkey,"Each time you ate GROUND chicken or turkey, how much did you usually eat?"
+Q1096,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)","Over the past month</u>, how often did you eat baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; NOT including chicken in mixtures)?"
+Q1097,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)","Each time you ate baked, broiled, roasted, stewed, or fried chicken, how much did you usually eat?"
+Q1098,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)",How often was the chicken you ate fried chicken (including deep fried) or chicken nuggets?
+Q1099,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)",How often was the chicken you ate pan-fried chicken?
+Q1100,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)",How often was the chicken you ate grilled chicken?
+Q1101,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)",How often was the chicken you ate oven-broiled chicken?
+Q1102,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)","Which image best represents how you usually cook your pan-fried, grilled or oven-broiled chicken?"
+Q1103,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)",How often was the chicken you ate WHITE meat?
+Q1104,Radio Button (code),0,"Baked, broiled, roasted, stewed, grilled, pan-fried, or fried chicken (including chicken nuggets; <i>NOT including chicken in mixtures</i>)",How often was the chicken you ate WITH SKIN?
+Q1106,Radio Button (code),0,"Chicken in mixed dishes (such as salads, sandwiches, casseroles, stews, or other mixtures)","Over the past month</u>, how often did you eat chicken in mixed dishes (such as salads, sandwiches, casseroles, stews, or other mixtures)?"
+Q1107,Radio Button (code),0,"Chicken in mixed dishes (such as salads, sandwiches, casseroles, stews, or other mixtures)","Each time you ate chicken in mixed dishes, how much did you usually eat?"
+Q1109,Radio Button (code),0,Turkey including in mixed dishes (<i>NOT including ground turkey</i>),"Over the past month</u>, how often did you eat turkey including in mixed dishes (NOT including ground turkey)?"
+Q1110,Radio Button (code),0,Turkey including in mixed dishes (<i>NOT including ground turkey</i>),"Each time you ate turkey, how much did you usually eat?"
+Q1112,Radio Button (code),0,Beef hamburgers or cheeseburgers from a FAST FOOD RESTAURANT,"Over the past month</u>, how often did you eat beef hamburgers or cheeseburgers from a FAST FOOD RESTAURANT?"
+Q1113,Radio Button (code),0,Beef hamburgers or cheeseburgers from a FAST FOOD RESTAURANT,"Each time you ate beef hamburgers or cheeseburgers from a FAST FOOD RESTAURANT, what size did you usually eat?"
+Q1115,Radio Button (code),0,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT,"Over the past month</u>, how often did you eat beef hamburgers or cheeseburgers that were NOT from a FAST FOOD RESTAURANT?"
+Q1116,Radio Button (code),0,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT,"Each time you ate beef hamburgers or cheeseburgers that were NOT from a FAST FOOD RESTAURANT, how much did you usually eat?"
+Q1117,Radio Button (code),0,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT,How often were these beef hamburgers or cheeseburgers made with lean ground beef?
+Q1118,Radio Button (code),0,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT,How often were these beef hamburgers or cheeseburgers you ate pan-fried burgers?
+Q1119,Radio Button (code),0,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT,How often were these beef hamburgers or cheeseburgers you ate grilled burgers?
+Q1120,Radio Button (code),0,Beef hamburgers or cheeseburgers NOT from a FAST FOOD RESTAURANT,"When you ate pan-fried or grilled burgers, how were they usually cooked?"
+Q1122,Radio Button (code),0,"Ground beef in mixtures (such as meatballs, casseroles, chili, or meatloaf)","Over the past month</u>, how often did you eat ground beef in mixtures (such as meatballs, casseroles, chili, or meatloaf)?"
+Q1123,Radio Button (code),0,"Ground beef in mixtures (such as meatballs, casseroles, chili, or meatloaf)","Each time you ate ground beef in mixtures, how much did you usually eat?"
+Q1125,Radio Button (code),0,"Beef mixtures (such as beef stew, beef pot pie, beef and noodles, or beef and vegetables)","Over the past month</u>, how often did you eat beef mixtures (such as beef stew, beef pot pie, beef and noodles, or beef and vegetables)?"
+Q1126,Radio Button (code),0,"Beef mixtures (such as beef stew, beef pot pie, beef and noodles, or beef and vegetables)","Each time you ate beef mixtures, how much did you usually eat?"
+Q1128,Radio Button (code),0,Roast beef or pot roast (<i>NOT including roast beef or pot roast in sandwiches</i>),"Over the past month</u>, how often did you eat roast beef or pot roast  (NOT including roast beef or pot roast in sandwiches)?"
+Q1129,Radio Button (code),0,Roast beef or pot roast (<i>NOT including roast beef or pot roast in sandwiches</i>),"Each time you ate roast beef or pot roast, how much did you usually eat?"
+Q1131,Radio Button (code),0,Beef steak (<i>NOT including steak in sandwiches</i>),"Over the past month</u>, how often did you eat beef steak (NOT including steak in sandwiches)?"
+Q1132,Radio Button (code),0,Beef steak (<i>NOT including steak in sandwiches</i>),"Each time you ate beef steak, how much did you usually eat?"
+Q1133,Radio Button (code),0,Beef steak (<i>NOT including steak in sandwiches</i>),How often were the steaks you ate pan-fried steaks?
+Q1134,Radio Button (code),0,Beef steak (<i>NOT including steak in sandwiches</i>),How often were the steaks you ate grilled steaks?
+Q1135,Radio Button (code),0,Beef steak (<i>NOT including steak in sandwiches</i>),How often were the steaks you ate oven-broiled steaks?
+Q1136,Radio Button (code),0,Beef steak (<i>NOT including steak in sandwiches</i>),"When you ate pan-fried, grilled or oven-broiled steaks, how were they usually cooked?"
+Q1138,Radio Button (code),0,Pork or beef spareribs,"Over the past month</u>, how often did you eat pork or beef spareribs?"
+Q1139,Radio Button (code),0,Pork or beef spareribs,"Each time you ate pork or beef spareribs, how much did you usually eat?"
+Q1141,Radio Button (code),0,Baked ham or ham steak,"Over the past month</u>, how often did you eat baked ham or ham steak?"
+Q1142,Radio Button (code),0,Baked ham or ham steak,"Each time you ate baked ham or ham steak, how much did you usually eat?"
+Q1144,Radio Button (code),0,"Pork (including chops, roasts, and in mixed dishes; <i>NOT including ham, ham steak, or sausage</i>)","Over the past month</u>, how often did you eat pork (including chops, roasts, and in mixed dishes; NOT including ham, ham steak, or sausage)?"
+Q1145,Radio Button (code),0,"Pork (including chops, roasts, and in mixed dishes; <i>NOT including ham, ham steak, or sausage</i>)","Each time you ate pork, how much did you usually eat?"
+Q1146,Radio Button (code),0,"Pork (including chops, roasts, and in mixed dishes; <i>NOT including ham, ham steak, or sausage</i>)",How often was the pork you ate pork chops?
+Q1147,Radio Button (code),0,"Pork (including chops, roasts, and in mixed dishes; <i>NOT including ham, ham steak, or sausage</i>)",How often were the pork chops you ate pan-fried pork chops?
+Q1148,Radio Button (code),0,"Pork (including chops, roasts, and in mixed dishes; <i>NOT including ham, ham steak, or sausage</i>)",How often were the pork chops you ate grilled pork chops?
+Q1149,Radio Button (code),0,"Pork (including chops, roasts, and in mixed dishes; <i>NOT including ham, ham steak, or sausage</i>)","When you ate pan-fried or grilled pork chops, how were they usually cooked?"
+Q1151,Radio Button (code),0,"Gravy on meat, chicken, potatoes, rice, etc.","Over the past month</u>, how often did you eat gravy on meat, chicken, potatoes, rice, etc.?"
+Q1152,Radio Button (code),0,"Gravy on meat, chicken, potatoes, rice, etc.","Each time you ate gravy, how much did you usually eat?"
+Q1154,Radio Button (code),0,Liver (all kinds) or liverwurst,"Over the past month</u>, how often did you eat liver (all kinds) or liverwurst?"
+Q1155,Radio Button (code),0,Liver (all kinds) or liverwurst,"Each time you ate liver or liverwurst, how much did you usually eat?"
+Q1157,Radio Button (code),0,Bacon (all kinds),"Over the past month</u>, how often did you eat bacon (all kinds)?"
+Q1158,Radio Button (code),0,Bacon (all kinds),"Each time you ate bacon, how much did you usually eat?"
+Q1159,Radio Button (code),0,Bacon (all kinds),How often was the bacon you ate pan-fried bacon?
+Q1160,Radio Button (code),0,Bacon (all kinds),How often was the bacon you ate microwaved bacon?
+Q1161,Radio Button (code),0,Bacon (all kinds),How often was the bacon you ate oven-broiled bacon?
+Q1162,Radio Button (code),0,Bacon (all kinds),"When you ate pan-fried, microwaved or oven-broiled bacon, how was it usually cooked?"
+Q1164,Radio Button (code),0,Sausage (all kinds),"Over the past month</u>, how often did you eat sausage (all kinds)?"
+Q1165,Radio Button (code),0,Sausage (all kinds),"Each time you ate sausage, how much did you usually eat?"
+Q1166,Radio Button (code),0,Sausage (all kinds),How often were the sausages you ate made of chicken or turkey?
+Q1167,Radio Button (code),0,Sausage (all kinds),How often were the sausages you ate sausage links?
+Q1168,Radio Button (code),0,Sausage (all kinds),How often was the sausage you ate pan-fried sausage?
+Q1169,Radio Button (code),0,Sausage (all kinds),"When you ate pan-fried sausage, how was it usually cooked?"
+Q1171,Radio Button (code),0,Canned tuna or tuna salad (including in sandwiches or casseroles; <i>NOT including fresh tuna</i>),"Over the past month</u>, how often did you eat canned tuna or tuna salad (including in sandwiches or casseroles; NOT including fresh tuna)?"
+Q1172,Radio Button (code),0,Canned tuna or tuna salad (including in sandwiches or casseroles; <i>NOT including fresh tuna</i>),"Each time you ate canned tuna or tuna salad, how much did you usually eat?"
+Q1174,Radio Button (code),0,"Fresh tuna, trout, anchovy, mackerel, herring, or sardine","Over the past month</u>, how often did you eat fresh tuna, trout, anchovy, mackerel, herring, or sardine?"
+Q1175,Radio Button (code),0,"Fresh tuna, trout, anchovy, mackerel, herring, or sardine","Each time you ate fresh tuna, trout, anchovy, mackerel, herring, or sardine, how much did you usually eat?"
+Q1177,Radio Button (code),0,Salmon,"Over the past month</u>, how often did you eat salmon?"
+Q1178,Radio Button (code),0,Salmon,"Each time you ate salmon, how much did you usually eat?"
+Q1180,Radio Button (code),0,"Fried shellfish (such as crab, lobster, shrimp, or clams)","Over the past month</u>, how often did you eat fried shellfish (such as crab, lobster, shrimp, or clams)?"
+Q1181,Radio Button (code),0,"Fried shellfish (such as crab, lobster, shrimp, or clams)","Each time you ate fried shellfish, how much did you usually eat?"
+Q1183,Radio Button (code),0,"Shellfish (such as crab, lobster, or shrimp) that was NOT FRIED","Over the past month</u>, how often did you eat shellfish (such as crab, lobster, or shrimp) that was NOT FRIED?"
+Q1184,Radio Button (code),0,"Shellfish (such as crab, lobster, or shrimp) that was NOT FRIED","Each time you ate shellfish that was NOT FRIED, how much did you usually eat?"
+Q1186,Radio Button (code),0,Fish sticks or other fried fish (<i>NOT including shellfish</i>),"Over the past month</u>, how often did you eat fish sticks or other fried fish (NOT including shellfish)?"
+Q1187,Radio Button (code),0,Fish sticks or other fried fish (<i>NOT including shellfish</i>),"Each time you ate fish sticks or other fried fish, how much did you usually eat?"
+Q1189,Radio Button (code),0,Other fish that was NOT FRIED (<i>NOT including shellfish</i>),"Over the past month</u>, how often did you eat other fish that was NOT FRIED (NOT including shellfish)?"
+Q1190,Radio Button (code),0,Other fish that was NOT FRIED (<i>NOT including shellfish</i>),"Each time you ate other fish that was NOT FRIED, how much did you usually eat?"
+Q1191,Checkbox Index (delimited codes),7,What <b>eggs</b> and <b>meat alternatives</b> have you eaten?,Please check the box next to each food that you ate at least once in the past month.
+Q1193,Radio Button (code),0,"Tofu, soy burgers, or soy meat-substitutes","Over the past month</u>, how often did you eat tofu, soy burgers, or soy meat-substitutes?"
+Q1194,Radio Button (code),0,"Tofu, soy burgers, or soy meat-substitutes","Each time you ate tofu, soy burgers, or soy meat-substitutes, how much did you usually eat?"
+Q1196,Radio Button (code),0,"Eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; <i>NOT including eggs in baked goods and desserts</i>)","Over the past month</u>, how often did you eat eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; NOT including eggs in baked goods and desserts)?"
+Q1197,Radio Button (code),0,"Eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; <i>NOT including eggs in baked goods and desserts</i>)","Each time you ate eggs, egg whites, or egg substitutes, how many did you usually eat?"
+Q1198,Radio Button (code),0,"Eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; <i>NOT including eggs in baked goods and desserts</i>)",How often were the eggs you ate regular whole eggs?
+Q1199,Radio Button (code),0,"Eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; <i>NOT including eggs in baked goods and desserts</i>)",How often were the eggs you ate cooked with cheese or meat?
+Q1200,Radio Button (code),0,"Eggs, egg whites, or egg substitutes (including eggs in salads, quiche, and souffles; <i>NOT including eggs in baked goods and desserts</i>)",How often were the eggs you ate egg substitutes or egg whites only?
+Q1201,Checkbox Index (delimited codes),7,"What <b>chips, pretzels,</b> and <b>other snacks</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q1203,Radio Button (code),0,Crackers (including gluten-free),"Over the past month</u>, how often did you eat crackers (including gluten-free)?"
+Q1204,Radio Button (code),0,Crackers (including gluten-free),"Each time you ate crackers, how much did you usually eat?"
+Q1206,Radio Button (code),0,Potato chips,"Over the past month</u>, how often did you eat potato chips?"
+Q1207,Radio Button (code),0,Potato chips,"Each time you ate potato chips, how much did you usually eat?"
+Q1209,Radio Button (code),0,Corn chips or tortilla chips,"Over the past month</u>, how often did you eat corn chips or tortilla chips?"
+Q1210,Radio Button (code),0,Corn chips or tortilla chips,"Each time you ate corn chips or tortilla chips, how much did you usually eat?"
+Q1212,Radio Button (code),0,Popcorn,"Over the past month</u>, how often did you eat popcorn?"
+Q1213,Radio Button (code),0,Popcorn,"Each time you ate popcorn, how much did you usually eat?"
+Q1215,Radio Button (code),0,Pretzels (including gluten-free),"Over the past month</u>, how often did you eat pretzels (including gluten-free)?"
+Q1216,Radio Button (code),0,Pretzels (including gluten-free),"Each time you ate pretzels, how much did you usually eat?"
+Q1218,Radio Button (code),0,"Whole nuts (including peanuts, almonds, seeds, or other nuts)","Over the past month</u>, how often did you eat whole nuts (including peanuts, almonds, seeds, or other nuts)?"
+Q1219,Radio Button (code),0,"Whole nuts (including peanuts, almonds, seeds, or other nuts)","Each time you ate whole nuts, how much did you usually eat?"
+Q1220,Radio Button (code),0,"Whole nuts (including peanuts, almonds, seeds, or other nuts)",How often were the whole nuts you ate almonds only (not part of mixed nuts)?
+Q1221,Radio Button (code),0,"Whole nuts (including peanuts, almonds, seeds, or other nuts)",How often were the whole nuts you ate peanuts only (not part of mixed nuts)?
+Q1223,Radio Button (code),0,"High-protein or breakfast bars (such as Power Bars, Balance, Clif, etc.)","Over the past month</u>, how often did you eat high-protein or breakfast bars (such as Power Bars, Balance, Clif, etc.)?"
+Q1224,Radio Button (code),0,"High-protein or breakfast bars (such as Power Bars, Balance, Clif, etc.)","Each time you ate high-protein or breakfast bars, how much did you usually eat?"
+Q1226,Radio Button (code),0,Protein powder,"Over the past month</u>, how often did you add protein powder to your foods or drinks?"
+Q1227,Radio Button (code),0,Protein powder,"Each time you add protein powder to your foods or drinks, how much did you usually add?"
+Q1229,Radio Button (code),0,Granola bars,"Over the past month</u>, how often did you eat granola bars?"
+Q1230,Radio Button (code),0,Granola bars,"Each time you ate granola bars, how much did you usually eat?"
+Q1231,Checkbox Index (delimited codes),7,What <b>yogurt</b> and <b>cheese</b> have you eaten?,Please check the box next to each food that you ate at least once in the past month.
+Q1233,Radio Button (code),0,Yogurt (<i>NOT including frozen yogurt</i>),"Over the past month</u>, how often did you eat yogurt (NOT including frozen yogurt)?"
+Q1234,Radio Button (code),0,Yogurt (<i>NOT including frozen yogurt</i>),"Each time you ate yogurt, how much did you usually eat?"
+Q1235,Radio Button (code),0,Yogurt (<i>NOT including frozen yogurt</i>),How often was the yogurt you ate Greek yogurt?
+Q1237,Radio Button (code),0,Cottage cheese or ricotta cheese,"Over the past month</u>, how often did you eat cottage cheese or ricotta cheese?"
+Q1238,Radio Button (code),0,Cottage cheese or ricotta cheese,"Each time you ate cottage cheese or ricotta cheese, how much did you usually eat?"
+Q1240,Radio Button (code),0,"Cheese (including low-fat, on cheeseburgers, or in sandwiches or subs)","Over the past month</u>, how often did you eat cheese (including low-fat, on cheeseburgers, or in sandwiches or subs)?"
+Q1241,Radio Button (code),0,"Cheese (including low-fat, on cheeseburgers, or in sandwiches or subs)","Each time you ate cheese, how much did you usually eat?"
+Q1242,Radio Button (code),0,"Cheese (including low-fat, on cheeseburgers, or in sandwiches or subs)",How often was the cheese you ate low-fat or fat-free?
+Q1244,Radio Button (code),0,Whipped cream,"Over the past month</u>, how often did you eat whipped cream?"
+Q1245,Radio Button (code),0,Whipped cream,"Each time you ate whipped cream, how much did you usually eat?"
+Q1246,Radio Button (code),0,Whipped cream,How often was the whipped cream you ate whipped cream substitute (non-dairy whipped topping)?
+Q1247,Checkbox Index (delimited codes),7,"What <b>sweets, baked goods,</b> or <b>desserts</b> have you eaten?",Please check the box next to each food that you ate at least once in the past month.
+Q1249,Radio Button (code),0,"Frozen yogurt, sorbet, or ices","Over the past month</u>, how often did you eat frozen yogurt, sorbet, or ices?"
+Q1250,Radio Button (code),0,"Frozen yogurt, sorbet, or ices","Each time you ate frozen yogurt, sorbet, or ices, how much did you usually eat?"
+Q1252,Radio Button (code),0,"Ice cream, ice cream bars, or sherbet (including light, low-fat, or fat-free)","Over the past month</u>, how often did you eat ice cream, ice cream bars, or sherbet (including light, low-fat, or fat-free)?"
+Q1253,Radio Button (code),0,"Ice cream, ice cream bars, or sherbet (including light, low-fat, or fat-free)","Each time you ate ice cream, ice cream bars, or sherbet, how much did you usually eat?"
+Q1254,Radio Button (code),0,"Ice cream, ice cream bars, or sherbet (including light, low-fat, or fat-free)","How often was the ice cream you ate light, low-fat, or fat-free?"
+Q1256,Radio Button (code),0,Cake (all kinds),"Over the past month</u>, how often did you eat cake (all kinds)?"
+Q1257,Radio Button (code),0,Cake (all kinds),"Each time you ate cake, how much did you usually eat?"
+Q1259,Radio Button (code),0,Pie (all kinds),"Over the past month</u>, how often did you eat pie (all kinds)?"
+Q1260,Radio Button (code),0,Pie (all kinds),"Each time you ate pie, how much did you usually eat?"
+Q1261,Radio Button (code),0,Pie (all kinds),How often was the pie you ate pumpkin or sweet potato pie?
+Q1262,Radio Button (code),0,Pie (all kinds),"How often was the pie you ate fruit pie (such as apple, blueberry, etc.)?"
+Q1264,Radio Button (code),0,Cookies (all kinds),"Over the past month</u>, how often did you eat cookies (all kinds)?"
+Q1265,Radio Button (code),0,Cookies (all kinds),"Each time you ate cookies, how much did you usually eat?"
+Q1267,Radio Button (code),0,Brownies (all kinds),"Over the past month</u>, how often did you eat brownies (all kinds)?"
+Q1268,Radio Button (code),0,Brownies (all kinds),"Each time you ate brownies, how much did you usually eat?"
+Q1270,Radio Button (code),0,"Doughnuts, sweet rolls, Danish, or Pop-Tarts","Over the past month</u>, how often did you eat doughnuts, sweet rolls, Danish, or Pop-Tarts?"
+Q1271,Radio Button (code),0,"Doughnuts, sweet rolls, Danish, or Pop-Tarts","Each time you ate doughnuts, sweet rolls, Danish, or Pop-Tarts, how much did you usually eat?"
+Q1273,Radio Button (code),0,Sweet muffins or dessert breads (all kinds),"Over the past month</u>, how often did you eat sweet muffins or dessert breads (all kinds)?"
+Q1274,Radio Button (code),0,Sweet muffins or dessert breads (all kinds),"Each time you ate sweet muffins or dessert breads, how much did you usually eat?"
+Q1276,Radio Button (code),0,Pudding or custard,"Over the past month</u>, how often did you eat pudding or custard?"
+Q1277,Radio Button (code),0,Pudding or custard,"Each time you ate pudding or custard, how much did you usually eat?"
+Q1279,Radio Button (code),0,"Chocolate bar or chocolate candy (such as M&Ms, Kit Kat, Mr. Goodbar, etc.)","Over the past month</u>, how often did you eat chocolate bar or chocolate candy (such as M&Ms, Kit Kat, Mr. Goodbar, etc.)?"
+Q1280,Radio Button (code),0,"Chocolate bar or chocolate candy (such as M&Ms, Kit Kat, Mr. Goodbar, etc.)","Each time you ate chocolate bar or chocolate candy, how much did you usually eat?"
+Q1282,Radio Button (code),0,Other types of candy,"Over the past month</u>, how often did you eat other types of candy?"
+Q1283,Radio Button (code),0,Other types of candy,"Each time you ate other types of candy, how much did you usually eat?"
+Q1284,Checkbox Index (delimited codes),7,What <b>spreads</b> and <b>dressings</b> have you eaten?,Please check the box next to each food that you ate at least once in the past month.
+Q1286,Radio Button (code),0,Margarine,"How often was the margarine you ate light, low-fat, or fat-free (stick or tub)?"
+Q1288,Radio Button (code),0,Mayonnaise or mayonnaise-type dressing,"How often was the mayonnaise you ate light, low-fat, or fat-free?"
+Q1290,Radio Button (code),0,Salad dressing,"How often was the salad dressing you ate light, low-fat, or fat-free?"
+Q1291,Radio Button (code),0,Summary questions,"For ALL of the past month</u>, have you followed any type of vegetarian diet?"
+Q1292,Checkbox (delimited codes),1,Summary questions,Which of the following foods did you TOTALLY EXCLUDE from your diet? Mark all that apply.
+Q1293,Checkbox Index (delimited codes),7,What <b>vitamins</b> and <b>dietary supplements</b> did you take?,Please check the box next to each vitamin or dietary supplement that you took at least once in the past month.
+Q1295,Radio Button (code),0,"Multivitamin/mineral (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; <i>NOT including eye health supplements</i>)","Over the past month</u>, how often did you take multivitamins/minerals (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; NOT including eye health supplements)?"
+Q1296,Radio Button (code),0,"Multivitamin/mineral (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; <i>NOT including eye health supplements</i>)","When you took a multivitamin, which type did you usually take?"
+Q1297,Radio Button (code),0,"Multivitamin/mineral (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; <i>NOT including eye health supplements</i>)","Did your multivitamin usually contain minerals (such as iron, zinc, etc.)?"
+Q1298,Radio Button (code),0,"Multivitamin/mineral (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; <i>NOT including eye health supplements</i>)",Was your multivitamin usually a gummy type?
+Q1299,Radio Button (code),0,"Multivitamin/mineral (such as One-A-Day, Centrum, Nutrilite, Geritol or prenatal, as pills, liquids or packets; <i>NOT including eye health supplements</i>)","When you took gummy type multivitamins, about how many gummies did you take in one day?"
+Q1301,Radio Button (code),0,"Eye health supplement (such as Ocuvite, PreserVision or I-Caps)","Over the past month</u>, how often did you take eye health supplement (such as Ocuvite, PreserVision or I-Caps)?"
+Q1303,Radio Button (code),0,B-complex (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take B-complex (NOT as part of a multivitamin)?"
+Q1305,Radio Button (code),0,Antacids (such as Tums or Rolaids),"Over the past month</u>, how often did you take antacids (such as Tums or Rolaids)?"
+Q1306,Radio Button (code),0,Antacids (such as Tums or Rolaids),"When you took antacids, about how many tablets did you take in one day?"
+Q1307,Radio Button (code),0,Antacids (such as Tums or Rolaids),"When you took antacids, what strength did you usually take?"
+Q1309,Radio Button (code),0,B-12 (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take B-12 (NOT as part of a multivitamin)?"
+Q1310,Radio Button (code),0,B-12 (<i>NOT as part of a multivitamin</i>),When you took B-12 about how much did you take in one day?
+Q1312,Radio Button (code),0,B-6 (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take B-6 (NOT as part of a multivitamin)?"
+Q1313,Radio Button (code),0,B-6 (<i>NOT as part of a multivitamin</i>),"When you took B-6, about how much did you take in one day?"
+Q1315,Radio Button (code),0,Biotin (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take biotin (NOT as part of a multivitamin)?"
+Q1317,Radio Button (code),0,Calcium (with or without vitamin D; <i>NOT as part of a multivitamin or antacid</i>),"Over the past month</u>, how often did you take calcium (with or without vitamin D; NOT as part of a multivitamin or antacid)?"
+Q1318,Radio Button (code),0,Calcium (with or without vitamin D; <i>NOT as part of a multivitamin or antacid</i>),"When you took calcium, about how much did you take in one day? Check label for elemental calcium if possible."
+Q1319,Radio Button (code),0,Calcium (with or without vitamin D; <i>NOT as part of a multivitamin or antacid</i>),Did your calcium usually contain vitamin D?
+Q1320,Radio Button (code),0,Calcium (with or without vitamin D; <i>NOT as part of a multivitamin or antacid</i>),Did your calcium usually contain magnesium?
+Q1321,Radio Button (code),0,Calcium (with or without vitamin D; <i>NOT as part of a multivitamin or antacid</i>),Did your calcium usually contain zinc?
+Q1323,Radio Button (code),0,Coenzyme Q,"Over the past month</u>, how often did you take coenzyme Q?"
+Q1325,Radio Button (code),0,Fiber supplement (such as Metamucil or Benefiber),"Over the past month</u>, how often did you take fiber supplements (such as Metamucil or Benefiber)?"
+Q1327,Radio Button (code),0,Folate or folic acid  (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take folate or folic acid (NOT as part of a multivitamin)?"
+Q1328,Radio Button (code),0,Folate or folic acid  (<i>NOT as part of a multivitamin</i>),"When you took folate or folic acid, about how much did you take in one day?"
+Q1330,Radio Button (code),0,Garlic supplement,"Over the past month</u>, how often did you take a garlic supplements?"
+Q1332,Radio Button (code),0,"Joint supplement (such as glucosamine, with or without chondroitin or other ingredients)","Over the past month</u>, how often did you take a joint supplement (such as glucosamine, with or without chondroitin or other ingredients)?"
+Q1334,Radio Button (code),0,Iron (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take iron (NOT as part of a multivitamin)?"
+Q1335,Radio Button (code),0,Iron (<i>NOT as part of a multivitamin</i>),"When you took iron, about how much did you take in one day?"
+Q1337,Radio Button (code),0,Magnesium (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take magnesium (NOT as part of a multivitamin)?"
+Q1338,Radio Button (code),0,Magnesium (<i>NOT as part of a multivitamin</i>),"When you took magnesium, about how much did you take in one day?"
+Q1340,Radio Button (code),0,Melatonin,"Over the past month</u>, how often did you take melatonin?"
+Q1342,Radio Button (code),0,Niacin (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take niacin (NOT as part of a multivitamin)?"
+Q1343,Radio Button (code),0,Niacin (<i>NOT as part of a multivitamin</i>),When you took niacin about how much did you take in one day?
+Q1345,Radio Button (code),0,Omega-3 (ALA/DHA/EPA) or fish oil,"Over the past month</u>, how often did you take omega-3 (ALA/DHA/EPA) or fish oil?"
+Q1347,Radio Button (code),0,Potassium (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take potassium (NOT as part of a multivitamin)?"
+Q1348,Radio Button (code),0,Potassium (<i>NOT as part of a multivitamin</i>),"When you took potassium, about how much did you take in one day?"
+Q1350,Radio Button (code),0,"Probiotics (in pill, powder, or liquid form)","Over the past month</u>, how often did you take probiotics (in pill, powder, or liquid form)?"
+Q1352,Radio Button (code),0,Saw palmetto,"Over the past month</u>, how often did you take saw palmetto?"
+Q1354,Radio Button (code),0,Vitamin C (<i>NOT as part of a multivitamin</i>),"Over the past month</u>, how often did you take vitamin C (NOT as part of a multivitamin)?"
+Q1355,Radio Button (code),0,Vitamin C (<i>NOT as part of a multivitamin</i>),"When you took vitamin C, about how much did you take in one day?"
+Q1357,Radio Button (code),0,Vitamin D (<i>NOT as part of a multivitamin or calcium supplement</i>),"Over the past month</u>, how often did you take vitamin D (NOT as part of a multivitamin or calcium supplement)?"
+Q1358,Radio Button (code),0,Vitamin D (<i>NOT as part of a multivitamin or calcium supplement</i>),"When you took vitamin D, about how much did you take in one day?"
+Q1360,Radio Button (code),0,Vitamin E (<i>NOT as part of a multivitamin</i>)?,"Over the past month</u>, how often did you take vitamin E (NOT as part of a multivitamin)?"
+Q1361,Radio Button (code),0,Vitamin E (<i>NOT as part of a multivitamin</i>)?,"When you took vitamin E, about how much did you take in one day?"
+Q1363,Radio Button (code),0,Zinc (<i>NOT as part of a multivitamin</i>)?,"Over the past month</u>, how often did you take zinc (NOT as part of a multivitamin)?"
+Q1364,Radio Button (code),0,Zinc (<i>NOT as part of a multivitamin</i>)?,"When you took zinc, about how much did you take in one day?"
+Q1366,Checkbox (delimited codes),1,Other supplements (<i>NOT as part of a multivitamin</i>),"Please mark any of the following herbal, botanical, or other supplements (NOT as part of a multivitamin) you took more than once per week:"

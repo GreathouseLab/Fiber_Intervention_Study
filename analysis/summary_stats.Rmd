@@ -1,0 +1,41 @@
+---
+title: "Summary Statistics"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+This page contains the summary statistics of participants' data across the study.
+
+```{r}
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_data.R")
+
+```
+
+
+# Participant Demographics
+
+## Summarize by Week
+
+```{r}
+
+sumTab <- microbiome_data$meta.dat %>%
+  group_by(Week) %>%
+  summarise(N = n(),
+            Age_Mean = mean(Age),
+            Age_SD = sd(Age),
+            Weight_kg_M = mean(Weight_kg),
+            Weight_kg_SD = sd(Weight_kg),
+            Height_cm_M = mean(Height_cm),
+            Height_cm_SD = sd(Height_cm))
+
+kable(sumTab, format="html", digits=1) %>%
+  kable_styling(full_width = T)
+
+```
