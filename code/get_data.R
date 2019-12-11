@@ -38,6 +38,8 @@ tree_file <- read_tree("data/Microbiome Data/NoahFolder/OTU_Table.tre")
 meta_data <- read.table("data/Microbiome Data/NoahFolder/Metadata file_nomiss_microbiomeIDs.txt", sep="\t", header=T)
   colnames(meta_data)[1] <- "ID"
   rownames(meta_data) <- meta_data$ID
+  meta_data$SubjectID2 <- as.numeric(as.factor(meta_data$SubjectID))
+  meta_data$Week <- as.factor(meta_data$Week)
   ## merge meta_dat with analysis data
   meta_data <- merge(meta_data, analysis_data, all=T)
 meta <- sample_data(meta_data)
