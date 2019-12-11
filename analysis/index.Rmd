@@ -15,3 +15,7 @@ This page will contain links to the results pages from our study.
 Describing the data:
 
 *[Data Summary Statistics](summary_stats.html)
+
+# Alpha Diversity
+
+*[Initial Alpha Diversity Figures](alpha_diversity.html)
