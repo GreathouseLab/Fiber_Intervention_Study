@@ -1,0 +1,85 @@
+---
+title: "Alpha Diversity"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+This page contains the investigation of alpha diversity investigations.
+
+```{r data, include=FALSE, echo=FALSE}
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+```
+
+
+# Alpha diversity
+
+## By unique participants
+
+```{r}
+
+
+plot_richness(phylo_data, x="SubjectID2", 
+              measures = c("Observed", "Shannon", "Simpson"))+
+  labs(x="Subject ID")
+
+
+```
+
+
+## Boxplots by week of study
+
+```{r}
+
+
+plot_richness(phylo_data, x="Week",
+              measures = c("Observed", "Shannon", "Simpson"))+
+  geom_boxplot(aes(group=Week, color=Week))+
+  geom_point(aes(color=Week))+
+  labs(x="Week of Study")+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+
+## Boxplots by Intervention
+
+```{r}
+
+
+plot_richness(phylo_data, x="Intervention",
+              measures = c("Observed", "Shannon", "Simpson"))+
+  geom_boxplot(aes(group=Intervention, color=Intervention))+
+  geom_point(aes(color=Intervention))+
+  labs(x="Intervention Group")+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+plot_richness(phylo_data, x="Intervention",
+              measures = c("Observed", "Shannon", "Simpson"))+
+  geom_boxplot(aes(group=Intervention, color=Intervention))+
+  geom_point(aes(color=Intervention))+
+  facet_grid(.~Week)+
+  labs(x="Intervention Group by Week")+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+
