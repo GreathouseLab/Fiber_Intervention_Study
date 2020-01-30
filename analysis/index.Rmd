@@ -16,6 +16,12 @@ Describing the data:
 
 *[Data Summary Statistics](summary_stats.html)
 
+*[Data Pre-Processing](data_processing.html)
+
 # Alpha Diversity
 
 *[Initial Alpha Diversity Figures](alpha_diversity.html)
+
+# Analysis of Change over Time
+
+*[Changes in Microbiome](longitudinal_modling.html)
