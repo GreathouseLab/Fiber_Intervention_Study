@@ -20,8 +20,8 @@ rm(list=ls())
 # list of packages
 packages <- c("phyloseq",
               "tidyverse", "readr", "readxl",
-              "data.table", "dplyr","ggplot2",
-              "kableExtra", "xtable")
+              "data.table", "dplyr", "plyr", "ggplot2",
+              "kableExtra", "xtable", "gridExtra")
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 # Load packages

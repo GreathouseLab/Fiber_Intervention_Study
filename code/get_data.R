@@ -44,8 +44,9 @@ meta_data <- read.table("data/Microbiome Data/NoahFolder/Metadata file_nomiss_mi
   meta_data <- merge(meta_data, analysis_data, all=T)
 meta <- sample_data(meta_data)
 sample_names(meta) <- meta_data$ID
-phylo_data <- merge_phyloseq(biom_file,tree_file, meta)
-phylo_data <- rarefy_even_depth(phylo_data, sample.size = 7004, rngseed=20191210)
+phylo_data0 <- merge_phyloseq(biom_file, tree_file, meta)
+colnames(phylo_data0@tax_table) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
+# phylo_data <- rarefy_even_depth(phylo_data, sample.size = 7004, rngseed=20191210)
 # phylo object ready for phyloseq related analyses (alphe, beta, etc..)
 
 # now, extract the information from .biom/phyloseq for other analyses
