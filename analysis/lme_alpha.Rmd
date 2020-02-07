@@ -1,0 +1,245 @@
+---
+title: "Modeling Changes in Alpha Diversity over Time"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+This page contains the investigation of the changes in alpha diversity metrics (Observed and Shannon) over time.
+
+```{r data, include=FALSE, echo=FALSE}
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+
+
+```
+
+
+Here, we investigated how the metrics of alpha diversity changed over time.
+
+
+## Alpha: Observed OTUs
+
+### Unconditional Model
+
+```{r}
+ICC <- function(x){
+  icc <- VarCorr(x)[[1]]/(VarCorr(x)[[1]] + sigma(x)**2)
+  icc <- lapply(icc, function(x) { attributes(x) <- NULL; x })
+  icc <- icc[[1]]
+  return(icc)
+}
+
+mydata <- microbiome_data$meta.dat %>%
+  mutate(intB = ifelse(Intervention=="B", 1,0),
+         time = as.numeric(Week) - 1,
+         female = ifelse(Gender == "F", 1, 0),
+         hispanic = ifelse(Ethnicity %in% c("White", "Asian", "Native America"), 1, 0))
+
+# lmer - for alpha metrics
+# unconditional model
+fit <- lmer(Observed ~ 1 + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+plot(fit)
+ICC(fit)
+
+```
+
+### Fixed Effect of Time
+
+```{r}
+
+
+fit <- lmer(Observed ~ 1 + time + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+plot(fit)
+# plot
+dat <- cbind(mydata, fit=predict(fit))
+ggplot(dat, aes(time, Observed, group=SubjectID))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
+
+### Fixed and Random effect of Time
+
+```{r}
+
+
+fit <- lmer(Observed ~ 1 + time + (1 + time || SubjectID),
+            data = mydata)
+summary(fit)
+ranova(fit) # can take out random effect time
+plot(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Observed, group=SubjectID))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)#+
+  #geom_abline(intercept = fixef(fit)[1], slope=fixef(fit)[2],
+              #linetype="dashed", size=1.5)
+
+```
+
+
+### Adding demographics
+
+Time is only a fixed effect.
+
+```{r}
+
+
+fit <- lmer(Observed ~ 1 + time + female + hispanic + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+ranova(fit)
+plot(fit)
+ICC(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Observed, group=SubjectID, color=Gender))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
+
+
+### Intervention effect
+
+
+```{r}
+
+
+fit <- lmer(Observed ~ 1 + intB + female + hispanic + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+ranova(fit)
+plot(fit)
+ICC(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Observed, group=SubjectID, color=Intervention))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
+
+
+## Alpha: Shannon Diversity
+
+### Unconditional Model
+
+```{r}
+
+# lmer - for alpha metrics
+# unconditional model
+fit <- lmer(Shannon ~ 1 + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+plot(fit)
+ICC(fit)
+
+```
+
+### Fixed Effect of Time
+
+```{r}
+
+
+fit <- lmer(Shannon ~ 1 + time + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+plot(fit)
+# plot
+dat <- cbind(mydata, fit=predict(fit))
+ggplot(dat, aes(time, Shannon, group=SubjectID))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
+
+### Fixed and Random effect of Time
+
+```{r}
+
+
+fit <- lmer(Shannon ~ 1 + time + (1 + time || SubjectID),
+            data = mydata)
+summary(fit)
+ranova(fit) # can take out random effect time
+plot(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Shannon, group=SubjectID))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)#+
+  #geom_abline(intercept = fixef(fit)[1], slope=fixef(fit)[2],
+              #linetype="dashed", size=1.5)
+
+```
+
+
+### Adding demographics
+
+Time is only a fixed effect.
+
+```{r}
+
+
+fit <- lmer(Shannon ~ 1 + time + female + hispanic + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+ranova(fit)
+plot(fit)
+ICC(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Shannon, group=SubjectID, color=Gender))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
+
+
+### Intervention effect
+
+
+```{r}
+
+
+fit <- lmer(Shannon ~ 1 + intB + time + female +  (1 | SubjectID),
+            data = mydata)
+summary(fit)
+ranova(fit)
+plot(fit)
+ICC(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Shannon, group=SubjectID, color=Intervention))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
