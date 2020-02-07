@@ -22,6 +22,8 @@ Describing the data:
 
 *[Initial Alpha Diversity Figures](alpha_diversity.html)
 
-# Analysis of Change over Time
+# Analyses of Change over Time
 
-*[Changes in Microbiome](longitudinal_modling.html)
+*[Changes in Alpha Diversity](lme_alpha.html)
+
+*[Changes in Phylum Abundance](mle_microbiome.html)

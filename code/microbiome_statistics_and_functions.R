@@ -955,3 +955,339 @@ summarize_genera <- function(mydata, model.var = NULL, transform = T,
 
 }
 
+
+# Fit generalized linear mixed effects models
+# =================================================== #
+#           glmm_microbiome()
+# =================================================== #
+# This function was made during my work on the Fiber
+# intervention study to estimate GLMM.
+# The code is based on the taxanomic regression function above.
+# however, this is generalized to mixed models.
+# Last update: 2020-02-06
+
+# mydata = dataframe in the Jun Chen format
+# taxa.level= what taxanomic level to perform analysis? e.g. "Phylum"
+# link = what is the link function; default is 'normal' to call lmer(.)
+# model = supply the exact model (lme4 format) to be estimated in all taxa
+#
+# transform = logical indicator of whether the abundance of bacteria should transformed
+# transform.func = function needed to be passed through an apply() loop to transform the observed abundances of taxa.
+#     - Default is 'sqrt', however a user supplied function is possible,
+#     - For example: transform.func <- function(x) { x <- x+1 ; return(log2(x)) }
+#
+# n.dec = number of decimals to display in output, default = 6
+# plot.fit.res = logical whether to print the plot of the fitted versus residuals
+# plot.predict = logical for whether to plot the predicted values (versus time)
+glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model = "1 + (1|SubjectID)", n.dec = 5,  plot.fit.res=T, plot.predict=T, transform=F, transform.func = "sqrt"){
+  # mydata <- microbiome_data
+  # transform <- F
+  # transform.func <- 'sqrt'
+  # # Log2 transformation
+  # transform.func <- function(x) {
+  #   x <- x+1
+  #   return(log10(x))
+  # }
+  # link = 'normal'
+  # model = "1"
+  # n.dec = 5
+  # names.strip = F
+  #  names.strip.length = 5
+  #  taxa.level="Phylum"
+
+  N <- nrow(mydata$meta.dat)
+  ids <- mydata$meta.dat$ID
+
+
+  dat <- data.frame(mydata$abund.list[[taxa.level]])
+
+  # NOTE: Special coding for stripping weird characters from bacteria names
+  j <- length(rownames(dat))
+  i <- 1
+  for(i in 1:j){
+    while( substring(rownames(dat[i,]), 1, 1)  == "_"){
+
+      if(i == 1){
+        row.names(dat) <- c(substring(rownames(dat[i,]), 2),rownames(dat)[2:j])
+      }
+      if(i > 1 & i < j){
+        row.names(dat) <- c(rownames(dat[1:(i-1),]),
+                            substring(rownames(dat[i,]), 2),
+                            rownames(dat)[(i+1):j])
+      }
+      if(i == j){
+        row.names(dat) <- c(rownames(dat[1:(j-1),]),substring(rownames(dat[j,]), 2))
+      }
+    } # End while loop
+  } # End for loop
+  # ====================== #
+  num.bact <- nrow(dat)
+  dat <- t(dat[1:num.bact,1:N])
+
+  if(transform == T){
+    dat <- apply(dat, 2, transform.func)
+  }
+
+  k <- ncol(mydata$meta.dat) # number of original variables
+  dat <- data.frame(cbind(mydata$meta.dat, dat[ids,]))
+
+  # The next chunk of code converts data into long format
+  j <- ncol(dat) # number of variables in new dataset
+  dat_long <- reshape(dat, idvar = "ID",
+                      varying = list(names(dat[,(k+1):j])),
+                      direction = "long")
+
+  dat_long$Bug <- dat_long$time
+  dat_long$Abundance <- dat_long[,(k+1)]
+  dat_long$Bug <- factor(dat_long$Bug,
+                         levels = 1:length(unique(dat_long$Bug)),
+                         labels = colnames(dat[,(k+1):j]))
+
+
+  bug.list <- colnames(dat[,(k+1):j])
+
+  results <- list()
+  results[["Fixed Effects"]] <- list()
+  results[["Random Effects"]] <- list()
+  results[["Fitted Models"]] <- list()
+  for(i in 1:length(bug.list)){
+
+    if(var(dat[,bug.list[i]]) <= 0){
+      # Save fixed effects
+      results[["Fixed Effects"]][[bug.list[i]]] <- "No Variance"
+
+      # Save random effects
+      results[["Random Effects"]][[bug.list[i]]] <- "No Variance"
+
+      # Save regression output
+      results[["Fitted Models"]][[bug.list[i]]] <- "No Variance"
+      next
+    } else {
+
+      if(link == 'normal'){
+        cat("\n\n#########################################\n")
+        cat("#########################################\n")
+        cat("Model:\t")
+        print(as.formula(paste0(bug.list[i],'~' , model)))
+        cat("\nLink:\t", link)
+        cat("\n\n")
+        fit <- lmer(as.formula(paste0(bug.list[i],'~' , model)), data = dat )
+
+        # est ICC
+        est_icc <- ICC(fit)
+        cat("\nIntraclass Correlation (ICC):\t")
+        cat(est_icc)
+        cat("\n\n")
+
+        if(plot.fit.res == T){
+          idat <- data.frame(fitted = fitted(fit), residuals=scale(residuals(fit)))
+          p <- ggplot(idat, aes(fitted, residuals))+
+            geom_point()+
+            geom_hline(yintercept = 2, linetype="dashed")+
+            geom_hline(yintercept = -2, linetype="dashed")+
+            labs(ylab="Standardized Residuals",
+                 title=paste0('Plot of fitted vs. standardized residuals for ',
+                              bug.list[i]))
+          print(p)
+        }
+
+        if(plot.predict == T){
+          idat <- cbind(dat, fit=predict(fit))
+          idat$Outcome <- idat[, bug.list[i]]
+          idat <- idat %>% mutate(Week = (as.numeric(Week)-1)*4)
+
+          lty <- c("Fitted"="solid", "Observed"="dashed")
+          p <- ggplot(idat, aes(Week, Outcome, group=SubjectID,color=Intervention))+
+            geom_line(aes(linetype="Observed"))+
+            geom_line(aes(y=fit, linetype="Fitted"))+
+            geom_point(alpha=0.5) +
+            scale_x_continuous(breaks=c(0,4,8,12))+
+            scale_linetype_manual(values=lty, name=" ")+
+            labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
+            theme(legend.position = "bottom")
+          print(p)
+          ggsave(paste0("predicted_",bug.list[i],".png"), plot=p, width=5, height=3, units="in")
+        }
+
+        fit.out <- summary(fit)
+        fit.coef <- as.data.frame(fit.out$coefficients)
+        fit.coef <- round(fit.coef,n.dec)
+
+        Outcome <- rep(bug.list[i], nrow(fit.coef))
+        fit.coef <- cbind(Outcome, fit.coef)
+        cat("\n\n")
+        cat("Fixed Effects\n\n")
+        print(fit.coef)
+
+        fit.re <- as.data.frame(ranova(fit))
+        Outcome <- rep(bug.list[i], nrow(fit.re))
+        Effect <- rownames(fit.re)
+        fit.re <- cbind(Outcome, Effect, fit.re)
+        fit.re <- list(VarCorr(fit), fit.re)
+        names(fit.re) <- c("Random Effect Est", "Significance Tests")
+
+        cat("\n\n")
+        cat("Random Effects with Significance Tests\n\n")
+        print(fit.re)
+
+      } # End run normal theory linear mixed model
+
+      if(link == 'poisson'){
+        cat("\n\n#########################################\n")
+        cat("#########################################\n")
+        cat("Model:\t")
+        print(as.formula(paste0(bug.list[i],'~' , model)))
+        cat("\nLink:\t", link)
+        cat("\n\n")
+        fit <- glmer(as.formula(paste0(bug.list[i],'~' , model)),
+                     data = dat, family="poisson" )
+        # est ICC
+        est_icc <- ICC(fit)
+        cat("\nIntraclass Correlation (ICC):\t")
+        cat(est_icc)
+        cat("\n\n")
+
+        if(plot.fit.res == T){
+          idat <- data.frame(fitted = fitted(fit), residuals=scale(residuals(fit)))
+          p <- ggplot(idat, aes(fitted, residuals))+
+            geom_point()+
+            geom_hline(yintercept = 2, linetype="dashed")+
+            geom_hline(yintercept = -2, linetype="dashed")+
+            labs(ylab="Standardized Residuals",
+                 title=paste0('Plot of fitted vs. standardized residuals for ',
+                              bug.list[i]))
+          print(p)
+        }
+
+        if(plot.predict == T){
+          idat <- cbind(dat, fit=exp(predict(fit)))
+          idat$Outcome <- idat[, bug.list[i]]
+          idat <- idat %>% mutate(Week = (as.numeric(Week)-1)*4)
+
+          lty <- c("Fitted"="solid", "Observed"="dashed")
+          p <- ggplot(idat, aes(Week, Outcome, group=SubjectID,color=Intervention))+
+            geom_line(aes(linetype="Observed"))+
+            geom_line(aes(y=fit, linetype="Fitted"))+
+            geom_point(alpha=0.5) +
+            scale_x_continuous(breaks=c(0,4,8,12))+
+            scale_linetype_manual(values=lty, name=" ")+
+            labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
+            theme(legend.position = "bottom")
+          print(p)
+          ggsave(paste0("predicted_",bug.list[i],".png"), plot=p, width=5, height=3, units="in")
+        }
+
+        fit.out <- summary(fit)
+        fit.coef <- as.data.frame(fit.out$coefficients)
+        fit.coef <- round(fit.coef,n.dec)
+
+        Outcome <- rep(bug.list[i], nrow(fit.coef))
+        fit.coef <- cbind(Outcome, fit.coef)
+        cat("\n\n")
+        cat("Fixed Effects (change in log)\n\n")
+        print(fit.coef)
+
+        fit.re <- VarCorr(fit)
+        cat("\n\n")
+        cat("Random Effects (SD on log scale)\n\n")
+        print(fit.re)
+        cat("\nSignificance test not available")
+
+      } # End run Poisson generalized linear mixed model
+
+      if(link == 'negbinom'){
+        cat("\n\n#########################################\n")
+        cat("#########################################\n")
+        cat("Model:\t")
+        print(as.formula(paste0(bug.list[i],'~' , model)))
+        cat("\nLink:\t", link)
+        cat("\n\n")
+        fit <- glmer.nb(as.formula(paste0(bug.list[i],'~' , model)),
+                        data = dat )
+
+        # est ICC
+        est_icc <- ICC(fit)
+        cat("\nIntraclass Correlation (ICC):\t")
+        cat(est_icc)
+        cat("\n\n")
+
+
+        if(plot.fit.res == T){
+          idat <- data.frame(fitted = fitted(fit), residuals=scale(residuals(fit)))
+          p <- ggplot(idat, aes(fitted, residuals))+
+            geom_point()+
+            geom_hline(yintercept = 2, linetype="dashed")+
+            geom_hline(yintercept = -2, linetype="dashed")+
+            labs(ylab="Standardized Residuals",
+                 title=paste0('Plot of fitted vs. standardized residuals for ',
+                              bug.list[i]))
+          print(p)
+        }
+
+        if(plot.predict == T){
+          idat <- cbind(dat, fit=exp(predict(fit)))
+          idat$Outcome <- idat[, bug.list[i]]
+          idat <- idat %>% mutate(Week = (as.numeric(Week)-1)*4)
+
+          lty <- c("Fitted"="solid", "Observed"="dashed")
+          p <- ggplot(idat, aes(Week, Outcome, group=SubjectID, color=Intervention))+
+            geom_line(aes(linetype="Observed"))+
+            geom_line(aes(y=fit, linetype="Fitted"))+
+            geom_point(alpha=0.5) +
+            scale_x_continuous(breaks=c(0,4,8,12))+
+            scale_linetype_manual(values=lty, name=" ")+
+            labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
+            theme(legend.position = "bottom")
+          print(p)
+          ggsave(paste0("predicted_",bug.list[i],".png"), plot=p, width=5, height=3, units="in")
+        }
+
+        fit.out <- summary(fit)
+        fit.coef <- as.data.frame(fit.out$coefficients)
+        fit.coef <- round(fit.coef,n.dec)
+
+        Outcome <- rep(bug.list[i], nrow(fit.coef))
+        fit.coef <- cbind(Outcome, fit.coef)
+        cat("\n\n")
+        cat("Fixed Effects (change in log)\n\n")
+        print(fit.coef)
+
+        fit.re <- VarCorr(fit)
+        cat("\n\n")
+        cat("Random Effects (SD on log scale)\n\n")
+        print(fit.re)
+        cat("\nSignificance test not available")
+
+      } # End run Negative Binomial generalized linear mixed model
+
+
+      # save results
+      # Save fixed effects
+      results[["Fixed Effects"]][[bug.list[i]]] <- fit.coef
+
+      # Save random effects
+      results[["Random Effects"]][[bug.list[i]]] <- fit.re
+
+      # Save regression output
+      results[["Fitted Models"]][[bug.list[i]]] <- fit
+    } # End Estimating Models
+  } # End loop through list of bacteria
+
+  return(results)
+}
+
+
+
+# =================================================== #
+#           ICC()
+# =================================================== #
+# This function estimates the ICC for mixed models
+# only computes the ratio of intercept variance to "total"
+#   total = intercept variance + residual variance
+# Last update: 2020-02-06
+ICC <- function(x){
+  icc <- VarCorr(x)[[1]]/(VarCorr(x)[[1]] + sigma(x)**2)
+  icc <- lapply(icc, function(x) { attributes(x) <- NULL; x })
+  icc <- icc[[1]]
+  return(icc)
+}

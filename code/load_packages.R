@@ -18,7 +18,7 @@
 # Set up directory and libraries
 rm(list=ls())
 # list of packages
-packages <- c("phyloseq",
+packages <- c("phyloseq", "lme4", "lmerTest",
               "tidyverse", "readr", "readxl",
               "data.table", "dplyr", "plyr", "ggplot2",
               "kableExtra", "xtable", "gridExtra")

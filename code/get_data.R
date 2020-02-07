@@ -21,7 +21,7 @@ source("code/microbiome_statistics_and_functions.R")
 
 # read in analysis
 # from data-for-analaysis tab of
-analysis_data <- read_xlsx("data/Microbiome Data/NoahFolder/Data_Fiber_2019_12_10.xlsx", sheet="DataforAnalysis",na = ".")
+analysis_data <- read_xlsx("data/Microbiome Data/NoahFolder/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
 
 # supplement IDS
 # *highest intake = 7, supplement
