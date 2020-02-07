@@ -979,7 +979,7 @@ summarize_genera <- function(mydata, model.var = NULL, transform = T,
 # n.dec = number of decimals to display in output, default = 6
 # plot.fit.res = logical whether to print the plot of the fitted versus residuals
 # plot.predict = logical for whether to plot the predicted values (versus time)
-glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model = "1 + (1|SubjectID)", n.dec = 5,  plot.fit.res=T, plot.predict=T, transform=F, transform.func = "sqrt"){
+glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model = "1 + (1|SubjectID)", n.dec = 5,  plot.fit.res=T, plot.predict=T, transform=F, transform.func = "sqrt", model.number=0){
   # mydata <- microbiome_data
   # transform <- F
   # transform.func <- 'sqrt'
@@ -1106,7 +1106,7 @@ glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model 
             labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
             theme(legend.position = "bottom")
           print(p)
-          ggsave(paste0("predicted_",bug.list[i],".png"), plot=p, width=5, height=3, units="in")
+          ggsave(paste0("fig/predicted_",bug.list[i],"_model",model.number,".png"), plot=p, width=5, height=3, units="in")
         }
 
         fit.out <- summary(fit)
@@ -1174,7 +1174,7 @@ glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model 
             labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
             theme(legend.position = "bottom")
           print(p)
-          ggsave(paste0("predicted_",bug.list[i],".png"), plot=p, width=5, height=3, units="in")
+          ggsave(paste0("fig/predicted_",bug.list[i],"_model",model.number,".png"), plot=p, width=5, height=3, units="in")
         }
 
         fit.out <- summary(fit)
@@ -1239,7 +1239,7 @@ glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model 
             labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
             theme(legend.position = "bottom")
           print(p)
-          ggsave(paste0("predicted_",bug.list[i],".png"), plot=p, width=5, height=3, units="in")
+          ggsave(paste0("fig/predicted_",bug.list[i],"_model",model.number,".png"), plot=p, width=5, height=3, units="in")
         }
 
         fit.out <- summary(fit)
