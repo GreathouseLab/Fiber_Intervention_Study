@@ -382,7 +382,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -391,7 +391,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -403,7 +403,7 @@ div.section {
 <strong>Last updated:</strong> 2020-02-06
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Fiber_Intervention_Study/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -419,12 +419,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -491,10 +491,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree4aac91fdab9f7d78716f684de07e423cc0175928targetblank4aac91fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/4aac91fdab9f7d78716f684de07e423cc0175928" target="_blank">4aac91f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree77daa75b28b045b69feb94e972f2243506c97ab6targetblank77daa75a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/77daa75b28b045b69feb94e972f2243506c97ab6" target="_blank">77daa75</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree4aac91fdab9f7d78716f684de07e423cc0175928targetblank4aac91fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree77daa75b28b045b69feb94e972f2243506c97ab6targetblank77daa75a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -505,18 +505,17 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  analysis/lme_alpha.Rmd
-    Untracked:  analysis/lme_microbiome.Rmd
-    Untracked:  code/get_cleaned_data.R
-    Untracked:  data/Microbiome Data/NoahFolder/Copy of Data_Fiber_Jul25_2019.xlsx
-    Untracked:  data/Microbiome Data/NoahFolder/Copy of Fiber Study Blood Results_May2019.xlsx
-    Untracked:  data/Microbiome Data/NoahFolder/Data_Fiber_2020_02_06.xlsx
-
-Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   code/get_data.R
-    Modified:   code/load_packages.R
-    Modified:   code/microbiome_statistics_and_functions.R
+    Untracked:  fig/
+    Untracked:  predicted_Actinobacteria.png
+    Untracked:  predicted_Bacteroidetes.png
+    Untracked:  predicted_Cyanobacteria.png
+    Untracked:  predicted_Euryarchaeota.png
+    Untracked:  predicted_Firmicutes.png
+    Untracked:  predicted_Fusobacteria.png
+    Untracked:  predicted_Lentisphaerae.png
+    Untracked:  predicted_Proteobacteria.png
+    Untracked:  predicted_Tenericutes.png
+    Untracked:  predicted_Verrucomicrobia.png
 
 </code></pre>
 <p>
@@ -537,8 +536,7 @@ There are no past versions. Publish this analysis with <code>wflow_publish()</co
 </div>
 </div>
 <p>This page contains the investigation of the changes in alpha diversity metrics (Observed and Shannon) over time.</p>
-<div id="analyses-of-alpha-diversity" class="section level1">
-<h1>Analyses of Alpha diversity</h1>
+<p>Here, we investigated how the metrics of alpha diversity changed over time.</p>
 <div id="alpha-observed-otus" class="section level2">
 <h2>Alpha: Observed OTUs</h2>
 <div id="unconditional-model" class="section level3">
@@ -995,54 +993,54 @@ ggplot(dat, aes(time, Shannon, group=SubjectID, color=Gender))+
 </div>
 <div id="intervention-effect-1" class="section level3">
 <h3>Intervention effect</h3>
-<pre class="r"><code>fit &lt;- lmer(Shannon ~ 1 + intB + female + hispanic + (1 | SubjectID),
+<pre class="r"><code>fit &lt;- lmer(Shannon ~ 1 + intB + time + female +  (1 | SubjectID),
             data = mydata)
 summary(fit)</code></pre>
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
 lmerModLmerTest]
-Formula: Shannon ~ 1 + intB + female + hispanic + (1 | SubjectID)
+Formula: Shannon ~ 1 + intB + time + female + (1 | SubjectID)
    Data: mydata
 
-REML criterion at convergence: 27.9
+REML criterion at convergence: 32.1
 
 Scaled residuals: 
-     Min       1Q   Median       3Q      Max 
--2.50594 -0.11998  0.07058  0.42323  2.25811 
+    Min      1Q  Median      3Q     Max 
+-2.5421 -0.2129  0.0820  0.4446  2.3060 
 
 Random effects:
  Groups    Name        Variance Std.Dev.
- SubjectID (Intercept) 0.27471  0.5241  
- Residual              0.05611  0.2369  
+ SubjectID (Intercept) 0.24560  0.4956  
+ Residual              0.05679  0.2383  
 Number of obs: 37, groups:  SubjectID, 11
 
 Fixed effects:
-            Estimate Std. Error      df t value Pr(&gt;|t|)    
-(Intercept)   2.3573     0.3414  7.0911   6.905 0.000217 ***
-intB          0.2278     0.3501  7.1582   0.651 0.535667    
-female        0.2478     0.3523  7.1360   0.703 0.504196    
-hispanic     -0.1264     0.3680  7.0115  -0.343 0.741353    
+            Estimate Std. Error       df t value Pr(&gt;|t|)    
+(Intercept)  2.28187    0.30569  8.58746   7.465 4.93e-05 ***
+intB         0.18778    0.31332  8.16494   0.599    0.565    
+time         0.02692    0.03539 25.65615   0.761    0.454    
+female       0.21545    0.32387  8.13434   0.665    0.524    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
-         (Intr) intB   female
-intB     -0.342              
-female   -0.560  0.163       
-hispanic -0.360 -0.335 -0.251</code></pre>
+       (Intr) intB   time  
+intB   -0.522              
+time   -0.143  0.005       
+female -0.713  0.088 -0.007</code></pre>
 <pre class="r"><code>ranova(fit)</code></pre>
 <pre><code>ANOVA-like table for random-effects: Single term deletions
 
 Model:
-Shannon ~ intB + female + hispanic + (1 | SubjectID)
+Shannon ~ intB + time + female + (1 | SubjectID)
                 npar  logLik    AIC    LRT Df Pr(&gt;Chisq)    
-&lt;none&gt;             6 -13.950 39.899                         
-(1 | SubjectID)    5 -29.429 68.858 30.959  1  2.635e-08 ***
+&lt;none&gt;             6 -16.037 44.073                         
+(1 | SubjectID)    5 -30.640 71.280 29.207  1  6.503e-08 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>plot(fit)</code></pre>
 <p><img src="figure/lme_alpha.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>ICC(fit)</code></pre>
-<pre><code>[1] 0.8304007</code></pre>
+<pre><code>[1] 0.8121915</code></pre>
 <pre class="r"><code>dat &lt;- cbind(mydata, fit=predict(fit))
 
 ggplot(dat, aes(time, Shannon, group=SubjectID, color=Intervention))+
@@ -1112,7 +1110,6 @@ loaded via a namespace (and not attached):
 [85] broom_0.5.2         later_1.0.0         viridisLite_0.3.0  
 [88] survival_2.44-1.1   iterators_1.0.12    IRanges_2.20.1     
 [91] workflowr_1.5.0     cluster_2.1.0      </code></pre>
-</div>
 </div>
 </div>
 </div>
