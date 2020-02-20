@@ -25,7 +25,7 @@ scale_fill_discrete <-  function(palname=pal, ...){
   scale_fill_brewer(palette=palname, ...)
 }
 
-
+knitr::opts_chunk$set(out.width = "225%")
 
 ```
 

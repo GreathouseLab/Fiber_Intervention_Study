@@ -19,6 +19,9 @@ source("code/microbiome_statistics_and_functions.R")
 # from data-for-analaysis tab of
 analysis_data <- read_xlsx("data/Microbiome Data/NoahFolder/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
 
+hei_data <- read_xlsx("data/Microbiome Data/NoahFolder/FFQ_HEI_Fiber.xlsx")
+asa24_data <- read_xlsx("data/Microbiome Data/NoahFolder/ASA24_fiber_F_V_intake_by_week.xlsx")
+
 # supplement IDS
 # *highest intake = 7, supplement
 # highest cookie intake = 3
@@ -36,8 +39,10 @@ meta_data <- read.table("data/Microbiome Data/NoahFolder/Metadata file_nomiss_mi
   rownames(meta_data) <- meta_data$ID
   meta_data$SubjectID2 <- as.numeric(as.factor(meta_data$SubjectID))
   meta_data$Week <- as.factor(meta_data$Week)
-  ## merge meta_dat with analysis data
+  ## merge meta_dat with analysis data, hei data and ASA24 data
   meta_data <- merge(meta_data, analysis_data, all=T)
+  meta_data1 <- merge(meta_data, hei_data, all.x=T)
+  #meta_data1 <- merge(meta_data1, asa24_data, all.y=T)
 
 meta <- sample_data(meta_data)
 sample_names(meta) <- meta_data$ID
@@ -101,9 +106,7 @@ meta_data0 <- sample_data(phylo_data) %>%
   data.frame() %>%
   left_join(alpha_div, by = "ID")
 
-meta_data1 <-sample_data(meta_data0)
-
-phylo_data <- merge_phyloseq(phylo_data, meta_data1)
+meta_data0$SubjectID3 <- as.factor(meta_data0$SubjectID)
 
 # now, extract the information from .biom/phyloseq for other analyses
 otus <- psmelt(phylo_data) # uses the cleaned data in phyloseq file
@@ -148,4 +151,4 @@ names(microbiome_data) <- c("otu.tab", "otu.name","abund.list",
                             "meta.dat","tree")
 
 # remove unnecessary items
-remove(abund.list, analysis_data, biom_file, meta, meta_data, observed_counts, otu.name, otus, tree_file, Class, Family, Genus, i, Kingdom, new.packages, Order, OTU,packages, Phylum, phylo_data0,phylo_data1, phylo_data2, prevdf, prevdf1, totals, filterPhyla, genusNames, keepTaxa,prevalenceThreshold, alpha_div, meta_data0, meta_data1)
+remove(abund.list, analysis_data, biom_file, meta, meta_data, observed_counts, otu.name, otus, tree_file, Class, Family, Genus, i, Kingdom, new.packages, Order, OTU,packages, Phylum, phylo_data0,phylo_data1, phylo_data2, prevdf, prevdf1, totals, filterPhyla, genusNames, keepTaxa,prevalenceThreshold, alpha_div,meta_data0, meta_data1, hei_data)

@@ -18,12 +18,13 @@ Describing the data:
 
 *[Data Pre-Processing](data_processing.html)
 
-# Alpha Diversity
+# Analyses
 
+## Alpha Diversity
 *[Initial Alpha Diversity Figures](alpha_diversity.html)
 
-# Analyses of Change over Time
-
 *[Changes in Alpha Diversity](lme_alpha.html)
+
+## Phylum Level Analyses
 
 *[Changes in Phylum Abundance](lme_microbiome.html)

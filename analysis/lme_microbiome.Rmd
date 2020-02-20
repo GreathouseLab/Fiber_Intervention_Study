@@ -10,6 +10,7 @@ editor_options:
 This page contains the investigation of the changes over time.
 
 ```{r data, include=FALSE, echo=FALSE}
+
 # load packages
 source("code/load_packages.R")
 
@@ -25,7 +26,7 @@ scale_fill_discrete <-  function(palname=pal, ...){
   scale_fill_brewer(palette=palname, ...)
 }
 
-
+knitr::opts_chunk$set(out.width = "225%")
 
 ```
 
@@ -225,7 +226,6 @@ h\left(Y_{ij}\right)&=\beta_{0j} + \beta_{1j}(Week)_{ij}  + r_{ij}\\
 
 
 ```{r}
-
 
 phylum.fit7 <- glmm_microbiome(mydata=microbiome_data, model.number=7,
                                taxa.level="Phylum", link="poisson",
