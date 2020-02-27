@@ -125,11 +125,31 @@ ggplot(dat, aes(time, Observed, group=SubjectID, color=Gender))+
 
 ### Intervention effect
 
+#### Overall Effect
 
 ```{r}
 
 
 fit <- lmer(Observed ~ 1 + intB + female + hispanic + (1 | SubjectID),
+            data = mydata)
+summary(fit)
+
+plot(fit)
+ICC(fit)
+
+dat <- cbind(mydata, fit=predict(fit))
+
+ggplot(dat, aes(time, Observed, group=SubjectID, color=Intervention))+
+  geom_line(aes(y=fit))+
+  geom_point(alpha=0.5)
+
+```
+
+#### With Time
+
+```{r}
+
+fit <- lmer(Observed ~ 1 + intB*time + (1 | SubjectID),
             data = mydata)
 summary(fit)
 ranova(fit)
@@ -141,7 +161,6 @@ dat <- cbind(mydata, fit=predict(fit))
 ggplot(dat, aes(time, Observed, group=SubjectID, color=Intervention))+
   geom_line(aes(y=fit))+
   geom_point(alpha=0.5)
-
 ```
 
 

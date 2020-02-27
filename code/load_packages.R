@@ -21,7 +21,7 @@ rm(list=ls())
 packages <- c("phyloseq", "lme4", "lmerTest",
               "tidyverse", "readr", "readxl",
               "data.table", "dplyr", "plyr", "ggplot2",
-              "kableExtra", "xtable", "gridExtra")
+              "kableExtra", "xtable", "gridExtra", "viridis")
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 # Load packages
