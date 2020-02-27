@@ -41,7 +41,7 @@ meta_data <- read.table("data/Microbiome Data/NoahFolder/Metadata file_nomiss_mi
   meta_data$Week <- as.factor(meta_data$Week)
   ## merge meta_dat with analysis data, hei data and ASA24 data
   meta_data <- merge(meta_data, analysis_data, all=T)
-  meta_data1 <- merge(meta_data, hei_data, all.x=T)
+  meta_data <- merge(meta_data, hei_data, all.x=T)
   #meta_data1 <- merge(meta_data1, asa24_data, all.y=T)
 
 meta <- sample_data(meta_data)
@@ -151,4 +151,4 @@ names(microbiome_data) <- c("otu.tab", "otu.name","abund.list",
                             "meta.dat","tree")
 
 # remove unnecessary items
-remove(abund.list, analysis_data, biom_file, meta, meta_data, observed_counts, otu.name, otus, tree_file, Class, Family, Genus, i, Kingdom, new.packages, Order, OTU,packages, Phylum, phylo_data0,phylo_data1, phylo_data2, prevdf, prevdf1, totals, filterPhyla, genusNames, keepTaxa,prevalenceThreshold, alpha_div,meta_data0, meta_data1, hei_data)
+remove(abund.list, analysis_data, biom_file, meta, meta_data, observed_counts, otu.name, otus, tree_file, Class, Family, Genus, i, Kingdom, new.packages, Order, OTU,packages, Phylum, phylo_data0,phylo_data1, phylo_data2, prevdf, prevdf1, totals, filterPhyla, genusNames, keepTaxa,prevalenceThreshold, alpha_div,meta_data0, hei_data)

@@ -1,7 +1,7 @@
 name: "Fiber_Intervention_Study"
 output_dir: ../docs
 navbar:
-  title: "Fiber_Intervention_Study"
+  title: "Fiber Intervention Study"
   left:
   - text: Home
     href: index.html

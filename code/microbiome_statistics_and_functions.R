@@ -1291,3 +1291,68 @@ ICC <- function(x){
   icc <- icc[[1]]
   return(icc)
 }
+
+
+
+
+# ==================================================== #
+#   get_combined_data()
+# essentially just gets the microbiome data in a
+# data.frame I can do stuff with
+
+get_combined_data <- function(mydata, taxa.level="Phylum",
+                            transform=F, transform.func = "sqrt"){
+
+  N <- nrow(mydata$meta.dat)
+  ids <- mydata$meta.dat$ID
+
+
+  dat <- data.frame(mydata$abund.list[[taxa.level]])
+
+  # NOTE: Special coding for stripping weird characters from bacteria names
+  j <- length(rownames(dat))
+  i <- 1
+  for(i in 1:j){
+    while( substring(rownames(dat[i,]), 1, 1)  == "_"){
+
+      if(i == 1){
+        row.names(dat) <- c(substring(rownames(dat[i,]), 2),rownames(dat)[2:j])
+      }
+      if(i > 1 & i < j){
+        row.names(dat) <- c(rownames(dat[1:(i-1),]),
+                            substring(rownames(dat[i,]), 2),
+                            rownames(dat)[(i+1):j])
+      }
+      if(i == j){
+        row.names(dat) <- c(rownames(dat[1:(j-1),]),substring(rownames(dat[j,]), 2))
+      }
+    } # End while loop
+  } # End for loop
+  # ====================== #
+  num.bact <- nrow(dat)
+  dat <- t(dat[1:num.bact,1:N])
+
+  if(transform == T){
+    dat <- apply(dat, 2, transform.func)
+  }
+
+  k <- ncol(mydata$meta.dat) # number of original variables
+  dat <- data.frame(cbind(mydata$meta.dat, dat[ids,]))
+
+  # The next chunk of code converts data into long format
+  j <- ncol(dat) # number of variables in new dataset
+  dat_long <- reshape(dat, idvar = "ID",
+                      varying = list(names(dat[,(k+1):j])),
+                      direction = "long")
+
+  dat_long$Bug <- dat_long$time
+  dat_long$Abundance <- dat_long[,(k+1)]
+  dat_long$Bug <- factor(dat_long$Bug,
+                         levels = 1:length(unique(dat_long$Bug)),
+                         labels = colnames(dat[,(k+1):j]))
+
+
+  bug.list <- colnames(dat[,(k+1):j])
+  out <- list(full_data=dat_long, bug.list=bug.list)
+  return(out)
+}
