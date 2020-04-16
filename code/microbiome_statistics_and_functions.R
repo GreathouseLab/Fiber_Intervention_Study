@@ -1346,7 +1346,7 @@ get_combined_data <- function(mydata, taxa.level="Phylum",
                       direction = "long")
 
   dat_long$Bug <- dat_long$time
-  dat_long$Abundance <- dat_long[,(k+1)]
+  dat_long$Abundance <- dat_long[,(k+2)]
   dat_long$Bug <- factor(dat_long$Bug,
                          levels = 1:length(unique(dat_long$Bug)),
                          labels = colnames(dat[,(k+1):j]))

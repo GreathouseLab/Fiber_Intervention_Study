@@ -30,22 +30,6 @@ knitr::opts_chunk$set(out.width = "225%")
 
 ```
 
-
-# Data prep
-
-This is only to recode some variables to ease interpretation.
-
-```{r}
-
-microbiome_data$meta.dat <- microbiome_data$meta.dat %>%
-  mutate(intB = ifelse(Intervention=="B", 1,0),
-         time = as.numeric(Week) - 1,
-         female = ifelse(Gender == "F", 1, 0),
-         hispanic = ifelse(Ethnicity %in% c("White", "Asian", "Native America"), 1, 0))
-
-```
-
-
 # Phylum Level Microbiome and Food
 
 Get the phylum level data
@@ -62,144 +46,61 @@ bugs
 
 ## Correlation between Phylum and HEI scores
 
-### Start of Study
-
-#### Actinobacteria
+### Start of Study (Baseline, Week 1)
 
 ```{r}
 
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[1])
+subdat <- filter(data.phylum$full_data, Week == "1")
 
 ggplot(subdat, aes(x=Abundance, y=HEI_Total,
                    color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[1]))
+  geom_point(size=3)+
+  facet_wrap(.~Bug, scales = "free")+
+  theme(axis.text.x = element_text(angle=20, size=7, vjust=0.1))
 
 ```
 
-#### Bacteroidetes
+### 1st follw-up (Week 4)
 
 ```{r}
 
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[2])
+subdat <- filter(data.phylum$full_data, Week == "4")
 
 ggplot(subdat, aes(x=Abundance, y=HEI_Total,
                    color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[2]))
+  geom_point(size=3)+
+  facet_wrap(.~Bug, scales = "free")+
+  theme(axis.text.x = element_text(angle=20, size=7, vjust=0.1))
 
 ```
 
-#### Cyanobacteria
+
+### Second follw-up (Week 8)
 
 ```{r}
 
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[3])
+subdat <- filter(data.phylum$full_data, Week == "8")
 
 ggplot(subdat, aes(x=Abundance, y=HEI_Total,
                    color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[3]))
+  geom_point(size=3)+
+  facet_wrap(.~Bug, scales = "free")+
+  theme(axis.text.x = element_text(angle=20, size=7, vjust=0.1))
 
 ```
 
-#### Euryarchaeota
+
+### Third follw-up (Week 12)
 
 ```{r}
 
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[4])
+subdat <- filter(data.phylum$full_data, Week == "12")
 
 ggplot(subdat, aes(x=Abundance, y=HEI_Total,
                    color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[4]))
+  geom_point(size=3)+
+  facet_wrap(.~Bug, scales = "free")+
+  theme(axis.text.x = element_text(angle=20, size=7, vjust=0.1))
 
 ```
 
-#### Firmicutes
-
-```{r}
-
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[5])
-
-ggplot(subdat, aes(x=Abundance, y=HEI_Total,
-                   color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[5]))
-
-```
-
-#### Fusobacteria
-
-```{r}
-
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[6])
-
-ggplot(subdat, aes(x=Abundance, y=HEI_Total,
-                   color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[6]))
-
-```
-
-#### Lentisphaerae
-
-```{r}
-
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[7])
-
-ggplot(subdat, aes(x=Abundance, y=HEI_Total,
-                   color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[7]))
-
-```
-
-#### Proteobacteria
-
-```{r}
-
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[8])
-
-ggplot(subdat, aes(x=Abundance, y=HEI_Total,
-                   color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[8]))
-
-```
-
-#### Tenericutes
-
-```{r}
-
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[9])
-
-ggplot(subdat, aes(x=Abundance, y=HEI_Total,
-                   color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[9]))
-
-```
-
-#### Verrucomicrobia
-
-```{r}
-
-subdat <- filter(data.phylum$full_data,
-                 Week == "1" & Bug == bugs[10])
-
-ggplot(subdat, aes(x=Abundance, y=HEI_Total,
-                   color=Intervention))+
-  geom_point(size=3) +
-  labs(title = paste0("Phylum: ", bugs[10]))
-
-```

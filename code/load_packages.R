@@ -18,10 +18,11 @@
 # Set up directory and libraries
 rm(list=ls())
 # list of packages
-packages <- c("phyloseq", "lme4", "lmerTest",
-              "tidyverse", "readr", "readxl",
+packages <- c("phyloseq","vegan", "lme4", "lmerTest",
+              "tidyverse", "readr", "readxl", "forcats",
               "data.table", "dplyr", "plyr", "ggplot2",
-              "kableExtra", "xtable", "gridExtra", "viridis")
+              "kableExtra", "xtable", "gridExtra", "viridis",
+              "patchwork", "gvlma", "car")
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 # Load packages

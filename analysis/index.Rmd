@@ -20,11 +20,24 @@ Describing the data:
 
 # Analyses
 
+*[Anthropometric Differences](analysis_anthropometric.html)
+
+## Diet Data
+
+*[Dietary Data Over Time](dietary_intake_figure.html)
+
 ## Alpha Diversity
-*[Initial Alpha Diversity Figures](alpha_diversity.html)
 
-*[Changes in Alpha Diversity](lme_alpha.html)
+*[Alpha Diversity Figures](alpha_diversity.html)
 
-## Phylum Level Analyses
+*[Modeling Changes in Alpha Diversity](lme_alpha.html)
 
-*[Changes in Phylum Abundance](lme_microbiome.html)
+## Beta Diversity
+
+*[Beta Diversity Analyses](analysis_beta_diversity.html)
+
+## Microbiome Adundance Analysis
+
+*[Modeling Changes in Phylum Abundance](lme_microbiome.html)
+
+*[Microbiome and Food](microbiome_food.html)

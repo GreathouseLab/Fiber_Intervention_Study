@@ -1,0 +1,216 @@
+---
+title: "Beta Diversity Analysis"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+# Beta-Diversity
+
+
+
+```{r data, include=FALSE, echo=FALSE}
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+```
+
+
+# General Ordination Plot
+
+```{r}
+
+# Ordinate
+pcoa <- ordinate(
+  physeq = phylo_data, 
+  method = "PCoA", 
+  distance = "bray"
+)
+
+# Plot 
+p <- plot_ordination(
+  physeq = phylo_data,
+  ordination = pcoa,
+  color = "Week",
+  shape = "Intervention",
+  title = "PCoA plot of community differences over time"
+) 
+p +
+  geom_point(aes(color = Week), alpha = 0.7, size = 4) +
+  scale_color_manual(values = c("#a65628", "red", "#ffae19","#4daf4a")) +
+  geom_point(colour = "grey90", size = 1.5) 
+
+```
+
+
+
+
+# PERMANOVA
+
+Below, we present the permutation based ANOVA results for community differences.
+We conducted these analyses with three models
+
+1. Using Week
+2. Using Intervention
+3. Using Week $\times$ Intervention interaction
+
+Compute the distances matrices and get ordination objects.
+
+```{r}
+
+# Calculate distance matrices
+dist_bray <- phyloseq::distance(phylo_data, method = "bray")
+dist_unwt <- phyloseq::distance(phylo_data, method="unifrac", weighted=F)
+dist_wt <- phyloseq::distance(phylo_data, method="unifrac", weighted=T)
+
+# plot ordination
+ord_bray = ordinate(phylo_data, method="PCoA", distance=dist_bray)
+ord_unwt = ordinate(phylo_data, method="PCoA", distance=dist_unwt)
+ord_wt = ordinate(phylo_data, method="PCoA", distance=dist_wt)
+
+# sample data
+df <- data.frame(sample_data(phylo_data))
+
+# colors
+cols <- c("#fe9700","#00a2f2", "#662a00", "#c91acb","grey60","#858c69", "#a8863a", "#737373", "#d43f1f", "#5dd047",  "#ffff59")
+
+```
+
+## Analysis by Week
+
+```{r}
+
+p1 <- plot_ordination(phylo_data, ord_bray, color="Week") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Bray-Curtis distance, by Week")
+
+p2 <- plot_ordination(phylo_data, ord_unwt, color="Week") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Unweighted Unifrac distance, by Week")
+
+p3 <- plot_ordination(phylo_data, ord_wt, color="Week") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Weight Unifrac distance, by Week")
+p1 + p2 + p3 + plot_layout(ncol=1)
+
+# Bray-Curtis
+adonis(dist_bray ~ Week, data = df)
+beta <- betadisper(dist_bray, df$Week)
+permutest(beta)
+
+# Unweighted Unifrac
+adonis(dist_unwt ~ Week, data = df)
+beta <- betadisper(dist_unwt, df$Week)
+permutest(beta)
+
+# Weighted Unifrac
+adonis(dist_wt ~ Week, data = df)
+beta <- betadisper(dist_wt, df$Week)
+permutest(beta)
+
+```
+
+## Analysis by Intervention
+
+```{r}
+
+
+p1 <- plot_ordination(phylo_data, ord_bray, color="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Bray-Curtis distance, by Intervention")
+
+p2 <- plot_ordination(phylo_data, ord_unwt, color="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Unweighted Unifrac distance, by Intervention")
+
+p3 <- plot_ordination(phylo_data, ord_wt, color="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Weight Unifrac distance, by Intervention")
+p1 + p2 + p3 + plot_layout(ncol=1)
+
+# Bray-Curtis
+adonis(dist_bray ~ Intervention, data = df)
+beta <- betadisper(dist_bray, df$Intervention)
+permutest(beta)
+
+# Unweighted Unifrac
+adonis(dist_unwt ~ Intervention, data = df)
+beta <- betadisper(dist_unwt, df$Intervention)
+permutest(beta)
+
+# Weighted Unifrac
+adonis(dist_wt ~ Intervention, data = df)
+beta <- betadisper(dist_wt, df$Intervention)
+permutest(beta)
+
+```
+
+
+## Analysis by Intervention
+
+```{r}
+
+p1 <- plot_ordination(phylo_data, ord_bray,
+                      color="Week", shape="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  geom_point(colour = "grey90", size = 1.5) +
+  labs(title="PCoA on Bray-Curtis distance, by Week & Intervention")+
+  theme(legend.position = "none")
+
+p2 <- plot_ordination(phylo_data, ord_unwt,
+                      color="Week", shape="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  geom_point(colour = "grey90", size = 1.5) +
+  labs(title="PCoA on Unweighted Unifrac distance, by Week & Intervention")+
+  theme(legend.position = "none")
+
+p3 <- plot_ordination(phylo_data, ord_wt,
+                      color="Week", shape="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  geom_point(colour = "grey90", size = 1.5) +
+  labs(title="PCoA on Weight Unifrac distance, by Week & Intervention")+
+  theme(legend.position = "bottom")
+p1 + p2 + p3 + plot_layout(ncol=1)
+
+# Bray-Curtis
+adonis(dist_bray ~ Intervention*Week, data = df)
+beta <- betadisper(dist_bray, interaction(df$Intervention, df$Week))
+permutest(beta)
+
+# Unweighted Unifrac
+adonis(dist_unwt ~ Intervention*Week, data = df)
+beta <- betadisper(dist_unwt, interaction(df$Intervention, df$Week))
+permutest(beta)
+
+# Weighted Unifrac
+adonis(dist_wt ~ Intervention*Week, data = df)
+beta <- betadisper(dist_wt, interaction(df$Intervention, df$Week))
+permutest(beta)
+
+```
+

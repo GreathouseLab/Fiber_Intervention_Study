@@ -11,3 +11,5 @@ analysis/*_cache
 analysis/site_libs
 *.fq
 *.fq.bz2
+reference-papers/**
+writing/**

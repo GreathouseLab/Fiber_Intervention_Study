@@ -1,19 +1,17 @@
 # ============================================= #
 # script: get_data.R
-# Project: ML-CFA Parameter Recovery
-# Author(s): R.N. Padgett & G.B. Morgan
+# Project: Fiber Microbiome Study
+# Author(s): R.N. Padgett & L. Greathouse
 # ============================================= #
 # Data Created: 2019-10-16
-# Date Modified: 2019-10-16
+# Date Modified: 2020-04-10
 # By: R. Noah Padgett
 # ============================================= #
-# Stems from Padgett's MA thesis
 # ============================================= #
 # Purpose:
 # This R script is for loading and formating
 #   the data file for use in analyses.
 #
-# The output is a data.frame (tibble) object
 # ============================================= #
 
 # need to make sure the microbiome code is read in
@@ -21,7 +19,7 @@ source("code/microbiome_statistics_and_functions.R")
 
 # read in analysis
 # from data-for-analaysis tab of
-analysis_data <- read_xlsx("data/Microbiome Data/NoahFolder/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
+analysis_data <- read_xlsx("data/analysis-data/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
 
 # supplement IDS
 # *highest intake = 7, supplement
@@ -33,9 +31,9 @@ analysis_data <- read_xlsx("data/Microbiome Data/NoahFolder/Data_Fiber_2020_02_0
 
 
 # get microbiome data
-biom_file  <- import_biom("data/Microbiome Data/NoahFolder/OTU_Table.biom")
-tree_file <- read_tree("data/Microbiome Data/NoahFolder/OTU_Table.tre")
-meta_data <- read.table("data/Microbiome Data/NoahFolder/Metadata file_nomiss_microbiomeIDs.txt", sep="\t", header=T)
+biom_file  <- import_biom("data/analysis-data/OTU_Table.biom")
+tree_file <- read_tree("data/analysis-data/OTU_Table.tre")
+meta_data <- read.table("data/analysis-data/Metadata file_nomiss_microbiomeIDs.txt", sep="\t", header=T)
   colnames(meta_data)[1] <- "ID"
   rownames(meta_data) <- meta_data$ID
   meta_data$SubjectID2 <- as.numeric(as.factor(meta_data$SubjectID))

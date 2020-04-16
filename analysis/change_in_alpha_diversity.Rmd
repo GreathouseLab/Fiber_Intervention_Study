@@ -1,0 +1,239 @@
+---
+title: "Alpha Diversity"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+This page contains the investigation of alpha diversity investigations.
+
+```{r data, include=FALSE, echo=FALSE}
+##Chunk iptions
+
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+knitr::opts_chunk$set(out.width = "225%")
+
+# recode
+plot_data <- microbiome_data$meta.dat
+plot_data$Week <- factor(plot_data$Week,
+                         levels=c("1", "4", "8", "12"),
+                         labels=c("Week 1", "Week 4",
+                                  "Week 8", "Week 12"))
+```
+
+
+# Alpha diversity
+
+## Boxplots by unique participants
+
+
+### Observed OTUs
+
+```{r}
+
+
+
+ggplot(plot_data, aes(x=SubjectID3, y=Observed,
+                      colour=SubjectID3, shape=Week))+
+  geom_point(size=2) +
+  labs(x="Subject ID")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+
+
+```
+
+### Shannon Index
+
+```{r}
+
+ggplot(plot_data, aes(x=SubjectID3, y=Shannon,
+                      colour=SubjectID3, shape=Week))+
+  geom_point(size=2) +
+  labs(x="Subject ID")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+
+
+```
+
+### Simpson
+
+```{r}
+
+ggplot(plot_data, aes(x=SubjectID3, y=Simpson,
+                      colour=SubjectID3, shape=Week))+
+  geom_point(size=2) +
+  labs(x="Subject ID")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+
+```
+
+
+
+## Boxplots by week of study
+
+### Observed OTUs
+
+```{r}
+
+ggplot(plot_data, aes(x=Week, y=Observed,
+                      colour=SubjectID3))+
+  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
+  geom_point(size=2, position="jitter")+
+  labs(x="Week of Study")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+### Shannon Index
+
+```{r}
+
+ggplot(plot_data, aes(x=Week, y=Shannon, colour=SubjectID3))+
+  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
+  geom_point(size=2, position="jitter")+
+  labs(x="Week of Study", y="Shannon Index")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+### Simpson
+
+```{r}
+
+ggplot(plot_data, aes(x=Week, y=Simpson, colour=SubjectID3))+
+  geom_boxplot(outlier.alpha = 0,
+               aes(group=Week))+
+  geom_point(size=2, position="jitter")+
+  labs(x="Week of Study", y="Simpson")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+# Intervention Effect
+
+## Overall Effect
+
+### Observed OTUs
+
+```{r}
+
+ggplot(plot_data, aes(x=Intervention, y=Observed))+
+  geom_boxplot(outlier.alpha = 0,
+               aes(group=Intervention, color=Intervention))+
+  geom_point(position="jitter",aes(color=Intervention))+
+  guides(colour= guide_legend(title = "Intervention"))+
+  labs(x="Intervention Group")+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+### Shannon Index
+
+```{r}
+
+ggplot(plot_data, aes(x=Intervention, y=Shannon))+
+  geom_boxplot(outlier.alpha = 0,
+               aes(group=Intervention, color=Intervention))+
+  geom_point(position="jitter",aes(color=Intervention))+
+  guides(colour= guide_legend(title = "Intervention"))+
+  labs(x="Intervention Group")+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+### Simpson
+
+```{r}
+
+ggplot(plot_data, aes(x=Intervention, y=Simpson))+
+  geom_boxplot(outlier.alpha = 0,aes(group=Intervention, color=Intervention))+
+  geom_point(position="jitter",aes(color=Intervention))+
+  guides(colour= guide_legend(title = "Intervention"))+
+  labs(x="Intervention Group")+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+## Changes Over Time
+
+### Observed OTUs
+
+```{r}
+
+ggplot(plot_data, aes(x=Intervention, y=Observed,
+                      group=Intervention,
+                      color=Intervention, shape=Intervention))+
+  geom_boxplot(outlier.alpha = 0)+
+  geom_point(position="jitter")+
+  facet_grid(.~Week)+
+  labs(x="Intervention Group by Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+ggplot(plot_data, aes(x=Week, y=Observed,
+                      group=interaction(Intervention, SubjectID3),
+                      color=SubjectID3, shape=Intervention))+
+  #geom_boxplot(outlier.alpha = 0)+
+  geom_point()+
+  geom_line()+
+  #facet_grid(.~Week)+
+  labs(x="Intervention Group by Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+```
+
+### Shannon Index
+
+```{r}
+
+ggplot(plot_data, aes(x=Intervention, y=Shannon,
+                      group=Intervention,
+                      color=Intervention, shape=Intervention))+
+  geom_boxplot(outlier.alpha = 0)+
+  geom_point(position="jitter")+
+  facet_grid(.~Week)+
+  labs(x="Intervention Group by Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+
+### Simpson
+
+```{r}
+
+ggplot(plot_data, aes(x=Intervention, y=Simpson,
+                      group=Intervention,
+                      color=Intervention, shape=Intervention))+
+  geom_boxplot(outlier.alpha = 0)+
+  geom_point(position="jitter")+
+  facet_grid(.~Week)+
+  labs(x="Intervention Group by Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+
+
+```
+

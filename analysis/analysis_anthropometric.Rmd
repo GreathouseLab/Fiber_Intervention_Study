@@ -1,0 +1,754 @@
+---
+title: "Modeling Changes in Alpha Diversity over Time"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+# Overview of aims
+
+What is the effect of Prebiotin vs placebo on anthropometrics (controlling for diet, age, ethnicity, stress?)
+Did the intervention mitigate excess weight gain? 
+  
+  * BMI 
+  * Lean Body Mass 
+  * Visceral Fat Level 
+  * Weight
+
+Therefore, data are analyzed at the last timepoint observed for each participant (week 12).
+If a participant is missing an outcome at week 12, the last observed score will be carried forward.
+
+```{r data, include=FALSE, echo=FALSE}
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+```
+
+
+# Analyses
+
+What is the effect of Prebiotin vs. placebo on ...
+
+```{r data-manipulate}
+
+mydata <- microbiome_data$meta.dat
+mydata <- arrange(mydata, desc(Week))
+mydata <- distinct(mydata, SubjectID, .keep_all = T)
+varNames <- c("SubjectID", "Week", "Age", "Ethnicity",
+              "Gender", "Intervention", 
+              "Height_cm", "Weight_pre", "Weight_post", 
+              "LBM_pre", "LBM_post", "Visceral_Fat_Level_pre",
+              "Visceral_Fat_Level_post", "Stress.Scale")
+mydata <- mydata[, varNames]
+
+mydata<- mydata %>%
+  mutate(Weight_diff = Weight_pre - Weight_post,
+         BMI_pre = Weight_pre/((Height_cm/100)**2),
+         BMI_post = Weight_post/((Height_cm/100)**2),
+         BMI_diff = BMI_pre - BMI_post,
+         VFL_pre = Visceral_Fat_Level_pre,
+         VFL_post = Visceral_Fat_Level_post,
+         VFL_diff = VFL_pre - VFL_post,
+         LBM_diff = LBM_pre - LBM_post,
+         intB = ifelse(Intervention=="B", 1,0),
+         c.age = Age - mean(Age),
+         c.stress = Stress.Scale - mean(Stress.Scale),
+         female = ifelse(Gender == "F", 1, 0),
+         hispanic = ifelse(Ethnicity %in% c("White", "Asian", "Native America"), 1, 0))
+
+plot.data <- mydata[,c(varNames[c(1:6,14,7:11)],  "Weight_diff", "BMI_pre", "BMI_post", "BMI_diff", "VFL_pre", "VFL_post", "VFL_diff", "LBM_diff")]
+plot.data <- plot.data %>%
+  pivot_longer(cols=c("Weight_pre", "Weight_post", "Weight_diff", "LBM_pre","LBM_post", "LBM_diff","BMI_pre", "BMI_post", "BMI_diff", "VFL_pre",  "VFL_post", "VFL_diff"),
+               names_to = "Variable",
+               values_to = "value")
+
+
+```
+
+Summary of these data is below
+
+```{r data-sum}
+
+varNames <- c("intB", "female", "hispanic", "Age", "Stress.Scale",
+              "Weight_pre", "Weight_post", "Weight_diff",
+              "BMI_pre", "BMI_post", "BMI_diff",
+              "LBM_pre", "LBM_post", "LBM_diff",
+              "VFL_pre", "VFL_post", "VFL_diff")
+sum.dat <- mydata[,varNames] %>%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+sum.dat <- data.frame(matrix(unlist(sum.dat), ncol=5))
+colnames(sum.dat) <- c("Mean", "SD", "Min", "Median", "Max")
+rownames(sum.dat) <- varNames
+
+kable(sum.dat, format="html", digits=3)%>%
+  kable_styling(full_width = T)
+
+```
+
+Summary of these data by Intervention Group
+
+```{r data-sum2}
+
+varNames <- c("Intervention",
+              "female", "hispanic", "Age", "Stress.Scale",
+              "Weight_pre", "Weight_post", "Weight_diff",
+              "BMI_pre", "BMI_post", "BMI_diff",
+              "LBM_pre", "LBM_post", "LBM_diff",
+              "VFL_pre", "VFL_post", "VFL_diff")
+sum.dat <- mydata[,varNames] %>%
+  group_by(Intervention) %>%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a <- data.frame(matrix(unlist(sum.dat[1,-1]), ncol=5))
+b <- data.frame(matrix(unlist(sum.dat[2,-1]), ncol=5))
+a <- cbind(rep("A", 16), a); colnames(a) <- c("Intervention", "Mean", "SD", "Min", "Median", "Max")
+b <- cbind(rep("B", 16), b); colnames(b) <- c("Intervention", "Mean", "SD", "Min", "Median", "Max")
+
+sum.dat <- rbind(a,b)
+sum.dat <- data.frame(Variable=rep(varNames[-1],2), sum.dat)
+ 
+sum.dat <- arrange(sum.dat, Variable)
+kable(sum.dat, format="html", digits=3)%>%
+  kable_styling(full_width = T)
+
+```
+
+Next, the aim is to more formally test for differences between intervention groups.
+
+```{r}
+
+results.diff <- list()
+
+```
+
+## BMI 
+
+```{r}
+
+# plot
+p1 <- ggplot(filter(plot.data, Variable %like% "BMI"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25)+
+  scale_x_discrete(labels=c("BMI_pre"="Pre", "BMI_post"="Post"),
+                   limits=c("BMI_pre", "BMI_post"))+
+  labs(x=NULL, y="BMI", title="Pre and Post BMI")+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10))
+#p1
+
+p2 <- ggplot(filter(plot.data, Variable %like% "BMI"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("BMI_pre"="Pre", "BMI_post"="Post"),
+                   limits=c("BMI_pre", "BMI_post"))+
+  labs(x=NULL, y="BMI", title="Pre and Post BMI by Intervention Group")+
+  facet_grid(.~Intervention, labeller = labeller(Intervention = c(A = "Group A", B = "Group B")))+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10),
+        strip.text = element_text(size=10))
+#p2
+p <- p1 + p2
+p
+
+```
+
+### Pre BMI
+
+This is simply to double check that no differences occured at baseline.
+
+
+```{r}
+
+# Pre INtervention BMI - should beno difference
+fit <- lm(BMI_pre ~ Intervention + c.age + hispanic + c.stress, mydata)
+anova(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+No significant differences.
+
+### Post BMI
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention BMI - should beno difference
+# not controls
+fit <- lm(BMI_post ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(BMI_post ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+No significant difference found.
+
+### Difference Scores of BMI
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention BMI - should beno difference
+# not controls
+fit <- lm(BMI_diff ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(BMI_diff ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+results.diff[["BMI"]] <- summary(fit)[["coefficients"]]
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+Therefore, we have evidence that BMI is not effected by Prebiotic vs. placebo.
+
+## Lean Body Mass (LBM)
+
+```{r}
+
+# plot
+p1 <- ggplot(filter(plot.data, Variable %like% "LBM"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("LBM_pre"="Pre", "LBM_post"="Post"),
+                   limits=c("LBM_pre", "LBM_post"))+
+  labs(x=NULL, y="LBM", title="Pre and Post LBM")+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10))
+#p1
+
+p2 <- ggplot(filter(plot.data, Variable %like% "LBM"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("LBM_pre"="Pre", "LBM_post"="Post"),
+                   limits=c("LBM_pre", "LBM_post"))+
+  labs(x=NULL, y="LBM", title="Pre and Post LBM by Intervention Group")+
+  facet_grid(.~Intervention, labeller = labeller(Intervention = c(A = "Group A", B = "Group B")))+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10),
+        strip.text = element_text(size=10))
+#p2
+p <- p1 + p2
+p
+
+```
+
+### Pre LBM
+
+This is simply to double check that no differences occured at baseline.
+
+
+```{r}
+
+# Pre INtervention LBM - should beno difference
+fit <- lm(LBM_pre ~ Intervention + c.age + hispanic + c.stress, mydata)
+anova(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+No significant differences.
+
+### Post LBM
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention LBM - should beno difference
+# not controls
+fit <- lm(LBM_post ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(LBM_post ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+### Difference Scores of LBM
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention LBM - should beno difference
+# not controls
+fit <- lm(LBM_diff ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(LBM_diff ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+results.diff[["LBM"]] <- summary(fit)[["coefficients"]]
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+Therefore, we have evidence that LBM is not effected by Prebiotic vs. placebo.
+
+
+## Visceral Fat Level (VFL) Fat Mass
+
+
+```{r}
+
+# plot
+p1 <- ggplot(filter(plot.data, Variable %like% "VFL"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("VFL_pre"="Pre", "VFL_post"="Post"),
+                   limits=c("VFL_pre", "VFL_post"))+
+  labs(x=NULL, y="VFL", title="Pre and Post VFL")+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10))
+#p1
+
+p2 <- ggplot(filter(plot.data, Variable %like% "VFL"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("VFL_pre"="Pre", "VFL_post"="Post"),
+                   limits=c("VFL_pre", "VFL_post"))+
+  labs(x=NULL, y="VFL", title="Pre and Post VFL by Intervention Group")+
+  facet_grid(.~Intervention, labeller = labeller(Intervention = c(A = "Group A", B = "Group B")))+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10),
+        strip.text = element_text(size=10))
+#p2
+p <- p1 + p2
+p
+
+```
+
+### Pre VFL
+
+This is simply to double check that no differences occured at baseline.
+
+
+```{r}
+
+# Pre INtervention VFL - should beno difference
+fit <- lm(VFL_pre ~ Intervention + c.age + hispanic + c.stress, mydata)
+anova(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+No significant differences.
+
+### Post VFL
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention VFL - should beno difference
+# not controls
+fit <- lm(VFL_post ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(VFL_post ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+### Difference Scores of VFL
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention VFL - should beno difference
+# not controls
+fit <- lm(VFL_diff ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(VFL_diff ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+results.diff[["VFL"]] <- summary(fit)[["coefficients"]]
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+Therefore, we have evidence that LBM is not effected by Prebiotic vs. placebo.
+
+## Weight (kg)
+
+```{r}
+
+# plot
+p1 <- ggplot(filter(plot.data, Variable %like% "Weight"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("Weight_pre"="Pre", "Weight_post"="Post"),
+                   limits=c("Weight_pre", "Weight_post"))+
+  labs(x=NULL, y="Weight (kg)", title="Pre and Post Weight (kg)")+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10))
+#p1
+
+p2 <- ggplot(filter(plot.data, Variable %like% "Weight"),
+             aes(x=Variable, y=value))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  scale_x_discrete(labels=c("Weight_pre"="Pre", "Weight_post"="Post"),
+                   limits=c("Weight_pre", "Weight_post"))+
+  labs(x=NULL, y="Weight (kg)", title="Pre and Post Weight (kg) by Intervention Group")+
+  facet_grid(.~Intervention, labeller = labeller(Intervention = c(A = "Group A", B = "Group B")))+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10),
+        strip.text = element_text(size=10))
+#p2
+p <- p1 + p2
+p
+
+```
+
+### Pre Weight
+
+This is simply to double check that no differences occured at baseline.
+
+
+```{r}
+
+# Pre INtervention Weight - should beno difference
+fit <- lm(Weight_pre ~ Intervention + c.age + hispanic + c.stress, mydata)
+anova(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+No significant differences.
+
+### Post Weight
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention Weight - should beno difference
+# not controls
+fit <- lm(Weight_post ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(Weight_post ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+### Difference Scores of Weight
+
+Test for significant differences after intervention
+
+```{r}
+
+# Post INtervention Weight - should beno difference
+# not controls
+fit <- lm(Weight_diff ~ Intervention, mydata)
+anova(fit)
+summary(fit)
+
+fit <- lm(Weight_diff ~ Intervention + c.age + hispanic + c.stress,
+          mydata)
+anova(fit)
+summary(fit)
+results.diff[["Weight"]] <- summary(fit)[["coefficients"]]
+
+# diagnostic plots
+layout(matrix(c(1,2,3,4),2,2)) # optional layout
+plot(fit) # diagnostic plots
+
+# normality again
+shapiro.test(residuals(fit))
+
+# independence
+durbinWatsonTest(fit)
+layout(matrix(c(1),1,1))
+acf(residuals(fit))
+
+# nice wrapper function to generally test a lot of stuff
+gvmodel <- gvlma(fit)
+summary(gvmodel)
+
+
+```
+
+Therefore, we have evidence that weight (kg) is not effected by Prebiotic vs. placebo.
+
+
+## Results Adjusted for Multiple Comparisons
+
+```{r echo=F}
+
+unlist.res <- function(dat, ...){
+ dat<- results.diff
+  nc <- ncol(dat[[1]])
+  cnm <- colnames(dat[[1]])
+  rnm <- names(dat)
+  
+  # unlist
+  res <- data.frame(matrix(unlist(dat[[1]]), ncol=nc))
+  colnames(res) <- colnames(dat[[1]])
+  res$Outcome <- rep(rnm[1], nrow(res))
+  res$Parameter <- rownames(dat[[1]])
+  for(i in 2:length(rnm)){
+    resi <- data.frame(matrix(unlist(dat[[i]]), ncol=nc))
+    colnames(resi) <- colnames(dat[[i]])
+    resi$Outcome <- rep(rnm[i], nrow(resi))
+    resi$Parameter <- rownames(dat[[i]])
+    res <- full_join(res, resi)
+  }
+  
+  return(res)
+}
+
+
+```
+
+
+```{r}
+
+
+all_results <- unlist.res(results.diff)
+
+all_results$p.adj <- p.adjust(all_results$`Pr(>|t|)`, "fdr") 
+all_results$sigflag <- ifelse(all_results$p.adj < 0.05, "*", " ")
+all_results$`Pr(>|t|)` <- round(all_results$`Pr(>|t|)`, 3)
+all_results$p.adj.fdr <- round(all_results$p.adj, 3)
+all_results <- all_results[,c(5:6, 1:4,7:8)]
+
+kable(all_results, format="html", digits=3) %>%
+  kable_styling(full_width = T)
+
+```
+
+
+

@@ -4,7 +4,7 @@
 # Author(s): R.N. Padgett
 # ============================================= #
 # Data Created: 2020-01-30
-# Date Modified: 2020-01-30
+# Date Modified: 2020-04-10
 # By: R. Noah Padgett
 # ============================================= #
 # ============================================= #
@@ -17,10 +17,13 @@ source("code/microbiome_statistics_and_functions.R")
 
 # read in analysis
 # from data-for-analaysis tab of
-analysis_data <- read_xlsx("data/Microbiome Data/NoahFolder/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
+analysis_data <- read_xlsx("data/analysis-data/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
+colnames(analysis_data) <- c("SubjectID", colnames(analysis_data)[2:72])
 
-hei_data <- read_xlsx("data/Microbiome Data/NoahFolder/FFQ_HEI_Fiber.xlsx")
-asa24_data <- read_xlsx("data/Microbiome Data/NoahFolder/ASA24_fiber_F_V_intake_by_week.xlsx")
+hei_data <- read_xlsx("data/analysis-data/FFQ_HEI_Fiber.xlsx")
+asa24_data <- read_xlsx("data/analysis-data/ASA24_fiber_F_V_intake_by_week.xlsx")
+asa24_data$Week <- fct_recode(factor(asa24_data$RecallNo), "1"="1", "4"="2", "8"="3", "12"="4")
+#asa24_data$Week <- factor(recode(asa24_data$RecallNo, `1`=1, `2`=4, `3`=8, `4`=12))
 
 # supplement IDS
 # *highest intake = 7, supplement
@@ -32,17 +35,19 @@ asa24_data <- read_xlsx("data/Microbiome Data/NoahFolder/ASA24_fiber_F_V_intake_
 
 
 # get microbiome data
-biom_file  <- import_biom("data/Microbiome Data/NoahFolder/OTU_Table.biom")
-tree_file <- read_tree("data/Microbiome Data/NoahFolder/OTU_Table.tre")
-meta_data <- read.table("data/Microbiome Data/NoahFolder/Metadata file_nomiss_microbiomeIDs.txt", sep="\t", header=T)
+biom_file  <- import_biom("data/analysis-data/OTU_Table.biom")
+tree_file <- read_tree("data/analysis-data/OTU_Table.tre")
+meta_data <- read.table("data/analysis-data/Metadata file_nomiss_microbiomeIDs.txt", sep="\t", header=T)
   colnames(meta_data)[1] <- "ID"
   rownames(meta_data) <- meta_data$ID
   meta_data$SubjectID2 <- as.numeric(as.factor(meta_data$SubjectID))
   meta_data$Week <- as.factor(meta_data$Week)
   ## merge meta_dat with analysis data, hei data and ASA24 data
-  meta_data <- merge(meta_data, analysis_data, all=T)
-  meta_data <- merge(meta_data, hei_data, all.x=T)
-  #meta_data1 <- merge(meta_data1, asa24_data, all.y=T)
+  meta_data <- left_join(meta_data, analysis_data) #, by="SubjectID")
+  meta_data <- left_join(meta_data, hei_data) #, by="SubjectID")
+  meta_data <- left_join(meta_data, asa24_data) #, by=c("SubjectID","Week"))
+  #colnames(meta_data) <-  str_remove(colnames(meta_data), ".x" )
+  #colnames(meta_data) <-  str_remove(colnames(meta_data), ".y" )
 
 meta <- sample_data(meta_data)
 sample_names(meta) <- meta_data$ID
