@@ -94,7 +94,7 @@ cols <- c("#fe9700","#00a2f2", "#662a00", "#c91acb","grey60","#858c69", "#a8863a
 
 ## Analysis by Week
 
-```{r}
+```{r fig1, fig.height = 8, fig.width = 4, fig.align = "center"}
 
 p1 <- plot_ordination(phylo_data, ord_bray, color="Week") +
   geom_point(size=3) +
@@ -131,7 +131,7 @@ permutest(beta)
 
 ## Analysis by Intervention
 
-```{r}
+```{r fig2, fig.height = 8, fig.width = 4, fig.align = "center"}
 
 
 p1 <- plot_ordination(phylo_data, ord_bray, color="Intervention") +
@@ -170,7 +170,7 @@ permutest(beta)
 
 ## Analysis by Intervention
 
-```{r}
+```{r fig3, fig.height = 8, fig.width = 4, fig.align = "center"}
 
 p1 <- plot_ordination(phylo_data, ord_bray,
                       color="Week", shape="Intervention") +

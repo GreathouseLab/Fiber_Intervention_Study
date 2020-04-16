@@ -424,7 +424,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -491,10 +491,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreeadf811125cb657bf6d568c00ab0f81ea804ea44ftargetblankadf8111a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/adf811125cb657bf6d568c00ab0f81ea804ea44f" target="_blank">adf8111</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree774a55f0e60ec231e0f09c29f489f768ba011db9targetblank774a55fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/774a55f0e60ec231e0f09c29f489f768ba011db9" target="_blank">774a55f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreeadf811125cb657bf6d568c00ab0f81ea804ea44ftargetblankadf8111a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree774a55f0e60ec231e0f09c29f489f768ba011db9targetblank774a55fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -505,27 +505,8 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    reference-papers/Dietary_Variables.xlsx
 
-Untracked files:
-    Untracked:  analysis/analysis_anthropometric.Rmd
-    Untracked:  analysis/analysis_beta_diversity.Rmd
-    Untracked:  analysis/change_in_alpha_diversity.Rmd
-    Untracked:  analysis/dietary_intake_figure.Rmd
-    Untracked:  code/Fiber_Microbiome.Diet_Data_Analysis.RMD
-    Untracked:  code/johnson_2019_fig1.R
-    Untracked:  data/analysis-data/
-    Untracked:  data/johnson2019/
-    Untracked:  fig/figure1.pdf
-    Untracked:  fig/figure1_legend.pdf
-
 Unstaged changes:
-    Modified:   .gitignore
-    Deleted:    Fiber_Microbiome.Diet_Data_Analysis.RMD
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/microbiome_food.Rmd
-    Modified:   code/get_cleaned_data.R
-    Modified:   code/get_data.R
-    Modified:   code/load_packages.R
-    Modified:   code/microbiome_statistics_and_functions.R
+    Modified:   analysis/analysis_beta_diversity.Rmd
 
 </code></pre>
 <p>
@@ -612,7 +593,7 @@ p3 &lt;- plot_ordination(phylo_data, ord_wt, color=&quot;Week&quot;) +
   scale_colour_manual(values=cols)+
   labs(title=&quot;PCoA on Weight Unifrac distance, by Week&quot;)
 p1 + p2 + p3 + plot_layout(ncol=1)</code></pre>
-<p><img src="figure/analysis_beta_diversity.Rmd/unnamed-chunk-3-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_beta_diversity.Rmd/fig1-1.png" width="200%" style="display: block; margin: auto;" /></p>
 <pre class="r"><code># Bray-Curtis
 adonis(dist_bray ~ Week, data = df)</code></pre>
 <pre><code>
@@ -709,7 +690,7 @@ p3 &lt;- plot_ordination(phylo_data, ord_wt, color=&quot;Intervention&quot;) +
   scale_colour_manual(values=cols)+
   labs(title=&quot;PCoA on Weight Unifrac distance, by Intervention&quot;)
 p1 + p2 + p3 + plot_layout(ncol=1)</code></pre>
-<p><img src="figure/analysis_beta_diversity.Rmd/unnamed-chunk-4-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_beta_diversity.Rmd/fig2-1.png" width="200%" style="display: block; margin: auto;" /></p>
 <pre class="r"><code># Bray-Curtis
 adonis(dist_bray ~ Intervention, data = df)</code></pre>
 <pre><code>
@@ -819,7 +800,7 @@ p3 &lt;- plot_ordination(phylo_data, ord_wt,
   labs(title=&quot;PCoA on Weight Unifrac distance, by Week &amp; Intervention&quot;)+
   theme(legend.position = &quot;bottom&quot;)
 p1 + p2 + p3 + plot_layout(ncol=1)</code></pre>
-<p><img src="figure/analysis_beta_diversity.Rmd/unnamed-chunk-5-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_beta_diversity.Rmd/fig3-1.png" width="200%" style="display: block; margin: auto;" /></p>
 <pre class="r"><code># Bray-Curtis
 adonis(dist_bray ~ Intervention*Week, data = df)</code></pre>
 <pre><code>
