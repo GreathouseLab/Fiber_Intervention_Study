@@ -22,6 +22,8 @@ Describing the data:
 
 *[Anthropometric Differences](analysis_anthropometric.html)
 
+*[Microbiome and Diet Trends over Time](microbiome_diet_trends.html)
+
 ## Diet Data
 
 *[Dietary Data Over Time](dietary_intake_figure.html)
