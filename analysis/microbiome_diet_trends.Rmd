@@ -1,0 +1,453 @@
+---
+title: "Weekly Microbiome Composition and Dietary Intake"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r data, include=FALSE, echo=FALSE}
+
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+```
+
+# Microbiome Composition
+
+```{r}
+
+mphyseq = psmelt(phylo_data)
+mphyseq2 <- mphyseq %>%
+  dplyr::group_by(SubjectID, Week) %>%
+  dplyr::mutate(Total = sum(Abundance)) %>%
+  dplyr::ungroup()%>%
+  dplyr::group_by(SubjectID, Week, Phylum) %>%
+  dplyr::mutate(PhylumAbund = sum(Abundance),
+                RelAbund = PhylumAbund/Total)
+  
+mphyseq2 <- mphyseq2 %>% distinct(SubjectID, Week, Phylum, .keep_all = T)
+
+keepVar <- c("SubjectID", "Week", "Phylum", "Abundance", "RelAbund")
+
+mphyseq2 <- mphyseq2[, keepVar]
+
+# take out "__" at start of names
+mphyseq2$Phylum <- substring(mphyseq2$Phylum, 3)
+
+# Create New Other category for plotting
+mphyseq3 <- mphyseq2 %>% 
+  dplyr::group_by(SubjectID, Week, Phylum) %>%
+  dplyr::summarise(RelAbund = sum(RelAbund))
+other <- mphyseq3 %>% 
+  dplyr::group_by(SubjectID, Week) %>% 
+  dplyr::summarise(RelAbund = 1 - sum(RelAbund))
+
+other$Phylum <- "Other"
+other <- other %>% select(SubjectID, Week,  Phylum, RelAbund)
+
+mphyseq2 <- full_join(mphyseq3, other)
+
+
+# sort by highest average relative abundance
+ph <- mphyseq2 %>%
+  dplyr::group_by(Phylum) %>%
+  dplyr::summarize(M = mean(RelAbund, na.rm=T))
+
+micro_ord <- ph$Phylum[order(ph$M, decreasing = F)]
+
+mphyseq2$Phylum <- factor(mphyseq2$Phylum, levels = rev(micro_ord))
+
+# fix missing data and fill-out
+MIS <- mphyseq2 %>%
+  group_by(SubjectID)%>%tidyr::expand(Week, Phylum)
+
+micro_data <- full_join(mphyseq2, MIS)
+
+# add week 1 missing as 0
+micro_data$RelAbund[micro_data$Week==1][is.na(micro_data$RelAbund[micro_data$Week==1])] <- 0
+
+micro_data <- micro_data%>%
+  group_by(SubjectID, Phylum)%>%
+  fill(RelAbund)
+
+micro_data$Week <- as.numeric(micro_data$Week)
+
+# create order of subjects
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+micro_data$SubjectID <- factor(micro_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+
+# get right number of colors for plotting
+no_cols <- length(unique(micro_data$Phylum))
+
+## Some Colors
+colors_micro <- rev(c("grey90", rev(c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059"))))
+
+# Intervention ID variable
+ids <- 1:6
+micro_data$Intervention <- ifelse(micro_data$SubjectID %in% ids, "Group A", "Group B")
+
+
+# make the plot
+micro_plot<-ggplot(data = micro_data, aes(x=Week, y = RelAbund, fill=Phylum)) +
+  geom_area(stat = "identity") +
+  facet_grid(.~Intervention + SubjectID, scales = "free") +
+  scale_fill_manual(values = colors_micro) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines")) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol = 1)) +
+  labs(y="Relative Abundance",
+       title="Gut Microbiome, Phylum Level",
+       tag="A")
+micro_plot
+
+# #Next, change strip color by intervention group
+# g <- ggplot_gtable(ggplot_build(micro_plot))
+# strip_both <- which(grepl('strip-', g$layout$name))
+# fills <- c(rep("white", 6), rep("grey80", 5))
+# k <- 1
+# for (i in strip_both) {
+#   j <- which(grepl('rect', g$grobs[[i]]$grobs[[1]]$childrenOrder))
+#   g$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- fills[k]
+#   k <- k+1
+# }
+# grid::grid.draw(g)
+# 
+# 
+# tag_facet2 <-  function(p, open=" ", close = " ",
+#          tag_pool = letters,
+#          x = 0, y = 0.5,
+#          hjust = 0, vjust = 0.5, 
+#          fontface = 2, ...){
+#   
+#   gb <- ggplot_build(p)
+#   lay <- gb$layout$layout
+#   nm <- names(gb$layout$facet$params$rows)
+#   
+#   tags <- paste0(open,tag_pool[unique(lay$COL)],close)
+#   
+#   tl <- lapply(tags, grid::textGrob, x=x, y=y,
+#                hjust=hjust, vjust=vjust, gp=grid::gpar(fontface=fontface))
+#   
+#   g <- ggplot_gtable(gb)
+#   g <- gtable::gtable_add_rows(g, grid::unit(1,"line"), pos = 0)
+#   lm <- unique(g$layout[grepl("panel",g$layout$name), "l"])
+#   g <- gtable::gtable_add_grob(g, grobs = tl, t=1, l=lm)
+#   grid::grid.newpage()
+#   grid::grid.draw(g)
+# }
+# 
+# IntGrp <- c(rep("A", 6), rep("B", 5))
+# micro_plot2<-micro_plot + theme(legend.position = "none")
+# micro_plot2
+# tag_facet2(micro_plot2, tag_pool = IntGrp)
+
+
+  
+```
+
+Note: Subjects are ordered by Intervention:
+1 to 6 are in Group A
+7-11 are in group B
+
+# Make Dietary Figures
+
+```{r include=F}
+
+
+diet.data <- read_xlsx("data/analysis-data/Dietary_Variables.xlsx")
+diet.data <- diet.data %>%
+  mutate(SubjectID = as.numeric(substr(SubjectID, 7,11)),
+         Week = RecallNo)
+
+
+```
+
+## Food Groups
+
+```{r}
+
+food_var <- colnames(diet.data)[4:12]
+
+food_data <- as_tibble(diet.data[, c("SubjectID", "Week", food_var)])
+
+
+# need to fill in "missing" data
+MIS <- tidyr::expand(food_data, SubjectID, Week)
+
+food_data <- full_join(food_data, MIS)
+
+food_data <- food_data%>%
+  group_by(SubjectID)%>%
+  fill(`Fats Oils and Salad Dressings`:`Grain Product`)
+
+
+id <- paste0("id.", food_data$SubjectID,".wk.",food_data$Week)
+
+food_data$MISSING <- apply(food_data, 1,
+                           FUN = function(x){ sum(is.na(x)) })
+
+food_data <- data.frame(t(food_data[,-c(1:2)]))
+colnames(food_data) <- id
+rownames(food_data) <- c(food_var, "MISSING")
+
+food_data <- apply(food_data, c(1,2), FUN=function(x){ifelse(is.na(x), 0, x)})
+food_data <- data.frame(food_data)
+# Compute relative abundance
+food_data <- sweep(food_data, 2, colSums(food_data), "/")
+food_data[is.na(food_data)] <- 0
+
+# sort by highest average relative abundance
+food_data <- food_data[order(rowMeans(food_data), decreasing = F),]
+
+# make food ordering factor
+food_ord_factor <- as.character(rownames(food_data))
+food_ord_factor <- food_ord_factor[food_ord_factor != "MISSING"]
+food_ord_factor <- c("MISSING",food_ord_factor)
+
+
+plot3 <- as.data.frame(t(food_data))
+plot3 <- rownames_to_column(plot3, var = "SampleID")
+plot3 <- reshape2::melt(plot3, id = "SampleID", variable.name = "Food")
+
+# combine all "<x% abundance" foods into one for plotting
+#plot3 <- plot3 %>% group_by(SampleID, Food) %>% dplyr::summarise(newvalue = sum(value))
+
+# Extract ids and weeks
+#plot3$SubjectID <- str_sub(plot3$SampleID, 4,7)
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot3$SubjectID <- factor(str_sub(plot3$SampleID, 4,7),
+                          levels = subjectorder)
+
+plot3$Week <- as.numeric(str_sub(plot3$SampleID, 12, 13))
+# recode FOOD
+plot3$Food <- as.factor(plot3$Food)
+plot3$Food <- factor(plot3$Food, levels = rev(food_ord_factor))
+# set seed to get nice colors
+set.seed(3)
+
+# get right number of colors for plotting
+no_cols <- length(unique(plot3$Food))
+
+## Some Colors
+colors_food <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "grey90")
+
+
+
+# make the plot
+food_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
+  geom_area(stat = "identity") +
+  facet_grid(.~SubjectID, scales = "free") +
+  scale_fill_manual(values = colors_food) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.text = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines")) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol = 1)) +
+  #nrow = 5)) + # for full page figure
+  #nrow = 1)) + # for slide figure
+  labs(y="Relative Abundance",
+       title="Dietary Food Groups",
+       tag="B")
+food_plot
+
+
+```
+
+
+## Nutrients
+
+```{r}
+
+# Dietary Nurtrients
+
+
+food_var <- colnames(diet.data)[14:54]
+
+
+food_data <- as_tibble(diet.data[, c("SubjectID", "Week", food_var)])
+# need to fill in "missing" data
+MIS <- tidyr::expand(food_data, SubjectID, Week)
+
+food_data <- full_join(food_data, MIS)
+
+food_data <- food_data%>%
+  group_by(SubjectID)%>%
+  fill(`Carbohydrates`:`Added Vitamin B-12`)
+
+id <- paste0("id.", food_data$SubjectID,".wk.",food_data$Week)
+
+food_data$MISSING <- apply(food_data, 1,
+                           FUN = function(x){ sum(is.na(x)) })
+
+food_data <- data.frame(t(food_data[,-c(1:2)]))
+colnames(food_data) <- id
+rownames(food_data) <- c(food_var, "MISSING")
+
+food_data <- apply(food_data, c(1,2), FUN=function(x){ifelse(is.na(x), 0, x)})
+food_data <- data.frame(food_data)
+# Compute relative abundance
+food_data <- sweep(food_data, 2, colSums(food_data), '/')
+
+# sort by highest average relative abundance
+food_data <- food_data[order(rowMeans(food_data), decreasing = F),]
+rn <- rownames(food_data)
+#food_data <- food_data[ rn[c(1:8, 10, 9)], ]
+
+# make food ordering factor
+food_ord_factor <- as.character(rownames(food_data))
+food_ord_factor <- food_ord_factor[food_ord_factor != "MISSING"]
+food_ord_factor <- c("MISSING",food_ord_factor)
+
+plot3 <- as.data.frame(t(food_data))
+plot3 <- rownames_to_column(plot3, var = "SampleID")
+plot3 <- reshape2::melt(plot3, id = "SampleID", variable.name = "Food")
+
+# Extract ids and weeks
+
+#plot3$SubjectID <- str_sub(plot3$SampleID, 4,7)
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot3$SubjectID <- factor(str_sub(plot3$SampleID, 4,7),
+                          levels = subjectorder)
+plot3$Week <- as.numeric(str_sub(plot3$SampleID, 12, 13))
+# recode FOOD
+plot3$Food <- as.factor(plot3$Food)
+plot3$Food <- factor(plot3$Food, levels = rev(food_ord_factor))
+# set seed to get nice colors
+set.seed(3)
+
+# get right number of colors for plotting
+no_cols <- length(unique(plot3$Food))
+
+## Some Colors
+colors_food <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339", "grey90")
+
+
+
+# make the plot
+nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
+  geom_area(stat = "identity") +
+  facet_grid(.~SubjectID, scales = "free") +
+  scale_fill_manual(values = colors_food) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.01, "lines")) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol = 1)) +
+  #nrow = 5)) + # for full page figure
+  #nrow = 1)) + # for slide figure
+  labs(y="Relative Abundance",
+       title="Dietary Macronutrients and Micronutrients",
+       tag="C")
+nutr_plot
+
+
+
+```
+
+
+## Saving plot
+
+```{r}
+
+##### MAKE THE ACTUAL FIGURE ###########
+# combine into one big plot
+get_legend <- function(p) {
+  tmp <- ggplot_gtable(ggplot_build(p))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  legend
+}
+
+micro_plot_leg <- get_legend(micro_plot)
+food_plot_leg <- get_legend(food_plot)
+nutr_plot_leg <- get_legend(nutr_plot)
+
+# and replot suppressing the legend
+micro_plot_1 <- micro_plot + theme(legend.position='none')
+food_plot_1 <- food_plot + theme(legend.position='none')
+nutr_plot_1 <- nutr_plot + theme(legend.position='none')
+
+p <- micro_plot_1 + food_plot_1 + nutr_plot_1 + plot_layout(ncol=1)
+
+p
+ggsave("fig/figure4.pdf", p, units="in", width=7.9,height=6.5)
+
+
+
+library(cowplot)
+bigplotlegend <- plot_grid(micro_plot_leg, food_plot_leg, nutr_plot_leg, nrow =1, align = "h")
+
+save_plot("fig/figure4_legend.pdf", bigplotlegend, base_width = 13.25, base_height = 5)
+
+
+```

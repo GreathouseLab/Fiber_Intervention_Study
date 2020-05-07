@@ -11,7 +11,7 @@
 
 
 
-<title>Alpha Diversity</title>
+<title>Weekly Microbiome Composition and Dietary Intake</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -376,7 +376,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Alpha Diversity</h1>
+<h1 class="title toc-ignore">Weekly Microbiome Composition and Dietary Intake</h1>
 
 </div>
 
@@ -425,7 +425,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -531,26 +531,6 @@ Unstaged changes:
     Modified:   data/analysis-data/Dietary_Variables.xlsx
     Modified:   fig/figure1.pdf
     Modified:   fig/figure1_legend.pdf
-    Modified:   fig/predicted_Actinobacteria_model5.png
-    Modified:   fig/predicted_Actinobacteria_model7.png
-    Modified:   fig/predicted_Bacteroidetes_model5.png
-    Modified:   fig/predicted_Bacteroidetes_model7.png
-    Modified:   fig/predicted_Cyanobacteria_model5.png
-    Modified:   fig/predicted_Cyanobacteria_model7.png
-    Modified:   fig/predicted_Euryarchaeota_model5.png
-    Modified:   fig/predicted_Euryarchaeota_model7.png
-    Modified:   fig/predicted_Firmicutes_model5.png
-    Modified:   fig/predicted_Firmicutes_model7.png
-    Modified:   fig/predicted_Fusobacteria_model5.png
-    Modified:   fig/predicted_Fusobacteria_model7.png
-    Modified:   fig/predicted_Lentisphaerae_model5.png
-    Modified:   fig/predicted_Lentisphaerae_model7.png
-    Modified:   fig/predicted_Proteobacteria_model5.png
-    Modified:   fig/predicted_Proteobacteria_model7.png
-    Modified:   fig/predicted_Tenericutes_model5.png
-    Modified:   fig/predicted_Tenericutes_model7.png
-    Modified:   fig/predicted_Verrucomicrobia_model5.png
-    Modified:   fig/predicted_Verrucomicrobia_model7.png
 
 </code></pre>
 <p>
@@ -563,204 +543,397 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/change_in_alpha_diversity.Rmd</code>) and HTML (<code>docs/change_in_alpha_diversity.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/blob/774a55f0e60ec231e0f09c29f489f768ba011db9/analysis/change_in_alpha_diversity.Rmd" target="_blank">774a55f</a>
-</td>
-<td>
-noah-padgett
-</td>
-<td>
-2020-04-16
-</td>
-<td>
-updated beta diversity and permanova
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/774a55f0e60ec231e0f09c29f489f768ba011db9/docs/change_in_alpha_diversity.html" target="_blank">774a55f</a>
-</td>
-<td>
-noah-padgett
-</td>
-<td>
-2020-04-16
-</td>
-<td>
-updated beta diversity and permanova
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<p>This page contains the investigation of alpha diversity investigations.</p>
-<div id="alpha-diversity" class="section level1">
-<h1>Alpha diversity</h1>
-<div id="boxplots-by-unique-participants" class="section level2">
-<h2>Boxplots by unique participants</h2>
-<div id="observed-otus" class="section level3">
-<h3>Observed OTUs</h3>
-<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
-                      colour=SubjectID10, shape=Week))+
-  geom_point(size=3) +
-  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
-  labs(x=&quot;Subject ID&quot;, y= &quot;Observed OTUs&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(panel.grid = element_blank(),
-        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+<div id="microbiome-composition" class="section level1">
+<h1>Microbiome Composition</h1>
+<pre class="r"><code>mphyseq = psmelt(phylo_data)
+mphyseq2 &lt;- mphyseq %&gt;%
+  dplyr::group_by(SubjectID, Week) %&gt;%
+  dplyr::mutate(Total = sum(Abundance)) %&gt;%
+  dplyr::ungroup()%&gt;%
+  dplyr::group_by(SubjectID, Week, Phylum) %&gt;%
+  dplyr::mutate(PhylumAbund = sum(Abundance),
+                RelAbund = PhylumAbund/Total)
+  
+mphyseq2 &lt;- mphyseq2 %&gt;% distinct(SubjectID, Week, Phylum, .keep_all = T)
+
+keepVar &lt;- c(&quot;SubjectID&quot;, &quot;Week&quot;, &quot;Phylum&quot;, &quot;Abundance&quot;, &quot;RelAbund&quot;)
+
+mphyseq2 &lt;- mphyseq2[, keepVar]
+
+# take out &quot;__&quot; at start of names
+mphyseq2$Phylum &lt;- substring(mphyseq2$Phylum, 3)
+
+# Create New Other category for plotting
+mphyseq3 &lt;- mphyseq2 %&gt;% 
+  dplyr::group_by(SubjectID, Week, Phylum) %&gt;%
+  dplyr::summarise(RelAbund = sum(RelAbund))
+other &lt;- mphyseq3 %&gt;% 
+  dplyr::group_by(SubjectID, Week) %&gt;% 
+  dplyr::summarise(RelAbund = 1 - sum(RelAbund))
+
+other$Phylum &lt;- &quot;Other&quot;
+other &lt;- other %&gt;% select(SubjectID, Week,  Phylum, RelAbund)
+
+mphyseq2 &lt;- full_join(mphyseq3, other)</code></pre>
+<pre><code>Joining, by = c(&quot;SubjectID&quot;, &quot;Week&quot;, &quot;Phylum&quot;, &quot;RelAbund&quot;)</code></pre>
+<pre class="r"><code># sort by highest average relative abundance
+ph &lt;- mphyseq2 %&gt;%
+  dplyr::group_by(Phylum) %&gt;%
+  dplyr::summarize(M = mean(RelAbund, na.rm=T))
+
+micro_ord &lt;- ph$Phylum[order(ph$M, decreasing = F)]
+
+mphyseq2$Phylum &lt;- factor(mphyseq2$Phylum, levels = rev(micro_ord))
+
+# fix missing data and fill-out
+MIS &lt;- mphyseq2 %&gt;%
+  group_by(SubjectID)%&gt;%tidyr::expand(Week, Phylum)
+
+micro_data &lt;- full_join(mphyseq2, MIS)</code></pre>
+<pre><code>Joining, by = c(&quot;SubjectID&quot;, &quot;Week&quot;, &quot;Phylum&quot;)</code></pre>
+<pre class="r"><code># add week 1 missing as 0
+micro_data$RelAbund[micro_data$Week==1][is.na(micro_data$RelAbund[micro_data$Week==1])] &lt;- 0
+
+micro_data &lt;- micro_data%&gt;%
+  group_by(SubjectID, Phylum)%&gt;%
+  fill(RelAbund)
+
+micro_data$Week &lt;- as.numeric(micro_data$Week)
+
+# create order of subjects
+so &lt;- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder &lt;- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+micro_data$SubjectID &lt;- factor(micro_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+
+# get right number of colors for plotting
+no_cols &lt;- length(unique(micro_data$Phylum))
+
+## Some Colors
+colors_micro &lt;- rev(c(&quot;grey90&quot;, rev(c(&quot;#00a2f2&quot;,  &quot;#c91acb&quot;, &quot;#7f5940&quot;, &quot;#cc5200&quot;, &quot;#00d957&quot;, &quot;#40202d&quot;, &quot;#e60099&quot;, &quot;#006fa6&quot;, &quot;#f29d3d&quot;, &quot;#300059&quot;))))
+
+# Intervention ID variable
+ids &lt;- 1:6
+micro_data$Intervention &lt;- ifelse(micro_data$SubjectID %in% ids, &quot;Group A&quot;, &quot;Group B&quot;)
+
+
+# make the plot
+micro_plot&lt;-ggplot(data = micro_data, aes(x=Week, y = RelAbund, fill=Phylum)) +
+  geom_area(stat = &quot;identity&quot;) +
+  facet_grid(.~Intervention + SubjectID, scales = &quot;free&quot;) +
+  scale_fill_manual(values = colors_micro) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
         axis.text.y = element_text(size = 10),
         axis.title = element_text(size = 10),
         plot.title = element_text(hjust = 0.5),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
         legend.position = &quot;right&quot;,
-        #legend.text = element_text(size = 7),
-        #legend.title = element_blank(),
-        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;)) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol = 1)) +
+  labs(y=&quot;Relative Abundance&quot;,
+       title=&quot;Gut Microbiome, Phylum Level&quot;,
+       tag=&quot;A&quot;)
+micro_plot</code></pre>
+<p><img src="figure/microbiome_diet_trends.Rmd/unnamed-chunk-1-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># #Next, change strip color by intervention group
+# g &lt;- ggplot_gtable(ggplot_build(micro_plot))
+# strip_both &lt;- which(grepl(&#39;strip-&#39;, g$layout$name))
+# fills &lt;- c(rep(&quot;white&quot;, 6), rep(&quot;grey80&quot;, 5))
+# k &lt;- 1
+# for (i in strip_both) {
+#   j &lt;- which(grepl(&#39;rect&#39;, g$grobs[[i]]$grobs[[1]]$childrenOrder))
+#   g$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill &lt;- fills[k]
+#   k &lt;- k+1
+# }
+# grid::grid.draw(g)
+# 
+# 
+# tag_facet2 &lt;-  function(p, open=&quot; &quot;, close = &quot; &quot;,
+#          tag_pool = letters,
+#          x = 0, y = 0.5,
+#          hjust = 0, vjust = 0.5, 
+#          fontface = 2, ...){
+#   
+#   gb &lt;- ggplot_build(p)
+#   lay &lt;- gb$layout$layout
+#   nm &lt;- names(gb$layout$facet$params$rows)
+#   
+#   tags &lt;- paste0(open,tag_pool[unique(lay$COL)],close)
+#   
+#   tl &lt;- lapply(tags, grid::textGrob, x=x, y=y,
+#                hjust=hjust, vjust=vjust, gp=grid::gpar(fontface=fontface))
+#   
+#   g &lt;- ggplot_gtable(gb)
+#   g &lt;- gtable::gtable_add_rows(g, grid::unit(1,&quot;line&quot;), pos = 0)
+#   lm &lt;- unique(g$layout[grepl(&quot;panel&quot;,g$layout$name), &quot;l&quot;])
+#   g &lt;- gtable::gtable_add_grob(g, grobs = tl, t=1, l=lm)
+#   grid::grid.newpage()
+#   grid::grid.draw(g)
+# }
+# 
+# IntGrp &lt;- c(rep(&quot;A&quot;, 6), rep(&quot;B&quot;, 5))
+# micro_plot2&lt;-micro_plot + theme(legend.position = &quot;none&quot;)
+# micro_plot2
+# tag_facet2(micro_plot2, tag_pool = IntGrp)</code></pre>
+<p>Note: Subjects are ordered by Intervention: 1 to 6 are in Group A 7-11 are in group B</p>
+</div>
+<div id="make-dietary-figures" class="section level1">
+<h1>Make Dietary Figures</h1>
+<div id="food-groups" class="section level2">
+<h2>Food Groups</h2>
+<pre class="r"><code>food_var &lt;- colnames(diet.data)[4:12]
+
+food_data &lt;- as_tibble(diet.data[, c(&quot;SubjectID&quot;, &quot;Week&quot;, food_var)])
+
+
+# need to fill in &quot;missing&quot; data
+MIS &lt;- tidyr::expand(food_data, SubjectID, Week)
+
+food_data &lt;- full_join(food_data, MIS)</code></pre>
+<pre><code>Joining, by = c(&quot;SubjectID&quot;, &quot;Week&quot;)</code></pre>
+<pre class="r"><code>food_data &lt;- food_data%&gt;%
+  group_by(SubjectID)%&gt;%
+  fill(`Fats Oils and Salad Dressings`:`Grain Product`)
+
+
+id &lt;- paste0(&quot;id.&quot;, food_data$SubjectID,&quot;.wk.&quot;,food_data$Week)
+
+food_data$MISSING &lt;- apply(food_data, 1,
+                           FUN = function(x){ sum(is.na(x)) })
+
+food_data &lt;- data.frame(t(food_data[,-c(1:2)]))
+colnames(food_data) &lt;- id
+rownames(food_data) &lt;- c(food_var, &quot;MISSING&quot;)
+
+food_data &lt;- apply(food_data, c(1,2), FUN=function(x){ifelse(is.na(x), 0, x)})
+food_data &lt;- data.frame(food_data)
+# Compute relative abundance
+food_data &lt;- sweep(food_data, 2, colSums(food_data), &quot;/&quot;)
+food_data[is.na(food_data)] &lt;- 0
+
+# sort by highest average relative abundance
+food_data &lt;- food_data[order(rowMeans(food_data), decreasing = F),]
+
+# make food ordering factor
+food_ord_factor &lt;- as.character(rownames(food_data))
+food_ord_factor &lt;- food_ord_factor[food_ord_factor != &quot;MISSING&quot;]
+food_ord_factor &lt;- c(&quot;MISSING&quot;,food_ord_factor)
+
+
+plot3 &lt;- as.data.frame(t(food_data))
+plot3 &lt;- rownames_to_column(plot3, var = &quot;SampleID&quot;)
+plot3 &lt;- reshape2::melt(plot3, id = &quot;SampleID&quot;, variable.name = &quot;Food&quot;)
+
+# combine all &quot;&lt;x% abundance&quot; foods into one for plotting
+#plot3 &lt;- plot3 %&gt;% group_by(SampleID, Food) %&gt;% dplyr::summarise(newvalue = sum(value))
+
+# Extract ids and weeks
+#plot3$SubjectID &lt;- str_sub(plot3$SampleID, 4,7)
+so &lt;- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder &lt;- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot3$SubjectID &lt;- factor(str_sub(plot3$SampleID, 4,7),
+                          levels = subjectorder)
+
+plot3$Week &lt;- as.numeric(str_sub(plot3$SampleID, 12, 13))
+# recode FOOD
+plot3$Food &lt;- as.factor(plot3$Food)
+plot3$Food &lt;- factor(plot3$Food, levels = rev(food_ord_factor))
+# set seed to get nice colors
+set.seed(3)
+
+# get right number of colors for plotting
+no_cols &lt;- length(unique(plot3$Food))
+
+## Some Colors
+colors_food &lt;- c(&quot;#00a2f2&quot;,  &quot;#c91acb&quot;, &quot;#7f5940&quot;, &quot;#cc5200&quot;, &quot;#00d957&quot;, &quot;#40202d&quot;, &quot;#e60099&quot;, &quot;#006fa6&quot;, &quot;#f29d3d&quot;, &quot;grey90&quot;)
+
+
+
+# make the plot
+food_plot&lt;-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
+  geom_area(stat = &quot;identity&quot;) +
+  facet_grid(.~SubjectID, scales = &quot;free&quot;) +
+  scale_fill_manual(values = colors_food) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.text = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;)) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol = 1)) +
+  #nrow = 5)) + # for full page figure
+  #nrow = 1)) + # for slide figure
+  labs(y=&quot;Relative Abundance&quot;,
+       title=&quot;Dietary Food Groups&quot;,
+       tag=&quot;B&quot;)
+food_plot</code></pre>
+<p><img src="figure/microbiome_diet_trends.Rmd/unnamed-chunk-3-1.png" width="200%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="nutrients" class="section level2">
+<h2>Nutrients</h2>
+<pre class="r"><code># Dietary Nurtrients
+
+
+food_var &lt;- colnames(diet.data)[14:54]
+
+
+food_data &lt;- as_tibble(diet.data[, c(&quot;SubjectID&quot;, &quot;Week&quot;, food_var)])
+# need to fill in &quot;missing&quot; data
+MIS &lt;- tidyr::expand(food_data, SubjectID, Week)
+
+food_data &lt;- full_join(food_data, MIS)</code></pre>
+<pre><code>Joining, by = c(&quot;SubjectID&quot;, &quot;Week&quot;)</code></pre>
+<pre class="r"><code>food_data &lt;- food_data%&gt;%
+  group_by(SubjectID)%&gt;%
+  fill(`Carbohydrates`:`Added Vitamin B-12`)
+
+id &lt;- paste0(&quot;id.&quot;, food_data$SubjectID,&quot;.wk.&quot;,food_data$Week)
+
+food_data$MISSING &lt;- apply(food_data, 1,
+                           FUN = function(x){ sum(is.na(x)) })
+
+food_data &lt;- data.frame(t(food_data[,-c(1:2)]))
+colnames(food_data) &lt;- id
+rownames(food_data) &lt;- c(food_var, &quot;MISSING&quot;)
+
+food_data &lt;- apply(food_data, c(1,2), FUN=function(x){ifelse(is.na(x), 0, x)})
+food_data &lt;- data.frame(food_data)
+# Compute relative abundance
+food_data &lt;- sweep(food_data, 2, colSums(food_data), &#39;/&#39;)
+
+# sort by highest average relative abundance
+food_data &lt;- food_data[order(rowMeans(food_data), decreasing = F),]
+rn &lt;- rownames(food_data)
+#food_data &lt;- food_data[ rn[c(1:8, 10, 9)], ]
+
+# make food ordering factor
+food_ord_factor &lt;- as.character(rownames(food_data))
+food_ord_factor &lt;- food_ord_factor[food_ord_factor != &quot;MISSING&quot;]
+food_ord_factor &lt;- c(&quot;MISSING&quot;,food_ord_factor)
+
+plot3 &lt;- as.data.frame(t(food_data))
+plot3 &lt;- rownames_to_column(plot3, var = &quot;SampleID&quot;)
+plot3 &lt;- reshape2::melt(plot3, id = &quot;SampleID&quot;, variable.name = &quot;Food&quot;)
+
+# Extract ids and weeks
+
+#plot3$SubjectID &lt;- str_sub(plot3$SampleID, 4,7)
+so &lt;- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder &lt;- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot3$SubjectID &lt;- factor(str_sub(plot3$SampleID, 4,7),
+                          levels = subjectorder)
+plot3$Week &lt;- as.numeric(str_sub(plot3$SampleID, 12, 13))
+# recode FOOD
+plot3$Food &lt;- as.factor(plot3$Food)
+plot3$Food &lt;- factor(plot3$Food, levels = rev(food_ord_factor))
+# set seed to get nice colors
+set.seed(3)
+
+# get right number of colors for plotting
+no_cols &lt;- length(unique(plot3$Food))
+
+## Some Colors
+colors_food &lt;- c(&quot;#00a2f2&quot;,  &quot;#c91acb&quot;, &quot;#7f5940&quot;, &quot;#cc5200&quot;, &quot;#00d957&quot;, &quot;#40202d&quot;, &quot;#e60099&quot;, &quot;#006fa6&quot;, &quot;#f29d3d&quot;, &quot;#300059&quot;, &quot;#566573&quot;, &quot;#336655&quot;, &quot;#83008c&quot;, &quot;#d9a3aa&quot;, &quot;#400009&quot;, &quot;#0020f2&quot;, &quot;#a3d936&quot;, &quot;#8091ff&quot;, &quot;#fbffbf&quot;, &quot;#00ffcc&quot;, &quot;#8c4f46&quot;, &quot;#354020&quot;, &quot;#39c3e6&quot;, &quot;#333a66&quot;, &quot;#ff0000&quot;, &quot;#6a8040&quot;, &quot;#a6538a&quot;, &quot;#402910&quot;, &quot;#730f00&quot;, &quot;#0a4d00&quot;, &quot;#ffe1bf&quot;, &quot;#a3d9b1&quot;, &quot;#003033&quot;, &quot;#f29979&quot;, &quot;#00b3a7&quot;, &quot;#cbace6&quot;, &quot;#bfd9ff&quot;, &quot;#bf0000&quot;, &quot;#293aa6&quot;, &quot;#594943&quot;, &quot;#e5c339&quot;, &quot;grey90&quot;)
+
+
+
+# make the plot
+nutr_plot&lt;-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
+  geom_area(stat = &quot;identity&quot;) +
+  facet_grid(.~SubjectID, scales = &quot;free&quot;) +
+  scale_fill_manual(values = colors_food) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.01, &quot;lines&quot;)) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol = 1)) +
+  #nrow = 5)) + # for full page figure
+  #nrow = 1)) + # for slide figure
+  labs(y=&quot;Relative Abundance&quot;,
+       title=&quot;Dietary Macronutrients and Micronutrients&quot;,
+       tag=&quot;C&quot;)
+nutr_plot</code></pre>
+<p><img src="figure/microbiome_diet_trends.Rmd/unnamed-chunk-4-1.png" width="200%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="saving-plot" class="section level2">
+<h2>Saving plot</h2>
+<pre class="r"><code>##### MAKE THE ACTUAL FIGURE ###########
+# combine into one big plot
+get_legend &lt;- function(p) {
+  tmp &lt;- ggplot_gtable(ggplot_build(p))
+  leg &lt;- which(sapply(tmp$grobs, function(x) x$name) == &quot;guide-box&quot;)
+  legend &lt;- tmp$grobs[[leg]]
+  legend
+}
+
+micro_plot_leg &lt;- get_legend(micro_plot)
+food_plot_leg &lt;- get_legend(food_plot)
+nutr_plot_leg &lt;- get_legend(nutr_plot)
+
+# and replot suppressing the legend
+micro_plot_1 &lt;- micro_plot + theme(legend.position=&#39;none&#39;)
+food_plot_1 &lt;- food_plot + theme(legend.position=&#39;none&#39;)
+nutr_plot_1 &lt;- nutr_plot + theme(legend.position=&#39;none&#39;)
+
+p &lt;- micro_plot_1 + food_plot_1 + nutr_plot_1 + plot_layout(ncol=1)
+
 p</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-1-1.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>#ggsave(&quot;fig/figure1.pdf&quot;, p, width=5, height=3.5, units=&quot;in&quot;)</code></pre>
-</div>
-<div id="shannon-index" class="section level3">
-<h3>Shannon Index</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=SubjectID3, y=Shannon,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x=&quot;Subject ID&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-2-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="simpson" class="section level3">
-<h3>Simpson</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=SubjectID3, y=Simpson,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x=&quot;Subject ID&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-3-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="boxplots-by-week-of-study" class="section level2">
-<h2>Boxplots by week of study</h2>
-<div id="observed-otus-1" class="section level3">
-<h3>Observed OTUs</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Observed,
-                      colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
-  geom_point(size=2, position=&quot;jitter&quot;)+
-  labs(x=&quot;Week of Study&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-4-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="shannon-index-1" class="section level3">
-<h3>Shannon Index</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Shannon, colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
-  geom_point(size=2, position=&quot;jitter&quot;)+
-  labs(x=&quot;Week of Study&quot;, y=&quot;Shannon Index&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-5-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="simpson-1" class="section level3">
-<h3>Simpson</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Simpson, colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,
-               aes(group=Week))+
-  geom_point(size=2, position=&quot;jitter&quot;)+
-  labs(x=&quot;Week of Study&quot;, y=&quot;Simpson&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-6-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="manuscript-figure" class="section level2">
-<h2>Manuscript Figure</h2>
-<pre class="r"><code>p1 &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
-                      colour=SubjectID10, shape=Week))+
-  geom_point(size=3) +
-  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
-  labs(x=&quot;Subject ID&quot;, y= &quot;Observed OTUs&quot;, tag=&quot;A&quot;,
-       title=&quot;Observed OTUs by Participants&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  scale_colour_manual(values = cols)+
-  theme(panel.grid = element_blank(),
-        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
-        axis.text.y = element_text(size = 10),
-        axis.title = element_text(size = 10),
-        plot.title = element_text(hjust = 0.5),
-        axis.title.x = element_blank(),
-        strip.background = element_blank(),
-        legend.position = &quot;right&quot;,
-        #legend.text = element_text(size = 7),
-        #legend.title = element_blank(),
-        panel.spacing.x=unit(0.001, &quot;lines&quot;))
-p1</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-7-1.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>p2 &lt;- ggplot(plot_data, aes(x=Intervention, y=Observed,
-                            colour=Intervention,
-                            group=Intervention))+
-  geom_boxplot(outlier.shape=NA)+
-  geom_point(size=3, position=&quot;jitter&quot;)+
-  facet_wrap(.~Week, nrow=1)+
-  labs(x=NULL, y=&quot;Observed OTUs&quot;,
-       tag=&quot;B&quot;, title=&quot;Observed OTUs by Study Week&quot;)+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  scale_colour_manual(values = cols)+
-  theme(panel.grid = element_blank(),
-        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
-        axis.text.y = element_text(size = 10),
-        axis.title = element_text(size = 10),
-        plot.title = element_text(hjust = 0.5),
-        axis.title.x = element_blank(),
-        strip.background = element_blank(),
-        legend.position = &quot;right&quot;,
-        #legend.text = element_text(size = 7),
-        #legend.title = element_blank(),
-        panel.spacing.x=unit(0.001, &quot;lines&quot;))
-p2 </code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-7-2.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>  library(cowplot)</code></pre>
+<p><img src="figure/microbiome_diet_trends.Rmd/unnamed-chunk-5-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggsave(&quot;fig/figure4.pdf&quot;, p, units=&quot;in&quot;, width=7.9,height=6.5)
+
+
+
+library(cowplot)</code></pre>
 <pre><code>
 ********************************************************</code></pre>
 <pre><code>Note: As of version 1.0.0, cowplot does not change the</code></pre>
@@ -770,115 +943,15 @@ p2 </code></pre>
 <pre><code>********************************************************</code></pre>
 <pre><code>
 Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>The following object is masked _by_ &#39;.GlobalEnv&#39;:
+
+    get_legend</code></pre>
 <pre><code>The following object is masked from &#39;package:patchwork&#39;:
 
     align_plots</code></pre>
-<pre class="r"><code>  p1.leg &lt;- get_legend(p1)
-  p2.leg &lt;- get_legend(p2)
-  
-  p1.nl &lt;- p1 + theme(legend.position = &quot;none&quot;)
-  p2.nl &lt;- p2 + theme(legend.position = &quot;none&quot;)
-  
-  p &lt;- p1.nl + p2.nl + plot_layout(nrow=1) 
-  p</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-7-3.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>  ggsave(&quot;fig/figure1.pdf&quot;, p, width=7.9,height=5, units=&quot;in&quot;)
-  
-  
-  bigplotlegend &lt;- plot_grid(p1.leg, p2.leg, nrow =1, align = &quot;h&quot;)</code></pre>
-<pre><code>Warning: Graphs cannot be horizontally aligned unless the axis parameter is set.
-Placing graphs unaligned.</code></pre>
-<pre class="r"><code>  save_plot(&quot;fig/figure1_legend.pdf&quot;, bigplotlegend, base_width = 13.25, base_height = 5)</code></pre>
-</div>
-</div>
-<div id="intervention-effect" class="section level1">
-<h1>Intervention Effect</h1>
-<div id="overall-effect" class="section level2">
-<h2>Overall Effect</h2>
-<div id="observed-otus-2" class="section level3">
-<h3>Observed OTUs</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Intervention, y=Observed))+
-  geom_boxplot(outlier.alpha = 0,
-               aes(group=Intervention, color=Intervention))+
-  geom_point(position=&quot;jitter&quot;,aes(color=Intervention))+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  labs(x=&quot;Intervention Group&quot;)+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-8-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="shannon-index-2" class="section level3">
-<h3>Shannon Index</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Intervention, y=Shannon))+
-  geom_boxplot(outlier.alpha = 0,
-               aes(group=Intervention, color=Intervention))+
-  geom_point(position=&quot;jitter&quot;,aes(color=Intervention))+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  labs(x=&quot;Intervention Group&quot;)+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-9-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="simpson-2" class="section level3">
-<h3>Simpson</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Intervention, y=Simpson))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Intervention, color=Intervention))+
-  geom_point(position=&quot;jitter&quot;,aes(color=Intervention))+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  labs(x=&quot;Intervention Group&quot;)+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-10-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="changes-over-time" class="section level2">
-<h2>Changes Over Time</h2>
-<div id="observed-otus-3" class="section level3">
-<h3>Observed OTUs</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Intervention, y=Observed,
-                      group=Intervention,
-                      color=Intervention, shape=Intervention))+
-  geom_boxplot(outlier.alpha = 0)+
-  geom_point(position=&quot;jitter&quot;)+
-  facet_grid(.~Week)+
-  labs(x=&quot;Intervention Group by Week&quot;)+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-11-1.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Observed,
-                      group=interaction(Intervention, SubjectID3),
-                      color=SubjectID3, shape=Intervention))+
-  #geom_boxplot(outlier.alpha = 0)+
-  geom_point()+
-  geom_line()+
-  #facet_grid(.~Week)+
-  labs(x=&quot;Intervention Group by Week&quot;)+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-11-2.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="shannon-index-3" class="section level3">
-<h3>Shannon Index</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Intervention, y=Shannon,
-                      group=Intervention,
-                      color=Intervention, shape=Intervention))+
-  geom_boxplot(outlier.alpha = 0)+
-  geom_point(position=&quot;jitter&quot;)+
-  facet_grid(.~Week)+
-  labs(x=&quot;Intervention Group by Week&quot;)+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-12-1.png" width="225%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="simpson-3" class="section level3">
-<h3>Simpson</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Intervention, y=Simpson,
-                      group=Intervention,
-                      color=Intervention, shape=Intervention))+
-  geom_boxplot(outlier.alpha = 0)+
-  geom_point(position=&quot;jitter&quot;)+
-  facet_grid(.~Week)+
-  labs(x=&quot;Intervention Group by Week&quot;)+
-  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/change_in_alpha_diversity.Rmd/unnamed-chunk-13-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>bigplotlegend &lt;- plot_grid(micro_plot_leg, food_plot_leg, nutr_plot_leg, nrow =1, align = &quot;h&quot;)
+
+save_plot(&quot;fig/figure4_legend.pdf&quot;, bigplotlegend, base_width = 13.25, base_height = 5)</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -939,14 +1012,12 @@ loaded via a namespace (and not attached):
 [67] Rhdf5lib_1.8.0      labeling_0.3        tidyselect_1.0.0   
 [70] magrittr_1.5        R6_2.4.1            IRanges_2.20.2     
 [73] generics_0.0.2      DBI_1.1.0           foreign_0.8-75     
-[76] pillar_1.4.4        haven_2.2.0         whisker_0.4        
-[79] withr_2.2.0         mgcv_1.8-31         abind_1.4-5        
-[82] survival_3.1-8      modelr_0.1.7        crayon_1.3.4       
-[85] rmarkdown_2.1       grid_3.6.3          git2r_0.27.1       
-[88] reprex_0.3.0        digest_0.6.25       webshot_0.5.2      
-[91] httpuv_1.5.2        numDeriv_2016.8-1.1 stats4_3.6.3       
-[94] munsell_0.5.0      </code></pre>
-</div>
+[76] pillar_1.4.4        haven_2.2.0         withr_2.2.0        
+[79] mgcv_1.8-31         abind_1.4-5         survival_3.1-8     
+[82] modelr_0.1.7        crayon_1.3.4        rmarkdown_2.1      
+[85] grid_3.6.3          git2r_0.27.1        reprex_0.3.0       
+[88] digest_0.6.25       webshot_0.5.2       httpuv_1.5.2       
+[91] numDeriv_2016.8-1.1 stats4_3.6.3        munsell_0.5.0      </code></pre>
 </div>
 </div>
 </div>

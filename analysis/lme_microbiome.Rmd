@@ -46,6 +46,7 @@ microbiome_data$meta.dat <- microbiome_data$meta.dat %>%
 ```
 
 
+
 # Phylum Level Microbiome and Intervention
 
 We will build up to the effect of the intervention by investigating covariates to see if we can exclude them from model with intervention.
@@ -232,5 +233,70 @@ phylum.fit7 <- glmm_microbiome(mydata=microbiome_data, model.number=7,
                                model="1 + intB + time + female + (1|SubjectID)")
 ```
 
+# Microbiome Figure
 
+```{r}
+
+mphyseq = psmelt(phylo_data)
+mphyseq2 <- mphyseq %>%
+  dplyr::group_by(SubjectID, Week) %>%
+  dplyr::mutate(Total = sum(Abundance)) %>%
+  dplyr::ungroup()%>%
+  dplyr::group_by(SubjectID, Week, Phylum) %>%
+  dplyr::mutate(PhylumAbund = sum(Abundance),
+                RelAbund = PhylumAbund/Total)
+  
+mphyseq2 <- mphyseq2 %>% distinct(SubjectID, Week, Phylum, .keep_all = T)
+
+keepVar <- c("SubjectID", "Week", "Intervention", "Phylum", "PhylumAbund", "RelAbund")
+
+mphyseq2 <- mphyseq2[, keepVar]
+
+# take out "__" at start of names
+mphyseq2$Phylum <- substring(mphyseq2$Phylum, 3)
+
+# get right number of colors for plotting
+no_cols <- length(unique(mphyseq2$Phylum))
+
+## Some Colors
+colors_micro <- rev(c("grey90", rev(c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059"))))
+
+# Now get the intervention by time model
+fe <- phylum.fit5$`Fixed Effects`$Actinobacteria
+fe[,2]
+
+get.data.with.trend <- function(data, fit){
+  data$Y <- 0
+  ph <- names(fit[[1]])
+  i <- 1
+  for(i in 1:length(ph)){
+    
+    fe <- phylum.fit5[[1]][[ph[i]]][,2]
+  
+    dat <- filter(data, Phylum == ph[i])
+    
+    Y <- exp(fe[1] + fe[2]*as.numeric(as.factor(dat$Intervention)) + fe[3]*(as.numeric(dat$Week) - 1) + fe[4]*as.numeric(as.factor(dat$Intervention))*(as.numeric(dat$Week) - 1))
+    
+    data$Y[data$Phylum == ph[i]] <- Y
+  }
+  
+  return(data)
+}
+  
+micro_data <- get.data.with.trend(mphyseq2, phylum.fit5)
+micro_data$Week <- (as.numeric(micro_data$Week)-1)*4
+
+p <- ggplot(micro_data, aes(Week, PhylumAbund))+
+  geom_jitter(height=0, width=0.25) +
+  #geom_line(data=micro_data, aes(x=Week, y=Y, group=Intervention, color=Intervention)) +
+  facet_wrap(.~Phylum, ncol = 5, scales = "free") +
+  labs(y="Phylum Abundance") +
+  theme(panel.grid = element_blank(),
+        strip.background =element_blank(), 
+        legend.position = "bottom")
+
+
+p
+
+```
 

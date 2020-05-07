@@ -20,9 +20,9 @@ rm(list=ls())
 # list of packages
 packages <- c("phyloseq","vegan", "lme4", "lmerTest",
               "tidyverse", "readr", "readxl", "forcats",
-              "data.table", "dplyr", "plyr", "ggplot2",
+              "data.table", "plyr", "ggplot2",
               "kableExtra", "xtable", "gridExtra", "viridis",
-              "patchwork", "gvlma", "car")
+              "patchwork", "gvlma", "car", "dplyr")
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 # Load packages

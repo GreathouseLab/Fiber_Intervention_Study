@@ -26,6 +26,14 @@
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -364,13 +372,6 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<!-- Add a small amount of space between sections. -->
-<style type="text/css">
-div.section {
-  padding-top: 12px;
-}
-</style>
-
 <div class="fluid-row" id="header">
 
 
@@ -400,7 +401,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-04-16
+<strong>Last updated:</strong> 2020-05-07
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -410,7 +411,7 @@ div.section {
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.5.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -491,22 +492,65 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree774a55f0e60ec231e0f09c29f489f768ba011db9targetblank774a55fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/774a55f0e60ec231e0f09c29f489f768ba011db9" target="_blank">774a55f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree2d97c532e3cbfa6c1883f6844aff6d7444269619targetblank2d97c53a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/2d97c532e3cbfa6c1883f6844aff6d7444269619" target="_blank">2d97c53</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree774a55f0e60ec231e0f09c29f489f768ba011db9targetblank774a55fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree2d97c532e3cbfa6c1883f6844aff6d7444269619targetblank2d97c53a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
-Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/2d97c532e3cbfa6c1883f6844aff6d7444269619" target="_blank">2d97c53</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    reference-papers/Dietary_Variables.xlsx
+    Ignored:    reference-papers/Johnson_2019.pdf
+
+Untracked files:
+    Untracked:  analysis/microbiome_diet_trends.Rmd
+    Untracked:  fig/figure2.pdf
+    Untracked:  fig/figure2_legend.pdf
+    Untracked:  fig/figure3.pdf
+    Untracked:  fig/figure3_legend.pdf
+    Untracked:  fig/figure4.pdf
+    Untracked:  fig/figure4_legend.pdf
 
 Unstaged changes:
     Modified:   analysis/analysis_beta_diversity.Rmd
+    Modified:   analysis/change_in_alpha_diversity.Rmd
+    Deleted:    analysis/dietary_intake_figure.Rmd
+    Modified:   analysis/lme_microbiome.Rmd
+    Modified:   code/load_packages.R
+    Modified:   data/analysis-data/Dietary_Variables.xlsx
+    Modified:   fig/figure1.pdf
+    Modified:   fig/figure1_legend.pdf
+    Modified:   fig/predicted_Actinobacteria_model5.png
+    Modified:   fig/predicted_Actinobacteria_model7.png
+    Modified:   fig/predicted_Bacteroidetes_model5.png
+    Modified:   fig/predicted_Bacteroidetes_model7.png
+    Modified:   fig/predicted_Cyanobacteria_model5.png
+    Modified:   fig/predicted_Cyanobacteria_model7.png
+    Modified:   fig/predicted_Euryarchaeota_model5.png
+    Modified:   fig/predicted_Euryarchaeota_model7.png
+    Modified:   fig/predicted_Firmicutes_model5.png
+    Modified:   fig/predicted_Firmicutes_model7.png
+    Modified:   fig/predicted_Fusobacteria_model5.png
+    Modified:   fig/predicted_Fusobacteria_model7.png
+    Modified:   fig/predicted_Lentisphaerae_model5.png
+    Modified:   fig/predicted_Lentisphaerae_model7.png
+    Modified:   fig/predicted_Proteobacteria_model5.png
+    Modified:   fig/predicted_Proteobacteria_model7.png
+    Modified:   fig/predicted_Tenericutes_model5.png
+    Modified:   fig/predicted_Tenericutes_model7.png
+    Modified:   fig/predicted_Verrucomicrobia_model5.png
+    Modified:   fig/predicted_Verrucomicrobia_model7.png
 
 </code></pre>
 <p>
@@ -519,9 +563,103 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/analysis_beta_diversity.Rmd</code>) and HTML (<code>docs/analysis_beta_diversity.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/blob/2d97c532e3cbfa6c1883f6844aff6d7444269619/analysis/analysis_beta_diversity.Rmd" target="_blank">2d97c53</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-04-16
+</td>
+<td>
+updated figure heights
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/2d97c532e3cbfa6c1883f6844aff6d7444269619/docs/analysis_beta_diversity.html" target="_blank">2d97c53</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-04-16
+</td>
+<td>
+updated figure heights
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/blob/774a55f0e60ec231e0f09c29f489f768ba011db9/analysis/analysis_beta_diversity.Rmd" target="_blank">774a55f</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-04-16
+</td>
+<td>
+updated beta diversity and permanova
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/774a55f0e60ec231e0f09c29f489f768ba011db9/docs/analysis_beta_diversity.html" target="_blank">774a55f</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-04-16
+</td>
+<td>
+updated beta diversity and permanova
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -889,6 +1027,135 @@ Response: Distances
           Df  Sum Sq   Mean Sq      F N.Perm Pr(&gt;F)
 Groups     7 0.01848 0.0026401 0.3651    999  0.919
 Residuals 29 0.20968 0.0072303                     </code></pre>
+</div>
+</div>
+<div id="beta-diversity-plot-figure-2" class="section level1">
+<h1>Beta diversity plot (Figure 2)</h1>
+<pre class="r"><code>p1 &lt;- plot_ordination(phylo_data, ord_bray, color=&quot;Week&quot;) +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title=&quot;PCoA on Bray-Curtis distance, by Week&quot;)
+
+p2 &lt;- plot_ordination(phylo_data, ord_wt, color=&quot;Week&quot;) +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title=&quot;PCoA on Weight Unifrac distance, by Week&quot;)
+
+
+dat.bray &lt;- p1$data
+dat.wt &lt;- p2$data
+
+so &lt;- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder &lt;- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+dat.bray$SubjectID10 &lt;- factor(dat.bray$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+
+dat.wt$SubjectID10 &lt;- factor(dat.wt$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+ids &lt;- 1:6
+dat.bray$Intervention2 &lt;- ifelse(dat.bray$SubjectID10 %in% ids, &quot;Group A&quot;, &quot;Group B&quot;)
+dat.wt$Intervention2 &lt;- ifelse(dat.wt$SubjectID10 %in% ids, &quot;Group A&quot;, &quot;Group B&quot;)
+
+
+p1 &lt;- ggplot(dat.bray, aes(x=Week, y=Axis.1, color=Intervention2)) +
+  geom_point(size=3)+
+  facet_wrap(.~SubjectID10,ncol=6) +
+  scale_color_manual(values=cols)+
+  labs(y=&quot;PC1&quot;, 
+       title=&quot;Individualized beta-diversity over study diration&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        #axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+
+p1</code></pre>
+<p><img src="figure/analysis_beta_diversity.Rmd/unnamed-chunk-3-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>  library(cowplot)</code></pre>
+<pre><code>
+********************************************************</code></pre>
+<pre><code>Note: As of version 1.0.0, cowplot does not change the</code></pre>
+<pre><code>  default ggplot2 theme anymore. To recover the previous</code></pre>
+<pre><code>  behavior, execute:
+  theme_set(theme_cowplot())</code></pre>
+<pre><code>********************************************************</code></pre>
+<pre><code>
+Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:patchwork&#39;:
+
+    align_plots</code></pre>
+<pre class="r"><code>  p1.leg &lt;- get_legend(p1)
+  
+  p1.nl &lt;- p1 + theme(legend.position = &quot;none&quot;)
+
+  ggsave(&quot;fig/figure2.pdf&quot;, p1.nl, width=7.9,height=4.5, units=&quot;in&quot;)
+  
+  
+  bigplotlegend &lt;- plot_grid(p1.leg, nrow =1)
+  
+  save_plot(&quot;fig/figure2_legend.pdf&quot;, bigplotlegend,
+            base_width = 7.9, base_height = 4.5)</code></pre>
+</div>
+<div id="beta-diversity-plot-figure-3" class="section level1">
+<h1>Beta diversity plot (Figure 3)</h1>
+<pre class="r"><code>p1 &lt;- plot_ordination(phylo_data, ord_bray,
+                      color=&quot;Week&quot;, shape=&quot;Intervention&quot;) +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title=&quot;PCoA on Bray-Curtis distance&quot;,
+       tag=&quot;A&quot;)+
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5))
+
+p2 &lt;- plot_ordination(phylo_data, ord_unwt,
+                      color=&quot;Week&quot;, shape=&quot;Intervention&quot;) +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title=&quot;PCoA on Unweighted Unifrac distance&quot;,
+       tag=&quot;B&quot;)+
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5))
+
+p3 &lt;- plot_ordination(phylo_data, ord_wt,
+                      color=&quot;Week&quot;, shape=&quot;Intervention&quot;) +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title=&quot;PCoA on Weight Unifrac distance&quot;,
+       tag=&quot;C&quot;)+
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5))
+
+
+  library(cowplot)
+  p1.leg &lt;- get_legend(p1)
+  
+  p1.nl &lt;- p1 + theme(legend.position = &quot;none&quot;)
+  p2.nl &lt;- p2 + theme(legend.position = &quot;none&quot;)
+  p3.nl &lt;- p3 + theme(legend.position = &quot;none&quot;)
+  p &lt;- p1.nl + p2.nl + p3.nl + plot_layout(ncol=1)
+  ggsave(&quot;fig/figure3.pdf&quot;, p, width=4,height=6, units=&quot;in&quot;)
+  
+  
+  bigplotlegend &lt;- plot_grid(p1.leg, nrow =1)
+  
+  save_plot(&quot;fig/figure3_legend.pdf&quot;, bigplotlegend,
+            base_width = 7.9, base_height = 4.5)</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -914,47 +1181,48 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] car_3.0-5         carData_3.0-3     gvlma_1.0.0.3     patchwork_1.0.0  
- [5] viridis_0.5.1     viridisLite_0.3.0 gridExtra_2.3     xtable_1.8-4     
- [9] kableExtra_1.1.0  plyr_1.8.4        data.table_1.12.6 readxl_1.3.1     
-[13] forcats_0.4.0     stringr_1.4.0     dplyr_0.8.3       purrr_0.3.3      
-[17] readr_1.3.1       tidyr_1.0.0       tibble_2.1.3      ggplot2_3.2.1    
-[21] tidyverse_1.3.0   lmerTest_3.1-1    lme4_1.1-21       Matrix_1.2-18    
-[25] vegan_2.5-6       lattice_0.20-38   permute_0.9-5     phyloseq_1.30.0  
+ [1] cowplot_1.0.0     car_3.0-7         carData_3.0-3     gvlma_1.0.0.3    
+ [5] patchwork_1.0.0   viridis_0.5.1     viridisLite_0.3.0 gridExtra_2.3    
+ [9] xtable_1.8-4      kableExtra_1.1.0  plyr_1.8.6        data.table_1.12.8
+[13] readxl_1.3.1      forcats_0.5.0     stringr_1.4.0     dplyr_0.8.5      
+[17] purrr_0.3.4       readr_1.3.1       tidyr_1.0.2       tibble_3.0.1     
+[21] ggplot2_3.3.0     tidyverse_1.3.0   lmerTest_3.1-2    lme4_1.1-23      
+[25] Matrix_1.2-18     vegan_2.5-6       lattice_0.20-38   permute_0.9-5    
+[29] phyloseq_1.30.0   workflowr_1.6.2  
 
 loaded via a namespace (and not attached):
  [1] minqa_1.2.4         colorspace_1.4-1    rio_0.5.16         
- [4] rprojroot_1.3-2     XVector_0.26.0      fs_1.3.1           
- [7] rstudioapi_0.10     farver_2.0.1        lubridate_1.7.4    
-[10] xml2_1.2.2          codetools_0.2-16    splines_3.6.3      
-[13] knitr_1.26          zeallot_0.1.0       ade4_1.7-13        
-[16] jsonlite_1.6        workflowr_1.5.0     nloptr_1.2.1       
-[19] broom_0.5.2         cluster_2.1.0       dbplyr_1.4.2       
-[22] compiler_3.6.3      httr_1.4.1          backports_1.1.5    
-[25] assertthat_0.2.1    lazyeval_0.2.2      cli_1.1.0          
-[28] later_1.0.0         htmltools_0.4.0     tools_3.6.3        
-[31] igraph_1.2.4.2      gtable_0.3.0        glue_1.3.1         
-[34] reshape2_1.4.3      Rcpp_1.0.3          Biobase_2.46.0     
-[37] cellranger_1.1.0    vctrs_0.2.0         Biostrings_2.54.0  
-[40] multtest_2.42.0     ape_5.3             nlme_3.1-144       
-[43] iterators_1.0.12    xfun_0.11           openxlsx_4.1.3     
-[46] rvest_0.3.5         lifecycle_0.1.0     zlibbioc_1.32.0    
-[49] MASS_7.3-51.5       scales_1.1.0        hms_0.5.2          
+ [4] ellipsis_0.3.0      rprojroot_1.3-2     XVector_0.26.0     
+ [7] fs_1.4.1            rstudioapi_0.11     farver_2.0.3       
+[10] fansi_0.4.1         lubridate_1.7.8     xml2_1.3.2         
+[13] codetools_0.2-16    splines_3.6.3       knitr_1.28         
+[16] ade4_1.7-15         jsonlite_1.6.1      nloptr_1.2.2.1     
+[19] broom_0.5.6         cluster_2.1.0       dbplyr_1.4.3       
+[22] compiler_3.6.3      httr_1.4.1          backports_1.1.6    
+[25] assertthat_0.2.1    cli_2.0.2           later_1.0.0        
+[28] htmltools_0.4.0     tools_3.6.3         igraph_1.2.5       
+[31] gtable_0.3.0        glue_1.4.0          reshape2_1.4.4     
+[34] Rcpp_1.0.4.6        Biobase_2.46.0      cellranger_1.1.0   
+[37] vctrs_0.2.4         Biostrings_2.54.0   multtest_2.42.0    
+[40] ape_5.3             nlme_3.1-144        iterators_1.0.12   
+[43] xfun_0.13           openxlsx_4.1.4      rvest_0.3.5        
+[46] lifecycle_0.2.0     statmod_1.4.34      zlibbioc_1.32.0    
+[49] MASS_7.3-51.5       scales_1.1.0        hms_0.5.3          
 [52] promises_1.1.0      parallel_3.6.3      biomformat_1.14.0  
-[55] rhdf5_2.30.1        curl_4.3            yaml_2.2.0         
-[58] stringi_1.4.3       S4Vectors_0.24.1    foreach_1.4.7      
+[55] rhdf5_2.30.1        curl_4.3            yaml_2.2.1         
+[58] stringi_1.4.6       S4Vectors_0.24.4    foreach_1.5.0      
 [61] BiocGenerics_0.32.0 zip_2.0.4           boot_1.3-24        
-[64] rlang_0.4.2         pkgconfig_2.0.3     evaluate_0.14      
-[67] Rhdf5lib_1.8.0      labeling_0.3        tidyselect_0.2.5   
-[70] magrittr_1.5        R6_2.4.1            IRanges_2.20.1     
-[73] generics_0.0.2      DBI_1.0.0           foreign_0.8-75     
-[76] pillar_1.4.2        haven_2.2.0         withr_2.1.2        
-[79] mgcv_1.8-31         abind_1.4-5         survival_3.1-8     
-[82] modelr_0.1.5        crayon_1.3.4        rmarkdown_1.18     
-[85] grid_3.6.3          git2r_0.26.1        reprex_0.3.0       
-[88] digest_0.6.23       webshot_0.5.2       httpuv_1.5.2       
-[91] numDeriv_2016.8-1.1 stats4_3.6.3        munsell_0.5.0      </code></pre>
-</div>
+[64] rlang_0.4.5         pkgconfig_2.0.3     evaluate_0.14      
+[67] Rhdf5lib_1.8.0      labeling_0.3        tidyselect_1.0.0   
+[70] magrittr_1.5        R6_2.4.1            IRanges_2.20.2     
+[73] generics_0.0.2      DBI_1.1.0           foreign_0.8-75     
+[76] pillar_1.4.4        haven_2.2.0         whisker_0.4        
+[79] withr_2.2.0         mgcv_1.8-31         abind_1.4-5        
+[82] survival_3.1-8      modelr_0.1.7        crayon_1.3.4       
+[85] rmarkdown_2.1       grid_3.6.3          git2r_0.27.1       
+[88] reprex_0.3.0        digest_0.6.25       webshot_0.5.2      
+[91] httpuv_1.5.2        numDeriv_2016.8-1.1 stats4_3.6.3       
+[94] munsell_0.5.0      </code></pre>
 </div>
 </div>
 

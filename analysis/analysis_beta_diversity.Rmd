@@ -29,6 +29,32 @@ scale_fill_discrete <-  function(palname=pal, ...){
 
 knitr::opts_chunk$set(out.width = "200%")
 
+
+# recode
+plot_data <- microbiome_data$meta.dat
+plot_data$Week <- factor(plot_data$Week,
+                         levels=c("1", "4", "8", "12"),
+                         labels=c("Week 1", "Week 4",
+                                  "Week 8", "Week 12"))
+
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot_data$SubjectID10 <- factor(plot_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+ids <- 1:6
+plot_data$Intervention2 <- ifelse(plot_data$SubjectID10 %in% ids, "Group A", "Group B")
+
+
+# color pallet
+cols <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339")
+
+
+
+
 ```
 
 
@@ -214,3 +240,131 @@ permutest(beta)
 
 ```
 
+
+
+# Beta diversity plot (Figure 2)
+
+
+```{r}
+
+p1 <- plot_ordination(phylo_data, ord_bray, color="Week") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Bray-Curtis distance, by Week")
+
+p2 <- plot_ordination(phylo_data, ord_wt, color="Week") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Weight Unifrac distance, by Week")
+
+
+dat.bray <- p1$data
+dat.wt <- p2$data
+
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+dat.bray$SubjectID10 <- factor(dat.bray$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+
+dat.wt$SubjectID10 <- factor(dat.wt$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+ids <- 1:6
+dat.bray$Intervention2 <- ifelse(dat.bray$SubjectID10 %in% ids, "Group A", "Group B")
+dat.wt$Intervention2 <- ifelse(dat.wt$SubjectID10 %in% ids, "Group A", "Group B")
+
+
+p1 <- ggplot(dat.bray, aes(x=Week, y=Axis.1, color=Intervention2)) +
+  geom_point(size=3)+
+  facet_wrap(.~SubjectID10,ncol=6) +
+  scale_color_manual(values=cols)+
+  labs(y="PC1", 
+       title="Individualized beta-diversity over study diration")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        #axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+
+p1
+
+  library(cowplot)
+  p1.leg <- get_legend(p1)
+  
+  p1.nl <- p1 + theme(legend.position = "none")
+
+  ggsave("fig/figure2.pdf", p1.nl, width=7.9,height=4.5, units="in")
+  
+  
+  bigplotlegend <- plot_grid(p1.leg, nrow =1)
+  
+  save_plot("fig/figure2_legend.pdf", bigplotlegend,
+            base_width = 7.9, base_height = 4.5)
+  
+```
+
+
+# Beta diversity plot (Figure 3)
+
+
+```{r}
+
+p1 <- plot_ordination(phylo_data, ord_bray,
+                      color="Week", shape="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Bray-Curtis distance",
+       tag="A")+
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5))
+
+p2 <- plot_ordination(phylo_data, ord_unwt,
+                      color="Week", shape="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Unweighted Unifrac distance",
+       tag="B")+
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5))
+
+p3 <- plot_ordination(phylo_data, ord_wt,
+                      color="Week", shape="Intervention") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Weight Unifrac distance",
+       tag="C")+
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5))
+
+
+  library(cowplot)
+  p1.leg <- get_legend(p1)
+  
+  p1.nl <- p1 + theme(legend.position = "none")
+  p2.nl <- p2 + theme(legend.position = "none")
+  p3.nl <- p3 + theme(legend.position = "none")
+  p <- p1.nl + p2.nl + p3.nl + plot_layout(ncol=1)
+  ggsave("fig/figure3.pdf", p, width=4,height=6, units="in")
+  
+  
+  bigplotlegend <- plot_grid(p1.leg, nrow =1)
+  
+  save_plot("fig/figure3_legend.pdf", bigplotlegend,
+            base_width = 7.9, base_height = 4.5)
+  
+```

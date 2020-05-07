@@ -27,6 +27,23 @@ plot_data$Week <- factor(plot_data$Week,
                          levels=c("1", "4", "8", "12"),
                          labels=c("Week 1", "Week 4",
                                   "Week 8", "Week 12"))
+
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot_data$SubjectID10 <- factor(plot_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+ids <- 1:6
+plot_data$Intervention2 <- ifelse(plot_data$SubjectID10 %in% ids, "Group A", "Group B")
+
+
+# color pallet
+cols <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339")
+
+
 ```
 
 
@@ -41,12 +58,26 @@ plot_data$Week <- factor(plot_data$Week,
 
 
 
-ggplot(plot_data, aes(x=SubjectID3, y=Observed,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x="Subject ID")+
+p <- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Observed OTUs")+
   guides(colour= guide_legend(title = "Subject ID"))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
+#ggsave("fig/figure1.pdf", p, width=5, height=3.5, units="in")
+
 
 
 ```
@@ -125,6 +156,75 @@ ggplot(plot_data, aes(x=Week, y=Simpson, colour=SubjectID3))+
 
 
 ```
+
+
+## Manuscript Figure
+
+```{r}
+
+p1 <- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Observed OTUs", tag="A",
+       title="Observed OTUs by Participants")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p1
+
+p2 <- ggplot(plot_data, aes(x=Intervention, y=Observed,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Observed OTUs",
+       tag="B", title="Observed OTUs by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p2 
+
+  library(cowplot)
+  p1.leg <- get_legend(p1)
+  p2.leg <- get_legend(p2)
+  
+  p1.nl <- p1 + theme(legend.position = "none")
+  p2.nl <- p2 + theme(legend.position = "none")
+  
+  p <- p1.nl + p2.nl + plot_layout(nrow=1) 
+  p
+  ggsave("fig/figure1.pdf", p, width=7.9,height=5, units="in")
+  
+  
+  bigplotlegend <- plot_grid(p1.leg, p2.leg, nrow =1, align = "h")
+  
+  save_plot("fig/figure1_legend.pdf", bigplotlegend, base_width = 13.25, base_height = 5)
+
+```
+
+
 
 # Intervention Effect
 
