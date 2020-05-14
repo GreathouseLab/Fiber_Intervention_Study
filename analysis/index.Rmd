@@ -24,6 +24,8 @@ Describing the data:
 
 *[Microbiome and Diet Trends over Time](microbiome_diet_trends.html)
 
+*[Blood Measure Analyses](analysis_blood_data.html)
+
 ## Diet Data
 
 *[Dietary Data Over Time](dietary_intake_figure.html)
