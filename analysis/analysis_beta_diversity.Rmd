@@ -279,7 +279,7 @@ dat.bray$Intervention2 <- ifelse(dat.bray$SubjectID10 %in% ids, "Group A", "Grou
 dat.wt$Intervention2 <- ifelse(dat.wt$SubjectID10 %in% ids, "Group A", "Group B")
 
 
-p1 <- ggplot(dat.bray, aes(x=Week, y=Axis.1, color=Intervention2)) +
+p1 <- ggplot(dat.wt, aes(x=Week, y=Axis.1, color=Intervention2)) +
   geom_point(size=3)+
   facet_wrap(.~SubjectID10,ncol=6) +
   scale_color_manual(values=cols)+

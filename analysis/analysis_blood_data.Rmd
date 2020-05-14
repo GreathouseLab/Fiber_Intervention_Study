@@ -1,0 +1,302 @@
+---
+title: "Blood Data Analyses"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+# Overview of aims
+
+What is the effect of Prebiotin vs placebo on blood measures (controlling for diet, age, ethnicity, stress?)
+Did the intervention effect? 
+  
+
+
+```{r data, include=FALSE, echo=FALSE}
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+```
+
+# Data
+
+```{r}
+
+blood_data <- read_excel("data/Blood measures data/Copy of Fiber Study Blood Results.xlsx")
+
+meta_data <- microbiome_data$meta.dat
+
+keepVar <- c("SubjectID", "Week", "Intervention", "Stress.Scale", "Ethnicity", "Gender", "Age")
+meta_data <- meta_data [, keepVar]
+
+mydata <- full_join(blood_data, meta_data)
+
+mydata <- distinct(mydata, SubjectID, time,.keep_all = T)
+
+# recoding
+mydata <- mydata %>%
+  mutate(female = ifelse(Gender == "F", 1, 0),
+         c.age = Age - mean(Age),
+         IntB = ifelse(Intervention == "B", 1, 0),
+         Post = ifelse(time == "Post", 1, 0),
+         c.stress = Stress.Scale - mean(Stress.Scale),
+         hispanic = ifelse(Ethnicity %in% c("White", "Asian", "Native America"), 1, 0))
+
+# for plotting
+plot.data <- mydata[, c(colnames(mydata)[c(1:18,20:24)])]
+
+plot.data <- plot.data %>%
+  pivot_longer(cols=colnames(mydata)[3:18],
+               names_to = "Variable",
+               values_to = "value")
+
+```
+
+## Data summary
+
+### Summary Statistics
+
+```{r data-sum}
+
+varNames <- c(colnames(mydata)[c(2:18,20)])
+
+sum.dat <- mydata[,varNames[2:17]] %>%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+sum.dat <- data.frame(matrix(unlist(sum.dat), ncol=5))
+colnames(sum.dat) <- c("Mean", "SD", "Min", "Median", "Max")
+rownames(sum.dat) <- varNames[2:17]
+
+kable(sum.dat, format="html", digits=3)%>%
+  kable_styling(full_width = T)
+
+```
+
+### Summary of these data by Intervention Group
+
+```{r data-sum1}
+
+varNames <- colnames(mydata)[c(20,3:18)]
+sum.dat <- mydata[,varNames] %>%
+  group_by(Intervention) %>%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a <- data.frame(matrix(unlist(sum.dat[1,-1]), ncol=5))
+b <- data.frame(matrix(unlist(sum.dat[2,-1]), ncol=5))
+a <- cbind(rep("A", 16), a); colnames(a) <- c("Intervention", "Mean", "SD", "Min", "Median", "Max")
+b <- cbind(rep("B", 16), b); colnames(b) <- c("Intervention", "Mean", "SD", "Min", "Median", "Max")
+
+sum.dat <- rbind(a,b)
+sum.dat <- data.frame(Variable=rep(varNames[-1],2), sum.dat)
+ 
+sum.dat <- arrange(sum.dat, Variable)
+kable(sum.dat, format="html", digits=3)%>%
+  kable_styling(full_width = T)
+
+```
+
+### Summary of these data by Pre-Post
+
+```{r data-sum2}
+
+varNames <- colnames(mydata)[c(2:18)]
+
+sum.dat <- mydata[,varNames] %>%
+  group_by(time) %>%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a <- data.frame(matrix(unlist(sum.dat[1,-1]), ncol=5))
+b <- data.frame(matrix(unlist(sum.dat[2,-1]), ncol=5))
+a <- cbind(rep("Post", 16), a); colnames(a) <- c("Pre-Post", "Mean", "SD", "Min", "Median", "Max")
+b <- cbind(rep("Pre", 16), b); colnames(b) <- c("Pre-Post", "Mean", "SD", "Min", "Median", "Max")
+
+sum.dat <- rbind(b,a)
+sum.dat <- data.frame(Variable=rep(varNames[-1],2), sum.dat)
+ 
+sum.dat <- arrange(sum.dat, Variable)
+kable(sum.dat, format="html", digits=3)%>%
+  kable_styling(full_width = T)
+
+```
+
+### Summary of these data by Intervention & Pre-Post
+
+```{r data-sum3}
+
+varNames <- colnames(mydata)[c(20, 2:18)]
+
+sum.dat <- mydata[,varNames] %>%
+  group_by(Intervention, time) %>%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a2 <- data.frame(matrix(unlist(sum.dat[1,-c(1:2)]), ncol=5))
+a1 <- data.frame(matrix(unlist(sum.dat[2,-c(1:2)]), ncol=5))
+b1 <- data.frame(matrix(unlist(sum.dat[3,-c(1:2)]), ncol=5))
+b2 <- data.frame(matrix(unlist(sum.dat[4,-c(1:2)]), ncol=5))
+
+a2 <- cbind(rep("A", 16), rep("Post", 16), a2); colnames(a2) <- c("Intervention", "Pre-Post", "Mean", "SD", "Min", "Median", "Max")
+a1 <- cbind(rep("A", 16), rep("Pre", 16), a1); colnames(a1) <- c("Intervention", "Pre-Post", "Mean", "SD", "Min", "Median", "Max")
+
+b1 <- cbind(rep("B", 16), rep("Pre", 16), b1); colnames(b1) <- c("Intervention", "Pre-Post", "Mean", "SD", "Min", "Median", "Max")
+
+b2 <- cbind(rep("B", 16), rep("Post", 16), b2); colnames(b2) <- c("Intervention", "Pre-Post", "Mean", "SD", "Min", "Median", "Max")
+
+sum.dat <- rbind(a1,a2, b1, b2)
+sum.dat <- data.frame(Variable=rep(varNames[-c(1:2)],4), sum.dat)
+ 
+sum.dat <- arrange(sum.dat, Variable)
+kable(sum.dat, format="html", digits=3)%>%
+  kable_styling(full_width = T)
+
+```
+
+
+# Analysis
+
+Next, the aim is to more formally test for differences between intervention groups.
+
+
+```{r fig.height=12}
+
+# plot
+p1 <- ggplot(plot.data,
+             aes(x=time, y=value, group=time, color=time))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25)+
+  facet_wrap(.~Variable, scales = "free") +
+  labs(x=NULL, title="Pre and Post Blood Measures")+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10))
+p1
+
+```
+
+```{r fig.height=20}
+
+p2 <- ggplot(plot.data,
+             aes(x=time, y=value, group=time, color=time))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  labs(x=NULL,y=NULL, title="Blood Measures by Time & Intervention Group")+
+  facet_grid(Variable~Intervention, scale="free", labeller = labeller(Intervention = c(A = "Group A", B = "Group B")))+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10),
+        strip.text = element_text(size=10))
+p2
+
+
+```
+
+## Run Analyses
+
+This is simply to double check that no differences occured at baseline.
+
+
+```{r}
+
+results.out <- list()
+
+i <- 1
+varNames <- colnames(mydata)[3:18]
+
+for(i in 1:length(varNames)){
+  cat("\n\n=======================")
+  cat("\n=======================")
+  cat("\nOutcome:\t",varNames[i])
+  cat("\n")
+  form <- as.formula(paste0(varNames[i], "~ IntB + Post + IntB:Post + c.age"))
+  fit <- lm(form, mydata)
+  anova(fit)
+  
+  results.out[[varNames[i]]] <- summary(fit)[["coefficients"]]
+  
+  
+  # diagnostic plots
+  layout(matrix(c(1,2,3,4),2,2)) # optional layout
+  plot(fit) # diagnostic plots
+  
+  # normality again
+  shapiro.test(residuals(fit))
+  
+  # independence
+  durbinWatsonTest(fit)
+  layout(matrix(c(1),1,1))
+  acf(residuals(fit))
+  
+  # nice wrapper function to generally test a lot of stuff
+  gvmodel <- gvlma(fit)
+  summary(gvmodel)
+
+}
+
+
+```
+
+## Results Adjusted for Multiple Comparisons
+
+```{r echo=F}
+
+unlist.res <- function(dat, ...){
+  #dat<- results.out
+  nc <- ncol(dat[[1]])
+  cnm <- colnames(dat[[1]])
+  rnm <- names(dat)
+  
+  # unlist
+  res <- data.frame(matrix(unlist(dat[[1]]), ncol=nc))
+  colnames(res) <- colnames(dat[[1]])
+  res$Outcome <- rep(rnm[1], nrow(res))
+  res$Parameter <- rownames(dat[[1]])
+  for(i in 2:length(rnm)){
+    resi <- data.frame(matrix(unlist(dat[[i]]), ncol=nc))
+    colnames(resi) <- colnames(dat[[i]])
+    resi$Outcome <- rep(rnm[i], nrow(resi))
+    resi$Parameter <- rownames(dat[[i]])
+    res <- full_join(res, resi)
+  }
+  
+  return(res)
+}
+
+
+```
+
+
+```{r}
+
+
+all_results <- unlist.res(results.out)
+
+all_results <- filter(all_results, Parameter %in% c("IntB", "Post", "IntB:Post"))
+all_results$p.adj <- p.adjust(all_results$`Pr(>|t|)`, "fdr") 
+all_results$sigflag <- ifelse(all_results$p.adj < 0.05, "*", " ")
+all_results$`Pr(>|t|)` <- round(all_results$`Pr(>|t|)`, 3)
+all_results$p.adj.fdr <- round(all_results$p.adj, 3)
+all_results <- all_results[, c(5:6, 1:4, 7:8)]
+
+kable(all_results, format="html", digits=3) %>%
+  kable_styling(full_width = T)
+
+```
+
+
+

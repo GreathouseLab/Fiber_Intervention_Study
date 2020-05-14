@@ -341,7 +341,7 @@ food_data <- apply(food_data, c(1,2), FUN=function(x){ifelse(is.na(x), 0, x)})
 food_data <- data.frame(food_data)
 # Compute relative abundance
 food_data <- sweep(food_data, 2, colSums(food_data), '/')
-
+# compute sqrt
 # sort by highest average relative abundance
 food_data <- food_data[order(rowMeans(food_data), decreasing = F),]
 rn <- rownames(food_data)
@@ -378,7 +378,7 @@ no_cols <- length(unique(plot3$Food))
 ## Some Colors
 colors_food <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339", "grey90")
 
-
+plot3$value <- sqrt(plot3$value)
 
 # make the plot
 nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
@@ -393,7 +393,7 @@ nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
         axis.text.y = element_text(size = 10),
         axis.title = element_text(size = 10),
         plot.title = element_text(hjust = 0.5),
-        axis.title.x = element_blank(),
+        #axis.title.x = element_blank(),
         strip.background = element_blank(),
         legend.position = "right",
         legend.text = element_text(size = 7),
@@ -405,7 +405,8 @@ nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
                              ncol = 1)) +
   #nrow = 5)) + # for full page figure
   #nrow = 1)) + # for slide figure
-  labs(y="Relative Abundance",
+  labs(y="sqrt(Relative Abundance)",
+       x = "Study week, grouped by subject ID",
        title="Dietary Macronutrients and Micronutrients",
        tag="C")
 nutr_plot

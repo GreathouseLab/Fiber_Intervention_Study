@@ -1,0 +1,148 @@
+---
+title: "Diet Diversity and Microbiome Stability"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r data, include=FALSE, echo=FALSE}
+
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+```
+
+
+# Data Prep
+
+```{r}
+
+# load map
+map <- read.delim(file = "data/johnson2019/SampleID_map.txt")
+map <- map[colnames(map) %in% c("X.SampleID", "UserName","StudyDayNo","Sample.Week.Day")]
+# load mb table for everyone
+mb <- read.delim("data/johnson2019/taxonomy_clr_s.txt", row = 1)
+# get mb distances (euclidean from clr)
+mbdist <- dist(t(mb))
+mbdist <- as.matrix(mbdist)
+#limit map to the people with mb samples
+map <- map[map$X.SampleID %in% colnames(mb),]
+map <- droplevels(map)
+# listify distance matrices by person
+list.mbdist<- NULL
+for (i in seq_along(unique(map$UserName))){
+  a <- as.character(unique(map$UserName)[i])
+  ids <- droplevels(map$X.SampleID[map$UserName == a])
+  
+  sub.mbdist <- mbdist[rownames(mbdist) %in% ids,colnames(mbdist) %in% ids]
+  list.mbdist[[i]] <- sub.mbdist
+  
+} 
+# calculate distance to the next day and distance to days 2 days apart
+### This is the meat of the problem, and where I think I'm probably messing up! ###
+day1diff <- NULL
+day1diffall <- NULL
+weekdaysall <- NULL
+allotherdaysdiff <- NULL
+for (i in 1:length(list.mbdist)) {
+  # subset to just one person 
+  x <- list.mbdist[[i]]
+  n <- dim(x)[1]
+  # pull the distances between sucessive days
+  # create an indicator for the diagonals in the matrix
+  d <- row(x) - col(x)
+  # use split to group on these values by their diagonals 
+  vals <- split(x, d)
+  # get the mean of the diagonal that corresponds to 1 day diff
+  day1diff[[i]] <- mean(unlist(vals[n+1]))
+  day1diffall[[i]] <- unlist(vals[n+1])
+  # get the mean of all the other distances
+  allotherdaysdiff[[i]] <- mean(unlist(vals[(n+2):(2*n-1)]))
+  
+  # get the days for plotting
+  days <- colnames(x)[2:length(colnames(x))]
+  w <- subset(map, map$X.SampleID %in% days)
+  weekdaysall[[i]] <- as.vector(w[,"StudyDayNo"])
+  
+}
+x <- unlist(day1diff)
+y <- unlist(allotherdaysdiff)
+
+names(day1diffall) <- unique(map$UserName)
+
+mydistance <- stack(day1diffall)
+
+names(weekdaysall) <- unique(map$UserName)
+
+mydays <- stack(weekdaysall)
+
+plot <- cbind(mydistance, mydays)
+
+colnames(plot) <- c("Distance", "UserName", "Day", "UserName2")
+
+plot$Diet <- ifelse(plot$UserName %in% c("MCTs11", "MCTs12"), "Shake Drinkers", "Normal Diet")
+
+plot <- subset(plot, !plot$UserName %in% c("MCTs06", "MCTs29"))
+
+plot$Day <- as.factor(plot$Day)
+
+plot_mean<- aggregate(plot$Distance, by = list(plot$Day, plot$Diet), FUN = mean)
+
+colnames(plot_mean) <- c("Day", "Mean Diet", "Distance")
+
+ggplot(plot, aes(x = Day, y = Distance)) + 
+  geom_line(aes(group = UserName), color = "grey", aes = 0.75) +
+  geom_line(data = subset(plot, plot$UserName == "MCTs11"), aes(group = UserName), color = "#5f86b7", size = 1) +
+  geom_line(data = subset(plot, plot$UserName == "MCTs12"), aes(group = UserName), color = "#5f86b7", size = 1) +
+  #geom_smooth(data = plot_mean, aes(group = `Mean Diet`, color = `Mean Diet`)) +
+  ylab("Microbiome distance\nfrom previous day") +
+  xlab("Study Day") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 8))
+
+```
+
+# Get Microbiome Stability
+
+```{r}
+# colors
+cols <- c("#fe9700","#00a2f2", "#662a00", "#c91acb","grey60","#858c69", "#a8863a", "#737373", "#d43f1f", "#5dd047",  "#ffff59")
+
+
+
+# Calculate distance matrices
+dist_wt <- phyloseq::distance(phylo_data, method="unifrac", weighted=T)
+
+# plot ordination
+ord_wt = ordinate(phylo_data, method="PCoA", distance=dist_wt)
+
+# sample data
+df <- data.frame(sample_data(phylo_data))
+
+
+p <- plot_ordination(phylo_data, ord_wt, color="Week") +
+  geom_point(size=3) +
+  scale_colour_manual(values=cols)+
+  labs(title="PCoA on Weight Unifrac distance, by Week")
+
+dat.wt <- p$data
+
+
+
+```

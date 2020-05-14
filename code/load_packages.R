@@ -17,12 +17,16 @@
 # ============================================= #
 # Set up directory and libraries
 rm(list=ls())
+
+# biomanager
+
+
 # list of packages
 packages <- c("phyloseq","vegan", "lme4", "lmerTest",
               "tidyverse", "readr", "readxl", "forcats",
               "data.table", "plyr", "ggplot2",
               "kableExtra", "xtable", "gridExtra", "viridis",
-              "patchwork", "gvlma", "car", "dplyr")
+              "patchwork", "gvlma", "car", "dplyr", "microbiome")
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 # Load packages

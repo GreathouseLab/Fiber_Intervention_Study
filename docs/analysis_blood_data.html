@@ -1,0 +1,6391 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Blood Data Analyses</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Fiber Intervention Study</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Blood Data Analyses</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-05-14
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong> <code>Fiber_Intervention_Study/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20191210code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20191210)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20191210code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20191210)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree25bfffd918585c2e080d7d3c9b44d74e4cb35acatargetblank25bfffda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/25bfffd918585c2e080d7d3c9b44d74e4cb35aca" target="_blank">25bfffd</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree25bfffd918585c2e080d7d3c9b44d74e4cb35acatargetblank25bfffda" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/25bfffd918585c2e080d7d3c9b44d74e4cb35aca" target="_blank">25bfffd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    code/.Rhistory
+    Ignored:    reference-papers/Dietary_Variables.xlsx
+    Ignored:    reference-papers/Johnson_2019.pdf
+
+Untracked files:
+    Untracked:  analysis/analysis_blood_data.Rmd
+    Untracked:  analysis/diet_diversity_micro_stability.Rmd
+    Untracked:  data/johnson2019/taxonomy_clr_s.txt
+    Untracked:  fig/figure4_final.pdf
+
+Unstaged changes:
+    Modified:   analysis/analysis_anthropometric.Rmd
+    Modified:   analysis/analysis_beta_diversity.Rmd
+    Modified:   analysis/microbiome_diet_trends.Rmd
+    Modified:   code/load_packages.R
+    Modified:   data/Blood measures data/Copy of Fiber Study Blood Results.xlsx
+    Modified:   fig/figure4.pdf
+    Modified:   fig/figure4_legend.pdf
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+</p>
+<hr>
+</div>
+</div>
+</div>
+<div id="overview-of-aims" class="section level1">
+<h1>Overview of aims</h1>
+<p>What is the effect of Prebiotin vs placebo on blood measures (controlling for diet, age, ethnicity, stress?) Did the intervention effect?</p>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<pre class="r"><code>blood_data &lt;- read_excel(&quot;data/Blood measures data/Copy of Fiber Study Blood Results.xlsx&quot;)
+
+meta_data &lt;- microbiome_data$meta.dat
+
+keepVar &lt;- c(&quot;SubjectID&quot;, &quot;Week&quot;, &quot;Intervention&quot;, &quot;Stress.Scale&quot;, &quot;Ethnicity&quot;, &quot;Gender&quot;, &quot;Age&quot;)
+meta_data &lt;- meta_data [, keepVar]
+
+mydata &lt;- full_join(blood_data, meta_data)</code></pre>
+<pre><code>Joining, by = &quot;SubjectID&quot;</code></pre>
+<pre class="r"><code>mydata &lt;- distinct(mydata, SubjectID, time,.keep_all = T)
+
+# recoding
+mydata &lt;- mydata %&gt;%
+  mutate(female = ifelse(Gender == &quot;F&quot;, 1, 0),
+         c.age = Age - mean(Age),
+         IntB = ifelse(Intervention == &quot;B&quot;, 1, 0),
+         Post = ifelse(time == &quot;Post&quot;, 1, 0),
+         c.stress = Stress.Scale - mean(Stress.Scale),
+         hispanic = ifelse(Ethnicity %in% c(&quot;White&quot;, &quot;Asian&quot;, &quot;Native America&quot;), 1, 0))
+
+# for plotting
+plot.data &lt;- mydata[, c(colnames(mydata)[c(1:18,20:24)])]
+
+plot.data &lt;- plot.data %&gt;%
+  pivot_longer(cols=colnames(mydata)[3:18],
+               names_to = &quot;Variable&quot;,
+               values_to = &quot;value&quot;)</code></pre>
+<div id="data-summary" class="section level2">
+<h2>Data summary</h2>
+<div id="summary-statistics" class="section level3">
+<h3>Summary Statistics</h3>
+<pre class="r"><code>varNames &lt;- c(colnames(mydata)[c(2:18,20)])
+
+sum.dat &lt;- mydata[,varNames[2:17]] %&gt;%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+sum.dat &lt;- data.frame(matrix(unlist(sum.dat), ncol=5))
+colnames(sum.dat) &lt;- c(&quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+rownames(sum.dat) &lt;- varNames[2:17]
+
+kable(sum.dat, format=&quot;html&quot;, digits=3)%&gt;%
+  kable_styling(full_width = T)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:right;">
+93.591
+</td>
+<td style="text-align:right;">
+8.857
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+93.500
+</td>
+<td style="text-align:right;">
+128.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:right;">
+12.636
+</td>
+<td style="text-align:right;">
+2.194
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+12.500
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:right;">
+0.820
+</td>
+<td style="text-align:right;">
+0.088
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+0.820
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:right;">
+141.682
+</td>
+<td style="text-align:right;">
+1.810
+</td>
+<td style="text-align:right;">
+138.00
+</td>
+<td style="text-align:right;">
+142.000
+</td>
+<td style="text-align:right;">
+145.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:right;">
+4.400
+</td>
+<td style="text-align:right;">
+0.393
+</td>
+<td style="text-align:right;">
+3.70
+</td>
+<td style="text-align:right;">
+4.300
+</td>
+<td style="text-align:right;">
+5.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:right;">
+102.500
+</td>
+<td style="text-align:right;">
+1.871
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+<td style="text-align:right;">
+102.500
+</td>
+<td style="text-align:right;">
+107.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:right;">
+24.955
+</td>
+<td style="text-align:right;">
+2.299
+</td>
+<td style="text-align:right;">
+21.00
+</td>
+<td style="text-align:right;">
+25.500
+</td>
+<td style="text-align:right;">
+30.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:right;">
+9.327
+</td>
+<td style="text-align:right;">
+0.319
+</td>
+<td style="text-align:right;">
+8.70
+</td>
+<td style="text-align:right;">
+9.300
+</td>
+<td style="text-align:right;">
+9.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:right;">
+180.409
+</td>
+<td style="text-align:right;">
+39.740
+</td>
+<td style="text-align:right;">
+118.00
+</td>
+<td style="text-align:right;">
+179.500
+</td>
+<td style="text-align:right;">
+261.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:right;">
+116.864
+</td>
+<td style="text-align:right;">
+90.611
+</td>
+<td style="text-align:right;">
+46.00
+</td>
+<td style="text-align:right;">
+96.500
+</td>
+<td style="text-align:right;">
+415.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:right;">
+60.091
+</td>
+<td style="text-align:right;">
+14.671
+</td>
+<td style="text-align:right;">
+37.00
+</td>
+<td style="text-align:right;">
+59.000
+</td>
+<td style="text-align:right;">
+96.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:right;">
+97.577
+</td>
+<td style="text-align:right;">
+33.402
+</td>
+<td style="text-align:right;">
+45.00
+</td>
+<td style="text-align:right;">
+87.000
+</td>
+<td style="text-align:right;">
+171.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:right;">
+1.697
+</td>
+<td style="text-align:right;">
+0.771
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+1.365
+</td>
+<td style="text-align:right;">
+3.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:right;">
+1.973
+</td>
+<td style="text-align:right;">
+2.466
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.900
+</td>
+<td style="text-align:right;">
+10.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:right;">
+17.091
+</td>
+<td style="text-align:right;">
+27.233
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+8.000
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:right;">
+103.329
+</td>
+<td style="text-align:right;">
+175.191
+</td>
+<td style="text-align:right;">
+16.56
+</td>
+<td style="text-align:right;">
+36.215
+</td>
+<td style="text-align:right;">
+742.90
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summary-of-these-data-by-intervention-group" class="section level3">
+<h3>Summary of these data by Intervention Group</h3>
+<pre class="r"><code>varNames &lt;- colnames(mydata)[c(20,3:18)]
+sum.dat &lt;- mydata[,varNames] %&gt;%
+  group_by(Intervention) %&gt;%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a &lt;- data.frame(matrix(unlist(sum.dat[1,-1]), ncol=5))
+b &lt;- data.frame(matrix(unlist(sum.dat[2,-1]), ncol=5))
+a &lt;- cbind(rep(&quot;A&quot;, 16), a); colnames(a) &lt;- c(&quot;Intervention&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+b &lt;- cbind(rep(&quot;B&quot;, 16), b); colnames(b) &lt;- c(&quot;Intervention&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+
+sum.dat &lt;- rbind(a,b)
+sum.dat &lt;- data.frame(Variable=rep(varNames[-1],2), sum.dat)
+ 
+sum.dat &lt;- arrange(sum.dat, Variable)
+kable(sum.dat, format=&quot;html&quot;, digits=3)%&gt;%
+  kable_styling(full_width = T)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Intervention
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+12.333
+</td>
+<td style="text-align:right;">
+2.674
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+12.500
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+13.000
+</td>
+<td style="text-align:right;">
+1.491
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:right;">
+12.500
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+9.258
+</td>
+<td style="text-align:right;">
+0.401
+</td>
+<td style="text-align:right;">
+8.70
+</td>
+<td style="text-align:right;">
+9.300
+</td>
+<td style="text-align:right;">
+9.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+9.410
+</td>
+<td style="text-align:right;">
+0.166
+</td>
+<td style="text-align:right;">
+9.20
+</td>
+<td style="text-align:right;">
+9.350
+</td>
+<td style="text-align:right;">
+9.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+24.833
+</td>
+<td style="text-align:right;">
+2.691
+</td>
+<td style="text-align:right;">
+21.00
+</td>
+<td style="text-align:right;">
+25.500
+</td>
+<td style="text-align:right;">
+30.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+25.100
+</td>
+<td style="text-align:right;">
+1.853
+</td>
+<td style="text-align:right;">
+22.00
+</td>
+<td style="text-align:right;">
+25.500
+</td>
+<td style="text-align:right;">
+28.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+102.500
+</td>
+<td style="text-align:right;">
+1.931
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+<td style="text-align:right;">
+102.000
+</td>
+<td style="text-align:right;">
+107.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+102.500
+</td>
+<td style="text-align:right;">
+1.900
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+<td style="text-align:right;">
+102.500
+</td>
+<td style="text-align:right;">
+105.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+160.667
+</td>
+<td style="text-align:right;">
+25.921
+</td>
+<td style="text-align:right;">
+118.00
+</td>
+<td style="text-align:right;">
+160.500
+</td>
+<td style="text-align:right;">
+198.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+204.100
+</td>
+<td style="text-align:right;">
+41.479
+</td>
+<td style="text-align:right;">
+137.00
+</td>
+<td style="text-align:right;">
+203.000
+</td>
+<td style="text-align:right;">
+261.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+0.798
+</td>
+<td style="text-align:right;">
+0.086
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+0.810
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+0.847
+</td>
+<td style="text-align:right;">
+0.087
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.845
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+91.500
+</td>
+<td style="text-align:right;">
+4.317
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+92.000
+</td>
+<td style="text-align:right;">
+97.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+96.100
+</td>
+<td style="text-align:right;">
+12.142
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+93.500
+</td>
+<td style="text-align:right;">
+128.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+63.083
+</td>
+<td style="text-align:right;">
+13.780
+</td>
+<td style="text-align:right;">
+43.00
+</td>
+<td style="text-align:right;">
+59.000
+</td>
+<td style="text-align:right;">
+96.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+56.500
+</td>
+<td style="text-align:right;">
+15.615
+</td>
+<td style="text-align:right;">
+37.00
+</td>
+<td style="text-align:right;">
+55.500
+</td>
+<td style="text-align:right;">
+80.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2.058
+</td>
+<td style="text-align:right;">
+2.863
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.900
+</td>
+<td style="text-align:right;">
+10.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1.870
+</td>
+<td style="text-align:right;">
+2.037
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+1.150
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+8.333
+</td>
+<td style="text-align:right;">
+5.836
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+7.500
+</td>
+<td style="text-align:right;">
+26.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+27.600
+</td>
+<td style="text-align:right;">
+38.260
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+9.000
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+82.500
+</td>
+<td style="text-align:right;">
+23.209
+</td>
+<td style="text-align:right;">
+45.00
+</td>
+<td style="text-align:right;">
+80.500
+</td>
+<td style="text-align:right;">
+117.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+115.670
+</td>
+<td style="text-align:right;">
+35.750
+</td>
+<td style="text-align:right;">
+65.00
+</td>
+<td style="text-align:right;">
+114.500
+</td>
+<td style="text-align:right;">
+171.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1.383
+</td>
+<td style="text-align:right;">
+0.583
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+1.255
+</td>
+<td style="text-align:right;">
+2.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+2.075
+</td>
+<td style="text-align:right;">
+0.825
+</td>
+<td style="text-align:right;">
+1.27
+</td>
+<td style="text-align:right;">
+1.835
+</td>
+<td style="text-align:right;">
+3.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+4.442
+</td>
+<td style="text-align:right;">
+0.425
+</td>
+<td style="text-align:right;">
+4.10
+</td>
+<td style="text-align:right;">
+4.300
+</td>
+<td style="text-align:right;">
+5.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4.350
+</td>
+<td style="text-align:right;">
+0.366
+</td>
+<td style="text-align:right;">
+3.70
+</td>
+<td style="text-align:right;">
+4.350
+</td>
+<td style="text-align:right;">
+4.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+141.648
+</td>
+<td style="text-align:right;">
+229.661
+</td>
+<td style="text-align:right;">
+22.62
+</td>
+<td style="text-align:right;">
+39.075
+</td>
+<td style="text-align:right;">
+742.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+57.345
+</td>
+<td style="text-align:right;">
+53.314
+</td>
+<td style="text-align:right;">
+16.56
+</td>
+<td style="text-align:right;">
+36.215
+</td>
+<td style="text-align:right;">
+161.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+140.917
+</td>
+<td style="text-align:right;">
+1.443
+</td>
+<td style="text-align:right;">
+138.00
+</td>
+<td style="text-align:right;">
+141.000
+</td>
+<td style="text-align:right;">
+143.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+142.600
+</td>
+<td style="text-align:right;">
+1.838
+</td>
+<td style="text-align:right;">
+138.00
+</td>
+<td style="text-align:right;">
+143.000
+</td>
+<td style="text-align:right;">
+145.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+75.250
+</td>
+<td style="text-align:right;">
+31.792
+</td>
+<td style="text-align:right;">
+46.00
+</td>
+<td style="text-align:right;">
+60.000
+</td>
+<td style="text-align:right;">
+132.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+166.800
+</td>
+<td style="text-align:right;">
+113.325
+</td>
+<td style="text-align:right;">
+57.00
+</td>
+<td style="text-align:right;">
+120.000
+</td>
+<td style="text-align:right;">
+415.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summary-of-these-data-by-pre-post" class="section level3">
+<h3>Summary of these data by Pre-Post</h3>
+<pre class="r"><code>varNames &lt;- colnames(mydata)[c(2:18)]
+
+sum.dat &lt;- mydata[,varNames] %&gt;%
+  group_by(time) %&gt;%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a &lt;- data.frame(matrix(unlist(sum.dat[1,-1]), ncol=5))
+b &lt;- data.frame(matrix(unlist(sum.dat[2,-1]), ncol=5))
+a &lt;- cbind(rep(&quot;Post&quot;, 16), a); colnames(a) &lt;- c(&quot;Pre-Post&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+b &lt;- cbind(rep(&quot;Pre&quot;, 16), b); colnames(b) &lt;- c(&quot;Pre-Post&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+
+sum.dat &lt;- rbind(b,a)
+sum.dat &lt;- data.frame(Variable=rep(varNames[-1],2), sum.dat)
+ 
+sum.dat &lt;- arrange(sum.dat, Variable)
+kable(sum.dat, format=&quot;html&quot;, digits=3)%&gt;%
+  kable_styling(full_width = T)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Pre.Post
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+12.455
+</td>
+<td style="text-align:right;">
+2.734
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+13.00
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+12.818
+</td>
+<td style="text-align:right;">
+1.601
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:right;">
+12.00
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+9.155
+</td>
+<td style="text-align:right;">
+0.327
+</td>
+<td style="text-align:right;">
+8.70
+</td>
+<td style="text-align:right;">
+9.20
+</td>
+<td style="text-align:right;">
+9.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+9.500
+</td>
+<td style="text-align:right;">
+0.205
+</td>
+<td style="text-align:right;">
+9.30
+</td>
+<td style="text-align:right;">
+9.40
+</td>
+<td style="text-align:right;">
+9.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+24.182
+</td>
+<td style="text-align:right;">
+2.040
+</td>
+<td style="text-align:right;">
+21.00
+</td>
+<td style="text-align:right;">
+24.00
+</td>
+<td style="text-align:right;">
+27.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+25.727
+</td>
+<td style="text-align:right;">
+2.370
+</td>
+<td style="text-align:right;">
+21.00
+</td>
+<td style="text-align:right;">
+26.00
+</td>
+<td style="text-align:right;">
+30.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+103.000
+</td>
+<td style="text-align:right;">
+1.789
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+<td style="text-align:right;">
+103.00
+</td>
+<td style="text-align:right;">
+107.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+102.000
+</td>
+<td style="text-align:right;">
+1.897
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+<td style="text-align:right;">
+105.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+175.636
+</td>
+<td style="text-align:right;">
+42.601
+</td>
+<td style="text-align:right;">
+130.00
+</td>
+<td style="text-align:right;">
+162.00
+</td>
+<td style="text-align:right;">
+253.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+185.182
+</td>
+<td style="text-align:right;">
+38.099
+</td>
+<td style="text-align:right;">
+118.00
+</td>
+<td style="text-align:right;">
+190.00
+</td>
+<td style="text-align:right;">
+261.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+0.798
+</td>
+<td style="text-align:right;">
+0.097
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+<td style="text-align:right;">
+0.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+0.842
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+92.364
+</td>
+<td style="text-align:right;">
+4.905
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+94.00
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+94.818
+</td>
+<td style="text-align:right;">
+11.720
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+93.00
+</td>
+<td style="text-align:right;">
+128.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+56.455
+</td>
+<td style="text-align:right;">
+12.668
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:right;">
+58.00
+</td>
+<td style="text-align:right;">
+75.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+63.727
+</td>
+<td style="text-align:right;">
+16.199
+</td>
+<td style="text-align:right;">
+37.00
+</td>
+<td style="text-align:right;">
+64.00
+</td>
+<td style="text-align:right;">
+96.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+2.255
+</td>
+<td style="text-align:right;">
+2.935
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:right;">
+10.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+1.691
+</td>
+<td style="text-align:right;">
+1.995
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+15.818
+</td>
+<td style="text-align:right;">
+27.633
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+18.364
+</td>
+<td style="text-align:right;">
+28.111
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+96.545
+</td>
+<td style="text-align:right;">
+38.435
+</td>
+<td style="text-align:right;">
+45.00
+</td>
+<td style="text-align:right;">
+85.00
+</td>
+<td style="text-align:right;">
+171.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+98.609
+</td>
+<td style="text-align:right;">
+29.382
+</td>
+<td style="text-align:right;">
+52.00
+</td>
+<td style="text-align:right;">
+97.70
+</td>
+<td style="text-align:right;">
+158.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+1.838
+</td>
+<td style="text-align:right;">
+0.946
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+1.39
+</td>
+<td style="text-align:right;">
+3.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+1.556
+</td>
+<td style="text-align:right;">
+0.555
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+<td style="text-align:right;">
+1.34
+</td>
+<td style="text-align:right;">
+2.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+4.482
+</td>
+<td style="text-align:right;">
+0.513
+</td>
+<td style="text-align:right;">
+3.70
+</td>
+<td style="text-align:right;">
+4.40
+</td>
+<td style="text-align:right;">
+5.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+4.318
+</td>
+<td style="text-align:right;">
+0.214
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+4.30
+</td>
+<td style="text-align:right;">
+4.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+113.258
+</td>
+<td style="text-align:right;">
+212.705
+</td>
+<td style="text-align:right;">
+17.93
+</td>
+<td style="text-align:right;">
+34.24
+</td>
+<td style="text-align:right;">
+742.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+93.399
+</td>
+<td style="text-align:right;">
+137.814
+</td>
+<td style="text-align:right;">
+16.56
+</td>
+<td style="text-align:right;">
+38.19
+</td>
+<td style="text-align:right;">
+490.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+142.091
+</td>
+<td style="text-align:right;">
+1.446
+</td>
+<td style="text-align:right;">
+140.00
+</td>
+<td style="text-align:right;">
+142.00
+</td>
+<td style="text-align:right;">
+145.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+141.273
+</td>
+<td style="text-align:right;">
+2.102
+</td>
+<td style="text-align:right;">
+138.00
+</td>
+<td style="text-align:right;">
+142.00
+</td>
+<td style="text-align:right;">
+144.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+113.636
+</td>
+<td style="text-align:right;">
+78.834
+</td>
+<td style="text-align:right;">
+48.00
+</td>
+<td style="text-align:right;">
+107.00
+</td>
+<td style="text-align:right;">
+322.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+120.091
+</td>
+<td style="text-align:right;">
+104.900
+</td>
+<td style="text-align:right;">
+46.00
+</td>
+<td style="text-align:right;">
+86.00
+</td>
+<td style="text-align:right;">
+415.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summary-of-these-data-by-intervention-pre-post" class="section level3">
+<h3>Summary of these data by Intervention &amp; Pre-Post</h3>
+<pre class="r"><code>varNames &lt;- colnames(mydata)[c(20, 2:18)]
+
+sum.dat &lt;- mydata[,varNames] %&gt;%
+  group_by(Intervention, time) %&gt;%
+  summarise_all(list(Mean=mean, SD=sd,
+                     min=min, Median=median, Max=max))
+
+a2 &lt;- data.frame(matrix(unlist(sum.dat[1,-c(1:2)]), ncol=5))
+a1 &lt;- data.frame(matrix(unlist(sum.dat[2,-c(1:2)]), ncol=5))
+b1 &lt;- data.frame(matrix(unlist(sum.dat[3,-c(1:2)]), ncol=5))
+b2 &lt;- data.frame(matrix(unlist(sum.dat[4,-c(1:2)]), ncol=5))
+
+a2 &lt;- cbind(rep(&quot;A&quot;, 16), rep(&quot;Post&quot;, 16), a2); colnames(a2) &lt;- c(&quot;Intervention&quot;, &quot;Pre-Post&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+a1 &lt;- cbind(rep(&quot;A&quot;, 16), rep(&quot;Pre&quot;, 16), a1); colnames(a1) &lt;- c(&quot;Intervention&quot;, &quot;Pre-Post&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+
+b1 &lt;- cbind(rep(&quot;B&quot;, 16), rep(&quot;Pre&quot;, 16), b1); colnames(b1) &lt;- c(&quot;Intervention&quot;, &quot;Pre-Post&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+
+b2 &lt;- cbind(rep(&quot;B&quot;, 16), rep(&quot;Post&quot;, 16), b2); colnames(b2) &lt;- c(&quot;Intervention&quot;, &quot;Pre-Post&quot;, &quot;Mean&quot;, &quot;SD&quot;, &quot;Min&quot;, &quot;Median&quot;, &quot;Max&quot;)
+
+sum.dat &lt;- rbind(a1,a2, b1, b2)
+sum.dat &lt;- data.frame(Variable=rep(varNames[-c(1:2)],4), sum.dat)
+ 
+sum.dat &lt;- arrange(sum.dat, Variable)
+kable(sum.dat, format=&quot;html&quot;, digits=3)%&gt;%
+  kable_styling(full_width = T)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Intervention
+</th>
+<th style="text-align:left;">
+Pre.Post
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+11.333
+</td>
+<td style="text-align:right;">
+3.141
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+11.500
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+13.333
+</td>
+<td style="text-align:right;">
+1.862
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:right;">
+13.000
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+12.200
+</td>
+<td style="text-align:right;">
+1.095
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:right;">
+12.000
+</td>
+<td style="text-align:right;">
+14.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+13.800
+</td>
+<td style="text-align:right;">
+1.483
+</td>
+<td style="text-align:right;">
+12.00
+</td>
+<td style="text-align:right;">
+14.000
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+9.017
+</td>
+<td style="text-align:right;">
+0.397
+</td>
+<td style="text-align:right;">
+8.70
+</td>
+<td style="text-align:right;">
+8.900
+</td>
+<td style="text-align:right;">
+9.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+9.500
+</td>
+<td style="text-align:right;">
+0.237
+</td>
+<td style="text-align:right;">
+9.30
+</td>
+<td style="text-align:right;">
+9.400
+</td>
+<td style="text-align:right;">
+9.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+9.500
+</td>
+<td style="text-align:right;">
+0.187
+</td>
+<td style="text-align:right;">
+9.30
+</td>
+<td style="text-align:right;">
+9.600
+</td>
+<td style="text-align:right;">
+9.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+9.320
+</td>
+<td style="text-align:right;">
+0.084
+</td>
+<td style="text-align:right;">
+9.20
+</td>
+<td style="text-align:right;">
+9.300
+</td>
+<td style="text-align:right;">
+9.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+23.833
+</td>
+<td style="text-align:right;">
+2.229
+</td>
+<td style="text-align:right;">
+21.00
+</td>
+<td style="text-align:right;">
+23.000
+</td>
+<td style="text-align:right;">
+27.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+25.833
+</td>
+<td style="text-align:right;">
+2.927
+</td>
+<td style="text-align:right;">
+21.00
+</td>
+<td style="text-align:right;">
+26.000
+</td>
+<td style="text-align:right;">
+30.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+25.600
+</td>
+<td style="text-align:right;">
+1.817
+</td>
+<td style="text-align:right;">
+23.00
+</td>
+<td style="text-align:right;">
+26.000
+</td>
+<td style="text-align:right;">
+28.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+24.600
+</td>
+<td style="text-align:right;">
+1.949
+</td>
+<td style="text-align:right;">
+22.00
+</td>
+<td style="text-align:right;">
+24.000
+</td>
+<td style="text-align:right;">
+27.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+103.333
+</td>
+<td style="text-align:right;">
+2.338
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+<td style="text-align:right;">
+103.000
+</td>
+<td style="text-align:right;">
+107.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+101.667
+</td>
+<td style="text-align:right;">
+1.033
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+<td style="text-align:right;">
+101.000
+</td>
+<td style="text-align:right;">
+103.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+102.400
+</td>
+<td style="text-align:right;">
+2.702
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+<td style="text-align:right;">
+104.000
+</td>
+<td style="text-align:right;">
+105.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+102.600
+</td>
+<td style="text-align:right;">
+0.894
+</td>
+<td style="text-align:right;">
+102.00
+</td>
+<td style="text-align:right;">
+102.000
+</td>
+<td style="text-align:right;">
+104.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+155.333
+</td>
+<td style="text-align:right;">
+21.332
+</td>
+<td style="text-align:right;">
+130.00
+</td>
+<td style="text-align:right;">
+151.000
+</td>
+<td style="text-align:right;">
+185.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+166.000
+</td>
+<td style="text-align:right;">
+30.900
+</td>
+<td style="text-align:right;">
+118.00
+</td>
+<td style="text-align:right;">
+173.000
+</td>
+<td style="text-align:right;">
+198.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+208.200
+</td>
+<td style="text-align:right;">
+34.946
+</td>
+<td style="text-align:right;">
+165.00
+</td>
+<td style="text-align:right;">
+205.000
+</td>
+<td style="text-align:right;">
+261.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+200.000
+</td>
+<td style="text-align:right;">
+51.069
+</td>
+<td style="text-align:right;">
+137.00
+</td>
+<td style="text-align:right;">
+201.000
+</td>
+<td style="text-align:right;">
+253.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+0.760
+</td>
+<td style="text-align:right;">
+0.100
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+0.770
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+0.835
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+<td style="text-align:right;">
+0.820
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+0.850
+</td>
+<td style="text-align:right;">
+0.103
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.850
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+0.844
+</td>
+<td style="text-align:right;">
+0.081
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+<td style="text-align:right;">
+0.840
+</td>
+<td style="text-align:right;">
+0.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+93.333
+</td>
+<td style="text-align:right;">
+3.983
+</td>
+<td style="text-align:right;">
+87.00
+</td>
+<td style="text-align:right;">
+95.000
+</td>
+<td style="text-align:right;">
+97.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+89.667
+</td>
+<td style="text-align:right;">
+4.131
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+88.500
+</td>
+<td style="text-align:right;">
+95.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+101.000
+</td>
+<td style="text-align:right;">
+15.313
+</td>
+<td style="text-align:right;">
+91.00
+</td>
+<td style="text-align:right;">
+95.000
+</td>
+<td style="text-align:right;">
+128.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+91.200
+</td>
+<td style="text-align:right;">
+6.099
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+90.000
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+60.000
+</td>
+<td style="text-align:right;">
+11.730
+</td>
+<td style="text-align:right;">
+43.00
+</td>
+<td style="text-align:right;">
+59.000
+</td>
+<td style="text-align:right;">
+75.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+66.167
+</td>
+<td style="text-align:right;">
+16.043
+</td>
+<td style="text-align:right;">
+52.00
+</td>
+<td style="text-align:right;">
+62.000
+</td>
+<td style="text-align:right;">
+96.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+60.800
+</td>
+<td style="text-align:right;">
+17.740
+</td>
+<td style="text-align:right;">
+37.00
+</td>
+<td style="text-align:right;">
+64.000
+</td>
+<td style="text-align:right;">
+80.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+52.200
+</td>
+<td style="text-align:right;">
+13.700
+</td>
+<td style="text-align:right;">
+40.00
+</td>
+<td style="text-align:right;">
+47.000
+</td>
+<td style="text-align:right;">
+71.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+3.000
+</td>
+<td style="text-align:right;">
+3.873
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+1.850
+</td>
+<td style="text-align:right;">
+10.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+1.117
+</td>
+<td style="text-align:right;">
+0.952
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+2.380
+</td>
+<td style="text-align:right;">
+2.781
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+1.360
+</td>
+<td style="text-align:right;">
+0.976
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+1.500
+</td>
+<td style="text-align:right;">
+2.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+7.000
+</td>
+<td style="text-align:right;">
+1.789
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:right;">
+7.500
+</td>
+<td style="text-align:right;">
+9.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+9.667
+</td>
+<td style="text-align:right;">
+8.214
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+7.500
+</td>
+<td style="text-align:right;">
+26.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+28.800
+</td>
+<td style="text-align:right;">
+40.518
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+12.000
+</td>
+<td style="text-align:right;">
+101.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+26.400
+</td>
+<td style="text-align:right;">
+40.599
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+8.000
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+79.167
+</td>
+<td style="text-align:right;">
+24.203
+</td>
+<td style="text-align:right;">
+45.00
+</td>
+<td style="text-align:right;">
+78.500
+</td>
+<td style="text-align:right;">
+117.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+85.833
+</td>
+<td style="text-align:right;">
+23.928
+</td>
+<td style="text-align:right;">
+52.00
+</td>
+<td style="text-align:right;">
+80.500
+</td>
+<td style="text-align:right;">
+114.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+113.940
+</td>
+<td style="text-align:right;">
+30.065
+</td>
+<td style="text-align:right;">
+84.00
+</td>
+<td style="text-align:right;">
+99.000
+</td>
+<td style="text-align:right;">
+158.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+117.400
+</td>
+<td style="text-align:right;">
+44.320
+</td>
+<td style="text-align:right;">
+65.00
+</td>
+<td style="text-align:right;">
+130.000
+</td>
+<td style="text-align:right;">
+171.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+1.410
+</td>
+<td style="text-align:right;">
+0.697
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+1.255
+</td>
+<td style="text-align:right;">
+2.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+1.355
+</td>
+<td style="text-align:right;">
+0.510
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+<td style="text-align:right;">
+1.290
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+1.798
+</td>
+<td style="text-align:right;">
+0.558
+</td>
+<td style="text-align:right;">
+1.31
+</td>
+<td style="text-align:right;">
+1.700
+</td>
+<td style="text-align:right;">
+2.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+2.352
+</td>
+<td style="text-align:right;">
+1.014
+</td>
+<td style="text-align:right;">
+1.27
+</td>
+<td style="text-align:right;">
+2.400
+</td>
+<td style="text-align:right;">
+3.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+4.550
+</td>
+<td style="text-align:right;">
+0.589
+</td>
+<td style="text-align:right;">
+4.10
+</td>
+<td style="text-align:right;">
+4.350
+</td>
+<td style="text-align:right;">
+5.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+4.333
+</td>
+<td style="text-align:right;">
+0.151
+</td>
+<td style="text-align:right;">
+4.10
+</td>
+<td style="text-align:right;">
+4.300
+</td>
+<td style="text-align:right;">
+4.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+4.300
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+4.300
+</td>
+<td style="text-align:right;">
+4.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+4.400
+</td>
+<td style="text-align:right;">
+0.458
+</td>
+<td style="text-align:right;">
+3.70
+</td>
+<td style="text-align:right;">
+4.400
+</td>
+<td style="text-align:right;">
+4.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+157.692
+</td>
+<td style="text-align:right;">
+287.213
+</td>
+<td style="text-align:right;">
+23.44
+</td>
+<td style="text-align:right;">
+38.995
+</td>
+<td style="text-align:right;">
+742.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+125.605
+</td>
+<td style="text-align:right;">
+181.461
+</td>
+<td style="text-align:right;">
+22.62
+</td>
+<td style="text-align:right;">
+54.815
+</td>
+<td style="text-align:right;">
+490.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+54.752
+</td>
+<td style="text-align:right;">
+53.844
+</td>
+<td style="text-align:right;">
+16.56
+</td>
+<td style="text-align:right;">
+38.190
+</td>
+<td style="text-align:right;">
+149.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+59.938
+</td>
+<td style="text-align:right;">
+58.985
+</td>
+<td style="text-align:right;">
+17.93
+</td>
+<td style="text-align:right;">
+34.240
+</td>
+<td style="text-align:right;">
+161.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+141.167
+</td>
+<td style="text-align:right;">
+0.983
+</td>
+<td style="text-align:right;">
+140.00
+</td>
+<td style="text-align:right;">
+141.500
+</td>
+<td style="text-align:right;">
+142.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+140.667
+</td>
+<td style="text-align:right;">
+1.862
+</td>
+<td style="text-align:right;">
+138.00
+</td>
+<td style="text-align:right;">
+141.000
+</td>
+<td style="text-align:right;">
+143.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+142.000
+</td>
+<td style="text-align:right;">
+2.345
+</td>
+<td style="text-align:right;">
+138.00
+</td>
+<td style="text-align:right;">
+143.000
+</td>
+<td style="text-align:right;">
+144.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+143.200
+</td>
+<td style="text-align:right;">
+1.095
+</td>
+<td style="text-align:right;">
+142.00
+</td>
+<td style="text-align:right;">
+143.000
+</td>
+<td style="text-align:right;">
+145.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+80.833
+</td>
+<td style="text-align:right;">
+37.965
+</td>
+<td style="text-align:right;">
+48.00
+</td>
+<td style="text-align:right;">
+64.000
+</td>
+<td style="text-align:right;">
+132.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+69.667
+</td>
+<td style="text-align:right;">
+26.598
+</td>
+<td style="text-align:right;">
+46.00
+</td>
+<td style="text-align:right;">
+59.500
+</td>
+<td style="text-align:right;">
+118.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+180.600
+</td>
+<td style="text-align:right;">
+135.038
+</td>
+<td style="text-align:right;">
+86.00
+</td>
+<td style="text-align:right;">
+116.000
+</td>
+<td style="text-align:right;">
+415.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+153.000
+</td>
+<td style="text-align:right;">
+100.918
+</td>
+<td style="text-align:right;">
+57.00
+</td>
+<td style="text-align:right;">
+124.000
+</td>
+<td style="text-align:right;">
+322.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="analysis" class="section level1">
+<h1>Analysis</h1>
+<p>Next, the aim is to more formally test for differences between intervention groups.</p>
+<pre class="r"><code># plot
+p1 &lt;- ggplot(plot.data,
+             aes(x=time, y=value, group=time, color=time))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25)+
+  facet_wrap(.~Variable, scales = &quot;free&quot;) +
+  labs(x=NULL, title=&quot;Pre and Post Blood Measures&quot;)+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10))
+p1</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-2-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p2 &lt;- ggplot(plot.data,
+             aes(x=time, y=value, group=time, color=time))+
+  geom_boxplot(outlier.shape = NA)+
+  geom_jitter(width = 0.25, size=2)+
+  labs(x=NULL,y=NULL, title=&quot;Blood Measures by Time &amp; Intervention Group&quot;)+
+  facet_grid(Variable~Intervention, scale=&quot;free&quot;, labeller = labeller(Intervention = c(A = &quot;Group A&quot;, B = &quot;Group B&quot;)))+
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(size=10),
+        strip.text = element_text(size=10))
+p2</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-3-1.png" width="200%" style="display: block; margin: auto;" /></p>
+<div id="run-analyses" class="section level2">
+<h2>Run Analyses</h2>
+<p>This is simply to double check that no differences occured at baseline.</p>
+<pre class="r"><code>results.out &lt;- list()
+
+i &lt;- 1
+varNames &lt;- colnames(mydata)[3:18]
+
+for(i in 1:length(varNames)){
+  cat(&quot;\n\n=======================&quot;)
+  cat(&quot;\n=======================&quot;)
+  cat(&quot;\nOutcome:\t&quot;,varNames[i])
+  cat(&quot;\n&quot;)
+  form &lt;- as.formula(paste0(varNames[i], &quot;~ IntB + Post + IntB:Post + c.age&quot;))
+  fit &lt;- lm(form, mydata)
+  anova(fit)
+  
+  results.out[[varNames[i]]] &lt;- summary(fit)[[&quot;coefficients&quot;]]
+  
+  
+  # diagnostic plots
+  layout(matrix(c(1,2,3,4),2,2)) # optional layout
+  plot(fit) # diagnostic plots
+  
+  # normality again
+  shapiro.test(residuals(fit))
+  
+  # independence
+  durbinWatsonTest(fit)
+  layout(matrix(c(1),1,1))
+  acf(residuals(fit))
+  
+  # nice wrapper function to generally test a lot of stuff
+  gvmodel &lt;- gvlma(fit)
+  summary(gvmodel)
+
+}</code></pre>
+<pre><code>
+
+=======================
+=======================
+Outcome:     Glucose</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-1.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-2.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-8.113 -5.496 -1.866  3.483 25.742 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  93.0792     3.5046  26.559 2.78e-15 ***
+IntB         -1.5742     5.2540  -0.300    0.768    
+Post         -3.6667     4.9115  -0.747    0.466    
+c.age        -0.5242     0.9690  -0.541    0.596    
+IntB:Post    13.4667     7.2850   1.849    0.082 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 8.507 on 17 degrees of freedom
+Multiple R-squared:  0.2532,    Adjusted R-squared:  0.07743 
+F-statistic: 1.441 on 4 and 17 DF,  p-value: 0.2636
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value   p-value                   Decision
+Global Stat        32.4590 1.541e-06 Assumptions NOT satisfied!
+Skewness           11.5465 6.788e-04 Assumptions NOT satisfied!
+Kurtosis           13.4942 2.393e-04 Assumptions NOT satisfied!
+Link Function       7.1556 7.473e-03 Assumptions NOT satisfied!
+Heteroscedasticity  0.2628 6.082e-01    Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     BUN</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-3.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-4.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.3997 -0.6578 -0.3396  1.2209  4.7993 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  11.2369     0.8780  12.798 3.73e-10 ***
+IntB          2.6789     1.3162   2.035   0.0577 .  
+Post          2.0000     1.2305   1.625   0.1225    
+c.age        -0.1990     0.2428  -0.820   0.4238    
+IntB:Post    -3.6000     1.8251  -1.973   0.0650 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.131 on 17 degrees of freedom
+Multiple R-squared:  0.2362,    Adjusted R-squared:  0.05645 
+F-statistic: 1.314 on 4 and 17 DF,  p-value: 0.3045
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                    Value p-value                   Decision
+Global Stat        6.1746 0.18648    Assumptions acceptable.
+Skewness           0.2160 0.64214    Assumptions acceptable.
+Kurtosis           0.6861 0.40748    Assumptions acceptable.
+Link Function      0.2798 0.59686    Assumptions acceptable.
+Heteroscedasticity 4.9928 0.02545 Assumptions NOT satisfied!
+
+
+=======================
+=======================
+Outcome:     Creatinine</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-5.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-6.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.150164 -0.064169 -0.001211  0.062296  0.138817 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.7597609  0.0365006  20.815 1.56e-13 ***
+IntB         0.0845260  0.0547198   1.545    0.141    
+Post         0.0750000  0.0511536   1.466    0.161    
+c.age       -0.0004931  0.0100926  -0.049    0.962    
+IntB:Post   -0.0690000  0.0758731  -0.909    0.376    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.0886 on 17 degrees of freedom
+Multiple R-squared:  0.1853,    Adjusted R-squared:  -0.00642 
+F-statistic: 0.9665 on 4 and 17 DF,  p-value: 0.4512
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                      Value p-value                Decision
+Global Stat        0.786360  0.9403 Assumptions acceptable.
+Skewness           0.001561  0.9685 Assumptions acceptable.
+Kurtosis           0.595412  0.4403 Assumptions acceptable.
+Link Function      0.163503  0.6860 Assumptions acceptable.
+Heteroscedasticity 0.025885  0.8722 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Sodium</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-7.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-8.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9986 -0.9253  0.1651  0.9587  2.3356 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.412e+02  6.992e-01 201.903   &lt;2e-16 ***
+IntB         2.034e+00  1.048e+00   1.941   0.0691 .  
+Post        -5.000e-01  9.799e-01  -0.510   0.6164    
+c.age       -8.651e-04  1.933e-01  -0.004   0.9965    
+IntB:Post   -7.000e-01  1.453e+00  -0.482   0.6362    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.697 on 17 degrees of freedom
+Multiple R-squared:  0.288, Adjusted R-squared:  0.1205 
+F-statistic: 1.719 on 4 and 17 DF,  p-value: 0.1922
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                    Value p-value                Decision
+Global Stat        7.8333 0.09788 Assumptions acceptable.
+Skewness           2.4541 0.11722 Assumptions acceptable.
+Kurtosis           0.2386 0.62523 Assumptions acceptable.
+Link Function      1.8066 0.17891 Assumptions acceptable.
+Heteroscedasticity 3.3340 0.06786 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Potassium</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-9.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-10.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.47235 -0.26090 -0.02216  0.14516  1.06061 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  4.51750    0.16363  27.608 1.46e-15 ***
+IntB        -0.07849    0.24531  -0.320    0.753    
+Post        -0.21667    0.22932  -0.945    0.358    
+c.age       -0.06704    0.04524  -1.482    0.157    
+IntB:Post    0.11667    0.34014   0.343    0.736    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.3972 on 17 degrees of freedom
+Multiple R-squared:  0.1722,    Adjusted R-squared:  -0.02253 
+F-statistic: 0.8843 on 4 and 17 DF,  p-value: 0.4941
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value p-value                   Decision
+Global Stat        7.43923 0.11442    Assumptions acceptable.
+Skewness           4.45281 0.03484 Assumptions NOT satisfied!
+Kurtosis           2.33163 0.12677    Assumptions acceptable.
+Link Function      0.00619 0.93729    Assumptions acceptable.
+Heteroscedasticity 0.64861 0.42061    Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Chloride</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-11.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-12.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3170 -0.7144 -0.3819  1.3634  3.5975 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 103.3082     0.8047 128.384   &lt;2e-16 ***
+IntB         -0.6780     1.2063  -0.562    0.581    
+Post         -1.6667     1.1277  -1.478    0.158    
+c.age        -0.0519     0.2225  -0.233    0.818    
+IntB:Post     1.4667     1.6727   0.877    0.393    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.953 on 17 degrees of freedom
+Multiple R-squared:  0.1176,    Adjusted R-squared:  -0.09007 
+F-statistic: 0.5662 on 4 and 17 DF,  p-value: 0.6905
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                      Value p-value                Decision
+Global Stat        0.497308  0.9738 Assumptions acceptable.
+Skewness           0.007587  0.9306 Assumptions acceptable.
+Kurtosis           0.266516  0.6057 Assumptions acceptable.
+Link Function      0.207461  0.6488 Assumptions acceptable.
+Heteroscedasticity 0.015744  0.9001 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Carbon_Dioxide</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-13.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-14.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.7933 -0.9730 -0.0523  1.4779  4.0865 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  23.8916     0.9736  24.539 1.03e-14 ***
+IntB          0.6384     1.4596   0.437    0.667    
+Post          2.0000     1.3645   1.466    0.161    
+c.age         0.1202     0.2692   0.447    0.661    
+IntB:Post    -1.0000     2.0239  -0.494    0.628    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.363 on 17 degrees of freedom
+Multiple R-squared:  0.1442,    Adjusted R-squared:  -0.05714 
+F-statistic: 0.7162 on 4 and 17 DF,  p-value: 0.5923
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value p-value                Decision
+Global Stat        2.14800  0.7086 Assumptions acceptable.
+Skewness           0.13256  0.7158 Assumptions acceptable.
+Kurtosis           0.04022  0.8410 Assumptions acceptable.
+Link Function      1.49279  0.2218 Assumptions acceptable.
+Heteroscedasticity 0.48243  0.4873 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Calcium</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-15.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-16.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.31482 -0.17012 -0.06351  0.08168  0.79072 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  9.019351   0.110992  81.261   &lt;2e-16 ***
+IntB         0.297428   0.166393   1.788   0.0917 .  
+Post         0.483333   0.155549   3.107   0.0064 ** 
+c.age        0.005536   0.030690   0.180   0.8590    
+IntB:Post   -0.303333   0.230717  -1.315   0.2061    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.2694 on 17 degrees of freedom
+Multiple R-squared:  0.4244,    Adjusted R-squared:  0.2889 
+F-statistic: 3.133 on 4 and 17 DF,  p-value: 0.04214
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value   p-value                   Decision
+Global Stat        23.1065 0.0001206 Assumptions NOT satisfied!
+Skewness            9.8606 0.0016885 Assumptions NOT satisfied!
+Kurtosis            9.2705 0.0023288 Assumptions NOT satisfied!
+Link Function       3.6266 0.0568615    Assumptions acceptable.
+Heteroscedasticity  0.3488 0.5547935    Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Cholesterol</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-17.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-18.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-60.985 -20.503  -3.721  24.219  51.534 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  154.723     14.902  10.383  8.9e-09 ***
+IntB          46.010     22.340   2.060   0.0551 .  
+Post          10.667     20.884   0.511   0.6161    
+c.age         -1.260      4.120  -0.306   0.7636    
+IntB:Post     -2.467     30.976  -0.080   0.9375    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 36.17 on 17 degrees of freedom
+Multiple R-squared:  0.3293,    Adjusted R-squared:  0.1715 
+F-statistic: 2.087 on 4 and 17 DF,  p-value: 0.1274
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value p-value                Decision
+Global Stat        2.70701  0.6080 Assumptions acceptable.
+Skewness           0.01125  0.9155 Assumptions acceptable.
+Kurtosis           0.70279  0.4018 Assumptions acceptable.
+Link Function      1.33685  0.2476 Assumptions acceptable.
+Heteroscedasticity 0.65612  0.4179 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Triglycerides</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-19.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-20.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-105.12  -37.94  -19.27   19.52  250.18 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   84.022     34.769   2.417   0.0272 *
+IntB          65.152     52.124   1.250   0.2283  
+Post         -11.167     48.727  -0.229   0.8215  
+c.age          6.576      9.614   0.684   0.5032  
+IntB:Post     38.767     72.274   0.536   0.5986  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 84.4 on 17 degrees of freedom
+Multiple R-squared:  0.2977,    Adjusted R-squared:  0.1324 
+F-statistic: 1.801 on 4 and 17 DF,  p-value: 0.1751
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value   p-value                   Decision
+Global Stat        26.8974 2.085e-05 Assumptions NOT satisfied!
+Skewness           12.4843 4.104e-04 Assumptions NOT satisfied!
+Kurtosis           13.6347 2.220e-04 Assumptions NOT satisfied!
+Link Function       0.5387 4.630e-01    Assumptions acceptable.
+Heteroscedasticity  0.2397 6.244e-01    Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     HDL</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-21.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-22.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-23.6547 -11.1001  -0.9495  10.5849  29.6719 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 60.02936    6.30676   9.518 3.18e-08 ***
+IntB        -7.86459    9.45477  -0.832    0.417    
+Post         6.16667    8.83859   0.698    0.495    
+c.age        0.06055    1.74385   0.035    0.973    
+IntB:Post    2.43333   13.10974   0.186    0.855    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 15.31 on 17 degrees of freedom
+Multiple R-squared:  0.1185,    Adjusted R-squared:  -0.08889 
+F-statistic: 0.5714 on 4 and 17 DF,  p-value: 0.687
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                    Value p-value                Decision
+Global Stat        4.3646  0.3589 Assumptions acceptable.
+Skewness           0.5017  0.4788 Assumptions acceptable.
+Kurtosis           0.4370  0.5086 Assumptions acceptable.
+Link Function      2.9838  0.0841 Assumptions acceptable.
+Heteroscedasticity 0.4422  0.5061 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     LDL</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-23.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-24.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-47.561 -21.674  -1.805  26.744  46.341 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   77.700     12.858   6.043 1.32e-05 ***
+IntB          41.459     19.276   2.151   0.0462 *  
+Post           6.667     18.019   0.370   0.7160    
+c.age         -3.024      3.555  -0.851   0.4068    
+IntB:Post    -10.127     26.727  -0.379   0.7095    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 31.21 on 17 degrees of freedom
+Multiple R-squared:  0.2932,    Adjusted R-squared:  0.1269 
+F-statistic: 1.763 on 4 and 17 DF,  p-value: 0.1829
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                      Value p-value                Decision
+Global Stat        1.447064  0.8360 Assumptions acceptable.
+Skewness           0.026420  0.8709 Assumptions acceptable.
+Kurtosis           1.180484  0.2773 Assumptions acceptable.
+Link Function      0.236073  0.6271 Assumptions acceptable.
+Heteroscedasticity 0.004087  0.9490 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     LDL_HDL_Ratio</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-25.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-26.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.07463 -0.44308 -0.08132  0.27873  1.29772 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.41893    0.30068   4.719 0.000198 ***
+IntB         0.92235    0.45076   2.046 0.056528 .  
+Post        -0.05500    0.42139  -0.131 0.897686    
+c.age        0.01843    0.08314   0.222 0.827249    
+IntB:Post   -0.49900    0.62502  -0.798 0.435664    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.7299 on 17 degrees of freedom
+Multiple R-squared:  0.274, Adjusted R-squared:  0.1032 
+F-statistic: 1.604 on 4 and 17 DF,  p-value: 0.2189
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                    Value p-value                Decision
+Global Stat        3.5627  0.4684 Assumptions acceptable.
+Skewness           0.4087  0.5226 Assumptions acceptable.
+Kurtosis           0.4020  0.5260 Assumptions acceptable.
+Link Function      0.2042  0.6514 Assumptions acceptable.
+Heteroscedasticity 2.5478  0.1104 Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     hsCRP</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-27.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-28.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5433 -1.2468 -0.4666  0.5678  7.5268 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   2.9370     1.0620   2.766   0.0132 *
+IntB         -1.5014     1.5921  -0.943   0.3589  
+Post         -1.8833     1.4883  -1.265   0.2228  
+c.age        -0.1299     0.2936  -0.442   0.6637  
+IntB:Post     2.9033     2.2075   1.315   0.2059  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.578 on 17 degrees of freedom
+Multiple R-squared:  0.1154,    Adjusted R-squared:  -0.09275 
+F-statistic: 0.5544 on 4 and 17 DF,  p-value: 0.6986
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                     Value   p-value                   Decision
+Global Stat        26.2310 2.843e-05 Assumptions NOT satisfied!
+Skewness           12.6428 3.770e-04 Assumptions NOT satisfied!
+Kurtosis           11.3214 7.662e-04 Assumptions NOT satisfied!
+Link Function       1.2733 2.591e-01    Assumptions acceptable.
+Heteroscedasticity  0.9934 3.189e-01    Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     Insulin</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-29.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-30.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-23.965 -15.153  -1.912  -0.034  75.447 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)   7.6560    11.5542   0.663    0.516
+IntB         17.9569    17.3215   1.037    0.314
+Post          2.6667    16.1926   0.165    0.871
+c.age         1.3529     3.1948   0.423    0.677
+IntB:Post    -0.2667    24.0176  -0.011    0.991
+
+Residual standard error: 28.05 on 17 degrees of freedom
+Multiple R-squared:  0.1414,    Adjusted R-squared:  -0.06067 
+F-statistic: 0.6997 on 4 and 17 DF,  p-value: 0.6027
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                    Value   p-value                   Decision
+Global Stat        30.834 3.310e-06 Assumptions NOT satisfied!
+Skewness           16.186 5.741e-05 Assumptions NOT satisfied!
+Kurtosis           12.626 3.803e-04 Assumptions NOT satisfied!
+Link Function       0.112 7.378e-01    Assumptions acceptable.
+Heteroscedasticity  1.909 1.671e-01    Assumptions acceptable.
+
+
+=======================
+=======================
+Outcome:     PYY</code></pre>
+<p><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-31.png" width="200%" style="display: block; margin: auto;" /><img src="figure/analysis_blood_data.Rmd/unnamed-chunk-4-32.png" width="200%" style="display: block; margin: auto;" /></p>
+<pre><code>
+Call:
+lm(formula = form, data = mydata)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-142.85  -89.12  -41.44  -14.65  581.35 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  160.501     77.397   2.074   0.0536 .
+IntB        -103.935    116.029  -0.896   0.3829  
+Post         -32.087    108.467  -0.296   0.7710  
+c.age          5.795     21.401   0.271   0.7898  
+IntB:Post     26.901    160.883   0.167   0.8692  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 187.9 on 17 degrees of freedom
+Multiple R-squared:  0.06906,   Adjusted R-squared:  -0.15 
+F-statistic: 0.3153 on 4 and 17 DF,  p-value: 0.8638
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = fit) 
+
+                    Value   p-value                   Decision
+Global Stat        63.837 4.522e-13 Assumptions NOT satisfied!
+Skewness           20.571 5.747e-06 Assumptions NOT satisfied!
+Kurtosis           23.973 9.772e-07 Assumptions NOT satisfied!
+Link Function       1.146 2.845e-01    Assumptions acceptable.
+Heteroscedasticity 18.148 2.043e-05 Assumptions NOT satisfied!</code></pre>
+</div>
+<div id="results-adjusted-for-multiple-comparisons" class="section level2">
+<h2>Results Adjusted for Multiple Comparisons</h2>
+<pre class="r"><code>all_results &lt;- unlist.res(results.out)</code></pre>
+<pre><code>Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)
+Joining, by = c(&quot;Estimate&quot;, &quot;Std. Error&quot;, &quot;t value&quot;, &quot;Pr(&gt;|t|)&quot;, &quot;Outcome&quot;, &quot;Parameter&quot;)</code></pre>
+<pre class="r"><code>all_results &lt;- filter(all_results, Parameter %in% c(&quot;IntB&quot;, &quot;Post&quot;, &quot;IntB:Post&quot;))
+all_results$p.adj &lt;- p.adjust(all_results$`Pr(&gt;|t|)`, &quot;fdr&quot;) 
+all_results$sigflag &lt;- ifelse(all_results$p.adj &lt; 0.05, &quot;*&quot;, &quot; &quot;)
+all_results$`Pr(&gt;|t|)` &lt;- round(all_results$`Pr(&gt;|t|)`, 3)
+all_results$p.adj.fdr &lt;- round(all_results$p.adj, 3)
+all_results &lt;- all_results[, c(5:6, 1:4, 7:8)]
+
+kable(all_results, format=&quot;html&quot;, digits=3) %&gt;%
+  kable_styling(full_width = T)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Outcome
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+<th style="text-align:right;">
+p.adj
+</th>
+<th style="text-align:left;">
+sigflag
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+-1.574
+</td>
+<td style="text-align:right;">
+5.254
+</td>
+<td style="text-align:right;">
+-0.300
+</td>
+<td style="text-align:right;">
+0.768
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-3.667
+</td>
+<td style="text-align:right;">
+4.912
+</td>
+<td style="text-align:right;">
+-0.747
+</td>
+<td style="text-align:right;">
+0.466
+</td>
+<td style="text-align:right;">
+0.828
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glucose
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+13.467
+</td>
+<td style="text-align:right;">
+7.285
+</td>
+<td style="text-align:right;">
+1.849
+</td>
+<td style="text-align:right;">
+0.082
+</td>
+<td style="text-align:right;">
+0.489
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+2.679
+</td>
+<td style="text-align:right;">
+1.316
+</td>
+<td style="text-align:right;">
+2.035
+</td>
+<td style="text-align:right;">
+0.058
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+1.230
+</td>
+<td style="text-align:right;">
+1.625
+</td>
+<td style="text-align:right;">
+0.122
+</td>
+<td style="text-align:right;">
+0.552
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUN
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-3.600
+</td>
+<td style="text-align:right;">
+1.825
+</td>
+<td style="text-align:right;">
+-1.973
+</td>
+<td style="text-align:right;">
+0.065
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+0.085
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+<td style="text-align:right;">
+1.545
+</td>
+<td style="text-align:right;">
+0.141
+</td>
+<td style="text-align:right;">
+0.552
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+0.075
+</td>
+<td style="text-align:right;">
+0.051
+</td>
+<td style="text-align:right;">
+1.466
+</td>
+<td style="text-align:right;">
+0.161
+</td>
+<td style="text-align:right;">
+0.552
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-0.069
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+-0.909
+</td>
+<td style="text-align:right;">
+0.376
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+2.034
+</td>
+<td style="text-align:right;">
+1.048
+</td>
+<td style="text-align:right;">
+1.941
+</td>
+<td style="text-align:right;">
+0.069
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-0.500
+</td>
+<td style="text-align:right;">
+0.980
+</td>
+<td style="text-align:right;">
+-0.510
+</td>
+<td style="text-align:right;">
+0.616
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-0.700
+</td>
+<td style="text-align:right;">
+1.453
+</td>
+<td style="text-align:right;">
+-0.482
+</td>
+<td style="text-align:right;">
+0.636
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+-0.078
+</td>
+<td style="text-align:right;">
+0.245
+</td>
+<td style="text-align:right;">
+-0.320
+</td>
+<td style="text-align:right;">
+0.753
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-0.217
+</td>
+<td style="text-align:right;">
+0.229
+</td>
+<td style="text-align:right;">
+-0.945
+</td>
+<td style="text-align:right;">
+0.358
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+0.117
+</td>
+<td style="text-align:right;">
+0.340
+</td>
+<td style="text-align:right;">
+0.343
+</td>
+<td style="text-align:right;">
+0.736
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+-0.678
+</td>
+<td style="text-align:right;">
+1.206
+</td>
+<td style="text-align:right;">
+-0.562
+</td>
+<td style="text-align:right;">
+0.581
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-1.667
+</td>
+<td style="text-align:right;">
+1.128
+</td>
+<td style="text-align:right;">
+-1.478
+</td>
+<td style="text-align:right;">
+0.158
+</td>
+<td style="text-align:right;">
+0.552
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chloride
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+1.467
+</td>
+<td style="text-align:right;">
+1.673
+</td>
+<td style="text-align:right;">
+0.877
+</td>
+<td style="text-align:right;">
+0.393
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+0.638
+</td>
+<td style="text-align:right;">
+1.460
+</td>
+<td style="text-align:right;">
+0.437
+</td>
+<td style="text-align:right;">
+0.667
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+1.364
+</td>
+<td style="text-align:right;">
+1.466
+</td>
+<td style="text-align:right;">
+0.161
+</td>
+<td style="text-align:right;">
+0.552
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Carbon_Dioxide
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-1.000
+</td>
+<td style="text-align:right;">
+2.024
+</td>
+<td style="text-align:right;">
+-0.494
+</td>
+<td style="text-align:right;">
+0.628
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+0.297
+</td>
+<td style="text-align:right;">
+0.166
+</td>
+<td style="text-align:right;">
+1.788
+</td>
+<td style="text-align:right;">
+0.092
+</td>
+<td style="text-align:right;">
+0.489
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+0.483
+</td>
+<td style="text-align:right;">
+0.156
+</td>
+<td style="text-align:right;">
+3.107
+</td>
+<td style="text-align:right;">
+0.006
+</td>
+<td style="text-align:right;">
+0.307
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-0.303
+</td>
+<td style="text-align:right;">
+0.231
+</td>
+<td style="text-align:right;">
+-1.315
+</td>
+<td style="text-align:right;">
+0.206
+</td>
+<td style="text-align:right;">
+0.609
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+46.010
+</td>
+<td style="text-align:right;">
+22.340
+</td>
+<td style="text-align:right;">
+2.060
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+10.667
+</td>
+<td style="text-align:right;">
+20.884
+</td>
+<td style="text-align:right;">
+0.511
+</td>
+<td style="text-align:right;">
+0.616
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cholesterol
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-2.467
+</td>
+<td style="text-align:right;">
+30.976
+</td>
+<td style="text-align:right;">
+-0.080
+</td>
+<td style="text-align:right;">
+0.937
+</td>
+<td style="text-align:right;">
+0.957
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+65.152
+</td>
+<td style="text-align:right;">
+52.124
+</td>
+<td style="text-align:right;">
+1.250
+</td>
+<td style="text-align:right;">
+0.228
+</td>
+<td style="text-align:right;">
+0.609
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-11.167
+</td>
+<td style="text-align:right;">
+48.727
+</td>
+<td style="text-align:right;">
+-0.229
+</td>
+<td style="text-align:right;">
+0.821
+</td>
+<td style="text-align:right;">
+0.929
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Triglycerides
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+38.767
+</td>
+<td style="text-align:right;">
+72.274
+</td>
+<td style="text-align:right;">
+0.536
+</td>
+<td style="text-align:right;">
+0.599
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+-7.865
+</td>
+<td style="text-align:right;">
+9.455
+</td>
+<td style="text-align:right;">
+-0.832
+</td>
+<td style="text-align:right;">
+0.417
+</td>
+<td style="text-align:right;">
+0.801
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+6.167
+</td>
+<td style="text-align:right;">
+8.839
+</td>
+<td style="text-align:right;">
+0.698
+</td>
+<td style="text-align:right;">
+0.495
+</td>
+<td style="text-align:right;">
+0.848
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HDL
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+2.433
+</td>
+<td style="text-align:right;">
+13.110
+</td>
+<td style="text-align:right;">
+0.186
+</td>
+<td style="text-align:right;">
+0.855
+</td>
+<td style="text-align:right;">
+0.929
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+41.459
+</td>
+<td style="text-align:right;">
+19.276
+</td>
+<td style="text-align:right;">
+2.151
+</td>
+<td style="text-align:right;">
+0.046
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+6.667
+</td>
+<td style="text-align:right;">
+18.019
+</td>
+<td style="text-align:right;">
+0.370
+</td>
+<td style="text-align:right;">
+0.716
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-10.127
+</td>
+<td style="text-align:right;">
+26.727
+</td>
+<td style="text-align:right;">
+-0.379
+</td>
+<td style="text-align:right;">
+0.709
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:right;">
+0.451
+</td>
+<td style="text-align:right;">
+2.046
+</td>
+<td style="text-align:right;">
+0.057
+</td>
+<td style="text-align:right;">
+0.474
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-0.055
+</td>
+<td style="text-align:right;">
+0.421
+</td>
+<td style="text-align:right;">
+-0.131
+</td>
+<td style="text-align:right;">
+0.898
+</td>
+<td style="text-align:right;">
+0.937
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDL_HDL_Ratio
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-0.499
+</td>
+<td style="text-align:right;">
+0.625
+</td>
+<td style="text-align:right;">
+-0.798
+</td>
+<td style="text-align:right;">
+0.436
+</td>
+<td style="text-align:right;">
+0.804
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+-1.501
+</td>
+<td style="text-align:right;">
+1.592
+</td>
+<td style="text-align:right;">
+-0.943
+</td>
+<td style="text-align:right;">
+0.359
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-1.883
+</td>
+<td style="text-align:right;">
+1.488
+</td>
+<td style="text-align:right;">
+-1.265
+</td>
+<td style="text-align:right;">
+0.223
+</td>
+<td style="text-align:right;">
+0.609
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hsCRP
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+2.903
+</td>
+<td style="text-align:right;">
+2.208
+</td>
+<td style="text-align:right;">
+1.315
+</td>
+<td style="text-align:right;">
+0.206
+</td>
+<td style="text-align:right;">
+0.609
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+17.957
+</td>
+<td style="text-align:right;">
+17.322
+</td>
+<td style="text-align:right;">
+1.037
+</td>
+<td style="text-align:right;">
+0.314
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+2.667
+</td>
+<td style="text-align:right;">
+16.193
+</td>
+<td style="text-align:right;">
+0.165
+</td>
+<td style="text-align:right;">
+0.871
+</td>
+<td style="text-align:right;">
+0.929
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Insulin
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+-0.267
+</td>
+<td style="text-align:right;">
+24.018
+</td>
+<td style="text-align:right;">
+-0.011
+</td>
+<td style="text-align:right;">
+0.991
+</td>
+<td style="text-align:right;">
+0.991
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+IntB
+</td>
+<td style="text-align:right;">
+-103.935
+</td>
+<td style="text-align:right;">
+116.029
+</td>
+<td style="text-align:right;">
+-0.896
+</td>
+<td style="text-align:right;">
+0.383
+</td>
+<td style="text-align:right;">
+0.786
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+Post
+</td>
+<td style="text-align:right;">
+-32.087
+</td>
+<td style="text-align:right;">
+108.467
+</td>
+<td style="text-align:right;">
+-0.296
+</td>
+<td style="text-align:right;">
+0.771
+</td>
+<td style="text-align:right;">
+0.903
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PYY
+</td>
+<td style="text-align:left;">
+IntB:Post
+</td>
+<td style="text-align:right;">
+26.901
+</td>
+<td style="text-align:right;">
+160.883
+</td>
+<td style="text-align:right;">
+0.167
+</td>
+<td style="text-align:right;">
+0.869
+</td>
+<td style="text-align:right;">
+0.929
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.3 (2020-02-29)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 18362)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United States.1252 
+[2] LC_CTYPE=English_United States.1252   
+[3] LC_MONETARY=English_United States.1252
+[4] LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] microbiome_1.8.0  car_3.0-7         carData_3.0-3     gvlma_1.0.0.3    
+ [5] patchwork_1.0.0   viridis_0.5.1     viridisLite_0.3.0 gridExtra_2.3    
+ [9] xtable_1.8-4      kableExtra_1.1.0  plyr_1.8.6        data.table_1.12.8
+[13] readxl_1.3.1      forcats_0.5.0     stringr_1.4.0     dplyr_0.8.5      
+[17] purrr_0.3.4       readr_1.3.1       tidyr_1.0.3       tibble_3.0.1     
+[21] ggplot2_3.3.0     tidyverse_1.3.0   lmerTest_3.1-2    lme4_1.1-23      
+[25] Matrix_1.2-18     vegan_2.5-6       lattice_0.20-38   permute_0.9-5    
+[29] phyloseq_1.30.0   workflowr_1.6.2  
+
+loaded via a namespace (and not attached):
+ [1] Rtsne_0.15          minqa_1.2.4         colorspace_1.4-1   
+ [4] rio_0.5.16          ellipsis_0.3.0      rprojroot_1.3-2    
+ [7] XVector_0.26.0      fs_1.4.1            rstudioapi_0.11    
+[10] farver_2.0.3        fansi_0.4.1         lubridate_1.7.8    
+[13] xml2_1.3.2          codetools_0.2-16    splines_3.6.3      
+[16] knitr_1.28          ade4_1.7-15         jsonlite_1.6.1     
+[19] nloptr_1.2.2.1      broom_0.5.6         cluster_2.1.0      
+[22] dbplyr_1.4.3        compiler_3.6.3      httr_1.4.1         
+[25] backports_1.1.7     assertthat_0.2.1    cli_2.0.2          
+[28] later_1.0.0         htmltools_0.4.0     tools_3.6.3        
+[31] igraph_1.2.5        gtable_0.3.0        glue_1.4.1         
+[34] reshape2_1.4.4      Rcpp_1.0.4.6        Biobase_2.46.0     
+[37] cellranger_1.1.0    vctrs_0.3.0         Biostrings_2.54.0  
+[40] multtest_2.42.0     ape_5.3             nlme_3.1-144       
+[43] iterators_1.0.12    xfun_0.13           openxlsx_4.1.5     
+[46] rvest_0.3.5         lifecycle_0.2.0     statmod_1.4.34     
+[49] zlibbioc_1.32.0     MASS_7.3-51.5       scales_1.1.1       
+[52] hms_0.5.3           promises_1.1.0      parallel_3.6.3     
+[55] biomformat_1.14.0   rhdf5_2.30.1        RColorBrewer_1.1-2 
+[58] curl_4.3            yaml_2.2.1          stringi_1.4.6      
+[61] highr_0.8           S4Vectors_0.24.4    foreach_1.5.0      
+[64] BiocGenerics_0.32.0 zip_2.0.4           boot_1.3-24        
+[67] rlang_0.4.6         pkgconfig_2.0.3     evaluate_0.14      
+[70] Rhdf5lib_1.8.0      labeling_0.3        tidyselect_1.1.0   
+[73] magrittr_1.5        R6_2.4.1            IRanges_2.20.2     
+[76] generics_0.0.2      DBI_1.1.0           foreign_0.8-75     
+[79] pillar_1.4.4        haven_2.2.0         withr_2.2.0        
+[82] mgcv_1.8-31         abind_1.4-5         survival_3.1-8     
+[85] modelr_0.1.7        crayon_1.3.4        rmarkdown_2.1      
+[88] grid_3.6.3          git2r_0.27.1        reprex_0.3.0       
+[91] digest_0.6.25       webshot_0.5.2       httpuv_1.5.2       
+[94] numDeriv_2016.8-1.1 stats4_3.6.3        munsell_0.5.0      </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
