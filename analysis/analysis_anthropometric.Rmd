@@ -748,6 +748,9 @@ all_results <- all_results[,c(5:6, 1:4,7:8)]
 kable(all_results, format="html", digits=3) %>%
   kable_styling(full_width = T)
 
+
+readr::write_csv(all_results, "tab/results_anthropometric.csv")
+
 ```
 
 
