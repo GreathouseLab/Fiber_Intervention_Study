@@ -383,7 +383,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -392,7 +392,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,10 +401,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-21
+<strong>Last updated:</strong> 2020-06-01
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Fiber_Intervention_Study/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -420,12 +420,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -492,16 +492,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreed576bdd545993e873d4cfc2ec113c299a470ce20targetblankd576bdda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/d576bdd545993e873d4cfc2ec113c299a470ce20" target="_blank">d576bdd</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreed576bdd545993e873d4cfc2ec113c299a470ce20targetblankd576bdda" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/d576bdd545993e873d4cfc2ec113c299a470ce20" target="_blank">d576bdd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -515,7 +515,44 @@ Ignored files:
     Ignored:    reference-papers/Johnson_2019.pdf
 
 Untracked files:
+    Untracked:  analysis/glme_microbiome.Rmd
+    Untracked:  fig/figure-current-to-share.zip
+    Untracked:  fig/figure-current-to-share/
+    Untracked:  fig/figure1_alpha_diversity.pdf
+    Untracked:  fig/figure2_individual_beta_diversity_over_study.pdf
+    Untracked:  fig/figure3_PCoA_analysis_results_beta_diversity_between_groups.pdf
+    Untracked:  fig/figure4_final_microbiome_diet_variables_over_time.pdf
+    Untracked:  fig/glmm_res.pdf
+    Untracked:  fig/glmm_res.png
+    Untracked:  fig/microbiome_abundance_glmm_results.pdf
+    Untracked:  manuscript/
     Untracked:  tab/
+
+Unstaged changes:
+    Modified:   README.md
+    Modified:   analysis/alpha_diversity.Rmd
+    Modified:   analysis/change_in_alpha_diversity.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/lme_alpha.Rmd
+    Deleted:    analysis/lme_microbiome.Rmd
+    Modified:   code/load_packages.R
+    Modified:   code/microbiome_statistics_and_functions.R
+    Deleted:    fig/figure1.pdf
+    Modified:   fig/figure1_legend.pdf
+    Deleted:    fig/figure2.pdf
+    Deleted:    fig/figure3.pdf
+    Modified:   fig/figure3_legend.pdf
+    Deleted:    fig/figure4_final.pdf
+    Modified:   fig/predicted_Actinobacteria_model5.png
+    Modified:   fig/predicted_Bacteroidetes_model5.png
+    Modified:   fig/predicted_Cyanobacteria_model5.png
+    Modified:   fig/predicted_Euryarchaeota_model5.png
+    Modified:   fig/predicted_Firmicutes_model5.png
+    Modified:   fig/predicted_Fusobacteria_model5.png
+    Modified:   fig/predicted_Lentisphaerae_model5.png
+    Modified:   fig/predicted_Proteobacteria_model5.png
+    Modified:   fig/predicted_Tenericutes_model5.png
+    Modified:   fig/predicted_Verrucomicrobia_model5.png
 
 </code></pre>
 <p>
@@ -554,6 +591,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/0733fe5f2e02349ca3c892ef7dea9cd866468dc7/docs/alpha_diversity.html" target="_blank">0733fe5</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-05-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -704,69 +758,356 @@ alpha diversity initial analysis
 <h2>Boxplots by unique participants</h2>
 <div id="observed-otus" class="section level3">
 <h3>Observed OTUs</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=SubjectID3, y=Observed,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x=&quot;Subject ID&quot;)+
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Observed OTUs&quot;)+
   guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))</code></pre>
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
 <p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-1-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#ggsave(&quot;fig/figure1.pdf&quot;, p, width=5, height=3.5, units=&quot;in&quot;)</code></pre>
 </div>
 <div id="shannon-index" class="section level3">
 <h3>Shannon Index</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=SubjectID3, y=Shannon,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x=&quot;Subject ID&quot;)+
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Shannon,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Shannon Index&quot;)+
   guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))</code></pre>
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
 <p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-2-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="simpson" class="section level3">
 <h3>Simpson</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=SubjectID3, y=Simpson,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x=&quot;Subject ID&quot;)+
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Simpson,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Simpson Index&quot;)+
   guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))</code></pre>
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
 <p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-3-1.png" width="225%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inverse-simpson" class="section level3">
+<h3>Inverse Simpson</h3>
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=SubjectID10, y=InvSimpson,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Inverse Simpson Index&quot;)+
+  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-4-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="boxplots-by-week-of-study" class="section level2">
 <h2>Boxplots by week of study</h2>
 <div id="observed-otus-1" class="section level3">
 <h3>Observed OTUs</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Observed,
-                      colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
-  geom_point(size=2, position=&quot;jitter&quot;)+
-  labs(x=&quot;Week of Study&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-4-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=Intervention, y=Observed,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Observed OTUs&quot;,
+       title=&quot;Observed OTUs by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-5-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="shannon-index-1" class="section level3">
 <h3>Shannon Index</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Shannon, colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
-  geom_point(size=2, position=&quot;jitter&quot;)+
-  labs(x=&quot;Week of Study&quot;, y=&quot;Shannon Index&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-5-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=Intervention, y=Shannon,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Shannon Index&quot;,
+       title=&quot;Shannon Index by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-6-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="simpson-1" class="section level3">
 <h3>Simpson</h3>
-<pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Simpson, colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,
-               aes(group=Week))+
-  geom_point(size=2, position=&quot;jitter&quot;)+
-  labs(x=&quot;Week of Study&quot;, y=&quot;Simpson&quot;)+
-  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-6-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=Intervention, y=Simpson,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Simpson&quot;,
+       title=&quot;Simpson by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-7-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
+<div id="inverse-simpson-1" class="section level3">
+<h3>Inverse Simpson</h3>
+<pre class="r"><code>p &lt;- ggplot(plot_data, aes(x=Intervention, y=InvSimpson,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Inverse Simpson&quot;,
+       title=&quot;Inverse Simpson by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-8-1.png" width="225%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="manuscript-figure" class="section level2">
+<h2>Manuscript Figure</h2>
+<pre class="r"><code>p1 &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Observed OTUs&quot;,
+       title=&quot;Observed OTUs by Participants&quot;)+
+  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p1</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p2 &lt;- ggplot(plot_data, aes(x=Intervention, y=Observed,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Observed OTUs&quot;,
+       title=&quot;Observed OTUs by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p2 </code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-2.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p3 &lt;- ggplot(plot_data, aes(x=SubjectID10, y=Shannon,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Shannon Index&quot;,
+       title=&quot;Shannon Index by Participants&quot;)+
+  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p3</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-3.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p4 &lt;- ggplot(plot_data, aes(x=Intervention, y=Shannon,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Shannon Index&quot;,
+       title=&quot;Shannon Index by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p4</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-4.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p5 &lt;- ggplot(plot_data, aes(x=SubjectID10, y=InvSimpson,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = &quot;free&quot;)+
+  labs(x=&quot;Subject ID&quot;, y= &quot;Inverse Simpson&quot;, 
+       title=&quot;Inverse Simpson by Participants&quot;)+
+  guides(colour= guide_legend(title = &quot;Subject ID&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p5</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-5.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p6 &lt;- ggplot(plot_data, aes(x=Intervention, y=InvSimpson,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position=&quot;jitter&quot;)+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y=&quot;Inverse Simpson&quot;,
+       title=&quot;Inverse Simpson by Study Week&quot;)+
+  guides(colour= guide_legend(title = &quot;Intervention&quot;))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = &quot;right&quot;,
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, &quot;lines&quot;))
+p6</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-6.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>  library(cowplot)
+  p1.leg &lt;- get_legend(p1)
+  p2.leg &lt;- get_legend(p2)
+  
+  p1.nl &lt;- p1 + theme(legend.position = &quot;none&quot;, plot.title = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  p2.nl &lt;- p2 + theme(legend.position = &quot;none&quot;, plot.title = element_blank(), axis.text.y = element_blank(),axis.text = element_blank(), axis.title = element_blank(), axis.ticks = element_blank())
+  p3.nl &lt;- p3 + theme(legend.position = &quot;none&quot;, plot.title = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank(), strip.text.x = element_blank())
+  p4.nl &lt;- p4 + theme(legend.position = &quot;none&quot;, plot.title = element_blank(), axis.text.y = element_blank(), axis.text.x = element_blank(), axis.title.y = element_blank(), axis.ticks = element_blank(), strip.text.x = element_blank())
+  p5.nl &lt;- p5 + theme(plot.title =  element_blank(), strip.text.x = element_blank(), legend.position=&quot;none&quot;)
+  p6.nl &lt;- p6 + theme(plot.title = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank(), axis.ticks.y = element_blank(), strip.text.x = element_blank(), legend.position=&quot;none&quot;)
+  
+  p &lt;- p1.nl +  p2.nl + p3.nl + p4.nl + p5.nl + p6.nl + plot_layout(nrow=3, ncol=2) 
+  p</code></pre>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-7.png" width="225%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>  #ggsave(&quot;fig/figure1.pdf&quot;, p, width=7.9,height=5, units=&quot;in&quot;)
+  
+  
+  bigplotlegend &lt;- plot_grid(p1.leg, p2.leg, nrow =1, align = &quot;h&quot;)</code></pre>
+<pre><code>Warning: Graphs cannot be horizontally aligned unless the axis parameter is set.
+Placing graphs unaligned.</code></pre>
+<pre class="r"><code>  #save_plot(&quot;fig/figure1_legend.pdf&quot;, bigplotlegend, base_width = 13.25, base_height = 5)</code></pre>
 </div>
 </div>
 <div id="intervention-effect" class="section level1">
@@ -782,7 +1123,7 @@ alpha diversity initial analysis
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   labs(x=&quot;Intervention Group&quot;)+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-7-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-10-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="shannon-index-2" class="section level3">
 <h3>Shannon Index</h3>
@@ -793,7 +1134,7 @@ alpha diversity initial analysis
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   labs(x=&quot;Intervention Group&quot;)+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-8-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-11-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="simpson-2" class="section level3">
 <h3>Simpson</h3>
@@ -803,7 +1144,7 @@ alpha diversity initial analysis
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   labs(x=&quot;Intervention Group&quot;)+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-12-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="changes-over-time" class="section level2">
@@ -819,7 +1160,7 @@ alpha diversity initial analysis
   labs(x=&quot;Intervention Group by Week&quot;)+
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-10-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-13-1.png" width="225%" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>ggplot(plot_data, aes(x=Week, y=Observed,
                       group=interaction(Intervention, SubjectID3),
                       color=SubjectID3, shape=Intervention))+
@@ -830,7 +1171,7 @@ alpha diversity initial analysis
   labs(x=&quot;Intervention Group by Week&quot;)+
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-10-2.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-13-2.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="shannon-index-3" class="section level3">
 <h3>Shannon Index</h3>
@@ -843,7 +1184,7 @@ alpha diversity initial analysis
   labs(x=&quot;Intervention Group by Week&quot;)+
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-11-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-14-1.png" width="225%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="simpson-3" class="section level3">
 <h3>Simpson</h3>
@@ -856,7 +1197,7 @@ alpha diversity initial analysis
   labs(x=&quot;Intervention Group by Week&quot;)+
   guides(colour= guide_legend(title = &quot;Intervention&quot;))+
   theme(axis.text.x = element_text(angle = 0, hjust=0.33))</code></pre>
-<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-12-1.png" width="225%" style="display: block; margin: auto;" /></p>
+<p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-15-1.png" width="225%" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -882,48 +1223,49 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] microbiome_1.8.0  car_3.0-7         carData_3.0-3     gvlma_1.0.0.3    
- [5] patchwork_1.0.0   viridis_0.5.1     viridisLite_0.3.0 gridExtra_2.3    
- [9] xtable_1.8-4      kableExtra_1.1.0  plyr_1.8.6        data.table_1.12.8
-[13] readxl_1.3.1      forcats_0.5.0     stringr_1.4.0     dplyr_0.8.5      
-[17] purrr_0.3.4       readr_1.3.1       tidyr_1.0.3       tibble_3.0.1     
-[21] ggplot2_3.3.0     tidyverse_1.3.0   lmerTest_3.1-2    lme4_1.1-23      
-[25] Matrix_1.2-18     vegan_2.5-6       lattice_0.20-38   permute_0.9-5    
-[29] phyloseq_1.30.0   workflowr_1.6.2  
+ [1] cowplot_1.0.0     microbiome_1.8.0  car_3.0-8         carData_3.0-4    
+ [5] gvlma_1.0.0.3     patchwork_1.0.0   viridis_0.5.1     viridisLite_0.3.0
+ [9] gridExtra_2.3     xtable_1.8-4      kableExtra_1.1.0  plyr_1.8.6       
+[13] data.table_1.12.8 readxl_1.3.1      forcats_0.5.0     stringr_1.4.0    
+[17] dplyr_0.8.5       purrr_0.3.4       readr_1.3.1       tidyr_1.1.0      
+[21] tibble_3.0.1      ggplot2_3.3.0     tidyverse_1.3.0   lmerTest_3.1-2   
+[25] lme4_1.1-23       Matrix_1.2-18     vegan_2.5-6       lattice_0.20-38  
+[29] permute_0.9-5     phyloseq_1.30.0   workflowr_1.6.2  
 
 loaded via a namespace (and not attached):
  [1] Rtsne_0.15          minqa_1.2.4         colorspace_1.4-1   
- [4] rio_0.5.16          ellipsis_0.3.0      rprojroot_1.3-2    
+ [4] rio_0.5.16          ellipsis_0.3.1      rprojroot_1.3-2    
  [7] XVector_0.26.0      fs_1.4.1            rstudioapi_0.11    
 [10] farver_2.0.3        fansi_0.4.1         lubridate_1.7.8    
 [13] xml2_1.3.2          codetools_0.2-16    splines_3.6.3      
 [16] knitr_1.28          ade4_1.7-15         jsonlite_1.6.1     
 [19] nloptr_1.2.2.1      broom_0.5.6         cluster_2.1.0      
-[22] dbplyr_1.4.3        compiler_3.6.3      httr_1.4.1         
-[25] backports_1.1.7     assertthat_0.2.1    cli_2.0.2          
-[28] later_1.0.0         htmltools_0.4.0     tools_3.6.3        
-[31] igraph_1.2.5        gtable_0.3.0        glue_1.4.1         
-[34] reshape2_1.4.4      Rcpp_1.0.4.6        Biobase_2.46.0     
-[37] cellranger_1.1.0    vctrs_0.3.0         Biostrings_2.54.0  
-[40] multtest_2.42.0     ape_5.3             nlme_3.1-144       
-[43] iterators_1.0.12    xfun_0.13           openxlsx_4.1.5     
-[46] rvest_0.3.5         lifecycle_0.2.0     statmod_1.4.34     
-[49] zlibbioc_1.32.0     MASS_7.3-51.5       scales_1.1.1       
-[52] hms_0.5.3           promises_1.1.0      parallel_3.6.3     
-[55] biomformat_1.14.0   rhdf5_2.30.1        curl_4.3           
-[58] yaml_2.2.1          stringi_1.4.6       S4Vectors_0.24.4   
-[61] foreach_1.5.0       BiocGenerics_0.32.0 zip_2.0.4          
-[64] boot_1.3-24         rlang_0.4.6         pkgconfig_2.0.3    
-[67] evaluate_0.14       Rhdf5lib_1.8.0      labeling_0.3       
-[70] tidyselect_1.1.0    magrittr_1.5        R6_2.4.1           
-[73] IRanges_2.20.2      generics_0.0.2      DBI_1.1.0          
-[76] foreign_0.8-75      pillar_1.4.4        haven_2.2.0        
-[79] whisker_0.4         withr_2.2.0         mgcv_1.8-31        
-[82] abind_1.4-5         survival_3.1-8      modelr_0.1.7       
-[85] crayon_1.3.4        rmarkdown_2.1       grid_3.6.3         
-[88] git2r_0.27.1        reprex_0.3.0        digest_0.6.25      
-[91] webshot_0.5.2       httpuv_1.5.2        numDeriv_2016.8-1.1
-[94] stats4_3.6.3        munsell_0.5.0      </code></pre>
+[22] dbplyr_1.4.4        BiocManager_1.30.10 compiler_3.6.3     
+[25] httr_1.4.1          backports_1.1.7     assertthat_0.2.1   
+[28] cli_2.0.2           later_1.0.0         htmltools_0.4.0    
+[31] tools_3.6.3         igraph_1.2.5        gtable_0.3.0       
+[34] glue_1.4.1          reshape2_1.4.4      Rcpp_1.0.4.6       
+[37] Biobase_2.46.0      cellranger_1.1.0    vctrs_0.3.0        
+[40] Biostrings_2.54.0   multtest_2.42.0     ape_5.3            
+[43] nlme_3.1-144        iterators_1.0.12    xfun_0.14          
+[46] openxlsx_4.1.5      rvest_0.3.5         lifecycle_0.2.0    
+[49] statmod_1.4.34      zlibbioc_1.32.0     MASS_7.3-51.5      
+[52] scales_1.1.1        hms_0.5.3           promises_1.1.0     
+[55] parallel_3.6.3      biomformat_1.14.0   rhdf5_2.30.1       
+[58] curl_4.3            yaml_2.2.1          stringi_1.4.6      
+[61] S4Vectors_0.24.4    foreach_1.5.0       BiocGenerics_0.32.0
+[64] zip_2.0.4           boot_1.3-24         rlang_0.4.6        
+[67] pkgconfig_2.0.3     evaluate_0.14       Rhdf5lib_1.8.0     
+[70] labeling_0.3        tidyselect_1.1.0    magrittr_1.5       
+[73] R6_2.4.1            IRanges_2.20.2      generics_0.0.2     
+[76] DBI_1.1.0           foreign_0.8-75      pillar_1.4.4       
+[79] haven_2.3.0         whisker_0.4         withr_2.2.0        
+[82] mgcv_1.8-31         abind_1.4-5         survival_3.1-8     
+[85] modelr_0.1.8        crayon_1.3.4        rmarkdown_2.1      
+[88] grid_3.6.3          blob_1.2.1          git2r_0.27.1       
+[91] reprex_0.3.0        digest_0.6.25       webshot_0.5.2      
+[94] httpuv_1.5.2        numDeriv_2016.8-1.1 stats4_3.6.3       
+[97] munsell_0.5.0      </code></pre>
 </div>
 </div>
 </div>

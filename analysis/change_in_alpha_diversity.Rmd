@@ -86,13 +86,24 @@ p
 
 ```{r}
 
-ggplot(plot_data, aes(x=SubjectID3, y=Shannon,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x="Subject ID")+
+p <- ggplot(plot_data, aes(x=SubjectID10, y=Shannon,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Shannon Index")+
   guides(colour= guide_legend(title = "Subject ID"))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))
-
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
 
 ```
 
@@ -100,12 +111,50 @@ ggplot(plot_data, aes(x=SubjectID3, y=Shannon,
 
 ```{r}
 
-ggplot(plot_data, aes(x=SubjectID3, y=Simpson,
-                      colour=SubjectID3, shape=Week))+
-  geom_point(size=2) +
-  labs(x="Subject ID")+
+p <- ggplot(plot_data, aes(x=SubjectID10, y=Simpson,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Simpson Index")+
   guides(colour= guide_legend(title = "Subject ID"))+
-  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
+
+```
+
+
+### Inverse Simpson
+
+```{r}
+
+p <- ggplot(plot_data, aes(x=SubjectID10, y=InvSimpson,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Inverse Simpson Index")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
 
 ```
 
@@ -117,14 +166,28 @@ ggplot(plot_data, aes(x=SubjectID3, y=Simpson,
 
 ```{r}
 
-ggplot(plot_data, aes(x=Week, y=Observed,
-                      colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
-  geom_point(size=2, position="jitter")+
-  labs(x="Week of Study")+
-  guides(colour= guide_legend(title = "Subject ID"))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
-
+p <- ggplot(plot_data, aes(x=Intervention, y=Observed,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Observed OTUs",
+       title="Observed OTUs by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
 
 ```
 
@@ -132,13 +195,28 @@ ggplot(plot_data, aes(x=Week, y=Observed,
 
 ```{r}
 
-ggplot(plot_data, aes(x=Week, y=Shannon, colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,aes(group=Week))+
-  geom_point(size=2, position="jitter")+
-  labs(x="Week of Study", y="Shannon Index")+
-  guides(colour= guide_legend(title = "Subject ID"))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
-
+p <- ggplot(plot_data, aes(x=Intervention, y=Shannon,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Shannon Index",
+       title="Shannon Index by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
 
 ```
 
@@ -146,14 +224,57 @@ ggplot(plot_data, aes(x=Week, y=Shannon, colour=SubjectID3))+
 
 ```{r}
 
-ggplot(plot_data, aes(x=Week, y=Simpson, colour=SubjectID3))+
-  geom_boxplot(outlier.alpha = 0,
-               aes(group=Week))+
-  geom_point(size=2, position="jitter")+
-  labs(x="Week of Study", y="Simpson")+
-  guides(colour= guide_legend(title = "Subject ID"))+
-  theme(axis.text.x = element_text(angle = 0, hjust=0.33))
+p <- ggplot(plot_data, aes(x=Intervention, y=Simpson,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Simpson",
+       title="Simpson by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
 
+```
+
+### Inverse Simpson
+
+```{r}
+
+p <- ggplot(plot_data, aes(x=Intervention, y=InvSimpson,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Inverse Simpson",
+       title="Inverse Simpson by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p
 
 ```
 
@@ -166,7 +287,7 @@ p1 <- ggplot(plot_data, aes(x=SubjectID10, y=Observed,
                       colour=SubjectID10, shape=Week))+
   geom_point(size=3) +
   facet_grid(.~Intervention2, scales = "free")+
-  labs(x="Subject ID", y= "Observed OTUs", tag="A",
+  labs(x="Subject ID", y= "Observed OTUs",
        title="Observed OTUs by Participants")+
   guides(colour= guide_legend(title = "Subject ID"))+
   scale_colour_manual(values = cols)+
@@ -190,7 +311,7 @@ p2 <- ggplot(plot_data, aes(x=Intervention, y=Observed,
   geom_point(size=3, position="jitter")+
   facet_wrap(.~Week, nrow=1)+
   labs(x=NULL, y="Observed OTUs",
-       tag="B", title="Observed OTUs by Study Week")+
+       title="Observed OTUs by Study Week")+
   guides(colour= guide_legend(title = "Intervention"))+
   scale_colour_manual(values = cols)+
   theme(panel.grid = element_blank(),
@@ -206,21 +327,114 @@ p2 <- ggplot(plot_data, aes(x=Intervention, y=Observed,
         panel.spacing.x=unit(0.001, "lines"))
 p2 
 
+p3 <- ggplot(plot_data, aes(x=SubjectID10, y=Shannon,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Shannon Index",
+       title="Shannon Index by Participants")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p3
+
+p4 <- ggplot(plot_data, aes(x=Intervention, y=Shannon,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Shannon Index",
+       title="Shannon Index by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p4
+
+p5 <- ggplot(plot_data, aes(x=SubjectID10, y=InvSimpson,
+                      colour=SubjectID10, shape=Week))+
+  geom_point(size=3) +
+  facet_grid(.~Intervention2, scales = "free")+
+  labs(x="Subject ID", y= "Inverse Simpson", 
+       title="Inverse Simpson by Participants")+
+  guides(colour= guide_legend(title = "Subject ID"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p5
+
+p6 <- ggplot(plot_data, aes(x=Intervention, y=InvSimpson,
+                            colour=Intervention,
+                            group=Intervention))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_point(size=3, position="jitter")+
+  facet_wrap(.~Week, nrow=1)+
+  labs(x=NULL, y="Inverse Simpson",
+       title="Inverse Simpson by Study Week")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "right",
+        #legend.text = element_text(size = 7),
+        #legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines"))
+p6
+
+
   library(cowplot)
   p1.leg <- get_legend(p1)
   p2.leg <- get_legend(p2)
   
-  p1.nl <- p1 + theme(legend.position = "none")
-  p2.nl <- p2 + theme(legend.position = "none")
+  p1.nl <- p1 + theme(legend.position = "none", plot.title = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  p2.nl <- p2 + theme(legend.position = "none", plot.title = element_blank(), axis.text.y = element_blank(),axis.text = element_blank(), axis.title = element_blank(), axis.ticks = element_blank())
+  p3.nl <- p3 + theme(legend.position = "none", plot.title = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank(), strip.text.x = element_blank())
+  p4.nl <- p4 + theme(legend.position = "none", plot.title = element_blank(), axis.text.y = element_blank(), axis.text.x = element_blank(), axis.title.y = element_blank(), axis.ticks = element_blank(), strip.text.x = element_blank())
+  p5.nl <- p5 + theme(plot.title =  element_blank(), strip.text.x = element_blank(), legend.position="none")
+  p6.nl <- p6 + theme(plot.title = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank(), axis.ticks.y = element_blank(), strip.text.x = element_blank(), legend.position="none")
   
-  p <- p1.nl + p2.nl + plot_layout(nrow=1) 
+  p <- p1.nl +  p2.nl + p3.nl + p4.nl + p5.nl + p6.nl + plot_layout(nrow=3, ncol=2) 
   p
-  ggsave("fig/figure1.pdf", p, width=7.9,height=5, units="in")
+  #ggsave("fig/figure1.pdf", p, width=7.9,height=5, units="in")
   
   
   bigplotlegend <- plot_grid(p1.leg, p2.leg, nrow =1, align = "h")
   
-  save_plot("fig/figure1_legend.pdf", bigplotlegend, base_width = 13.25, base_height = 5)
+  #save_plot("fig/figure1_legend.pdf", bigplotlegend, base_width = 13.25, base_height = 5)
 
 ```
 

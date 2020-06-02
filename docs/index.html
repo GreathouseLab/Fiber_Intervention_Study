@@ -307,7 +307,7 @@ $(document).ready(function () {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -316,7 +316,7 @@ $(document).ready(function () {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -325,10 +325,10 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-21
+<strong>Last updated:</strong> 2020-06-01
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Fiber_Intervention_Study/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -344,28 +344,28 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreed576bdd545993e873d4cfc2ec113c299a470ce20targetblankd576bdda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/d576bdd545993e873d4cfc2ec113c299a470ce20" target="_blank">d576bdd</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreed576bdd545993e873d4cfc2ec113c299a470ce20targetblankd576bdda" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/d576bdd545993e873d4cfc2ec113c299a470ce20" target="_blank">d576bdd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -379,14 +379,44 @@ Ignored files:
     Ignored:    reference-papers/Johnson_2019.pdf
 
 Untracked files:
+    Untracked:  analysis/glme_microbiome.Rmd
+    Untracked:  fig/figure-current-to-share.zip
+    Untracked:  fig/figure-current-to-share/
+    Untracked:  fig/figure1_alpha_diversity.pdf
+    Untracked:  fig/figure2_individual_beta_diversity_over_study.pdf
+    Untracked:  fig/figure3_PCoA_analysis_results_beta_diversity_between_groups.pdf
+    Untracked:  fig/figure4_final_microbiome_diet_variables_over_time.pdf
+    Untracked:  fig/glmm_res.pdf
+    Untracked:  fig/glmm_res.png
+    Untracked:  fig/microbiome_abundance_glmm_results.pdf
+    Untracked:  manuscript/
     Untracked:  tab/
 
 Unstaged changes:
-    Modified:   fig/figure1.pdf
+    Modified:   README.md
+    Modified:   analysis/alpha_diversity.Rmd
+    Modified:   analysis/change_in_alpha_diversity.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/lme_alpha.Rmd
+    Deleted:    analysis/lme_microbiome.Rmd
+    Modified:   code/load_packages.R
+    Modified:   code/microbiome_statistics_and_functions.R
+    Deleted:    fig/figure1.pdf
     Modified:   fig/figure1_legend.pdf
-    Modified:   fig/figure2.pdf
-    Modified:   fig/figure3.pdf
+    Deleted:    fig/figure2.pdf
+    Deleted:    fig/figure3.pdf
     Modified:   fig/figure3_legend.pdf
+    Deleted:    fig/figure4_final.pdf
+    Modified:   fig/predicted_Actinobacteria_model5.png
+    Modified:   fig/predicted_Bacteroidetes_model5.png
+    Modified:   fig/predicted_Cyanobacteria_model5.png
+    Modified:   fig/predicted_Euryarchaeota_model5.png
+    Modified:   fig/predicted_Firmicutes_model5.png
+    Modified:   fig/predicted_Fusobacteria_model5.png
+    Modified:   fig/predicted_Lentisphaerae_model5.png
+    Modified:   fig/predicted_Proteobacteria_model5.png
+    Modified:   fig/predicted_Tenericutes_model5.png
+    Modified:   fig/predicted_Verrucomicrobia_model5.png
 
 </code></pre>
 <p>
@@ -425,6 +455,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/0733fe5f2e02349ca3c892ef7dea9cd866468dc7/docs/index.html" target="_blank">0733fe5</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-05-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -807,31 +854,28 @@ Start workflowr project.
 </div>
 </div>
 <p>Welcome to our research website. This page will contain links to the results pages from our study.</p>
-<p>Describing the data:</p>
+<p>Describing the data and pre-processing steps.</p>
 <p>*<a href="summary_stats.html">Data Summary Statistics</a></p>
 <p>*<a href="data_processing.html">Data Pre-Processing</a></p>
 <div id="analyses" class="section level1">
 <h1>Analyses</h1>
-<p>*<a href="analysis_anthropometric.html">Anthropometric Differences</a></p>
-<p>*<a href="microbiome_diet_trends.html">Microbiome and Diet Trends over Time</a></p>
-<p>*<a href="analysis_blood_data.html">Blood Measure Analyses</a></p>
-<div id="diet-data" class="section level2">
-<h2>Diet Data</h2>
-<p>*<a href="dietary_intake_figure.html">Dietary Data Over Time</a></p>
-</div>
+<p>*<a href="analysis_anthropometric.html">Anthropometric Differences</a> This page gives the results of testing the changes in anthropometric variables (BMI, LBM, VFL, Weight) between the beginning and end of the study.</p>
+<p>*<a href="analysis_blood_data.html">Clinical Measure Analyses</a> This page tests the changes in clinical measures (e.g., Glucose, BUN, Creatinine, Chloride, HDL, Insulin, <strong>PYY</strong>, etc.). In summary, no significance differences were detectable after controlling for multiple comparisons.</p>
+<p>*<a href="microbiome_diet_trends.html">Microbiome and Diet Trends over Time</a> This file gives the code that generates Figure 4: the plot describing the change in microbiome relative abundance (phylum-level) over time and the change in diet variables over time.</p>
 <div id="alpha-diversity" class="section level2">
 <h2>Alpha Diversity</h2>
-<p>*<a href="alpha_diversity.html">Alpha Diversity Figures</a></p>
-<p>*<a href="lme_alpha.html">Modeling Changes in Alpha Diversity</a></p>
+<p>Alpha diversity was measures using richness (Observed OTUs) and evenness (Shannon and Inverse Simpson).</p>
+<p>*<a href="alpha_diversity.html">Alpha Diversity Figures</a> This first page gives general overview of how alpha diversity metrics varied among subjects, between intervention groups, and over time. No statistical analyses were conducted, these were helpful for getting a sense of how alpha diversity varied prior to moving into analyses.</p>
+<p>*<a href="lme_alpha.html">Modeling Changes in Alpha Diversity</a> On this page, we conducted more formal investigations of changes in alpha diversity using linear mixed effects models. These results were inconclusive as to the effect of the intervention on alpha diversity metrics.</p>
 </div>
 <div id="beta-diversity" class="section level2">
 <h2>Beta Diversity</h2>
-<p>*<a href="analysis_beta_diversity.html">Beta Diversity Analyses</a></p>
+<p>*<a href="analysis_beta_diversity.html">Beta Diversity Analyses</a> This page describes the beta-diversity analyses used and the results of PERMANOVAs.</p>
 </div>
 <div id="microbiome-adundance-analysis" class="section level2">
 <h2>Microbiome Adundance Analysis</h2>
-<p>*<a href="lme_microbiome.html">Modeling Changes in Phylum Abundance</a></p>
-<p>*<a href="microbiome_food.html">Microbiome and Food</a></p>
+<p>*<a href="glme_microbiome.html">Modeling Changes in Phylum Abundance</a> This page describe the models and results used to test the changes in microbiome abundance over time. We used generalized linear mixed effects models. In summary, eight separate models were hypothesized and tested and final results are presented describing which microbiome (phylum-level) abundances changed over time with respect to the intervention. The results presented in text are from model 6 (the last set of results presented).</p>
+<p>*<a href="microbiome_food.html">Microbiome and Food Plot</a> This page descibes the relationships between microbiome abundance and different food metrics (HEI scores).</p>
 </div>
 </div>
 

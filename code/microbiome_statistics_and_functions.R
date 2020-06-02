@@ -979,7 +979,7 @@ summarize_genera <- function(mydata, model.var = NULL, transform = T,
 # n.dec = number of decimals to display in output, default = 6
 # plot.fit.res = logical whether to print the plot of the fitted versus residuals
 # plot.predict = logical for whether to plot the predicted values (versus time)
-glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model = "1 + (1|SubjectID)", n.dec = 5,  plot.fit.res=T, plot.predict=T, transform=F, transform.func = "sqrt", model.number=0){
+glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model = "1 + (1|SubjectID)", n.dec = 5,  plot.fit.res=T, plot.predict=T, transform=F, transform.func = "sqrt", model.number=0, save.plot=F){
   # mydata <- microbiome_data
   # transform <- F
   # transform.func <- 'sqrt'
@@ -1165,16 +1165,41 @@ glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model 
           idat <- idat %>% mutate(Week = (as.numeric(Week)-1)*4)
 
           lty <- c("Fitted"="solid", "Observed"="dashed")
-          p <- ggplot(idat, aes(Week, Outcome, group=SubjectID,color=Intervention))+
+          p1 <- ggplot(idat, aes(Week, Outcome, group=SubjectID,color=Intervention))+
             geom_line(aes(linetype="Observed"))+
+            geom_point(alpha=0.5) +
+            scale_x_continuous(breaks=c(0,4,8,12))+
+            scale_linetype_manual(values=lty, name=" ")+
+            labs(y=" ",
+                 title=paste0("Change over time in ", taxa.level, ": ", bug.list[i]),
+                 subtitle = "Observed Trend Lines - will be jagged") +
+            theme(legend.position = "bottom")
+          p2 <- ggplot(idat, aes(Week, Outcome, group=SubjectID,color=Intervention))+
             geom_line(aes(y=fit, linetype="Fitted"))+
             geom_point(alpha=0.5) +
             scale_x_continuous(breaks=c(0,4,8,12))+
             scale_linetype_manual(values=lty, name=" ")+
-            labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i])) +
+            labs(y=" ",title=paste0("Change over time in ", taxa.level, ": ", bug.list[i]),
+                 subtitle = "Predicted Trend Lines") +
             theme(legend.position = "bottom")
+          # plot intervention group lines
+          idat$PRED <- predict(fit, re.form=NA)
+
+          p3 <- ggplot(idat, aes(Week, PRED, color=Intervention, group=SubjectID))+
+            geom_point(alpha=0.5)+
+            geom_line() +
+            scale_x_continuous(breaks=c(0,4,8,12))+
+            labs(y="log(Abundance)",
+                 title=paste0("Change over time in ", taxa.level, ": ", bug.list[i]),
+                 subtitle = "Intervention Group Average Trend Lines") +
+            theme(legend.position = "bottom")
+
+          p <- (p1 + p2)/p3
           print(p)
-          ggsave(paste0("fig/predicted_",bug.list[i],"_model",model.number,".png"), plot=p, width=5, height=3, units="in")
+
+          if(save.plot == T){
+            ggsave(paste0("fig/predicted_",bug.list[i],"_model",model.number,".png"), plot=p, width=5, height=3, units="in")
+          }
         }
 
         fit.out <- summary(fit)
@@ -1191,7 +1216,7 @@ glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model 
         cat("\n\n")
         cat("Random Effects (SD on log scale)\n\n")
         print(fit.re)
-        cat("\nSignificance test not available")
+        cat("\nSignificance test not available for random effects")
 
       } # End run Poisson generalized linear mixed model
 
@@ -1256,7 +1281,7 @@ glmm_microbiome <- function(mydata, taxa.level="Phylum", link = 'normal', model 
         cat("\n\n")
         cat("Random Effects (SD on log scale)\n\n")
         print(fit.re)
-        cat("\nSignificance test not available")
+        cat("\nSignificance test not available for random effects")
 
       } # End run Negative Binomial generalized linear mixed model
 

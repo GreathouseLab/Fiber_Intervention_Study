@@ -18,7 +18,14 @@
 # Set up directory and libraries
 rm(list=ls())
 
-# biomanager
+# BiocManager "bioconductor manager"
+if (!requireNamespace("BiocManager", quietly = TRUE)){
+  install.packages("BiocManager")
+}
+# check if phyloseq is installed:
+if(!requireNamespace("phyloseq", quietly=T)){
+  BiocManager::install("phyloseq")
+}
 
 
 # list of packages
@@ -26,9 +33,10 @@ packages <- c("phyloseq","vegan", "lme4", "lmerTest",
               "tidyverse", "readr", "readxl", "forcats",
               "data.table", "plyr", "ggplot2",
               "kableExtra", "xtable", "gridExtra", "viridis",
-              "patchwork", "gvlma", "car", "dplyr", "microbiome")
+              "patchwork", "gvlma", "car", "dplyr", "microbiome",
+              "cowplot")
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+if(length(new.packages)) install.packages(new.packages, quiet = T, dependencies = T)
 # Load packages
 lapply(packages, library, character.only = TRUE)
 
