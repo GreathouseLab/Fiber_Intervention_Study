@@ -242,6 +242,8 @@ summary(gvmodel)
 
 No significant difference found.
 
+
+
 ### Difference Scores of BMI
 
 Test for significant differences after intervention
@@ -280,6 +282,48 @@ summary(gvmodel)
 ```
 
 Therefore, we have evidence that BMI is not effected by Prebiotic vs. placebo.
+
+
+### Figure 6 changes in BMI
+
+```{r}
+
+cols <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#a6538a",  "#83008c", "#f29d3d","#a3d936", "#300059", "#566573", "#336655",  "#d9a3aa", "#400009", "#0020f2",  "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040",  "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339", "#402910")
+
+
+weight.dat <- filter(plot.data, Variable %in% c("BMI_pre", "BMI_post"))
+
+weight.dat$time <- ifelse(weight.dat$Variable == "BMI_pre", "Pre", "Post")
+weight.dat$time <- factor(weight.dat$time, levels=c("Pre", "Post"), ordered=T)
+
+weight.dat$ID <- factor(weight.dat$SubjectID, levels=unique(weight.dat$SubjectID), labels=1:length(unique(weight.dat$SubjectID)))
+
+p <- ggplot(weight.dat, aes(time, value, group=ID, color=ID, shape=Intervention)) +
+  geom_line()+
+  geom_point(size=3)+
+  geom_hline(yintercept = 25, color="red")+
+  geom_hline(yintercept = 30, color="red")+
+  labs(y="BMI", x=NULL,
+       title="Change in BMI from pre to post")+
+  lims(y=c(20,32))+
+  scale_color_manual(values=cols)+
+  annotate("text", x=0.75, y=23, label="Normal")+
+  annotate("text", x=0.75, y=27.5, label="Overweight")+
+  annotate("text", x=0.75, y=31, label="Obese")+
+  theme(panel.grid = element_blank(),
+        axis.text.y = element_text(size=11),
+        axis.text.x = element_text(size=11),
+        axis.title.y = element_text(size=13),
+        axis.title.x = element_blank())
+p
+
+ggsave("fig/figure6.pdf", p, width=5,height=6, units="in")
+  
+
+#write.csv(weight.dat, paste0(w.d, "/tab/change_BMI.csv"))
+
+```
+
 
 ## Lean Body Mass (LBM)
 

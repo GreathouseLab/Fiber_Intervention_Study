@@ -337,7 +337,6 @@ kable(model6.results, format="html", digits=3)%>%
 
 ## Nice Plot
 
-
 ```{r}
 
 N <- nrow(microbiome_data$meta.dat)
@@ -395,7 +394,7 @@ for(i in 1:length(PH)){
     scale_x_continuous(breaks=c(0,4,8,12))+
     scale_y_continuous(limits=c(-5,10), breaks=seq(-5,10,2.5))+
     labs(y="log(Abundance)", title=paste0(PH[i])) +
-    annotate("text", x=4, y=10, label=paste0("p-value ", pv))+
+    annotate("text", x=6, y=10, label=paste0("p-value ", pv))+
     theme_classic() +
     theme(legend.position = "none")
 }
@@ -435,6 +434,6 @@ p <- (pL[[1]] + pL[[2]] + pL[[3]] + pL[[4]] + pL[[5]] + pL[[6]] + pL[[7]] + pL[[
 
 p
 
-#ggsave("fig/microbiome_abundance_glmm_results.pdf", p, units="in", width=10, height=4)
+#ggsave("fig/figure5_glmm.pdf", p, units="in", width=10, height=4)
 
 ```

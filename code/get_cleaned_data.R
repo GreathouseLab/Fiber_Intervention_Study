@@ -17,11 +17,11 @@ source("code/microbiome_statistics_and_functions.R")
 
 # read in analysis
 # from data-for-analaysis tab of
-analysis_data <- read_xlsx("data/analysis-data/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
+analysis_data <- readxl::read_xlsx("data/analysis-data/Data_Fiber_2020_02_06.xlsx", sheet="DataforAnalysis",na = ".")
 colnames(analysis_data) <- c("SubjectID", colnames(analysis_data)[2:72])
 
-hei_data <- read_xlsx("data/analysis-data/FFQ_HEI_Fiber.xlsx")
-asa24_data <- read_xlsx("data/analysis-data/ASA24_fiber_F_V_intake_by_week.xlsx")
+hei_data <- readxl::read_xlsx("data/analysis-data/FFQ_HEI_Fiber.xlsx")
+asa24_data <- readxl::read_xlsx("data/analysis-data/ASA24_fiber_F_V_intake_by_week.xlsx")
 asa24_data$Week <- fct_recode(factor(asa24_data$RecallNo), "1"="1", "4"="2", "8"="3", "12"="4")
 #asa24_data$Week <- factor(recode(asa24_data$RecallNo, `1`=1, `2`=4, `3`=8, `4`=12))
 

@@ -346,6 +346,8 @@ food_data <- sweep(food_data, 2, colSums(food_data), '/')
 food_data <- food_data[order(rowMeans(food_data), decreasing = F),]
 rn <- rownames(food_data)
 #food_data <- food_data[ rn[c(1:8, 10, 9)], ]
+food_data$RowMeans <- rowMeans(food_data)
+
 
 # make food ordering factor
 food_ord_factor <- as.character(rownames(food_data))
@@ -372,13 +374,15 @@ plot3$Food <- factor(plot3$Food, levels = rev(food_ord_factor))
 # set seed to get nice colors
 set.seed(3)
 
+plot3 %>%
+  dplyr::group_by(Week, SubjectID) %>%
+  dplyr::summarise(RA = sum(value))
+
 # get right number of colors for plotting
 no_cols <- length(unique(plot3$Food))
 
 ## Some Colors
 colors_food <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339", "grey90")
-
-plot3$value <- sqrt(plot3$value)
 
 # make the plot
 nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
@@ -414,6 +418,37 @@ nutr_plot
 
 
 ```
+
+
+A double check on nutrient ordering
+
+```{r}
+
+diet.data <- read_xlsx("data/analysis-data/Dietary_Variables.xlsx")
+diet.data <- diet.data %>%
+  mutate(SubjectID = as.numeric(substr(SubjectID, 7,11)),
+         Week = RecallNo)
+
+food_var <- colnames(diet.data)[14:54]
+
+food_data <- as_tibble(diet.data[, c("SubjectID", "Week", food_var)])
+
+
+food_data <- food_data %>%
+  mutate(rowsum = rowSums(.[,-1:-2]))
+
+food_data[, food_var] <- food_data[, food_var]/food_data$rowsum
+
+kable(food_data, format="html", digits=3) %>%
+  kable_styling(full_width = T)%>%
+  scroll_box(width = "100%", height = "400px")
+
+out <- food_data[, food_var] %>%
+  mutate(rowsum = rowSums(.))
+out$rowsum
+
+```
+
 
 
 ## Saving plot

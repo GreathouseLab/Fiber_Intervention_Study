@@ -402,7 +402,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-06-01
+<strong>Last updated:</strong> 2020-06-08
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -426,7 +426,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -493,16 +493,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree774d405c37337775444bd4e6b7b8f207c8c4ac02targetblank774d405a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/774d405c37337775444bd4e6b7b8f207c8c4ac02" target="_blank">774d405</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree774d405c37337775444bd4e6b7b8f207c8c4ac02targetblank774d405a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/774d405c37337775444bd4e6b7b8f207c8c4ac02" target="_blank">774d405</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -516,43 +516,30 @@ Ignored files:
     Ignored:    reference-papers/Johnson_2019.pdf
 
 Untracked files:
-    Untracked:  analysis/glme_microbiome.Rmd
-    Untracked:  fig/figure-current-to-share.zip
-    Untracked:  fig/figure-current-to-share/
-    Untracked:  fig/figure1_alpha_diversity.pdf
-    Untracked:  fig/figure2_individual_beta_diversity_over_study.pdf
-    Untracked:  fig/figure3_PCoA_analysis_results_beta_diversity_between_groups.pdf
-    Untracked:  fig/figure4_final_microbiome_diet_variables_over_time.pdf
-    Untracked:  fig/glmm_res.pdf
-    Untracked:  fig/glmm_res.png
-    Untracked:  fig/microbiome_abundance_glmm_results.pdf
-    Untracked:  manuscript/
-    Untracked:  tab/
+    Untracked:  fig/fig/
+    Untracked:  fig/figure2.pdf
+    Untracked:  fig/figure3.pdf
+    Untracked:  fig/figure5_glmm.pdf
+    Untracked:  fig/figure6.pdf
+    Untracked:  renv/
+    Untracked:  tab/figure6_data_change_BMI.csv
+    Untracked:  tab/sample_size_summary.xlsx
+    Untracked:  tab/table_1_results.csv
 
 Unstaged changes:
-    Modified:   README.md
-    Modified:   analysis/change_in_alpha_diversity.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/lme_alpha.Rmd
-    Deleted:    analysis/lme_microbiome.Rmd
-    Modified:   code/load_packages.R
-    Modified:   code/microbiome_statistics_and_functions.R
-    Deleted:    fig/figure1.pdf
-    Modified:   fig/figure1_legend.pdf
-    Deleted:    fig/figure2.pdf
-    Deleted:    fig/figure3.pdf
+    Deleted:    .Rprofile
+    Modified:   analysis/analysis_anthropometric.Rmd
+    Modified:   analysis/analysis_beta_diversity.Rmd
+    Modified:   analysis/analysis_blood_data.Rmd
+    Modified:   analysis/glme_microbiome.Rmd
+    Modified:   analysis/microbiome_diet_trends.Rmd
+    Modified:   analysis/summary_stats.Rmd
+    Modified:   code/get_cleaned_data.R
+    Modified:   fig/figure3_PCoA_analysis_results_beta_diversity_between_groups.pdf
     Modified:   fig/figure3_legend.pdf
-    Deleted:    fig/figure4_final.pdf
-    Modified:   fig/predicted_Actinobacteria_model5.png
-    Modified:   fig/predicted_Bacteroidetes_model5.png
-    Modified:   fig/predicted_Cyanobacteria_model5.png
-    Modified:   fig/predicted_Euryarchaeota_model5.png
-    Modified:   fig/predicted_Firmicutes_model5.png
-    Modified:   fig/predicted_Fusobacteria_model5.png
-    Modified:   fig/predicted_Lentisphaerae_model5.png
-    Modified:   fig/predicted_Proteobacteria_model5.png
-    Modified:   fig/predicted_Tenericutes_model5.png
-    Modified:   fig/predicted_Verrucomicrobia_model5.png
+    Modified:   fig/figure4.pdf
+    Modified:   fig/figure4_legend.pdf
+    Modified:   fig/microbiome_abundance_glmm_results.pdf
 
 </code></pre>
 <p>
@@ -565,9 +552,69 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/glme_microbiome.Rmd</code>) and HTML (<code>docs/glme_microbiome.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/blob/774d405c37337775444bd4e6b7b8f207c8c4ac02/analysis/glme_microbiome.Rmd" target="_blank">774d405</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-06-01
+</td>
+<td>
+updated glmm and figures
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/774d405c37337775444bd4e6b7b8f207c8c4ac02/docs/glme_microbiome.html" target="_blank">774d405</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-06-01
+</td>
+<td>
+updated glmm and figures
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -602,7 +649,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -627,7 +674,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -652,7 +699,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -677,7 +724,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -702,7 +749,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -727,7 +774,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -752,7 +799,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -777,7 +824,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -802,7 +849,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -827,7 +874,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + (1 | SubjectID)
-&lt;environment: 0x00000000423f36d8&gt;
+&lt;environment: 0x0000000039a83130&gt;
 
 Link:    poisson
 
@@ -864,7 +911,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}*(Week)_{ij}+ r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -890,7 +937,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -916,7 +963,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -942,7 +989,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -968,7 +1015,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -994,7 +1041,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -1020,7 +1067,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -1046,7 +1093,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -1072,7 +1119,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -1098,7 +1145,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + time + (1 | SubjectID)
-&lt;environment: 0x000000003cf34f80&gt;
+&lt;environment: 0x000000002647e510&gt;
 
 Link:    poisson
 
@@ -1138,7 +1185,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}*(Week)_{ij} + r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1165,7 +1212,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1192,7 +1239,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1219,7 +1266,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1246,7 +1293,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1273,7 +1320,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1300,7 +1347,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1327,7 +1374,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1354,7 +1401,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1381,7 +1428,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + time + female + (1 | SubjectID)
-&lt;environment: 0x00000000389f9300&gt;
+&lt;environment: 0x0000000042324068&gt;
 
 Link:    poisson
 
@@ -1422,7 +1469,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}*(Week)_{ij}+ r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1449,7 +1496,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1476,7 +1523,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1503,7 +1550,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1530,7 +1577,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1557,7 +1604,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1584,7 +1631,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1611,7 +1658,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1638,7 +1685,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1665,7 +1712,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004956b728&gt;
+&lt;environment: 0x0000000032a122d0&gt;
 
 Link:    poisson
 
@@ -1710,7 +1757,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}*(Week)_{ij} + r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1737,7 +1784,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1764,7 +1811,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1791,7 +1838,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson</code></pre>
 <pre><code>Warning in checkConv(attr(opt, &quot;derivs&quot;), opt$par, ctrl = control$checkConv, :
@@ -1820,7 +1867,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1847,7 +1894,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1874,7 +1921,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1901,7 +1948,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1928,7 +1975,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1955,7 +2002,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + intB + time + (1 | SubjectID)
-&lt;environment: 0x000000004ba5a898&gt;
+&lt;environment: 0x000000000b45e6b0&gt;
 
 Link:    poisson
 
@@ -1998,7 +2045,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}(Week)_{ij}  + r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2026,7 +2073,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2054,7 +2101,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2082,7 +2129,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson</code></pre>
 <pre><code>Warning in checkConv(attr(opt, &quot;derivs&quot;), opt$par, ctrl = control$checkConv, :
@@ -2112,7 +2159,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2140,7 +2187,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2168,7 +2215,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2196,7 +2243,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2224,7 +2271,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2252,7 +2299,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + intB + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x0000000048718e90&gt;
+&lt;environment: 0x0000000006f76b18&gt;
 
 Link:    poisson
 
@@ -2293,7 +2340,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}(Week)_{ij}+ r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2320,7 +2367,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2347,7 +2394,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2374,7 +2421,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2401,7 +2448,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2428,7 +2475,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2455,7 +2502,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2482,7 +2529,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2509,7 +2556,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2536,7 +2583,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + time + intB:time + (1 | SubjectID)
-&lt;environment: 0x00000000503e1120&gt;
+&lt;environment: 0x00000000471e04d0&gt;
 
 Link:    poisson
 
@@ -2575,7 +2622,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}(Week)_{ij}  + r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2603,7 +2650,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2631,7 +2678,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2659,7 +2706,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2687,7 +2734,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2715,7 +2762,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2743,7 +2790,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2771,7 +2818,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2799,7 +2846,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2827,7 +2874,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + time + intB:time + female + (1 | SubjectID)
-&lt;environment: 0x0000000037d30f28&gt;
+&lt;environment: 0x000000003b19cfa0&gt;
 
 Link:    poisson
 
@@ -2867,7 +2914,7 @@ h\left(Y_{ij}\right)&amp;=\beta_{0j} + \beta_{1j}(Week)_{ij}  + r_{ij}\\
 #########################################
 #########################################
 Model:  Actinobacteria ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -2895,7 +2942,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Bacteroidetes ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -2923,7 +2970,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Cyanobacteria ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -2951,7 +2998,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Euryarchaeota ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson</code></pre>
 <pre><code>Warning in checkConv(attr(opt, &quot;derivs&quot;), opt$par, ctrl = control$checkConv, :
@@ -2981,7 +3028,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Firmicutes ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -3009,7 +3056,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Fusobacteria ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -3037,7 +3084,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Lentisphaerae ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -3065,7 +3112,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Proteobacteria ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -3093,7 +3140,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Tenericutes ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -3121,7 +3168,7 @@ Significance test not available for random effects
 #########################################
 #########################################
 Model:  Verrucomicrobia ~ 1 + time + intB:time + hispanic + (1 | SubjectID)
-&lt;environment: 0x000000004dcf9490&gt;
+&lt;environment: 0x000000002fad7b00&gt;
 
 Link:    poisson
 
@@ -3735,7 +3782,7 @@ for(i in 1:length(PH)){
     scale_x_continuous(breaks=c(0,4,8,12))+
     scale_y_continuous(limits=c(-5,10), breaks=seq(-5,10,2.5))+
     labs(y=&quot;log(Abundance)&quot;, title=paste0(PH[i])) +
-    annotate(&quot;text&quot;, x=4, y=10, label=paste0(&quot;p-value &quot;, pv))+
+    annotate(&quot;text&quot;, x=6, y=10, label=paste0(&quot;p-value &quot;, pv))+
     theme_classic() +
     theme(legend.position = &quot;none&quot;)
 }
@@ -3775,7 +3822,7 @@ p &lt;- (pL[[1]] + pL[[2]] + pL[[3]] + pL[[4]] + pL[[5]] + pL[[6]] + pL[[7]] + p
 
 p</code></pre>
 <p><img src="figure/glme_microbiome.Rmd/unnamed-chunk-12-1.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>#ggsave(&quot;fig/microbiome_abundance_glmm_results.pdf&quot;, p, units=&quot;in&quot;, width=10, height=4)</code></pre>
+<pre class="r"><code>#ggsave(&quot;fig/figure5_glmm.pdf&quot;, p, units=&quot;in&quot;, width=10, height=4)</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -3808,42 +3855,43 @@ other attached packages:
 [17] dplyr_0.8.5       purrr_0.3.4       readr_1.3.1       tidyr_1.1.0      
 [21] tibble_3.0.1      ggplot2_3.3.0     tidyverse_1.3.0   lmerTest_3.1-2   
 [25] lme4_1.1-23       Matrix_1.2-18     vegan_2.5-6       lattice_0.20-38  
-[29] permute_0.9-5     phyloseq_1.30.0   workflowr_1.6.2  
+[29] permute_0.9-5     phyloseq_1.30.0  
 
 loaded via a namespace (and not attached):
- [1] Rtsne_0.15          minqa_1.2.4         colorspace_1.4-1   
- [4] rio_0.5.16          ellipsis_0.3.1      rprojroot_1.3-2    
- [7] XVector_0.26.0      fs_1.4.1            rstudioapi_0.11    
-[10] farver_2.0.3        fansi_0.4.1         lubridate_1.7.8    
-[13] xml2_1.3.2          codetools_0.2-16    splines_3.6.3      
-[16] knitr_1.28          ade4_1.7-15         jsonlite_1.6.1     
-[19] nloptr_1.2.2.1      broom_0.5.6         cluster_2.1.0      
-[22] dbplyr_1.4.4        BiocManager_1.30.10 compiler_3.6.3     
-[25] httr_1.4.1          backports_1.1.7     assertthat_0.2.1   
-[28] cli_2.0.2           later_1.0.0         htmltools_0.4.0    
-[31] tools_3.6.3         igraph_1.2.5        gtable_0.3.0       
-[34] glue_1.4.1          reshape2_1.4.4      Rcpp_1.0.4.6       
-[37] Biobase_2.46.0      cellranger_1.1.0    vctrs_0.3.0        
-[40] Biostrings_2.54.0   multtest_2.42.0     ape_5.3            
-[43] nlme_3.1-144        iterators_1.0.12    xfun_0.14          
-[46] openxlsx_4.1.5      rvest_0.3.5         lifecycle_0.2.0    
-[49] statmod_1.4.34      zlibbioc_1.32.0     MASS_7.3-51.5      
-[52] scales_1.1.1        hms_0.5.3           promises_1.1.0     
-[55] parallel_3.6.3      biomformat_1.14.0   rhdf5_2.30.1       
-[58] RColorBrewer_1.1-2  curl_4.3            yaml_2.2.1         
-[61] stringi_1.4.6       highr_0.8           S4Vectors_0.24.4   
-[64] foreach_1.5.0       BiocGenerics_0.32.0 zip_2.0.4          
-[67] boot_1.3-24         rlang_0.4.6         pkgconfig_2.0.3    
-[70] evaluate_0.14       Rhdf5lib_1.8.0      labeling_0.3       
-[73] tidyselect_1.1.0    magrittr_1.5        R6_2.4.1           
-[76] IRanges_2.20.2      generics_0.0.2      DBI_1.1.0          
-[79] foreign_0.8-75      pillar_1.4.4        haven_2.3.0        
-[82] withr_2.2.0         mgcv_1.8-31         abind_1.4-5        
-[85] survival_3.1-8      modelr_0.1.8        crayon_1.3.4       
-[88] rmarkdown_2.1       grid_3.6.3          blob_1.2.1         
-[91] git2r_0.27.1        reprex_0.3.0        digest_0.6.25      
-[94] webshot_0.5.2       httpuv_1.5.2        numDeriv_2016.8-1.1
-[97] stats4_3.6.3        munsell_0.5.0      </code></pre>
+  [1] Rtsne_0.15          minqa_1.2.4         colorspace_1.4-1   
+  [4] rio_0.5.16          ellipsis_0.3.1      rprojroot_1.3-2    
+  [7] XVector_0.26.0      fs_1.4.1            rstudioapi_0.11    
+ [10] farver_2.0.3        fansi_0.4.1         lubridate_1.7.8    
+ [13] xml2_1.3.2          codetools_0.2-16    splines_3.6.3      
+ [16] knitr_1.28          ade4_1.7-15         jsonlite_1.6.1     
+ [19] workflowr_1.6.2     nloptr_1.2.2.1      broom_0.5.6        
+ [22] cluster_2.1.0       dbplyr_1.4.4        BiocManager_1.30.10
+ [25] compiler_3.6.3      httr_1.4.1          backports_1.1.7    
+ [28] assertthat_0.2.1    cli_2.0.2           later_1.0.0        
+ [31] htmltools_0.4.0     tools_3.6.3         igraph_1.2.5       
+ [34] gtable_0.3.0        glue_1.4.1          reshape2_1.4.4     
+ [37] Rcpp_1.0.4.6        Biobase_2.46.0      cellranger_1.1.0   
+ [40] vctrs_0.3.0         Biostrings_2.54.0   multtest_2.42.0    
+ [43] ape_5.3             nlme_3.1-144        iterators_1.0.12   
+ [46] xfun_0.14           openxlsx_4.1.5      rvest_0.3.5        
+ [49] lifecycle_0.2.0     statmod_1.4.34      zlibbioc_1.32.0    
+ [52] MASS_7.3-51.5       scales_1.1.1        hms_0.5.3          
+ [55] promises_1.1.0      parallel_3.6.3      biomformat_1.14.0  
+ [58] rhdf5_2.30.1        RColorBrewer_1.1-2  curl_4.3           
+ [61] yaml_2.2.1          stringi_1.4.6       highr_0.8          
+ [64] S4Vectors_0.24.4    foreach_1.5.0       BiocGenerics_0.32.0
+ [67] zip_2.0.4           boot_1.3-24         rlang_0.4.6        
+ [70] pkgconfig_2.0.3     evaluate_0.14       Rhdf5lib_1.8.0     
+ [73] labeling_0.3        tidyselect_1.1.0    magrittr_1.5       
+ [76] R6_2.4.1            IRanges_2.20.2      generics_0.0.2     
+ [79] DBI_1.1.0           foreign_0.8-75      pillar_1.4.4       
+ [82] haven_2.3.0         whisker_0.4         withr_2.2.0        
+ [85] mgcv_1.8-31         abind_1.4-5         survival_3.1-8     
+ [88] modelr_0.1.8        crayon_1.3.4        rmarkdown_2.1      
+ [91] grid_3.6.3          blob_1.2.1          git2r_0.27.1       
+ [94] reprex_0.3.0        digest_0.6.25       webshot_0.5.2      
+ [97] httpuv_1.5.2        numDeriv_2016.8-1.1 stats4_3.6.3       
+[100] munsell_0.5.0      </code></pre>
 </div>
 </div>
 </div>

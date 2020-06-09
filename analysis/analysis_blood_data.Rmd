@@ -43,11 +43,10 @@ blood_data <- read_excel("data/Blood measures data/Copy of Fiber Study Blood Res
 meta_data <- microbiome_data$meta.dat
 
 keepVar <- c("SubjectID", "Week", "Intervention", "Stress.Scale", "Ethnicity", "Gender", "Age")
-meta_data <- meta_data [, keepVar]
+meta_data <- meta_data [, keepVar] %>%
+  filter(Week == 1)
 
 mydata <- full_join(blood_data, meta_data)
-
-mydata <- distinct(mydata, SubjectID, time,.keep_all = T)
 
 # recoding
 mydata <- mydata %>%
@@ -297,7 +296,7 @@ kable(all_results, format="html", digits=3) %>%
   kable_styling(full_width = T)
 
 
-readr::write_csv(all_results, "tab/results_blood_data.csv")
+#readr::write_csv(all_results, "tab/results_blood_data.csv")
 
 
 ```

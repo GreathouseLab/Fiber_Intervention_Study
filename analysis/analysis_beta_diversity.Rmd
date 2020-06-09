@@ -322,7 +322,7 @@ p1
 ```{r}
 
 p1 <- plot_ordination(phylo_data, ord_bray,
-                      color="Week", shape="Intervention") +
+                      color="Intervention", shape="Week") +
   geom_point(size=3) +
   scale_colour_manual(values=cols)+
   labs(title="PCoA on Bray-Curtis distance",
@@ -332,7 +332,7 @@ p1 <- plot_ordination(phylo_data, ord_bray,
         plot.title = element_text(hjust = 0.5))
 
 p2 <- plot_ordination(phylo_data, ord_unwt,
-                      color="Week", shape="Intervention") +
+                      color="Intervention", shape="Week") +
   geom_point(size=3) +
   scale_colour_manual(values=cols)+
   labs(title="PCoA on Unweighted Unifrac distance",
@@ -342,7 +342,7 @@ p2 <- plot_ordination(phylo_data, ord_unwt,
         plot.title = element_text(hjust = 0.5))
 
 p3 <- plot_ordination(phylo_data, ord_wt,
-                      color="Week", shape="Intervention") +
+                      color="Intervention", shape="Week") +
   geom_point(size=3) +
   scale_colour_manual(values=cols)+
   labs(title="PCoA on Weight Unifrac distance",
@@ -358,14 +358,15 @@ p3 <- plot_ordination(phylo_data, ord_wt,
   p1.nl <- p1 + theme(legend.position = "none")
   p2.nl <- p2 + theme(legend.position = "none")
   p3.nl <- p3 + theme(legend.position = "none")
-  p <- p1.nl + p2.nl + p3.nl + plot_layout(ncol=1)
+  #p <- p1.nl + p2.nl + p3.nl + plot_layout(ncol=1, guides="collect")
+  p <- p1 + p2 + p3 + plot_layout(ncol=1, guides="collect")
   p
-  ggsave("fig/figure3.pdf", p, width=4,height=6, units="in")
+  ggsave("fig/figure3.pdf", p, width=5,height=7, units="in")
   
   
-  bigplotlegend <- plot_grid(p1.leg, nrow =1)
+  #bigplotlegend <- plot_grid(p1.leg, nrow =1)
   
-  save_plot("fig/figure3_legend.pdf", bigplotlegend,
-            base_width = 7.9, base_height = 4.5)
+  #save_plot("fig/figure3_legend.pdf", bigplotlegend,
+  #          base_width = 7.9, base_height = 4.5)
   
 ```
