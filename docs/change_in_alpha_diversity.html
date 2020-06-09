@@ -383,7 +383,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -392,7 +392,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,10 +401,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-06-01
+<strong>Last updated:</strong> 2020-06-08
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Fiber_Intervention_Study/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -420,12 +420,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -492,16 +492,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree94015daaf4677e05de8be47fcb5eec0171a8905btargetblank94015daa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/94015daaf4677e05de8be47fcb5eec0171a8905b" target="_blank">94015da</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree0733fe5f2e02349ca3c892ef7dea9cd866468dc7targetblank0733fe5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree94015daaf4677e05de8be47fcb5eec0171a8905btargetblank94015daa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/0733fe5f2e02349ca3c892ef7dea9cd866468dc7" target="_blank">0733fe5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/94015daaf4677e05de8be47fcb5eec0171a8905b" target="_blank">94015da</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -515,43 +515,18 @@ Ignored files:
     Ignored:    reference-papers/Johnson_2019.pdf
 
 Untracked files:
-    Untracked:  analysis/glme_microbiome.Rmd
-    Untracked:  fig/figure-current-to-share.zip
-    Untracked:  fig/figure-current-to-share/
-    Untracked:  fig/figure1_alpha_diversity.pdf
-    Untracked:  fig/figure2_individual_beta_diversity_over_study.pdf
-    Untracked:  fig/figure3_PCoA_analysis_results_beta_diversity_between_groups.pdf
-    Untracked:  fig/figure4_final_microbiome_diet_variables_over_time.pdf
-    Untracked:  fig/glmm_res.pdf
-    Untracked:  fig/glmm_res.png
-    Untracked:  fig/microbiome_abundance_glmm_results.pdf
-    Untracked:  manuscript/
-    Untracked:  tab/
-
-Unstaged changes:
-    Modified:   README.md
-    Modified:   analysis/change_in_alpha_diversity.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/lme_alpha.Rmd
-    Deleted:    analysis/lme_microbiome.Rmd
-    Modified:   code/load_packages.R
-    Modified:   code/microbiome_statistics_and_functions.R
-    Deleted:    fig/figure1.pdf
-    Modified:   fig/figure1_legend.pdf
-    Deleted:    fig/figure2.pdf
-    Deleted:    fig/figure3.pdf
-    Modified:   fig/figure3_legend.pdf
-    Deleted:    fig/figure4_final.pdf
-    Modified:   fig/predicted_Actinobacteria_model5.png
-    Modified:   fig/predicted_Bacteroidetes_model5.png
-    Modified:   fig/predicted_Cyanobacteria_model5.png
-    Modified:   fig/predicted_Euryarchaeota_model5.png
-    Modified:   fig/predicted_Firmicutes_model5.png
-    Modified:   fig/predicted_Fusobacteria_model5.png
-    Modified:   fig/predicted_Lentisphaerae_model5.png
-    Modified:   fig/predicted_Proteobacteria_model5.png
-    Modified:   fig/predicted_Tenericutes_model5.png
-    Modified:   fig/predicted_Verrucomicrobia_model5.png
+    Untracked:  fig/fig/
+    Untracked:  fig/figure-2020-06-01/
+    Untracked:  fig/figure2.pdf
+    Untracked:  fig/figure3.pdf
+    Untracked:  fig/figure5_glmm.pdf
+    Untracked:  fig/figure6.pdf
+    Untracked:  fig/figures-2020-06-08.zip
+    Untracked:  fig/figures-2020-06-08/
+    Untracked:  renv/
+    Untracked:  tab/figure6_data_change_BMI.csv
+    Untracked:  tab/sample_size_summary.xlsx
+    Untracked:  tab/table_1_results.csv
 
 </code></pre>
 <p>
@@ -590,6 +565,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/blob/774d405c37337775444bd4e6b7b8f207c8c4ac02/analysis/change_in_alpha_diversity.Rmd" target="_blank">774d405</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-06-01
+</td>
+<td>
+updated glmm and figures
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/774d405c37337775444bd4e6b7b8f207c8c4ac02/docs/change_in_alpha_diversity.html" target="_blank">774d405</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-06-01
+</td>
+<td>
+updated glmm and figures
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1161,7 +1170,7 @@ other attached packages:
 [17] dplyr_0.8.5       purrr_0.3.4       readr_1.3.1       tidyr_1.1.0      
 [21] tibble_3.0.1      ggplot2_3.3.0     tidyverse_1.3.0   lmerTest_3.1-2   
 [25] lme4_1.1-23       Matrix_1.2-18     vegan_2.5-6       lattice_0.20-38  
-[29] permute_0.9-5     phyloseq_1.30.0   workflowr_1.6.2  
+[29] permute_0.9-5     phyloseq_1.30.0  
 
 loaded via a namespace (and not attached):
  [1] Rtsne_0.15          minqa_1.2.4         colorspace_1.4-1   
@@ -1170,33 +1179,33 @@ loaded via a namespace (and not attached):
 [10] farver_2.0.3        fansi_0.4.1         lubridate_1.7.8    
 [13] xml2_1.3.2          codetools_0.2-16    splines_3.6.3      
 [16] knitr_1.28          ade4_1.7-15         jsonlite_1.6.1     
-[19] nloptr_1.2.2.1      broom_0.5.6         cluster_2.1.0      
-[22] dbplyr_1.4.4        BiocManager_1.30.10 compiler_3.6.3     
-[25] httr_1.4.1          backports_1.1.7     assertthat_0.2.1   
-[28] cli_2.0.2           later_1.0.0         htmltools_0.4.0    
-[31] tools_3.6.3         igraph_1.2.5        gtable_0.3.0       
-[34] glue_1.4.1          reshape2_1.4.4      Rcpp_1.0.4.6       
-[37] Biobase_2.46.0      cellranger_1.1.0    vctrs_0.3.0        
-[40] Biostrings_2.54.0   multtest_2.42.0     ape_5.3            
-[43] nlme_3.1-144        iterators_1.0.12    xfun_0.14          
-[46] openxlsx_4.1.5      rvest_0.3.5         lifecycle_0.2.0    
-[49] statmod_1.4.34      zlibbioc_1.32.0     MASS_7.3-51.5      
-[52] scales_1.1.1        hms_0.5.3           promises_1.1.0     
-[55] parallel_3.6.3      biomformat_1.14.0   rhdf5_2.30.1       
-[58] curl_4.3            yaml_2.2.1          stringi_1.4.6      
-[61] S4Vectors_0.24.4    foreach_1.5.0       BiocGenerics_0.32.0
-[64] zip_2.0.4           boot_1.3-24         rlang_0.4.6        
-[67] pkgconfig_2.0.3     evaluate_0.14       Rhdf5lib_1.8.0     
-[70] labeling_0.3        tidyselect_1.1.0    magrittr_1.5       
-[73] R6_2.4.1            IRanges_2.20.2      generics_0.0.2     
-[76] DBI_1.1.0           foreign_0.8-75      pillar_1.4.4       
-[79] haven_2.3.0         whisker_0.4         withr_2.2.0        
-[82] mgcv_1.8-31         abind_1.4-5         survival_3.1-8     
-[85] modelr_0.1.8        crayon_1.3.4        rmarkdown_2.1      
-[88] grid_3.6.3          blob_1.2.1          git2r_0.27.1       
-[91] reprex_0.3.0        digest_0.6.25       webshot_0.5.2      
-[94] httpuv_1.5.2        numDeriv_2016.8-1.1 stats4_3.6.3       
-[97] munsell_0.5.0      </code></pre>
+[19] workflowr_1.6.2     nloptr_1.2.2.1      broom_0.5.6        
+[22] cluster_2.1.0       dbplyr_1.4.4        BiocManager_1.30.10
+[25] compiler_3.6.3      httr_1.4.1          backports_1.1.7    
+[28] assertthat_0.2.1    cli_2.0.2           later_1.0.0        
+[31] htmltools_0.4.0     tools_3.6.3         igraph_1.2.5       
+[34] gtable_0.3.0        glue_1.4.1          reshape2_1.4.4     
+[37] Rcpp_1.0.4.6        Biobase_2.46.0      cellranger_1.1.0   
+[40] vctrs_0.3.0         Biostrings_2.54.0   multtest_2.42.0    
+[43] ape_5.3             nlme_3.1-144        iterators_1.0.12   
+[46] xfun_0.14           openxlsx_4.1.5      rvest_0.3.5        
+[49] lifecycle_0.2.0     statmod_1.4.34      zlibbioc_1.32.0    
+[52] MASS_7.3-51.5       scales_1.1.1        hms_0.5.3          
+[55] promises_1.1.0      parallel_3.6.3      biomformat_1.14.0  
+[58] rhdf5_2.30.1        curl_4.3            yaml_2.2.1         
+[61] stringi_1.4.6       S4Vectors_0.24.4    foreach_1.5.0      
+[64] BiocGenerics_0.32.0 zip_2.0.4           boot_1.3-24        
+[67] rlang_0.4.6         pkgconfig_2.0.3     evaluate_0.14      
+[70] Rhdf5lib_1.8.0      labeling_0.3        tidyselect_1.1.0   
+[73] magrittr_1.5        R6_2.4.1            IRanges_2.20.2     
+[76] generics_0.0.2      DBI_1.1.0           foreign_0.8-75     
+[79] pillar_1.4.4        haven_2.3.0         whisker_0.4        
+[82] withr_2.2.0         mgcv_1.8-31         abind_1.4-5        
+[85] survival_3.1-8      modelr_0.1.8        crayon_1.3.4       
+[88] rmarkdown_2.1       grid_3.6.3          blob_1.2.1         
+[91] git2r_0.27.1        reprex_0.3.0        digest_0.6.25      
+[94] webshot_0.5.2       httpuv_1.5.2        numDeriv_2016.8-1.1
+[97] stats4_3.6.3        munsell_0.5.0      </code></pre>
 </div>
 </div>
 </div>
