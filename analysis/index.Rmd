@@ -21,26 +21,29 @@ Describing the data and pre-processing steps.
 # Analyses
 
 *[Anthropometric Differences](analysis_anthropometric.html)
-This page gives the results of testing the changes in anthropometric variables (BMI, LBM, VFL, Weight) between the beginning and end of the study.
 
-*[Clinical Measure Analyses](analysis_blood_data.html)
+This page gives the results of testing the changes in anthropometric variables (BMI, LBM, VFL, Weight) between the beginning and end of the study.
 This page tests the changes in clinical measures (e.g., Glucose, BUN, Creatinine, Chloride, HDL, Insulin, **PYY**, etc.). In summary, no significance differences were detectable after controlling for multiple comparisons.
 
-*[Microbiome and Diet Trends over Time](microbiome_diet_trends.html)
+*[Clinical Measure Analyses](analysis_blood_data.html)
+
 This file gives the code that generates Figure 4: the plot describing the change in microbiome relative abundance (phylum-level) over time and the change in diet variables over time.
+
+*[Microbiome and Diet Trends over Time](microbiome_diet_trends.html)
+
 
 ## Alpha Diversity
 
 Alpha diversity was measures using richness (Observed OTUs) and evenness (Shannon and Inverse Simpson).
-
-*[Alpha Diversity Figures](alpha_diversity.html)
 This first page gives general overview of how alpha diversity metrics varied among subjects, between intervention groups, and over time.
 No statistical analyses were conducted, these were helpful for getting a sense of how alpha diversity varied prior to moving into analyses.
 
+*[Alpha Diversity Figures](alpha_diversity.html)
 
-*[Modeling Changes in Alpha Diversity](lme_alpha.html)
 On this page, we conducted more formal investigations of changes in alpha diversity using linear mixed effects models.
 These results were inconclusive as to the effect of the intervention on alpha diversity metrics.
+
+*[Modeling Changes in Alpha Diversity](lme_alpha.html)
 
 ## Beta Diversity
 
@@ -49,10 +52,21 @@ This page describes the beta-diversity analyses used and the results of PERMANOV
 
 ## Microbiome Adundance Analysis
 
-*[Modeling Changes in Phylum Abundance](glme_microbiome.html)
-This page describe the models and results used to test the changes in microbiome abundance over time. We used generalized linear mixed effects models.
-In summary, eight separate models were hypothesized and tested and final results are presented describing which microbiome (phylum-level) abundances changed over time with respect to the intervention. The results presented in text are from model 6 (the last set of results presented).
+These two pages describe the models and results used to test the changes in microbiome abundance over time. We used generalized linear mixed effects models.
+In summary, eight separate models were hypothesized and tested and final results are presented describing which microbiome (phylum/genus-level) abundances changed over time with respect to the intervention. The results presented in text are from model 6 (the last set of results presented).
+*[Modeling changes in Phylum-level abundance](glme_microbiome_phylum.html)
 
+*[Modeling changes in Genus-level abundance](glme_microbiome_genus_subset.html)
+
+
+Next, we focused on the genus level analyses in more detail.
+
+*[Genera relative abundance information](microbiome_genus_relative_abundance.html)
+
+*[Focused analysis of prevotella and bacteroides](microbiome_genus_prevotella_bacteroides.html)
+
+
+This page describes the relationships between microbiome abundance and different food metrics (HEI scores).
 *[Microbiome and Food Plot](microbiome_food.html)
-This page descibes the relationships between microbiome abundance and different food metrics (HEI scores).
+
 

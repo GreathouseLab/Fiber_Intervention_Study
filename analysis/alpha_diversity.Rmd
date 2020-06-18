@@ -429,10 +429,10 @@ p6
   
   p <- p1.nl +  p2.nl + p3.nl + p4.nl + p5.nl + p6.nl + plot_layout(nrow=3, ncol=2) 
   p
-  #ggsave("fig/figure1.pdf", p, width=7.9,height=5, units="in")
+  ggsave("fig/figure1.pdf", p, width=7.9,height=5, units="in")
   
   
-  bigplotlegend <- plot_grid(p1.leg, p2.leg, nrow =1, align = "h")
+  #bigplotlegend <- plot_grid(p1.leg, p2.leg, nrow =1, align = "h")
   
   #save_plot("fig/figure1_legend.pdf", bigplotlegend, base_width = 13.25, base_height = 5)
 

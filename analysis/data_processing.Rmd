@@ -45,6 +45,29 @@ knitr::opts_chunk$set(out.width = "225%", out.height = 10)
 
 # Taxonomic Filtering
 
+## 0. Sample Reads, Totals, and Rarifying
+
+```{r 0-rarify}
+
+sampleReads <- sample_sums(phylo_data0)
+
+# Total quality Reads
+sum(sampleReads)
+
+# Average reads
+mean(sampleReads)
+
+# max sequencing depth
+max(sampleReads)
+
+# rarified to an even depth of
+phylo_data0 <- rarefy_even_depth(phylo_data0, replace = T, rngseed = 20200101)
+
+# even depth of:
+sample_sums(phylo_data0)
+
+```
+
 ## 1. Removal of Phylum NA features
 
 ```{r 1-removal}
@@ -73,8 +96,7 @@ prevdf <- data.frame(Prevalence=prevdf,
 
 ```
 
-Now we get to compute the totals and averages.
-
+Compute the totals and averages abundances.
 
 ```{r 2-comp-2}
 
@@ -112,6 +134,23 @@ Next, we explore the taxa in more detail next as we move to remove some of these
 ```{r 3-remove-phylum-1}
 
 prevdf1 <- subset(prevdf, Phylum %in% get_taxa_unique(phylo_data1, "Phylum"))
+
+
+```
+
+
+## 4. Total count computation
+
+```{r 4-count-tot}
+
+# already done above ()
+
+```
+
+
+## 5. Threshold identification
+
+```{r 5-thresh-1}
 ggplot(prevdf1, aes(TotalAbundance+1,
                     Prevalence/nsamples(phylo_data0))) +
   geom_hline(yintercept=0.01, alpha=0.5, linetype=2)+
@@ -124,8 +163,9 @@ ggplot(prevdf1, aes(TotalAbundance+1,
 
 Note: for plotting purposes, a $+1$ was added to all TotalAbundances to avoid a taking the log of 0. 
 
+
 Next, we define a prevalence threshold, that way the taxa can be pruned to a prespecified level. 
-In this study, we used 0.05 (5\%) of total samples.
+In this study, we used 0.01 (1\%) of total samples.
 
 ```{r 3-prev-threshold}
 
@@ -139,7 +179,7 @@ phylo_data2 <- prune_taxa(keepTaxa, phylo_data1)
 ```
 
 
-## 4. Merge taxa (to genus level)
+## 6. Merge taxa (to genus level)
 
 ```{r 4-merge-taxa}
 genusNames <- get_taxa_unique(phylo_data2, "Genus")
@@ -155,7 +195,7 @@ phylo_data3 = tax_glom(phylo_data2, "Genus", NArm = TRUE)
 
 ```
 
-## 4. Relative Adbundance Plot
+## 7. Relative Adbundance Plot
 
 ```{r 4-rel-abund}
 

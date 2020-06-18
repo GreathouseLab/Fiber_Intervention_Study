@@ -383,7 +383,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -392,7 +392,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,10 +401,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-06-08
+<strong>Last updated:</strong> 2020-06-17
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Fiber_Intervention_Study/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -420,12 +420,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -492,16 +492,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree94015daaf4677e05de8be47fcb5eec0171a8905btargetblank94015daa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/94015daaf4677e05de8be47fcb5eec0171a8905b" target="_blank">94015da</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreea16e6ef818a8ec84817b1a8cf26f684c64e3aee4targetblanka16e6efa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/a16e6ef818a8ec84817b1a8cf26f684c64e3aee4" target="_blank">a16e6ef</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytree94015daaf4677e05de8be47fcb5eec0171a8905btargetblank94015daa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomGreathouseLabFiberInterventionStudytreea16e6ef818a8ec84817b1a8cf26f684c64e3aee4targetblanka16e6efa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/94015daaf4677e05de8be47fcb5eec0171a8905b" target="_blank">94015da</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/GreathouseLab/Fiber_Intervention_Study/tree/a16e6ef818a8ec84817b1a8cf26f684c64e3aee4" target="_blank">a16e6ef</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -513,20 +513,133 @@ Ignored files:
     Ignored:    code/.Rhistory
     Ignored:    reference-papers/Dietary_Variables.xlsx
     Ignored:    reference-papers/Johnson_2019.pdf
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
 
 Untracked files:
-    Untracked:  fig/fig/
-    Untracked:  fig/figure-2020-06-01/
-    Untracked:  fig/figure2.pdf
-    Untracked:  fig/figure3.pdf
-    Untracked:  fig/figure5_glmm.pdf
-    Untracked:  fig/figure6.pdf
-    Untracked:  fig/figures-2020-06-08.zip
-    Untracked:  fig/figures-2020-06-08/
-    Untracked:  renv/
-    Untracked:  tab/figure6_data_change_BMI.csv
-    Untracked:  tab/sample_size_summary.xlsx
-    Untracked:  tab/table_1_results.csv
+    Untracked:  analysis/glme_microbiome_genus_subset.Rmd
+    Untracked:  analysis/glme_microbiome_phylum.Rmd
+    Untracked:  analysis/microbiome_genus_prevotella_bacteroides.Rmd
+    Untracked:  analysis/microbiome_genus_relative_abundance.Rmd
+    Untracked:  data/analysis-data/DataDictionary_TOTALS_2018Record.xls
+    Untracked:  fig/figure5_glmm_genus.pdf
+    Untracked:  fig/figure5_glmm_phylum.pdf
+    Untracked:  fig/misc/
+    Untracked:  tab/results_glmm_microbiome_genus.csv
+    Untracked:  tab/results_glmm_microbiome_phylum.csv
+    Untracked:  tab/tables_results_2020-06-08.zip
+    Untracked:  tab/tables_results_2020-06-08/
+
+Unstaged changes:
+    Modified:   analysis/alpha_diversity.Rmd
+    Modified:   analysis/data_processing.Rmd
+    Deleted:    analysis/glme_microbiome.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/microbiome_diet_trends.Rmd
+    Modified:   code/get_cleaned_data.R
+    Modified:   code/microbiome_statistics_and_functions.R
+    Deleted:    fig/figure2.pdf
+    Modified:   fig/figure2_individual_beta_diversity_over_study.pdf
+    Deleted:    fig/figure3.pdf
+    Modified:   fig/figure3_PCoA_analysis_results_beta_diversity_between_groups.pdf
+    Deleted:    fig/figure4.pdf
+    Modified:   fig/figure4_final_microbiome_diet_variables_over_time.pdf
+    Modified:   fig/figure4_legend.pdf
+    Deleted:    fig/figure5_glmm.pdf
+    Deleted:    fig/figures-2020-06-08.zip
+    Deleted:    fig/glmm_res.pdf
+    Deleted:    fig/glmm_res.png
+    Deleted:    fig/microbiome_abundance_glmm_results.pdf
+    Deleted:    fig/predicted_Actinobacteria.png
+    Deleted:    fig/predicted_Actinobacteria_model0.png
+    Deleted:    fig/predicted_Actinobacteria_model1.png
+    Deleted:    fig/predicted_Actinobacteria_model2.png
+    Deleted:    fig/predicted_Actinobacteria_model3.png
+    Deleted:    fig/predicted_Actinobacteria_model4.png
+    Deleted:    fig/predicted_Actinobacteria_model5.png
+    Deleted:    fig/predicted_Actinobacteria_model6.png
+    Deleted:    fig/predicted_Actinobacteria_model7.png
+    Deleted:    fig/predicted_Bacteroidetes.png
+    Deleted:    fig/predicted_Bacteroidetes_model0.png
+    Deleted:    fig/predicted_Bacteroidetes_model1.png
+    Deleted:    fig/predicted_Bacteroidetes_model2.png
+    Deleted:    fig/predicted_Bacteroidetes_model3.png
+    Deleted:    fig/predicted_Bacteroidetes_model4.png
+    Deleted:    fig/predicted_Bacteroidetes_model5.png
+    Deleted:    fig/predicted_Bacteroidetes_model6.png
+    Deleted:    fig/predicted_Bacteroidetes_model7.png
+    Deleted:    fig/predicted_Cyanobacteria.png
+    Deleted:    fig/predicted_Cyanobacteria_model0.png
+    Deleted:    fig/predicted_Cyanobacteria_model1.png
+    Deleted:    fig/predicted_Cyanobacteria_model2.png
+    Deleted:    fig/predicted_Cyanobacteria_model3.png
+    Deleted:    fig/predicted_Cyanobacteria_model4.png
+    Deleted:    fig/predicted_Cyanobacteria_model5.png
+    Deleted:    fig/predicted_Cyanobacteria_model6.png
+    Deleted:    fig/predicted_Cyanobacteria_model7.png
+    Deleted:    fig/predicted_Euryarchaeota.png
+    Deleted:    fig/predicted_Euryarchaeota_model0.png
+    Deleted:    fig/predicted_Euryarchaeota_model1.png
+    Deleted:    fig/predicted_Euryarchaeota_model2.png
+    Deleted:    fig/predicted_Euryarchaeota_model3.png
+    Deleted:    fig/predicted_Euryarchaeota_model4.png
+    Deleted:    fig/predicted_Euryarchaeota_model5.png
+    Deleted:    fig/predicted_Euryarchaeota_model6.png
+    Deleted:    fig/predicted_Euryarchaeota_model7.png
+    Deleted:    fig/predicted_Firmicutes.png
+    Deleted:    fig/predicted_Firmicutes_model0.png
+    Deleted:    fig/predicted_Firmicutes_model1.png
+    Deleted:    fig/predicted_Firmicutes_model2.png
+    Deleted:    fig/predicted_Firmicutes_model3.png
+    Deleted:    fig/predicted_Firmicutes_model4.png
+    Deleted:    fig/predicted_Firmicutes_model5.png
+    Deleted:    fig/predicted_Firmicutes_model6.png
+    Deleted:    fig/predicted_Firmicutes_model7.png
+    Deleted:    fig/predicted_Fusobacteria.png
+    Deleted:    fig/predicted_Fusobacteria_model0.png
+    Deleted:    fig/predicted_Fusobacteria_model1.png
+    Deleted:    fig/predicted_Fusobacteria_model2.png
+    Deleted:    fig/predicted_Fusobacteria_model3.png
+    Deleted:    fig/predicted_Fusobacteria_model4.png
+    Deleted:    fig/predicted_Fusobacteria_model5.png
+    Deleted:    fig/predicted_Fusobacteria_model6.png
+    Deleted:    fig/predicted_Fusobacteria_model7.png
+    Deleted:    fig/predicted_Lentisphaerae.png
+    Deleted:    fig/predicted_Lentisphaerae_model0.png
+    Deleted:    fig/predicted_Lentisphaerae_model1.png
+    Deleted:    fig/predicted_Lentisphaerae_model2.png
+    Deleted:    fig/predicted_Lentisphaerae_model3.png
+    Deleted:    fig/predicted_Lentisphaerae_model4.png
+    Deleted:    fig/predicted_Lentisphaerae_model5.png
+    Deleted:    fig/predicted_Lentisphaerae_model6.png
+    Deleted:    fig/predicted_Lentisphaerae_model7.png
+    Deleted:    fig/predicted_Proteobacteria.png
+    Deleted:    fig/predicted_Proteobacteria_model0.png
+    Deleted:    fig/predicted_Proteobacteria_model1.png
+    Deleted:    fig/predicted_Proteobacteria_model2.png
+    Deleted:    fig/predicted_Proteobacteria_model3.png
+    Deleted:    fig/predicted_Proteobacteria_model4.png
+    Deleted:    fig/predicted_Proteobacteria_model5.png
+    Deleted:    fig/predicted_Proteobacteria_model6.png
+    Deleted:    fig/predicted_Proteobacteria_model7.png
+    Deleted:    fig/predicted_Tenericutes.png
+    Deleted:    fig/predicted_Tenericutes_model0.png
+    Deleted:    fig/predicted_Tenericutes_model1.png
+    Deleted:    fig/predicted_Tenericutes_model2.png
+    Deleted:    fig/predicted_Tenericutes_model3.png
+    Deleted:    fig/predicted_Tenericutes_model4.png
+    Deleted:    fig/predicted_Tenericutes_model5.png
+    Deleted:    fig/predicted_Tenericutes_model6.png
+    Deleted:    fig/predicted_Tenericutes_model7.png
+    Deleted:    fig/predicted_Verrucomicrobia.png
+    Deleted:    fig/predicted_Verrucomicrobia_model0.png
+    Deleted:    fig/predicted_Verrucomicrobia_model1.png
+    Deleted:    fig/predicted_Verrucomicrobia_model2.png
+    Deleted:    fig/predicted_Verrucomicrobia_model3.png
+    Deleted:    fig/predicted_Verrucomicrobia_model4.png
+    Deleted:    fig/predicted_Verrucomicrobia_model5.png
+    Deleted:    fig/predicted_Verrucomicrobia_model6.png
+    Deleted:    fig/predicted_Verrucomicrobia_model7.png
 
 </code></pre>
 <p>
@@ -565,6 +678,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/GreathouseLab/Fiber_Intervention_Study/9da43aa7a903587e94743a9ad53eaa2da6db5fc6/docs/alpha_diversity.html" target="_blank">9da43aa</a>
+</td>
+<td>
+noah-padgett
+</td>
+<td>
+2020-06-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1109,13 +1239,12 @@ p6</code></pre>
   p &lt;- p1.nl +  p2.nl + p3.nl + p4.nl + p5.nl + p6.nl + plot_layout(nrow=3, ncol=2) 
   p</code></pre>
 <p><img src="figure/alpha_diversity.Rmd/unnamed-chunk-9-7.png" width="225%" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>  #ggsave(&quot;fig/figure1.pdf&quot;, p, width=7.9,height=5, units=&quot;in&quot;)
+<pre class="r"><code>  ggsave(&quot;fig/figure1.pdf&quot;, p, width=7.9,height=5, units=&quot;in&quot;)
   
   
-  bigplotlegend &lt;- plot_grid(p1.leg, p2.leg, nrow =1, align = &quot;h&quot;)</code></pre>
-<pre><code>Warning: Graphs cannot be horizontally aligned unless the axis parameter is set.
-Placing graphs unaligned.</code></pre>
-<pre class="r"><code>  #save_plot(&quot;fig/figure1_legend.pdf&quot;, bigplotlegend, base_width = 13.25, base_height = 5)</code></pre>
+  #bigplotlegend &lt;- plot_grid(p1.leg, p2.leg, nrow =1, align = &quot;h&quot;)
+  
+  #save_plot(&quot;fig/figure1_legend.pdf&quot;, bigplotlegend, base_width = 13.25, base_height = 5)</code></pre>
 </div>
 </div>
 <div id="intervention-effect" class="section level1">

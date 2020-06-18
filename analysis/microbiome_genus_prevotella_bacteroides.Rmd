@@ -1,0 +1,160 @@
+---
+title: "Genus level microbiome: Prevotella and Bacteroides"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+Calculate Prevotella/Bacteroides ratio for all samples
+Calculate the change in P/B ratio for all samples (line plot before v after by group)
+Determine if there is a significant change over time in the P/B ratio and if the intervention had an effect
+
+
+```{r data, include=FALSE, echo=FALSE}
+
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+
+# color pallet
+cols <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339")
+
+
+
+```
+
+# Ratio of Prevotella to Bacteroides
+
+
+```{r}
+
+# genera to keep:
+keepGenus <- c("__Bacteroides", "__Prevotella", "__Prevotella_2", "__Prevotella_6")
+
+mphyseq = psmelt(phylo_data)
+mphyseq2 <- mphyseq %>%
+  filter(Genus %in% keepGenus) %>%
+  mutate(Genus = substring(Genus, 3))
+
+# subset to smaller dataset for easier use
+varKeep <- c("Genus", "Abundance", "SubjectID", "Week", "Ethnicity", "Age", "Gender","Intervention")
+
+mphyseq2 <- mphyseq2[, varKeep]
+
+# make wide format wrt genus abundance
+mphyseq2 <- mphyseq2 %>%
+  pivot_wider(names_from = "Genus",
+              values_from = "Abundance")
+
+# compute ratio
+mphyseq2 <- mphyseq2 %>%
+  mutate(Prev_Bact_ratio = Prevotella/Bacteroides,
+         Prev2_Bact_ratio = Prevotella_2/Bacteroides,
+         Prev6_Bact_ratio = Prevotella_6/Bacteroides)
+
+
+mphyseq2 %>%
+  dplyr::group_by(Week)%>%
+  dplyr::summarise(Prev_Bact_ratio = mean(Prev_Bact_ratio),
+                   Prev2_Bact_ratio = mean(Prev2_Bact_ratio),
+                   Prev6_Bact_ratio = mean(Prev6_Bact_ratio))
+
+mphyseq2 %>%
+  dplyr::group_by(Week, Intervention)%>%
+  dplyr::summarise(Prev_Bact_ratio = mean(Prev_Bact_ratio),
+                   Prev2_Bact_ratio = mean(Prev2_Bact_ratio),
+                   Prev6_Bact_ratio = mean(Prev6_Bact_ratio))
+
+
+keepVar <- c("SubjectID", "Week", "Intervention", "Prevotella", "Prevotella_2", "Prevotella_6", "Bacteroides", "Prev_Bact_ratio", "Prev2_Bact_ratio", "Prev6_Bact_ratio")
+kable(mphyseq2[,keepVar], format="html", digits=3,
+      caption="Raw data of Prevotella* and Bacteroides") %>%
+  kable_styling(full_width = T) %>%
+  scroll_box(width="100%", height="5in")
+
+```
+
+### Line Plot of Ratio
+
+```{r}
+# recode
+plot_data <- mphyseq2
+
+so <- distinct(mphyseq2, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+plot_data$SubjectID10 <- factor(plot_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+ids <- 1:6
+plot_data$Intervention2 <- ifelse(plot_data$SubjectID10 %in% ids, "Group A", "Group B")
+
+
+
+# plot
+p <- ggplot(plot_data, aes(x=Week, y=Prev_Bact_ratio, group=SubjectID10, color=Intervention))+
+  geom_line()+
+  geom_point()+
+  facet_wrap(.~SubjectID10, ncol=6)+
+  labs(x="Week", y= "Ratio",
+       title="Prevotella / Bacteroides Ratio across subjects")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        legend.position = c(0.95, 0.1))
+p
+
+
+# plot
+p <- ggplot(plot_data, aes(x=Week, y=Prev2_Bact_ratio, group=SubjectID10, color=Intervention))+
+  geom_line()+
+  geom_point()+
+  facet_wrap(.~SubjectID10, ncol=6)+
+  labs(x="Week", y= "Ratio",
+       title="Prevotella_2 / Bacteroides Ratio across subjects")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        legend.position = c(0.95, 0.1))
+p
+
+
+p <- ggplot(plot_data, aes(x=Week, y=Prev6_Bact_ratio, group=SubjectID10, color=Intervention))+
+  geom_line()+
+  geom_point()+
+  facet_wrap(.~SubjectID10, ncol=6)+
+  labs(x="Week", y= "Ratio",
+       title="Prevotella_6 / Bacteroides Ratio across subjects")+
+  guides(colour= guide_legend(title = "Intervention"))+
+  scale_colour_manual(values = cols)+
+  theme(panel.grid = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        legend.position = c(0.95, 0.1))
+p
+
+```
+
+

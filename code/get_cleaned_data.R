@@ -59,6 +59,10 @@ colnames(phylo_data0@tax_table) <- c("Kingdom", "Phylum", "Class", "Order", "Fam
 ## The following does everything necessary from the data processing file
 # to get the data ready for analysis
 
+# rarify
+# rarified to an even depth of
+phylo_data0 <- rarefy_even_depth(phylo_data0, replace = T, rngseed = 20200101)
+
 # compute prevalence of each feature
 prevdf <- apply(X=otu_table(phylo_data0),
                 MARGIN= ifelse(taxa_are_rows(phylo_data0), yes=1, no=2),

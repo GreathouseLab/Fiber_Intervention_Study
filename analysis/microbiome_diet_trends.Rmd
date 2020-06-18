@@ -197,6 +197,18 @@ diet.data <- diet.data %>%
          Week = RecallNo)
 
 
+# Transform and covert to common scale.
+
+trValue <- c(rep(NA, 13), 1, 1, 1, 1, 1, .001, .001, .001, 1, .001, .001, .001, .001, .001, .001, .001, .001, .001, .001, .001, .000001, .000001, .000001, .001, .001, .001, .001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, .000001, NA)
+
+for(i in 1:ncol(diet.data)){
+  if(is.na(trValue[i]) == T){
+    next
+  } else{
+    diet.data[,i] <- diet.data[,i]*trValue[i]
+  }
+}
+
 ```
 
 ## Food Groups
@@ -213,8 +225,8 @@ MIS <- tidyr::expand(food_data, SubjectID, Week)
 
 food_data <- full_join(food_data, MIS)
 
-food_data <- food_data%>%
-  group_by(SubjectID)%>%
+food_data <- food_data %>%
+  group_by(SubjectID) %>%
   fill(`Fats Oils and Salad Dressings`:`Grain Product`)
 
 
@@ -340,7 +352,7 @@ rownames(food_data) <- c(food_var, "MISSING")
 food_data <- apply(food_data, c(1,2), FUN=function(x){ifelse(is.na(x), 0, x)})
 food_data <- data.frame(food_data)
 # Compute relative abundance
-food_data <- sweep(food_data, 2, colSums(food_data), '/')
+food_data <- sweep(sqrt(food_data), 2, colSums(sqrt(food_data)), '/')
 # compute sqrt
 # sort by highest average relative abundance
 food_data <- food_data[order(rowMeans(food_data), decreasing = F),]
@@ -384,6 +396,8 @@ no_cols <- length(unique(plot3$Food))
 ## Some Colors
 colors_food <- c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#566573", "#336655", "#83008c", "#d9a3aa", "#400009", "#0020f2", "#a3d936", "#8091ff", "#fbffbf", "#00ffcc", "#8c4f46", "#354020", "#39c3e6", "#333a66", "#ff0000", "#6a8040", "#a6538a", "#402910", "#730f00", "#0a4d00", "#ffe1bf", "#a3d9b1", "#003033", "#f29979", "#00b3a7", "#cbace6", "#bfd9ff", "#bf0000", "#293aa6", "#594943", "#e5c339", "grey90")
 
+plot3 <- na.omit(plot3)
+
 # make the plot
 nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
   geom_area(stat = "identity") +
@@ -413,42 +427,12 @@ nutr_plot<-ggplot(data = plot3, aes(x=Week, y = value, fill=Food)) +
        x = "Study week, grouped by subject ID",
        title="Dietary Macronutrients and Micronutrients",
        tag="C")
+
 nutr_plot
 
 
 
 ```
-
-
-A double check on nutrient ordering
-
-```{r}
-
-diet.data <- read_xlsx("data/analysis-data/Dietary_Variables.xlsx")
-diet.data <- diet.data %>%
-  mutate(SubjectID = as.numeric(substr(SubjectID, 7,11)),
-         Week = RecallNo)
-
-food_var <- colnames(diet.data)[14:54]
-
-food_data <- as_tibble(diet.data[, c("SubjectID", "Week", food_var)])
-
-
-food_data <- food_data %>%
-  mutate(rowsum = rowSums(.[,-1:-2]))
-
-food_data[, food_var] <- food_data[, food_var]/food_data$rowsum
-
-kable(food_data, format="html", digits=3) %>%
-  kable_styling(full_width = T)%>%
-  scroll_box(width = "100%", height = "400px")
-
-out <- food_data[, food_var] %>%
-  mutate(rowsum = rowSums(.))
-out$rowsum
-
-```
-
 
 
 ## Saving plot
@@ -483,7 +467,7 @@ ggsave("fig/figure4.pdf", p, units="in", width=7.9,height=6.5)
 library(cowplot)
 bigplotlegend <- plot_grid(micro_plot_leg, food_plot_leg, nutr_plot_leg, nrow =1, align = "h")
 
-save_plot("fig/figure4_legend.pdf", bigplotlegend, base_width = 13.25, base_height = 5)
+save_plot("fig/figure4_legend.pdf", bigplotlegend, base_width = 7, base_height = 5)
 
 
 ```

@@ -1,0 +1,325 @@
+---
+title: "Genus level microbiome relative abundance"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r data, include=FALSE, echo=FALSE}
+
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "200%")
+
+```
+
+# Microbiome Composition
+
+## Specific Subset of Genera
+
+### Tables of Summary Information
+
+```{r}
+
+# genera to keep:
+keepGenus <- c("__Akkermansia", "__Bacteroides", "__Bifidobacterium", "__Clostridium_sensu_stricto_1", "__Dorea", "__Faecalibacterium", "__Lachnospira", "__Lactobacillus", "__Prevotella", "__Roseburia", "__Ruminococcus_1")
+
+mphyseq = psmelt(phylo_data)
+mphyseq2 <- mphyseq %>%
+  dplyr::mutate(
+    Genus = as.character(Genus),
+    Genus = ifelse(Genus %in% keepGenus, Genus, "__zOther")) %>%
+  dplyr::group_by(Week) %>%
+  dplyr::mutate(Total = sum(Abundance)) %>%
+  dplyr::ungroup()%>%
+  dplyr::group_by(Week, Genus) %>%
+  dplyr::mutate(GenusAbund = sum(Abundance),
+                RelAbund = GenusAbund/Total) %>%
+  dplyr::summarise(RelAbund = mean(RelAbund))
+
+mphyseq2 <- mphyseq2 %>%
+  pivot_wider(names_from = "Week",
+              values_from = "RelAbund")
+
+kable(mphyseq2, format="html", digits=3,
+      caption="Relative abundance of genera by Week") %>%
+  kable_styling(full_width = T) %>%
+  scroll_box(width="100%", height="5in")
+
+```
+
+### Figure to help
+
+
+```{r}
+
+# genera to keep:
+
+mphyseq2 <- mphyseq %>%
+  dplyr::mutate(
+    Genus = as.character(Genus),
+    Genus = ifelse(Genus %in% keepGenus, Genus, "__Other")) %>%
+  dplyr::group_by(SubjectID, Week) %>%
+  dplyr::mutate(Total = sum(sqrt(Abundance))) %>%
+  dplyr::ungroup()%>%
+  dplyr::group_by(SubjectID, Week, Genus) %>%
+  dplyr::mutate(GenusAbund = sum(sqrt(Abundance)),
+                RelAbund = GenusAbund/Total)
+  
+unique(mphyseq2$Genus)
+
+mphyseq2 <- mphyseq2 %>% distinct(SubjectID, Week, Genus, .keep_all = T)
+
+keepVar <- c("SubjectID", "Week", "Genus", "Abundance", "RelAbund")
+
+mphyseq2 <- mphyseq2[, keepVar]
+
+# take out "__" at start of names
+mphyseq2$Genus <- substring(mphyseq2$Genus, 3)
+
+# Create New Other category for plotting
+mphyseq3 <- mphyseq2 %>% 
+  dplyr::group_by(SubjectID, Week, Genus) %>%
+  dplyr::summarise(RelAbund = sum(RelAbund))
+other <- mphyseq3 %>% 
+  dplyr::group_by(SubjectID, Week) %>% 
+  dplyr::summarise(RelAbund = 1 - sum(RelAbund))
+
+other$Genus <- "Missing"
+other <- other %>% select(SubjectID, Week,  Genus, RelAbund)
+
+mphyseq2 <- full_join(mphyseq3, other)
+
+
+# sort by highest average relative abundance
+ph <- mphyseq2 %>%
+  dplyr::group_by(Genus) %>%
+  dplyr::summarize(M = mean(RelAbund, na.rm=T))
+
+micro_ord <- ph$Genus[order(ph$M, decreasing = F)]
+micro_ord <- rev(c("Missing", "Other", micro_ord[2:12]))
+mphyseq2$Genus <- factor(mphyseq2$Genus, levels = micro_ord)
+
+# fix missing data and fill-out
+MIS <- mphyseq2 %>%
+  group_by(SubjectID)%>%tidyr::expand(Week, Genus)
+
+micro_data <- full_join(mphyseq2, MIS)
+
+# add week 1 missing as 0
+micro_data$RelAbund[micro_data$Week==1][is.na(micro_data$RelAbund[micro_data$Week==1])] <- 0
+
+micro_data <- micro_data%>%
+  group_by(SubjectID, Genus)%>%
+  fill(RelAbund)
+
+micro_data$Week <- as.numeric(micro_data$Week)
+
+# create order of subjects
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+micro_data$SubjectID <- factor(micro_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+
+# get right number of colors for plotting
+no_cols <- length(unique(micro_data$Genus))
+
+## Some Colors
+colors_micro <- rev(c("grey90","grey90", rev(c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059", "#39c3e6"))))
+
+# Intervention ID variable
+ids <- 1:6
+micro_data$Intervention <- ifelse(micro_data$SubjectID %in% ids, "Group A", "Group B")
+
+
+# make the plot
+micro_plot<-ggplot(data = micro_data, aes(x=Week, y = RelAbund, fill=Genus)) +
+  geom_area(stat = "identity") +
+  facet_grid(.~Intervention + SubjectID, scales = "free") +
+  scale_fill_manual(values = colors_micro) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "bottom",
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines")) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.75,
+                             keyheight = 0.75,
+                             ncol=5)) +
+  labs(y="sqrt(Relative Abundance)",
+       title="Gut Microbiome, Genus Level",
+       subtitle = "Subset of genera of apriori importance")
+micro_plot
+
+```
+
+
+
+## All Genera
+
+```{r}
+
+mphyseq = psmelt(phylo_data)
+mphyseq2 <- mphyseq %>%
+  dplyr::group_by(SubjectID, Week) %>%
+  dplyr::mutate(Total = sum(Abundance)) %>%
+  dplyr::ungroup()%>%
+  dplyr::group_by(SubjectID, Week, Genus) %>%
+  dplyr::mutate(GenusAbund = sum(Abundance),
+                RelAbund = GenusAbund/Total)
+  
+mphyseq2 <- mphyseq2 %>% distinct(SubjectID, Week, Genus, .keep_all = T)
+
+keepVar <- c("SubjectID", "Week", "Genus", "Abundance", "RelAbund")
+
+mphyseq2 <- mphyseq2[, keepVar]
+
+# take out "__" at start of names
+mphyseq2$Genus <- substring(mphyseq2$Genus, 3)
+
+# Create New Other category for plotting
+mphyseq3 <- mphyseq2 %>% 
+  dplyr::group_by(SubjectID, Week, Genus) %>%
+  dplyr::summarise(RelAbund = sum(RelAbund))
+other <- mphyseq3 %>% 
+  dplyr::group_by(SubjectID, Week) %>% 
+  dplyr::summarise(RelAbund = 1 - sum(RelAbund))
+
+other$Genus <- "Other"
+other <- other %>% select(SubjectID, Week,  Genus, RelAbund)
+
+mphyseq2 <- full_join(mphyseq3, other)
+
+
+# sort by highest average relative abundance
+ph <- mphyseq2 %>%
+  dplyr::group_by(Genus) %>%
+  dplyr::summarize(M = mean(RelAbund, na.rm=T))
+
+micro_ord <- ph$Genus[order(ph$M, decreasing = F)]
+
+mphyseq2$Genus <- factor(mphyseq2$Genus, levels = rev(micro_ord))
+
+# fix missing data and fill-out
+MIS <- mphyseq2 %>%
+  group_by(SubjectID)%>%tidyr::expand(Week, Genus)
+
+micro_data <- full_join(mphyseq2, MIS)
+
+# add week 1 missing as 0
+micro_data$RelAbund[micro_data$Week==1][is.na(micro_data$RelAbund[micro_data$Week==1])] <- 0
+
+micro_data <- micro_data%>%
+  group_by(SubjectID, Genus)%>%
+  fill(RelAbund)
+
+micro_data$Week <- as.numeric(micro_data$Week)
+
+# create order of subjects
+so <- distinct(microbiome_data$meta.dat, SubjectID, .keep_all = T)
+
+subjectorder <- so$SubjectID[order(so$Intervention, decreasing = F)]
+
+micro_data$SubjectID <- factor(micro_data$SubjectID,
+                             levels = subjectorder,
+                             labels=c(1:11))
+
+
+# get right number of colors for plotting
+no_cols <- length(unique(micro_data$Genus))
+
+## Some Colors
+library(RColorBrewer)
+color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
+colors_micro <- c(sample(color, no_cols-1), "grey90")
+#colors_micro <- rev(c("grey90", rev(c("#00a2f2",  "#c91acb", "#7f5940", "#cc5200", "#00d957", "#40202d", "#e60099", "#006fa6", "#f29d3d", "#300059"))))
+
+# Intervention ID variable
+ids <- 1:6
+micro_data$Intervention <- ifelse(micro_data$SubjectID %in% ids, "Group A", "Group B")
+
+
+# make the plot
+micro_plot2<-ggplot(data = micro_data, aes(x=Week, y = RelAbund, fill=Genus)) +
+  geom_area(stat = "identity") +
+  facet_grid(.~Intervention + SubjectID, scales = "free") +
+  scale_fill_manual(values = colors_micro) +
+  lims(x=c(0.99, 4.01))+
+  theme_classic() +
+  theme(strip.text.x = element_text(angle = 0, size = 11, face = "italic"),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.title = element_text(size = 10),
+        plot.title = element_text(hjust = 0.5),
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "bottom",
+        legend.text = element_text(size = 7),
+        legend.title = element_blank(),
+        panel.spacing.x=unit(0.001, "lines")) +
+  guides(fill = guide_legend(reverse = F,
+                             keywidth = 0.5,
+                             keyheight = 0.5,
+                             ncol=5)) +
+  labs(y="Relative Abundance",
+       title="Gut Microbiome, Genus Level",
+       subtitle = "All generua")
+micro_plot2
+
+```
+
+
+
+### Another table
+
+
+```{r}
+
+mphyseq2 <- mphyseq %>%
+  dplyr::group_by(Week) %>%
+  dplyr::mutate(Total = sum(Abundance)) %>%
+  dplyr::ungroup()%>%
+  dplyr::group_by(Week, Genus) %>%
+  dplyr::mutate(GenusAbund = sum(Abundance),
+                RelAbund = GenusAbund/Total)%>%
+  dplyr::summarise(RelAbund = mean(RelAbund))
+
+mphyseq2 <- mphyseq2 %>%
+  pivot_wider(names_from = "Week",
+              values_from = "RelAbund")
+
+kable(mphyseq2, format="html", digits=3,
+      caption="Relative abundance of genera by Week") %>%
+  kable_styling(full_width = T) %>%
+  scroll_box(width="100%", height="5in")
+
+```
