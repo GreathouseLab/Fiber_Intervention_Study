@@ -32,6 +32,11 @@ This file gives the code that generates Figure 4: the plot describing the change
 *[Microbiome and Diet Trends over Time](microbiome_diet_trends.html)
 
 
+Next, we double checked the some data w.r.t. fat and HEI scores
+
+*[Fat and HEI Scores](hei_data_doublecheck.html)
+
+
 ## Alpha Diversity
 
 Alpha diversity was measures using richness (Observed OTUs) and evenness (Shannon and Inverse Simpson).

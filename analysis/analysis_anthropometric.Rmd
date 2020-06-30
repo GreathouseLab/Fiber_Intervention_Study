@@ -296,13 +296,16 @@ weight.dat <- filter(plot.data, Variable %in% c("BMI_pre", "BMI_post"))
 weight.dat$time <- ifelse(weight.dat$Variable == "BMI_pre", "Pre", "Post")
 weight.dat$time <- factor(weight.dat$time, levels=c("Pre", "Post"), ordered=T)
 
+weight.dat$Group <- ifelse(weight.dat$Intervention == "A", "Placebo", "Intervention")
+weight.dat$Group <- factor(weight.dat$Group, levels=c("Placebo", "Intervention"), ordered=T)
+
 weight.dat$ID <- factor(weight.dat$SubjectID, levels=unique(weight.dat$SubjectID), labels=1:length(unique(weight.dat$SubjectID)))
 
-p <- ggplot(weight.dat, aes(time, value, group=ID, color=ID, shape=Intervention)) +
+p <- ggplot(weight.dat, aes(time, value, group=ID, color=ID, shape=Group)) +
   geom_line()+
   geom_point(size=3)+
-  geom_hline(yintercept = 25, color="red")+
-  geom_hline(yintercept = 30, color="red")+
+  geom_hline(yintercept = 25, color="grey", linetype="dashed")+
+  geom_hline(yintercept = 30, color="grey", linetype="dashed")+
   labs(y="BMI", x=NULL,
        title="Change in BMI from pre to post")+
   lims(y=c(20,32))+

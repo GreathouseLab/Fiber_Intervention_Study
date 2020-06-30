@@ -1,0 +1,98 @@
+---
+title: "Relationship between Microbiome and Food"
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+This page contains the investigation of the changes over time.
+
+```{r data, include=FALSE, echo=FALSE}
+
+# load packages
+source("code/load_packages.R")
+
+# get data
+source("code/get_cleaned_data.R")
+
+theme_set(theme_bw())
+pal = "Set1"
+scale_colour_discrete <-  function(palname=pal, ...){
+  scale_colour_brewer(palette=palname, ...)
+}
+scale_fill_discrete <-  function(palname=pal, ...){
+  scale_fill_brewer(palette=palname, ...)
+}
+
+knitr::opts_chunk$set(out.width = "225%")
+
+plot_dat <- microbiome_data$meta.dat
+
+```
+
+```{r}
+
+diet_data <- read.csv("data/Diet Data/Final Study Dietary Data_DHQ/baylor_fiber_study.results.csv", header = T)
+
+#colnames(diet_data)
+
+# to keep
+diet_data <- diet_data[, c("Total.HEI.2015.Score",
+                           "Total.fat..g.",
+                           "Total.saturated.fatty.acids..g.",
+                           "Total.monounsaturated.fatty.acids..g.",
+                           "Total.polyunsaturated.fatty.acids..g.")]
+colnames(diet_data) <- c("HEI_Total",
+                         "Total_fat",
+                         "Total_saturated",
+                         "Total_monounsaturated",
+                         "Total_polyunsaturated")
+
+
+```
+
+## 1. Total Fats by HEI Scores
+
+```{r}
+
+p <- ggplot(diet_data, aes(HEI_Total,Total_fat))+
+  geom_point()
+
+p
+
+```
+
+## 2. Saturated Fats by HEI Scores   
+
+```{r}
+
+p <- ggplot(diet_data, aes(HEI_Total,Total_saturated))+
+  geom_point()
+
+p
+
+```
+
+## 3. Polyunsaturated Fats by HEI Scores
+
+```{r}
+
+p <- ggplot(diet_data, aes(HEI_Total,Total_polyunsaturated))+
+  geom_point()
+
+p
+
+```
+
+## 4. Monounsaturated Fats by HEI Scores
+
+```{r}
+
+p <- ggplot(diet_data, aes(HEI_Total,Total_monounsaturated))+
+  geom_point()
+
+p
+
+```

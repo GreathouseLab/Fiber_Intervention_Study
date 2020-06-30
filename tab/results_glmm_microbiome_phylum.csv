@@ -1,19 +1,10 @@
-"","pois.Phylum","pois.Term","pois.Estimate","pois.Std. Error","pois.z value","pois.Pr(>|z|)","pois.p.adjust","nb.Phylum","nb.Term","nb.Estimate","nb.Std. Error","nb.z value","nb.Pr(>|z|)","nb.p.adjust"
-"1","Actinobacteria","time",0.09052,0.0483,1.87418,0.06091,0.0865563157894737,"Actinobacteria","time",0.03273,0.227,0.14419,0.88535,0.95193
-"2","Actinobacteria","time:intB",0.14692,0.06211,2.36544,0.01801,0.027015,"Actinobacteria","time:intB",0.35587,0.28469,1.25005,0.21128,0.47538
-"3","Bacteroidetes","time",-0.02181,0.00363,-6.00767,0,0,"Bacteroidetes","time",-0.03257,0.04502,-0.72351,0.46937,0.777195
-"4","Bacteroidetes","time:intB",-0.02248,0.00531,-4.22991,2e-05,3.375e-05,"Bacteroidetes","time:intB",-0.03216,0.06613,-0.48629,0.62676,0.777195
-"5","Cyanobacteria","time",-0.07509,0.04112,-1.82584,0.06787,0.0916245,"Cyanobacteria","time",-0.07268,0.04214,-1.72474,0.08457,0.27489
-"6","Cyanobacteria","time:intB",-0.49494,0.06783,-7.29656,0,0,"Cyanobacteria","time:intB",-0.5041,0.06903,-7.30215,0,0
-"7","Euryarchaeota","time",-0.19368,0.38486,-0.50324,0.6148,0.70149375,"Euryarchaeota","time",-0.83611,0.57406,-1.45647,0.14526,0.392202
-"8","Euryarchaeota","time:intB",0.20135,0.40971,0.49143,0.62312,0.70149375,"Euryarchaeota","time:intB",1.04268,0.61811,1.68688,0.09163,0.27489
-"9","Firmicutes","time",0.03457,0.00352,9.818,0,0,"Firmicutes","time",0.03379,0.03205,1.05435,0.29172,0.60588
-"10","Firmicutes","time:intB",-0.01871,0.00538,-3.47559,0.00051,0.00081,"Firmicutes","time:intB",-0.02624,0.04655,-0.56365,0.573,0.777195
-"11","Lentisphaerae","time",-0.00644,0.07897,-0.0815,0.93504,0.93504,"Lentisphaerae","time",0.03298,0.36281,0.09089,0.92758,0.95193
-"12","Lentisphaerae","time:intB",0.7292,0.12722,5.73197,0,0,"Lentisphaerae","time:intB",0.24276,0.5088,0.47713,0.63327,0.777195
-"13","Proteobacteria","time",-0.12581,0.01087,-11.56941,0,0,"Proteobacteria","time",-0.072,0.10958,-0.65702,0.51117,0.777195
-"14","Proteobacteria","time:intB",0.19257,0.01723,11.17407,0,0,"Proteobacteria","time:intB",0.01761,0.13093,0.13446,0.89304,0.95193
-"15","Tenericutes","time",0.5834,0.03023,19.29717,0,0,"Tenericutes","time",0.69072,0.53347,1.29475,0.19541,0.47538
-"16","Tenericutes","time:intB",0.37108,0.0529,7.01497,0,0,"Tenericutes","time:intB",0.0349,0.57882,0.06029,0.95193,0.95193
-"17","Verrucomicrobia","time",-0.12318,0.01296,-9.50252,0,0,"Verrucomicrobia","time",-0.27623,0.44654,-0.6186,0.53618,0.777195
-"18","Verrucomicrobia","time:intB",0.27351,0.01882,14.52988,0,0,"Verrucomicrobia","time:intB",0.23601,0.46789,0.50442,0.61397,0.777195
+Phylum,Estimate,Std. Error,z value,Pr(>|z|),p.adjust
+Actinobacteria,0.35587,0.28469,1.25005,0.21128,0.47538
+Bacteroidetes,-0.03216,0.06613,-0.48629,0.62676,0.777195
+Cyanobacteria,-0.5041,0.06903,-7.30215,< .001,< .001
+Euryarchaeota,1.04268,0.61811,1.68688,0.09163,0.27489
+Firmicutes,-0.02624,0.04655,-0.56365,0.573,0.777195
+Lentisphaerae,0.24276,0.5088,0.47713,0.63327,0.777195
+Proteobacteria,0.01761,0.13093,0.13446,0.89304,0.95193
+Tenericutes,0.0349,0.57882,0.06029,0.95193,0.95193
+Verrucomicrobia,0.23601,0.46789,0.50442,0.61397,0.777195
